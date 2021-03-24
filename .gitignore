@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/uim-apps
+uim-apps.so
+uim-apps.dylib
+uim-apps.dll
+uim-apps.a
+uim-apps.lib
+uim-apps-test-*
+*.exe
+*.o
+*.obj
+*.lst

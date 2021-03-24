@@ -1,0 +1,37 @@
+{
+	"name": "uim-apps",
+	"description": "A minimal D application.",
+	"authors": [ "UI Manufaktur Team"	],
+	"copyright": "Copyright © 2017-2021, UI Manufaktur UG",
+	"license": "MIT",
+	"targetType": "library",
+	"dependencies": {
+		"vibe-d": "~>0.9.3"
+	},
+	"sourcePaths": [
+		"../uim-core",
+		"../uim-oop",
+		"../uim-css",
+		"../uim-html",
+		"../uim-javascript",
+		"../uim-json",
+		"../uim-bootstrap",
+		"../uim-vue",
+		"../uim-components",
+		"../uim-web",
+		"./"
+	],
+	"importPaths": [
+		"../uim-core",
+		"../uim-oop",
+		"../uim-css",
+		"../uim-html",
+		"../uim-javascript",
+		"../uim-json",
+		"../uim-bootstrap",
+		"../uim-vue",
+		"../uim-components",
+		"../uim-web",
+		"./"
+	]
+}
