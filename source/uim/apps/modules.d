@@ -1,5 +1,6 @@
-module uim.modules;
+module uim.apps.modules;
 
+@safe:
 import uim.apps;
 
 void modules(HTTPServerRequest req, HTTPServerResponse res) { 

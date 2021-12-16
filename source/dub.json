@@ -1,0 +1,55 @@
+{
+	"authors": [
+		"UI Manufaktur Team"
+	],
+	"copyright": "Copyright © 2017-2021, UI Manufaktur UG",
+	"dependencies": {
+		"arsd-official": "~>10.2.2",
+		"colored": "~>0.0.23",
+		"dlib": "~>0.22.0",
+		"dyaml": "~>0.8.3",
+		"jwtd": "~>0.4.6",
+		"vibe-d": "~>0.9.4"
+	},
+	"description": "UIM Library D application.",
+	"license": "MIT",
+	"name": "uim-apps",
+	"importPaths": [
+		"../uim-core",
+		"../uim-oop",
+		"../uim-css",
+		"../uim-html",
+		"../uim-javascript",
+		"../uim-bootstrap",
+		"../uim-web",
+		"../uim-jsonbase",
+		"../uim-entities",
+		"../uim-entitybase",
+		"../../LAYOUTS/layout-tabler/source/layouts",
+		"./"
+	],
+	"sourcePaths": [
+		"../uim-core",
+		"../uim-oop",
+		"../uim-css",
+		"../uim-html",
+		"../uim-javascript",
+		"../uim-bootstrap",
+		"../uim-web",
+		"../uim-jsonbase",
+		"../uim-entities",
+		"../uim-entitybase",
+		"../../LAYOUTS/layout-tabler/source/layouts",
+		"./"
+	],
+	"targetType": "library",
+	"configurations": [
+		{
+			"name": "offline"
+		},
+		{
+			"name": "uim_apps",
+			"versions": ["uim_apps"]
+		}
+	]
+}
