@@ -9,8 +9,8 @@ class DAPPNavbarSlot : DAPPViewComponent {
       this.id(newId);
     }
 
-    mixin(SProperty!("string", "id"));
-    mixin(SProperty!("bool", "active"));
+    mixin(OProperty!("string", "id"));
+    mixin(OProperty!("bool", "active"));
 
 /*     override string toString() { return toString(null); }
     string toString(STRINGAA options = null) {   

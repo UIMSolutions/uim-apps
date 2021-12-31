@@ -7,36 +7,34 @@ import uim.apps;
 public import uim.apps.views.components.forms.form;
 
 // Packages
-public import uim.apps.views.components.forms.bodies;
-public import uim.apps.views.components.forms.entity;
-public import uim.apps.views.components.forms.headers;
-public import uim.apps.views.components.forms.groups;
-public import uim.apps.views.components.forms.login;
-public import uim.apps.views.components.forms.view;
+public import uim.apps.views.components.forms.components;
+public import uim.apps.views.components.forms.entities;
 
 // Modules
-public import uim.apps.views.components.forms.create;
-public import uim.apps.views.components.forms.delete_;
-public import uim.apps.views.components.forms.list;
+public import uim.apps.views.components.forms.login;
 public import uim.apps.views.components.forms.login;
 
-
-template APPFormCalls(string name, bool entity = true) {
+template APPFormCalls(string name) {
   const char[] APPFormCalls = `
 auto `~name~`() { return new D`~name~`(); }
-auto `~name~`(DAPPView myView) { return new D`~name~`(myView); }`~
-entity ? `
-auto `~name~`(DOOPEntity myEntity) { return new D`~name~`(myEntity); }
-auto `~name~`(DAPPView myView, DOOPEntity myEntity) { return new D`~name~`(myView, myEntity); }
-` : ``;
+auto `~name~`(DAPPView myView) { return new D`~name~`(myView); }`;
 }
 
-template APPFormComponentCalls(string name, bool entity = true) {
+template APPFormThis(string name) {
+  const char[] APPFormCThis = `
+this() { super(); this.name("`~name~`"); }
+this(DAPPView myView) { this().view(myView); }`;
+}
+
+template APPFormComponentThis(string name) {
+  const char[] APPFormComponentThis = `
+this() { super(); this.name("`~name~`"); }
+this(DAPPForm myForm) { this().form(myForm); }`;
+}
+
+template APPFormComponentCalls(string name) {
   const char[] APPFormComponentCalls = `
 auto `~name~`() { return new D`~name~`(); }
-auto `~name~`(DAPPForm myForm) { return new D`~name~`(myForm); }`~
-entity ? `
-auto `~name~`(DOOPEntity myEntity) { return new D`~name~`(myEntity); }
-auto `~name~`(DAPPForm myForm, DOOPEntity myEntity) { return new D`~name~`(myForm, myEntity); }
-` : ``;
+auto `~name~`(DAPPForm myForm) { return new D`~name~`(myForm); }`;
 }
+

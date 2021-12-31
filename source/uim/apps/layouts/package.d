@@ -41,7 +41,7 @@ DH5AppLayout {
  
     }
 
-    override string toString(DH5AppPage page, STRINGAA reqParameters) {
+    override string toString(DAPPPageController page, STRINGAA reqParameters) {
       // debug writeln("in app.grundschutz.layout");
       debug writeln(page.scripts.map!(a => a.toString));
 

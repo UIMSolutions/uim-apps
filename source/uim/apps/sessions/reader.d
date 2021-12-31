@@ -4,11 +4,11 @@ module uim.apps.sessions.reader;
 import uim.apps;
 
 class DAPPSessionReader {
-  this(DAPPPage page) {
-    _page = page;
+  this(DAPPPageController page) {
+    this.page(page);
   }
 
-  mixin(OProperty!("DAPPPage", "page"));
+  mixin(OProperty!("DAPPPageController", "page"));
   mixin(OProperty!("DAPPSession", "appSession"));
 
   DAPPSession read(HTTPServerRequest req, STRINGAA reqParameters) {
@@ -39,8 +39,8 @@ class DAPPSessionReader {
 
       debug writeln(moduleName!DAPPSessionReader~":DAPPSessionReader::read - Reading session entities");      
       if (page && page.database) {
-/*         foreach (required; page.requiredChecks) {
-          switch(required) {
+      foreach (name; page.sessionData) {
+          switch(name) {
             case "login": 
               appSession.login = page.database["central", "logins"].findOne(["id": reqParameters.get("loginId", "")]);
               break;
@@ -59,7 +59,7 @@ class DAPPSessionReader {
             default: break;
           }        
         }
- */      }
+      }
     }
 
     // debug writeln("----------------------------------------------------------------------------------------------"); 
@@ -82,4 +82,4 @@ class DAPPSessionReader {
     return appSession;
   }
 }
-auto APPSessionReader(DAPPPage page) { return new DAPPSessionReader(page); }
+auto APPSessionReader(DAPPPageController page) { return new DAPPSessionReader(page); }

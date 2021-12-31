@@ -8,19 +8,19 @@ public import uim.apps.checks.database;
 
 class DAPPCheck {
   this() {}
-  this(DAPPAction action) { this(); this.action(action); }
-  this(DAPPPage page) { this(); this.page(page); }
+  this(DAPPActionController action) { this(); this.action(action); }
+  this(DAPPPageController page) { this(); this.page(page); }
   this(DAPPCheck check) { this(); this.database(check.database); }
 
-  DAPPAction _action;
-  DAPPAction action() { return _action; }
-  O action(this O)(DAPPAction newAction) { 
+  DAPPActionController _action;
+  DAPPActionController action() { return _action; }
+  O action(this O)(DAPPActionController newAction) { 
     _action = newAction; 
     return cast(O)this; }
 
-  DAPPPage _page;
-  DAPPPage page() { return _page; }
-  O page(this O)(DAPPPage newPage) { 
+  DAPPPageController _page;
+  DAPPPageController page() { return _page; }
+  O page(this O)(DAPPPageController newPage) { 
     _page = newPage; 
     return cast(O)this; }
 
@@ -33,16 +33,16 @@ class DAPPCheck {
   mixin(OProperty!("string", "name"));
   mixin(OProperty!("string", "redirectUrl"));
 
-  abstract string check(HTTPServerRequest req, HTTPServerResponse res, STRINGAA reqParameters);
+  abstract string execute(HTTPServerRequest req, HTTPServerResponse res, STRINGAA reqParameters = null);
 }
 
 class DAPPCheckLoginPW : DAPPCheck {
   this() { super(); this.name("CheckLoginPW").redirectUrl("/login"); }
-  this(DAPPAction action) { this(); this.action(action); }
-  this(DAPPPage page) { this(); this.page(page); }
+  this(DAPPActionController action) { this(); this.action(action); }
+  this(DAPPPageController page) { this(); this.page(page); }
   this(DAPPCheck check) { this(); this.database(check.database); }
 
-  override string check(HTTPServerRequest req, HTTPServerResponse res, STRINGAA reqParameters) {
+  override string execute(HTTPServerRequest req, HTTPServerResponse res, STRINGAA reqParameters = null) {
     debug writeln(moduleName!DAPPCheck~":DAPPCheck::check");
 
     auto loginPW = reqParameters.get("loginPW", "");
@@ -54,20 +54,20 @@ class DAPPCheckLoginPW : DAPPCheck {
   }
 }
 auto APPCheckLoginPW() { return new DAPPCheckLoginPW; }
-auto APPCheckLoginPW(DAPPAction action) { return new DAPPCheckLoginPW(action); }
-auto APPCheckLoginPW(DAPPPage page) { return new DAPPCheckLoginPW(page); }
+auto APPCheckLoginPW(DAPPActionController action) { return new DAPPCheckLoginPW(action); }
+auto APPCheckLoginPW(DAPPPageController page) { return new DAPPCheckLoginPW(page); }
 auto APPCheckLoginPW(DAPPCheck check) { return new DAPPCheckLoginPW(check); }
 
 class DAPPCheckAccount : DAPPCheck {
   this() { super(); this.name("CheckAccount").redirectUrl("/account"); }
-  this(DAPPAction action) { this(); this.action(action); }
-  this(DAPPPage page) { this(); this.page(page); }
+  this(DAPPActionController action) { this(); this.action(action); }
+  this(DAPPPageController page) { this(); this.page(page); }
   this(DAPPCheck check) { this(); this.database(check.database); }
 
-  override string check(HTTPServerRequest req, HTTPServerResponse res, STRINGAA reqParameters) {
+  override string execute(HTTPServerRequest req, HTTPServerResponse res, STRINGAA reqParameters = null) {
     debug writeln(moduleName!DAPPCheckAccount~":DAPPCheckAccount::check");
 
-    if (auto error = APPCheckAppSession.check(req, res, reqParameters)) { return error; }
+    if (auto error = APPCheckAppSession.execute(req, res, reqParameters)) { return error; }
 
     auto appSession = getAppSession(reqParameters);
     if (!appSession.account) { // account missing 
@@ -78,20 +78,20 @@ class DAPPCheckAccount : DAPPCheck {
   }
 }
 auto APPCheckAccount() { return new DAPPCheckAccount; }
-auto APPCheckAccount(DAPPAction action) { return new DAPPCheckAccount(action); }
-auto APPCheckAccount(DAPPPage page) { return new DAPPCheckAccount(page); }
+auto APPCheckAccount(DAPPActionController action) { return new DAPPCheckAccount(action); }
+auto APPCheckAccount(DAPPPageController page) { return new DAPPCheckAccount(page); }
 auto APPCheckAccount(DAPPCheck check) { return new DAPPCheckAccount(check); }
 
 class DAPPCheckAccountName : DAPPCheck {
   this() { super(); this.name("CheckAccountName").redirectUrl("/login"); }
-  this(DAPPAction action) { this(); this.action(action); }
-  this(DAPPPage page) { this(); this.page(page); }
+  this(DAPPActionController action) { this(); this.action(action); }
+  this(DAPPPageController page) { this(); this.page(page); }
   this(DAPPCheck check) { this(); this.database(check.database); }
 
-  override string check(HTTPServerRequest req, HTTPServerResponse res, STRINGAA reqParameters) {
+  override string execute(HTTPServerRequest req, HTTPServerResponse res, STRINGAA reqParameters = null) {
     debug writeln(moduleName!DAPPCheckAccountName~":DAPPCheckAccountName::check");
 
-    if (auto error = APPCheckDatabaseAccounts(this).check(req, res, reqParameters)) { return error; }
+    if (auto error = APPCheckDatabaseAccounts(this).execute(req, res, reqParameters)) { return error; }
 
     auto appSession = getAppSession(reqParameters);
     auto accountName = appSession.login["accountName"];    
@@ -104,20 +104,20 @@ class DAPPCheckAccountName : DAPPCheck {
   }
 }
 auto APPCheckAccountName() { return new DAPPCheckAccountName; }
-auto APPCheckAccountName(DAPPAction action) { return new DAPPCheckAccountName(action); }
-auto APPCheckAccountName(DAPPPage page) { return new DAPPCheckAccountName(page); }
+auto APPCheckAccountName(DAPPActionController action) { return new DAPPCheckAccountName(action); }
+auto APPCheckAccountName(DAPPPageController page) { return new DAPPCheckAccountName(page); }
 auto APPCheckAccountName(DAPPCheck check) { return new DAPPCheckAccountName(check); }
 
 class DAPPCheckPassword : DAPPCheck {
   this() { super(); this.name("CheckPassword").redirectUrl("/login"); }
-  this(DAPPAction action) { this(); this.action(action); }
-  this(DAPPPage page) { this(); this.page(page); }
+  this(DAPPActionController action) { this(); this.action(action); }
+  this(DAPPPageController page) { this(); this.page(page); }
   this(DAPPCheck check) { this(); this.database(check.database); }
 
-  override string check(HTTPServerRequest req, HTTPServerResponse res, STRINGAA reqParameters) {
+  override string execute(HTTPServerRequest req, HTTPServerResponse res, STRINGAA reqParameters = null) {
     debug writeln(moduleName!DAPPCheckPassword~":DAPPCheckPassword::check -> Looking for password");
 
-    if (auto error = APPCheckAccount.check(req, res, reqParameters)) { return error; }
+    if (auto error = APPCheckAccount.execute(req, res, reqParameters)) { return error; }
 
     auto appSession = appSessions.get(reqParameters.get("appSessionId", ""), null);
     auto loginPW = reqParameters.get("loginPW", "");
@@ -138,24 +138,24 @@ class DAPPCheckPassword : DAPPCheck {
   }
 }
 auto APPCheckPassword() { return new DAPPCheckPassword; }
-auto APPCheckPassword(DAPPAction action) { return new DAPPCheckPassword(action); }
-auto APPCheckPassword(DAPPPage page) { return new DAPPCheckPassword(page); }
+auto APPCheckPassword(DAPPActionController action) { return new DAPPCheckPassword(action); }
+auto APPCheckPassword(DAPPPageController page) { return new DAPPCheckPassword(page); }
 auto APPCheckPassword(DAPPCheck check) { return new DAPPCheckPassword(check); }
 
 class DAPPCheckSiteId : DAPPCheck {
   this() { super(); this.name("CheckSiteId").redirectUrl("/"); }
-  this(DAPPAction action) { this(); this.action(action); }
-  this(DAPPPage page) { this(); this.page(page); }
+  this(DAPPActionController action) { this(); this.action(action); }
+  this(DAPPPageController page) { this(); this.page(page); }
   this(DAPPCheck check) { this(); this.database(check.database); }
 
-  override string check(HTTPServerRequest req, HTTPServerResponse res, STRINGAA reqParameters) {
+  override string execute(HTTPServerRequest req, HTTPServerResponse res, STRINGAA reqParameters = null) {
     debug writeln(moduleName!DAPPCheckSiteId~":DAPPCheckSiteId::check -> Looking for siteId");
 
-    if (auto error = APPCheckAppSession(this).check(req, res, reqParameters)) { return error; }
+    if (auto error = APPCheckAppSession(this).execute(req, res, reqParameters)) { return error; }
     auto appSession = getAppSession(reqParameters);
 
-    if (auto error = APPCheckDatabaseCentral(this).check(req, res, reqParameters)) { return error; }
-    if (auto error = APPCheckDatabaseSites(this).check(req, res, reqParameters)) { return error; }
+    if (auto error = APPCheckDatabaseCentral(this).execute(req, res, reqParameters)) { return error; }
+    if (auto error = APPCheckDatabaseSites(this).execute(req, res, reqParameters)) { return error; }
 
     auto siteId = reqParameters.get("siteId", "");
     if (!siteId.isUUID) { 
@@ -177,6 +177,6 @@ class DAPPCheckSiteId : DAPPCheck {
   }
 }
 auto APPCheckSiteId() { return new DAPPCheckSiteId; }
-auto APPCheckSiteId(DAPPAction action) { return new DAPPCheckSiteId(action); }
-auto APPCheckSiteId(DAPPPage page) { return new DAPPCheckSiteId(page); }
+auto APPCheckSiteId(DAPPActionController action) { return new DAPPCheckSiteId(action); }
+auto APPCheckSiteId(DAPPPageController page) { return new DAPPCheckSiteId(page); }
 auto APPCheckSiteId(DAPPCheck check) { return new DAPPCheckSiteId(check); }

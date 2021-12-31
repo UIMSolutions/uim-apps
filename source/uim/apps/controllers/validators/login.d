@@ -5,10 +5,10 @@ import uim.apps;
 
 class DAPPValidatorLogin : DAPPValidator {
   this() { super(); }
-  this(DAPPUIM myApp) { this().app(myApp); }
-  this(DAPPUIM myApp, string myName) { this(myApp).name(myName); }
-  this(DAPPUIM myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
-  this(DAPPUIM myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
+  this(DAPPApplication myApp) { this().app(myApp); }
+  this(DAPPApplication myApp, string myName) { this(myApp).name(myName); }
+  this(DAPPApplication myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
+  this(DAPPApplication myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
 
   override DOOPEntity validate(STRINGAA reqParameters) {
     string appSessionId = reqParameters.get("appSessionId", "");
@@ -67,7 +67,7 @@ class DAPPValidatorLogin : DAPPValidator {
     }}
 }
 auto APPValidatorLogin() { return new DAPPValidatorLogin; }
-auto APPValidatorLogin(DAPPUIM myApp) { return new DAPPValidatorLogin(myApp); }
-auto APPValidatorLogin(DAPPUIM myApp, string myName) { return new DAPPValidatorLogin(myApp, myName); }
-auto APPValidatorLogin(DAPPUIM myApp, DETBBase myDatabase) { return new DAPPValidatorLogin(myApp, myDatabase); }
-auto APPValidatorLogin(DAPPUIM myApp, string myName, DETBBase myDatabase) { return new DAPPValidatorLogin(myApp, myName, myDatabase); }
+auto APPValidatorLogin(DAPPApplication myApp) { return new DAPPValidatorLogin(myApp); }
+auto APPValidatorLogin(DAPPApplication myApp, string myName) { return new DAPPValidatorLogin(myApp, myName); }
+auto APPValidatorLogin(DAPPApplication myApp, DETBBase myDatabase) { return new DAPPValidatorLogin(myApp, myDatabase); }
+auto APPValidatorLogin(DAPPApplication myApp, string myName, DETBBase myDatabase) { return new DAPPValidatorLogin(myApp, myName, myDatabase); }

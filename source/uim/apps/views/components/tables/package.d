@@ -11,15 +11,15 @@ public import uim.apps.views.components.tables.listheader;
 public import uim.apps.views.components.tables.table;
 public import uim.apps.views.components.tables.versions;
 
-auto listEntities(T:DOOPEntity)(string path, string mainTitle, int numberEntities, STRINGAA[] columns, T[] entities, int startPos, int endPos, size_t sumEntities) {
-  auto header(string path, STRINGAA[] columns) {
+auto listEntities(T:DOOPEntity)(string rootPath, string mainTitle, int numberEntities, STRINGAA[] columns, T[] entities, int startPos, int endPos, size_t sumEntities) {
+  auto header(string rootPath, STRINGAA[] columns) {
     auto tr = H5Tr;
     foreach(col; columns) 
       tr(("classes" in col ? H5Th([col["classes"]], col["title"]) : H5Th(col["title"])));
     return tr;
   } 
 
-    auto rows(string path, STRINGAA[] columns, T[] entities) {
+    auto rows(string rootPath, STRINGAA[] columns, T[] entities) {
         auto results = H5Tbody;
         foreach(entity; entities) {
             auto row = H5Tr(entity.id.toString, [""]);
@@ -31,9 +31,9 @@ auto listEntities(T:DOOPEntity)(string path, string mainTitle, int numberEntitie
                         row.td( // Actions
                             H5Div(["btn-list"],
                                 H5Span(["d-none d-sm-inline"],
-                                    buttonLinkView(path, id),
-                                    buttonLinkEdit(path, id),
-                                    buttonLinkDelete(path, id)
+                                    buttonLinkView(rootPath, id),
+                                    buttonLinkEdit(rootPath, id),
+                                    buttonLinkDelete(rootPath, id)
                                 )
                             )
                         );
@@ -76,9 +76,9 @@ auto listEntities(T:DOOPEntity)(string path, string mainTitle, int numberEntitie
             H5Div(["table-responsive"], 
               BS5Table(["card-table table-vcenter text-nowrap datatable"], 
                 H5Thead(
-                    header(path, columns)
+                    header(rootPath, columns)
                 ),
-                rows(path, columns, entities)
+                rows(rootPath, columns, entities)
             )))
           .footer(["d-flex align-items-center"], 
             H5P(["m-0 text-muted"], "Showing <span>%s</span> to <span>%s</span> of <span>%s</span> entries".format(startPos, endPos, sumEntities)),
@@ -103,10 +103,10 @@ auto listEntities(T:DOOPEntity)(string path, string mainTitle, int numberEntitie
     );
 }
 
-auto listPageHeader(string path, string preTitle, string title, STRINGAA reqParameters) {
+auto listPageHeader(string rootPath, string preTitle, string title, STRINGAA reqParameters) {
     return
       APPPageHeader
-        .path(path)
+        .rootPath(rootPath)
         .preTitle(preTitle)
         .title(title)
         .actions(["refresh", "create"])

@@ -10,22 +10,22 @@ class DAPPSession {
     _httpSession = httpSession;
     this.id(httpSession.id); }
 
-  this(Session httpSession, DAPPPage page) {
+  this(Session httpSession, DAPPPageController page) {
     this(httpSession);
     this.page(page); }
 
-  mixin(SProperty!("string", "id"));
+  mixin(OProperty!("string", "id"));
   Session _httpSession;
 
-  mixin(SProperty!("DAPPPage", "page"));
-  mixin(SProperty!("long", "lastAccessedOn"));
-  mixin(SProperty!("DOOPEntity", "login"));
-  mixin(SProperty!("DOOPEntity", "session"));
-  mixin(SProperty!("DOOPEntity", "site"));
-  mixin(SProperty!("DOOPEntity", "account"));
-  mixin(SProperty!("DOOPEntity", "user"));
-  mixin(SProperty!("DOOPEntity", "password"));
-  mixin(SProperty!("DOOPEntity", "entity"));
+  mixin(OProperty!("DAPPPageController", "page"));
+  mixin(OProperty!("long", "lastAccessedOn"));
+  mixin(OProperty!("DOOPEntity", "login"));
+  mixin(OProperty!("DOOPEntity", "session"));
+  mixin(OProperty!("DOOPEntity", "site"));
+  mixin(OProperty!("DOOPEntity", "account"));
+  mixin(OProperty!("DOOPEntity", "user"));
+  mixin(OProperty!("DOOPEntity", "password"));
+  mixin(OProperty!("DOOPEntity", "entity"));
 
   bool isValid(string[] checks, STRINGAA reqParameters) {
     foreach (check; checks) {
@@ -82,14 +82,14 @@ class DAPPSession {
   }
 }
 auto APPSession(Session httpSession) { return new DAPPSession(httpSession); }
-auto APPSession(Session httpSession, DAPPPage page) { return new DAPPSession(httpSession, page); }
+auto APPSession(Session httpSession, DAPPPageController page) { return new DAPPSession(httpSession, page); }
 
-  mixin(SProperty!("DAPPPage", "page"));
-  mixin(SProperty!("long", "lastAccessedOn"));
-  mixin(SProperty!("DOOPEntity", "login"));
-  mixin(SProperty!("DOOPEntity", "session"));
-  mixin(SProperty!("DOOPEntity", "site"));
-  mixin(SProperty!("DOOPEntity", "account"));
-  mixin(SProperty!("DOOPEntity", "user"));
-  mixin(SProperty!("DOOPEntity", "password"));
-  mixin(SProperty!("DOOPEntity", "entity"));
+/*   mixin(OProperty!("DAPPPageController", "page"));
+  mixin(OProperty!("long", "lastAccessedOn"));
+  mixin(OProperty!("DOOPEntity", "login"));
+  mixin(OProperty!("DOOPEntity", "session"));
+  mixin(OProperty!("DOOPEntity", "site"));
+  mixin(OProperty!("DOOPEntity", "account"));
+  mixin(OProperty!("DOOPEntity", "user"));
+  mixin(OProperty!("DOOPEntity", "password"));
+  mixin(OProperty!("DOOPEntity", "entity")); */

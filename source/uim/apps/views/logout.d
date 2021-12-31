@@ -4,12 +4,11 @@ module uim.apps.views.logout;
 import uim.apps;
 
 class DAPPViewLogout : DAPPView {
-  this() { super(); }
-  this(DH5AppController aController) { this().controller(aController); }
+  mixin(APPViewThis!("APPViewLogout"));
   this(string aName) { this().name(aName); }
-  this(DH5AppController aController, string aName) { this(aController).name(aName); }
+  this(DAPPPageController aController, string aName) { this(aController).name(aName); }
 }
 auto APPViewLogout() { return new DAPPViewLogout(); }
-auto APPViewLogout(DH5AppController aController) { return new DAPPViewLogout(aController); }
+auto APPViewLogout(DAPPPageController aController) { return new DAPPViewLogout(aController); }
 auto APPViewLogout(string aName) { return new DAPPViewLogout(aName); }
-auto APPViewLogout(DH5AppController aController, string aName) { return new DAPPViewLogout(aController, aName); }
+auto APPViewLogout(DAPPPageController aController, string aName) { return new DAPPViewLogout(aController, aName); }

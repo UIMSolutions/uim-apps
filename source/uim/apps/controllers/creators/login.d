@@ -5,10 +5,7 @@ import uim.apps;
 
 class DAPPCreatorLogin : DAPPCreator {
   this() { super(); }
-  this(DAPPUIM myApp) { this().app(myApp); }
-  this(DAPPUIM myApp, string myName) { this(myApp).name(myName); }
-  this(DAPPUIM myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
-  this(DAPPUIM myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
+  this(DAPPApplication myApp) { this().app(myApp); }
 
   override DOOPEntity create(STRINGAA parameters) {
     auto entity = createEntities["login"](Json.emptyObject)
@@ -28,7 +25,4 @@ class DAPPCreatorLogin : DAPPCreator {
   }
 }
 auto APPCreatorLogin() { return new DAPPCreatorLogin; }
-auto APPCreatorLogin(DAPPUIM myApp) { return new DAPPCreatorLogin(myApp); }
-auto APPCreatorLogin(DAPPUIM myApp, string myName) { return new DAPPCreatorLogin(myApp, myName); }
-auto APPCreatorLogin(DAPPUIM myApp, DETBBase myDatabase) { return new DAPPCreatorLogin(myApp, myDatabase); }
-auto APPCreatorLogin(DAPPUIM myApp, string myName, DETBBase myDatabase) { return new DAPPCreatorLogin(myApp, myName, myDatabase); }
+auto APPCreatorLogin(DAPPApplication myApp) { return new DAPPCreatorLogin(myApp); }

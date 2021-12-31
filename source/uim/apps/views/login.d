@@ -3,15 +3,19 @@ module uim.apps.views.login;
 @safe:
 import uim.apps;
 
-class DAPPViewLogin : DAPPView {
-  this() { super(); }
-  this(DH5AppController aController) { this().controller(aController); }
+class DAPPLoginView : DAPPView {
+  mixin(APPViewThis!("APPLoginView"));
   this(string aName) { this().name(aName); }
-  this(DH5AppController aController, string aName) { this(aController).name(aName); }
+  this(DAPPPageController aController, string aName) { this(aController).name(aName); }
 
   override void beforeH5(STRINGAA options = null) {
-    debug writeln(StyledString(moduleName!DAPPViewLogin~":DAPPViewLogin::beforeH5").setForeground(AnsiColor.black).setBackground(AnsiColor.white));
+    debugMethodCall(moduleName!DAPPLoginView~":DAPPLoginView::beforeH5");
     auto rootPath = options.get("rootPath", "/");
+  }
+
+  override DH5Obj[] toH5(STRINGAA options = null) {
+    super.toH5(options);
+
     auto message = BS5Row; 
   
     string[] messageItems;
@@ -31,17 +35,18 @@ class DAPPViewLogin : DAPPView {
       )
     );
 
-    _h5Content ~= H5Div(["container-tight py-4"], 
+    return [
+      H5Div(["container-tight py-4"], 
         BS5Row("messages", ["mt-2 mb-2"]),
         H5Div(["text-center mb-4"], 
           H5A(["href":"https://ui-manufaktur.com"], H5Img(["src":"/img/uim.png", "height":"80", "alt":"UI Manufaktur UG - Erfolgreich im Internet"]))),
           appLoginForm(),
           H5Div(["text-center text-muted mt-3"], 
             H5String("Noch kein Konto bei uns? "), H5A(["href":"/register", "tabindex":"-1"], "Registrieren")
-      ));       
+      ))].toH5;       
   }
 }
-auto APPViewLogin() { return new DAPPViewLogin(); }
-auto APPViewLogin(DH5AppController aController) { return new DAPPViewLogin(aController); }
-auto APPViewLogin(string aName) { return new DAPPViewLogin(aName); }
-auto APPViewLogin(DH5AppController aController, string aName) { return new DAPPViewLogin(aController, aName); }
+auto APPLoginView() { return new DAPPLoginView(); }
+auto APPLoginView(DAPPPageController aController) { return new DAPPLoginView(aController); }
+auto APPLoginView(string aName) { return new DAPPLoginView(aName); }
+auto APPLoginView(DAPPPageController aController, string aName) { return new DAPPLoginView(aController, aName); }

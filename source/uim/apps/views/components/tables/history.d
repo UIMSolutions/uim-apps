@@ -9,7 +9,7 @@ class DAPPTableHistory : DAPPTable {
   this(DOOPEntity myEntity) { this(); this.entity(myEntity); }    
   this(DOOPEntity myEntity, DOOPEntity[] myHistory) { this(); this.entity(myEntity).history(myHistory); }    
 
-  mixin(SProperty!("DOOPEntity[]", "history"));
+  mixin(OProperty!("DOOPEntity[]", "history"));
   O history(this O)(Json[] jsons) {
       _history ~= jsons.map!(a => OOPEntity(a)).array;
       return cast(O)this;

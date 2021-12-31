@@ -10,27 +10,34 @@ class DAPPNavigation : DAPPViewComponent {
     .secondNavbar(APPSecondNavbar);
   }
 
-  mixin(SProperty!("DAPPFirstNavbar", "firstNavbar"));
-  mixin(SProperty!("DAPPSecondNavbar", "secondNavbar"));
-  mixin(SProperty!("bool", "fixedTop"));
+  this(DAPPView myView) { 
+    this().view(myView);
+  }
+
+  mixin(OProperty!("DAPPFirstNavbar", "firstNavbar"));
+  mixin(OProperty!("DAPPSecondNavbar", "secondNavbar"));
+  mixin(OProperty!("bool", "fixedTop"));
   
-  override void beforeH5(STRINGAA options = null) {
-    super.beforeH5(options);
-    if (hasError) { return; }
+  override DH5Obj[] toH5(STRINGAA options = null) {
+    super.toH5(options);
+    if (hasError) { return null; }
 
     debug writeln(moduleName!DAPPNavigation~":DAPPNavigation::toH5");
     auto rootPath = options.get("rootPath", "/");
     debug writeln(moduleName!DAPPNavigation~":DAPPNavigation::toH5 -> appSessionId = ", options.get("appSessionId", ""));
 
-    auto fNavbar = firstNavbar ? firstNavbar.toH5(options) : null;
+    auto fNavbar = firstNavbar  ? firstNavbar.toH5(options) 
+                                : null;
     // debug writeln("firstNavbar -> ", fNavbar);
-    auto sNavbar = secondNavbar ? secondNavbar.brand(["link":rootPath, "title":options.get("appTitle", "")]).toH5(options) : null;
+    auto sNavbar = secondNavbar ? secondNavbar.brand(["link":rootPath, "title":options.get("appTitle", "")]).toH5(options) 
+                                : null;
     // debug writeln("secondNavbar -> ", sNavbar);
 
     // debug writeln("return navigation...");
 
-    if (fixedTop) _h5Content ~= H5Div(["sticky-top"], fNavbar~sNavbar);
-    else _h5Content ~= fNavbar~sNavbar;
+    if (fixedTop) return [H5Div(["sticky-top"], fNavbar~sNavbar)].toH5;
+    return fNavbar~sNavbar;
   }
 }
 auto APPNavigation() { return new DAPPNavigation; }
+auto APPNavigation(DAPPView myView) { return new DAPPNavigation(myView); }

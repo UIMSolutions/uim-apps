@@ -9,10 +9,7 @@ import uim.apps;
  */
 class DAPPCreatorAccount : DAPPCreator {
   this() { super(); }
-  this(DAPPUIM myApp) { this().app(myApp); }
-  this(DAPPUIM myApp, string myName) { this(myApp).name(myName); }
-  this(DAPPUIM myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
-  this(DAPPUIM myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
+  this(DAPPApplication myApp) { this().app(myApp); }
 
   override DOOPEntity create(STRINGAA parameters) {
     auto entity = createEntities["account"](Json.emptyObject)
@@ -32,10 +29,7 @@ class DAPPCreatorAccount : DAPPCreator {
   }
 }
 auto APPCreatorAccount() { return new DAPPCreatorAccount; }
-auto APPCreatorAccount(DAPPUIM myApp) { return new DAPPCreatorAccount(myApp); }
-auto APPCreatorAccount(DAPPUIM myApp, string myName) { return new DAPPCreatorAccount(myApp, myName); }
-auto APPCreatorAccount(DAPPUIM myApp, DETBBase myDatabase) { return new DAPPCreatorAccount(myApp, myDatabase); }
-auto APPCreatorAccount(DAPPUIM myApp, string myName, DETBBase myDatabase) { return new DAPPCreatorAccount(myApp, myName, myDatabase); }
+auto APPCreatorAccount(DAPPApplication myApp) { return new DAPPCreatorAccount(myApp); }
 
 unittest {
   version(uim_apps) {

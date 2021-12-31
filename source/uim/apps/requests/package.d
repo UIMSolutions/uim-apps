@@ -4,11 +4,11 @@ module uim.apps.requests;
 import uim.apps;
 
 class DAPPRequestReader {
-  this(DAPPPage page) {
+  this(DAPPPageController page) {
     _page = page;
   }
 
-  mixin(OProperty!("DAPPPage", "page"));
+  mixin(OProperty!("DAPPPageController", "page"));
   mixin(OProperty!("STRINGAA", "parameters"));
 
   STRINGAA read(HTTPServerRequest req, STRINGAA reqParameters) {
@@ -17,7 +17,7 @@ class DAPPRequestReader {
     return reqParameters;
   }
 }
-auto APPRequestReader(DAPPPage page) { return new DAPPRequestReader(page); }
+auto APPRequestReader(DAPPPageController page) { return new DAPPRequestReader(page); }
 
 unittest {
   version(uim_apps) {

@@ -3,20 +3,22 @@ module uim.apps.views.lostpw;
 @safe:
 import uim.apps;
 
-class DAPPViewLostPw : DAPPView {
-  this() { super(); }
-  this(DH5AppController aController) { this().controller(aController); }
-  this(string aName) { this().name(aName); }
-  this(DH5AppController aController, string aName) { this(aController).name(aName); }
+class DAPPLostPasswordView : DAPPView {
+  mixin(APPViewThis!("APPLostAccountView"));
 
   override void beforeH5(STRINGAA options = null) { 
-    debug writeln(StyledString(moduleName!DAPPViewLostPw~":DAPPViewLostPw::beforeH5").setForeground(AnsiColor.black).setBackground(AnsiColor.white));
+    debugMethodCall(moduleName!DAPPLostPasswordView~":DAPPLostPasswordView::beforeH5");
     super.beforeH5(options);
     if (hasError) { return; }
+  }
+
+  override DH5Obj[] toH5(STRINGAA options = null) {
+    super.toH5(options);
 
     auto rootPath = options.get("rootPath", "/");
-    
-    _h5Content ~= H5Div(["container-xl"],
+
+    return [
+      H5Div(["container-xl"],
         // pageTitle("Login"),
         BS5Row(["row-cards"],
           BS5Col(["col-md-6"],
@@ -36,10 +38,8 @@ class DAPPViewLostPw : DAPPView {
             )
           )     
         )
-      );       
+      )].toH5;       
   }
 }
-auto APPViewLostPw() { return new DAPPViewLostPw(); }
-auto APPViewLostPw(DH5AppController aController) { return new DAPPViewLostPw(aController); }
-auto APPViewLostPw(string aName) { return new DAPPViewLostPw(aName); }
-auto APPViewLostPw(DH5AppController aController, string aName) { return new DAPPViewLostPw(aController, aName); }
+auto APPLostPasswordView() { return new DAPPLostPasswordView(); }
+auto APPLostPasswordView(DAPPPageController aController) { return new DAPPLostPasswordView(aController); }

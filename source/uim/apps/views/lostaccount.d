@@ -3,18 +3,21 @@ module uim.apps.views.lostaccount;
 @safe:
 import uim.apps;
 
-class DAPPViewLostAccount : DAPPView {
-  this() { super(); }
-  this(DH5AppController aController) { this().controller(aController); }
+class DAPPLostAccountView : DAPPView {
+  mixin(APPViewThis!("APPLostAccountView"));
   this(string aName) { this().name(aName); }
-  this(DH5AppController aController, string aName) { this(aController).name(aName); }
+  this(DAPPPageController aController, string aName) { this(aController).name(aName); }
 
   override void beforeH5(STRINGAA options = null) { 
-    debug writeln(StyledString(moduleName!DAPPViewLostAccount~":DAPPViewLostAccount::beforeH5").setForeground(AnsiColor.black).setBackground(AnsiColor.white));
+    debug writeln(StyledString(moduleName!DAPPLostAccountView~":DAPPLostAccountView::beforeH5").setForeground(AnsiColor.black).setBackground(AnsiColor.white));
     super.beforeH5(options);
+  }
+
+  override DH5Obj[] toH5(STRINGAA options = null) {
+    super.toH5(options);
     auto rootPath = options.get("rootPath", "/");
 
-    _h5Content ~= H5Div(["container-xl"],
+    return [H5Div(["container-xl"],
         // pageTitle("Login"),
         BS5Row(["row-cards"],
           BS5Col(["col-md-6"],
@@ -34,10 +37,10 @@ class DAPPViewLostAccount : DAPPView {
             )
           )     
         )
-      );       
+      )].toH5;       
   }      
 }
-auto APPViewLostAccount() { return new DAPPViewLostAccount(); }
-auto APPViewLostAccount(DH5AppController aController) { return new DAPPViewLostAccount(aController); }
-auto APPViewLostAccount(string aName) { return new DAPPViewLostAccount(aName); }
-auto APPViewLostAccount(DH5AppController aController, string aName) { return new DAPPViewLostAccount(aController, aName); }
+auto APPLostAccountView() { return new DAPPLostAccountView(); }
+auto APPLostAccountView(DAPPPageController aController) { return new DAPPLostAccountView(aController); }
+auto APPLostAccountView(string aName) { return new DAPPLostAccountView(aName); }
+auto APPLostAccountView(DAPPPageController aController, string aName) { return new DAPPLostAccountView(aController, aName); }

@@ -6,56 +6,59 @@ module uim.apps.controllers.pages.page;
 @safe:
 import uim.apps;
 
-enum ViewModes { HTML, JS, XML }
-enum DataModes { Local, REST }
+class DAPPPageController : DAPPController {
+  this() { super(); }
+  this(DAPPView myView) { 
+    this().view(myView); // Controller is owner of view
+  }
 
-class DAPPPage : DH5AppPage {
-  this() { 
-    super(); 
+  // Initialization (= hook method)
+  override void initialize() {
+    super.initialize;
 
-    this.entities(null);
-
+    this
+    .name("APPPageController") 
+    .language("en") 
+    .mimetype("text/html");
+    
     requestReader = APPRequestReader(this);
-    sessionReader = APPSessionReader(this); } 
-  
-  this(DAPPView myView) {
-    this().view(myView);
+    sessionReader = APPSessionReader(this);  
+
+    this
+    .links(APPLinkContainer)
+    .metas(APPMetaContainer) 
+    .scripts(APPScriptContainer) 
+    .styles(APPStyleContainer); 
   }
 
-  mixin(SProperty!("Session", "globalSession"));
-  mixin(SProperty!("bool", "hasGlobalSession"));
+  mixin(OProperty!("Session", "globalSession"));
+  mixin(OProperty!("bool", "hasGlobalSession"));
 
-  mixin(SProperty!("string", "pageTitle"));
-  mixin(SProperty!("string", "pageBreadcrumbs"));
-  mixin(SProperty!("string[]", "pageActions"));
+  mixin(OProperty!("string", "pageTitle"));
+  mixin(OProperty!("string", "pageBreadcrumbs"));
+  mixin(OProperty!("string[]", "pageActions"));
 
-  protected DAPPCheck[] _checks;
-  DAPPCheck[] checks() { return _checks; }
-/*   O checks(this O)(DAPPCheck[] someChecks...) {
-    checks(someChecks);
-    return cast(O)this;
-  }
- */  O checks(this O)(DAPPCheck[] someChecks) {
-    foreach (check; someChecks) {
-      _checks ~= check.page(this);
-    }
-    return cast(O)this;
-  }
-  O clearChecks(this O)() { 
-    _checks = null; 
-    return cast(O)this; }
+  mixin(OProperty!("DAPPView", "view"));
+
+  // Required checks for the page flow
+  mixin(OProperty!("DAPPCheck[]", "requiredChecks"));
+  mixin(OProperty!("string[]", "sessionData"));
+  mixin(OProperty!("string", "title"));
+	unittest {
+/* 		assert(H5AppPage.title("aTitle").title == "aTitle");	
+		assert(H5AppPage.title("aTitle").title("otherTitle").title == "otherTitle"); */
+	}
+
+	mixin(OProperty!("string", "language"));
+	unittest {		
+/* 			assert(H5App.lang("aLanguage").lang == "aLanguage");	
+			assert(H5App.lang("aLanguage").lang("otherLanguage").lang == "otherLanguage");
+			assert(H5App.language("aLanguage").language == "aLanguage");	
+			assert(H5App.language("aLanguage").language("otherLanguage").language == "otherLanguage"); */
+	}
 
   DAPPRequestReader requestReader;
   DAPPSessionReader sessionReader;
-
-  DETBBase _database; 
-  auto database(DETBBase aDatabase) { _database = aDatabase; }
-  auto database() {
-    if (_database) return _database;
-    if (auto myApp = cast(DAPPUIM)app)
-       return myApp.database;
-    return null;
-  }
 
   DAPPPageHeader _pageHeader;
   O pageHeader(this O)(DAPPPageHeader newPageHeader) { 
@@ -64,65 +67,87 @@ class DAPPPage : DH5AppPage {
     return cast(O)this; }
   auto pageHeader() { return _pageHeader; }
   
-  mixin(SProperty!("DAPPForm", "form"));
+  mixin(OProperty!("DAPPForm", "form"));
 
-  mixin(SProperty!("string", "collectionName"));
-  mixin(SProperty!("string", "jsPath"));
-  mixin(SProperty!("string", "pgPath"));
-  mixin(SProperty!("string", "entitiesName"));
-  mixin(SProperty!("string", "entityName"));
+  mixin(OProperty!("string", "collectionName"));
+  mixin(OProperty!("string", "jsPath"));
+  mixin(OProperty!("string", "pgPath"));
+  mixin(OProperty!("string", "entitiesName"));
+  mixin(OProperty!("string", "entityName"));
 
-  protected DOOPEntity[] _entities;
-  protected void _setEntities(DOOPEntity[] newEntities) { 
-    // debug writeln("_setEntities(DOOPEntity[] newEntities)");
-    _entities = newEntities; }
-  @property DOOPEntity[] entities() { return _entities; }
-  @property O entities(this O)(DOOPEntity[] newEntities) { 
-    // debug writeln("O entities(this O)(DOOPEntity[] newEntities)");
-    // _setEntities(newEntities); 
-    _entities = newEntities;
-    // debug writeln("return");
+
+	/// layout for page
+	DAPPLayout _layout;
+	O layout(this O)(DAPPLayout newlayout) { 
+    _layout = newlayout; 
     return cast(O)this; }
+	auto layout() { 
+    if (_layout) return _layout; 
+    if (auto c = cast(DAPPPageController)this.controller) { return c.layout; } 
+    if (this.app) return this.app.layout; 
+    return null; 
+  }
+	unittest {
+		/// TODO		
+	}
 
   O pageActions(this O)(string[] actions...) { this.pageActions(actions); return cast(O)this; }
   O addPageActions(this O)(string[] actions...) { this.addPageActions(actions); return cast(O)this; }
   O addPageActions(this O)(string[] actions) { this.pageActions(this.pageActions~actions); return cast(O)this; }
 
-  mixin(SProperty!("ViewModes", "viewMode")); // 0 - HTML , 1 - HTML & Javascript, 2 - PWA
-  mixin(SProperty!("DataModes", "dataMode")); // 0 - HTML , 1 - HTML & Javascript, 2 - PWA
+  mixin(OProperty!("ViewModes", "viewMode")); // 0 - HTML , 1 - HTML & Javascript, 2 - PWA
+  mixin(OProperty!("DataModes", "dataMode")); // 0 - HTML , 1 - HTML & Javascript, 2 - PWA
 
-/*   mixin(SProperty!("DAPPController", "securityController")); 
-  mixin(SProperty!("DAPPSecurityOptions", "securityOptions"));
+/*   mixin(OProperty!("DAPPController", "securityController")); 
+  mixin(OProperty!("DAPPSecurityOptions", "securityOptions"));
   O securityOptions(this O)(bool[string] newOptions) { this.securityOptions(APPSecurityOptions(newOptions)); return cast(O)this; }  
  */  
+
+  // Containers
+  mixin(OProperty!("DAPPLinkContainer", "links"));
+  mixin(OProperty!("DAPPMetaContainer", "metas"));
+  mixin(OProperty!("DAPPScriptContainer", "scripts"));
+  mixin(OProperty!("DAPPStyleContainer", "styles"));
+
+  string opIndex(string key) {
+    switch(key) {
+      case "title": return this.title;
+      default: return "";
+    }
+  }
+
+  void opIndexAssign(string value, string key) {
+    switch(key) {
+      case "title": this.title = value; break;
+      default: break;
+    }
+  }
+
   override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPPage~":DAPPPage::beforeResponse");
+    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::beforeResponse");
+    super.beforeResponse(options);
     if ("redirect" in options) { return; }
 
-		debug writeln("DAPPPage is rendering view (", view.name, ")");
-
-    debug writeln(moduleName!DAPPPage~":DAPPPage::beforeResponse - Read http session");
-    if (_request.session) options["appSessionId"] = _request.session.id;
-
-    foreach (check; checks) {
-      debug writeln(moduleName!DAPPAction~":DAPPAction::beforeResponse - check -> "~check.name);
-      if (auto redirectUrl = APPCheckLogin.check(_request, _response, options)) {
+    foreach (check; requiredChecks) {
+      if (auto redirectUrl = check.execute(this.request, this.response, options)) {
         options["redirect"] = redirectUrl;
-        break; }} 
-
-    if (checks) {
-      if ("redirect" in options) {
-        debug writeln(moduleName!DAPPAction~":DAPPAction::beforeResponse - check -> Redirect to ", options["redirect"]); }
-      else {
-        debug writeln(moduleName!DAPPAction~":DAPPAction::check -> All checks successful, no redirect"); }
+        break;   
+      }
     }
-    else {
-      debug writeln(moduleName!DAPPAction~":DAPPAction::beforeResponse - check -> No checks, no worry ;-)");
-    }}
+  }
   unittest {
     version(uim_apps) {
       /// TODO 
     }}
+
+  override string stringResponse(STRINGAA options = null) {
+    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::stringResponse");
+    super.stringResponse(options);
+
+    debug writeln("Name of view is now -> ", this.view.name);
+    if (view) return view.render(options);
+    return "";															
+  }
 
   DH5Obj[] pageContent(STRINGAA reqParameters) { 
     // debug writeln("DAPPPage:pageContent(STRINGAA reqParameters)");
@@ -140,6 +165,7 @@ class DAPPPage : DH5AppPage {
       addToPageScript(options, 
         setSessionStorage(["sessionId": (appSession.session ? appSession.session.id.toString : ""), "siteId": (appSession.site ? appSession.site.id.toString : "")]));
   }
+
 
 /*   override DH5Obj[] toH5(STRINGAA reqParameters) { 
     auto loginId = reqParameters.get("loginId", "");
@@ -254,11 +280,11 @@ class DAPPPage : DH5AppPage {
     return result;
   } */
 }
-auto APPPage() { return new DAPPPage; }
-auto APPPage(DAPPView myView) { return new DAPPPage(myView); }
+auto APPPageController() { return new DAPPPageController; }
+auto APPPageController(DAPPView myView) { return new DAPPPageController(myView); }
 
 unittest {
 	version(uim_apps) {
-		assert(APPPage.view.name == "H5NullView"); // Controller has default view
-		assert(APPPage.view(APPView).view.name == "APPView"); // Controller has new view
+		assert(APPPageController.view.name == "H5NullView"); // Controller has default view
+		assert(APPPageController.view(APPView).view.name == "APPView"); // Controller has new view
 }}

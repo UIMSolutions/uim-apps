@@ -7,14 +7,15 @@ class DAPPTableHeader : DAPPViewComponent {
   this() { this.visibleEntities(10); }
   this(DAPPView myView) { this().view(myView); }
 
-  mixin(SProperty!("string", "mainTitle"));
-  mixin(SProperty!("size_t", "visibleEntities"));
+  mixin(OProperty!("string", "mainTitle"));
+  mixin(OProperty!("size_t", "visibleEntities"));
 
-  override void beforeH5(STRINGAA options = null) { // hook
-    super.beforeH5(options);
-    if (hasError) { return; }
+  override DH5Obj[] toH5(STRINGAA options = null) { // hook
+    super.toH5(options);
+    if (hasError) { return null; }
 
-    _h5Content ~= H5Div(["d-flex"],
+    return [
+      H5Div(["d-flex"],
       H5Div(["text-muted"], 
         H5String("Show"),
         H5Div(["mx-2 d-inline-block"],
@@ -23,8 +24,7 @@ class DAPPTableHeader : DAPPViewComponent {
       H5Div(["ms-auto text-muted"], 
         H5String("Search:"),
         H5Div(["ms-2 d-inline-block"], 
-          BS5InputText(["form-control-sm"], ["aria-label":"Search "~mainTitle.toLower])))
-    );
+          BS5InputText(["form-control-sm"], ["aria-label":"Search "~mainTitle.toLower]))))].toH5;
   }
 }
 auto APPTableHeader() { return new DAPPTableHeader; }

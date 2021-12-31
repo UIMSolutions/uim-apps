@@ -3,40 +3,43 @@ module uim.apps.controllers.actions.create;
 @safe:
 import uim.apps;
 
-class DAPPActionCreate : DAPPAction {
-  this() { super(); 
-    this
-    .checks([APPCheckAppSession, APPCheckDatabase, APPCheckSession, APPCheckSite]); }
-  this(DAPPUIM myApp) { this().app(myApp); }
-  this(string myName) { this().name(myName); }
-  this(DAPPUIM myApp, string myName) { this(myApp).name(myName); }
-  this(DAPPUIM myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
-  this(DAPPUIM myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
+class DAPPActionCreate : DAPPActionController {
+  this() { super(); }
+  this(DAPPApplication myApp) { this().app(myApp); }
 
+  override void initialize() {
+    super.initialize; 
+    this.name = "APPActionCreate";
+    this.checks([APPCheckAppSession, APPCheckDatabase, APPCheckSession, APPCheckSite]); 
+  }
 
   mixin(OProperty!("string", "pool"));
   mixin(OProperty!("string", "pgPath"));
   
-  override void beforeResponse(STRINGAA reqParameters) {
+  override void beforeResponse(STRINGAA options = null) {
     debug writeln(moduleName!DAPPActionCreate~":DAPPActionCreate::beforeResponse");
-    super.beforeResponse(reqParameters);   
-    if ("redirect" in reqParameters) return;
+    super.beforeResponse(options);   
+    if ("redirect" in options) return;
 
-    auto appSession = getAppSession(reqParameters);
+    auto appSession = getAppSession(options);
     auto collection = database[appSession.site.name, pool];
     if (!collection) {
-      reqParameters["redirect"] = pgPath~"/view"; 
+      options["redirect"] = pgPath~"/view"; 
       return; }
 
     auto entity = collection.toEntity(Json(null));
-    entity.fromRequest(reqParameters);  
+    entity.fromRequest(options);  
     collection.insertOne(entity); 
 
-    reqParameters["redirect"] = pgPath~"/view?id="~entity.id.toString; }
+    options["redirect"] = pgPath~"/view?id="~entity.id.toString; 
+  }
 }
 auto APPActionCreate() { return new DAPPActionCreate; }
+auto APPActionCreate(DAPPApplication myApp) { return new DAPPActionCreate(myApp); }
 
 unittest {
   version(uim_apps) {
-    /// TODO 
-  }}
+    assert(new DAPPActionCreate);
+    assert(APPActionCreate);
+    assert(APPActionCreate.name == "APPActionCreate");
+}}

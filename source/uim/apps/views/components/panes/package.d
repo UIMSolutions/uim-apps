@@ -24,8 +24,8 @@ class DAPPTabpane : DAPPPane {
     this() {}
     this(DOOPEntity myEntity) { this(); this.entity(myEntity); }    
 
-    mixin(SProperty!("string", "path"));
-    mixin(SProperty!("string[]", "actions"));
+    mixin(OProperty!("string", "path"));
+    mixin(OProperty!("string[]", "actions"));
 
     override string toString(STRINGAA parameters) {
         return BS5CardBody(
@@ -53,8 +53,8 @@ class DAPPPanes {
     foreach(pane; _panes) pane.entity(newEntity);
     return cast(O)this;}
 
-  mixin(SProperty!("string", "path"));
-  mixin(SProperty!("DAPPPane[]", "panes"));
+  mixin(OProperty!("string", "path"));
+  mixin(OProperty!("DAPPPane[]", "panes"));
   O panes(this O)(DAPPPane[] newPanes...) { 
     _panes = newPanes;
     return cast(O)this;}

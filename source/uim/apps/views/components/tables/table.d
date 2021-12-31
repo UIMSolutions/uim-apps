@@ -3,12 +3,12 @@ module uim.apps.views.components.tables.table;
 @safe:
 import uim.apps;
 
-class DAPPTable : DAPPViewComponent {
+class DAPPTable : DAPPViewComponent, IAPPWithEntity {
     this() { super(); }
     this(DAPPView myView) { this().view(myView); }
   
-    mixin(OProperty!("DOOPEntity", "entity"));
     mixin(OProperty!("string", "path"));
+    mixin(OProperty!("DOOPEntity", "entity"));
 
     void tableContent(STRINGAA options = null) {
       // Reset
@@ -23,21 +23,21 @@ class DAPPTable : DAPPViewComponent {
     DH5Obj _header;
     DH5Obj _body;
     DH5Obj _footer;
-    override void beforeH5(STRINGAA options = null) { // hook
-      super.beforeH5(options);
-      if (hasError) { return; } 
+    override DH5Obj[] toH5(STRINGAA options = null) { // hook
+      super.toH5(options);
+      if (hasError) { return null; } 
 
-        // init
-        auto _table = BS5Table(["card-table table-vcenter text-nowrap datatable"]);        
-        if (entity) {
-          tableContent(options);
+      // init
+      auto _table = BS5Table(["card-table table-vcenter text-nowrap datatable"]);        
+      if (entity) {
+        tableContent(options);
 
-          // create table content
-          if (_header) _table(_header);
-          if (_body) _table(_body);
-          if (_footer) _table(_footer);
-        }
-        _h5Content ~= H5Div(["table-responsive"], _table);
+        // create table content
+        if (_header) _table(_header);
+        if (_body) _table(_body);
+        if (_footer) _table(_footer);
+      }
+      return [H5Div(["table-responsive"], _table)].toH5;
     }
 }
 auto APPTable() { return new DAPPTable(); }

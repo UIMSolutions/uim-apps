@@ -3,16 +3,15 @@ module uim.apps.controllers.actions.setsite;
 @safe:
 import uim.apps;
 
-class DAPPActionSetSite : DAPPAction {
-  this() { super(); 
-    this.checks([
-      APPCheckAppSession, APPCheckSession, 
-      APPCheckDatabaseSessions, APPCheckDatabaseSites, 
-      APPCheckSiteId]); }
-  this(DAPPUIM myApp) { this().app(myApp); }
-  this(DAPPUIM myApp, string myName) { this(myApp).name(myName); }
-  this(DAPPUIM myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
-  this(DAPPUIM myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
+class DAPPActionSetSite : DAPPActionController {
+  this() { super(); }
+  this(DAPPApplication myApp) { this().app(myApp); }
+
+  override void initialize() {
+    super.initialize; 
+    this.name = "APPActionSetSite";
+    this.checks([APPCheckAppSession, APPCheckSession, APPCheckDatabaseSessions, APPCheckDatabaseSites, APPCheckSiteId]); 
+  }
   
   override void beforeResponse(STRINGAA options = null) {
     debug writeln(moduleName!DAPPActionSetSite~":DAPPActionSetSite::request");
@@ -44,3 +43,4 @@ class DAPPActionSetSite : DAPPAction {
 	}
 }
 auto APPActionSetSite() { return new DAPPActionSetSite; }
+auto APPActionSetSite(DAPPApplication myApp) { return new DAPPActionSetSite(myApp); }

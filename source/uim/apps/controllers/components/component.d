@@ -12,7 +12,7 @@ import uim.apps;
 * you should consider creating your own component to contain the functionality. 
 * Creating components keeps controller code clean and allows you to reuse code between different controllers.
 **/
-class DAPPControllerComponent : DH5AppControllerComponent{
+class DAPPControllerComponent {
   this() {}
   
   // A component lookup table used to lazy load component objects.

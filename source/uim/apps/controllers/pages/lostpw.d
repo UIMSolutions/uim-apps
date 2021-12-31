@@ -3,7 +3,7 @@ module uim.apps.controllers.pages.lostpw;
 @safe:
 import uim.apps;
 
-class DAPPLostPWPage : DAPPPage {
+class DAPPLostPWPage : DAPPPageController {
   this() { super(); 
     this.parameters([
       "pageTitle": "Passwort vergessen?",
@@ -12,7 +12,7 @@ class DAPPLostPWPage : DAPPPage {
   <li class="breadcrumb-item active" aria-current="page"><a href="#">Passwort vergessen</a></li>
 </ol>`])
       .title("Passwort vergessen")
-      .view(APPViewLostPw(this));
+      .view(APPLostPasswordView(this));
   }
 }
 auto APPLostPWPage() { return new DAPPLostPWPage; }

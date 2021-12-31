@@ -46,7 +46,7 @@ class DAPPPaneVersions : DAPPPane {
   this(DOOPEntity myEntity) { this(); this.entity(myEntity); }    
   this(DOOPEntity myEntity, DOOPEntity[] myVersions) { this(); this.entity(myEntity).versions(myVersions); }    
 
-  mixin(SProperty!("DOOPEntity[]", "versions"));
+  mixin(OProperty!("DOOPEntity[]", "versions"));
   O versions(this O)(Json[] jsons) {
       _versions = jsons.map!(a => DOOPEntity(a)).array;
       return cast(O)this;

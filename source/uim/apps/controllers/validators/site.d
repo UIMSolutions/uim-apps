@@ -5,10 +5,10 @@ import uim.apps;
 
 class DAPPValidatorSite : DAPPValidator {
   this() { super(); }
-  this(DAPPUIM myApp) { this().app(myApp); }
-  this(DAPPUIM myApp, string myName) { this(myApp).name(myName); }
-  this(DAPPUIM myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
-  this(DAPPUIM myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
+  this(DAPPApplication myApp) { this().app(myApp); }
+  this(DAPPApplication myApp, string myName) { this(myApp).name(myName); }
+  this(DAPPApplication myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
+  this(DAPPApplication myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
   
   bool siteIdValid(string siteId) { return siteId.isUUID && UUID(siteId) != UUID(); }
 
@@ -63,7 +63,7 @@ class DAPPValidatorSite : DAPPValidator {
   }
 }
 auto APPValidatorSite() { return new DAPPValidatorSite; }
-auto APPValidatorSite(DAPPUIM myApp) { return new DAPPValidatorSite(myApp); }
-auto APPValidatorSite(DAPPUIM myApp, string myName) { return new DAPPValidatorSite(myApp, myName); }
-auto APPValidatorSite(DAPPUIM myApp, DETBBase myDatabase) { return new DAPPValidatorSite(myApp, myDatabase); }
-auto APPValidatorSite(DAPPUIM myApp, string myName, DETBBase myDatabase) { return new DAPPValidatorSite(myApp, myName, myDatabase); }
+auto APPValidatorSite(DAPPApplication myApp) { return new DAPPValidatorSite(myApp); }
+auto APPValidatorSite(DAPPApplication myApp, string myName) { return new DAPPValidatorSite(myApp, myName); }
+auto APPValidatorSite(DAPPApplication myApp, DETBBase myDatabase) { return new DAPPValidatorSite(myApp, myDatabase); }
+auto APPValidatorSite(DAPPApplication myApp, string myName, DETBBase myDatabase) { return new DAPPValidatorSite(myApp, myName, myDatabase); }

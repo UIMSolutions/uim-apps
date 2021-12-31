@@ -58,8 +58,8 @@ auto APPFirstNavbar() { return new DAPPFirstNavbar; }
 class DAPPSecondNavbar : DAPPViewComponent {
   this() { super(); }
 
-  mixin(SProperty!("DAPPNavbarSlot[]", "slots"));
-  mixin(SProperty!("string[string]", "brand"));
+  mixin(OProperty!("DAPPNavbarSlot[]", "slots"));
+  mixin(OProperty!("string[string]", "brand"));
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     auto container = BS5Container.fluid;
@@ -87,12 +87,15 @@ auto APPSecondNavbar(DAPPNavbarSlot[] slots) { return APPSecondNavbar.slots(slot
 
 class DAPPFirstNavbar : DAPPViewComponent {
   this() { super(); }
+  this(DAPPView myView) { 
+    this().view(myView); 
+  }
 
-  override void beforeH5(STRINGAA options = null) { // hook
-    super.beforeH5(options);
-    if (hasError) { return; }
+  override DH5Obj[] toH5(STRINGAA options = null) { // hook
+    super.toH5(options);
+    if (hasError) { return null; }
 
-    _h5Content ~=  
+    return [  
       H5Header(["navbar navbar-expand-md navbar-light d-print-none"], 
         H5Div(["container-fluid"], 
           H5Button(["navbar-toggler"], ["type":"button", "data-bs-toggle":"collapse", "data-bs-target":"#navbar-menu"],
@@ -116,10 +119,11 @@ class DAPPFirstNavbar : DAPPViewComponent {
               ) 
             ) */        
         )
-      );
+      )].toH5;
   }
 }
 auto APPFirstNavbar() { return new DAPPFirstNavbar; }
+auto APPFirstNavbar(DAPPView myView) { return new DAPPFirstNavbar(myView); }
 
 auto messagesNavitem(STRINGAA options = null) {
   return H5Div(["nav-item dropdown d-none d-md-flex me-3"], 
@@ -157,13 +161,14 @@ auto userNavitem(STRINGAA options = null) {
 
 class DAPPSecondNavbar : DAPPViewComponent {
   this() { super(); }
+  this(DAPPView myView) { this().view(myView); }
 
-  mixin(SProperty!("DAPPNavbarSlot[]", "slots"));
-  mixin(SProperty!("string[string]", "brand"));
+  mixin(OProperty!("DAPPNavbarSlot[]", "slots"));
+  mixin(OProperty!("string[string]", "brand"));
 
-  override void beforeH5(STRINGAA options = null) { // hook
-    super.beforeH5(options);
-    if (hasError) { return; }
+  override DH5Obj[] toH5(STRINGAA options = null) { // hook
+    super.toH5(options);
+    if (hasError) { return null; }
 
     string navslots;
     if ("appSessionId" in options) {
@@ -180,7 +185,7 @@ class DAPPSecondNavbar : DAPPViewComponent {
     }
     // debug writeln("return content...");
     
-    _h5Content ~= 
+    return [
       H5Div(["navbar-expand-md"], 
         H5Div("navbar-menu", ["collapse navbar-collapse"], 
           H5Div("navbar-2", ["navbar navbar-dark"], ["style":"background-color:#35A6FF"], 
@@ -191,10 +196,11 @@ class DAPPSecondNavbar : DAPPViewComponent {
             )
           )
         )
-      );
+      )].toH5;
   }
 }
 auto APPSecondNavbar() { return new DAPPSecondNavbar; }
+auto APPSecondNavbar(DAPPView myView) { return new DAPPSecondNavbar(myView); }
 auto APPSecondNavbar(DAPPNavbarSlot[] slots) { return APPSecondNavbar.slots(slots); }
 
 /*

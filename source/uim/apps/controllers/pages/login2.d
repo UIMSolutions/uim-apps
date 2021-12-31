@@ -3,13 +3,10 @@ module uim.apps.controllers.pages.login2;
 @safe:
 import uim.apps;
 
-class DAPPLogin2Page : DAPPPage {
+class DAPPLogin2Page : DAPPPageController {
   this() { super(); 
     this
     .title("Anmeldung (Passwort)")
-    .scripts(
-      ["src":"/js/apps/app.js"],   
-      ["src":"/js/apps/login2.js"])   
 /*     .scripts(`
       window.addEventListener('load', (event) => {
         document.getElementById("loginForm").addEventListener("submit", event => {
@@ -24,8 +21,12 @@ class DAPPLogin2Page : DAPPPage {
   <li class="breadcrumb-item active" aria-current="page"><a href="#">Anmeldung (Passwort)</a></li>
 </ol>`])
       .title("Anmeldung (Passwort)")
-      .view(APPViewLogin2(this));
+      .view(APPLogin2View(this));
+    
+    this.scripts.addLinks(
+      "/js/apps/app.js",   
+      "/js/apps/login2.js");   
     }
 }
-
 auto APPLogin2Page() { return new DAPPLogin2Page(); }
+auto APPLogin2Page(DAPPApplication myApplication) { return APPLogin2Page.app(myApplication); }

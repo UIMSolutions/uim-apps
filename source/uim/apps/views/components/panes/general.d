@@ -68,7 +68,7 @@ class DAPPPaneGeneral : DAPPPane {
   }
   this(DOOPEntity myEntity) { this(); this.entity(myEntity); }    
 
-  mixin(SProperty!("string[]", "formgroups"));
+  mixin(OProperty!("string[]", "formgroups"));
 
   override void inner (STRINGAA options = null) {    
     if (!entity) return;    

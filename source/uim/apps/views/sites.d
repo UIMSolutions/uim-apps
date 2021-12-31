@@ -5,16 +5,19 @@ import uim.apps;
 
 class DAPPViewSites : DAPPView {
   this() { super(); }
-  this(DH5AppController aController) { this().controller(aController); }
-  this(string aName) { this().name(aName); }
-  this(DH5AppController aController, string aName) { this(aController).name(aName); }
+  this(DAPPPageController aController) { this().controller(aController); }
 
   override void beforeH5(STRINGAA options = null) {
-    debug writeln(StyledString(moduleName!DAPPViewSites~":DAPPViewSites::beforeH5").setForeground(AnsiColor.black).setBackground(AnsiColor.white));
+    debugMethodCall(moduleName!DAPPViewSites~":DAPPViewSites::beforeH5");
     super.beforeH5(options);
-        if (hasError) { return; }
+    if (hasError) { return; }
 
     auto rootPath = options.get("rootPath", "/");
+  }
+
+  override DH5Obj[] toH5(STRINGAA options = null) {
+    super.toH5(options);
+
     auto message = BS5Row; 
     string[] messageItems; 
     message(
@@ -33,7 +36,7 @@ class DAPPViewSites : DAPPView {
         )
       );
 
-    _h5Content ~=            
+    return [
       H5Div(["container-tight py-4"], 
         BS5Row("messages", ["mt-2 mb-2"]),
         H5Div(["text-center mb-4"], 
@@ -54,10 +57,8 @@ class DAPPViewSites : DAPPView {
         )),
       H5Div(["text-center text-muted mt-3"], 
         H5String("Noch kein Konto bei uns? "), H5A(["href":"/register", "tabindex":"-1"], "Registrieren")
-      ));       
+      ))].toH5;       
   }
 }
 auto APPViewSites() { return new DAPPViewSites(); }
-auto APPViewSites(DH5AppController aController) { return new DAPPViewSites(aController); }
-auto APPViewSites(string aName) { return new DAPPViewSites(aName); }
-auto APPViewSites(DH5AppController aController, string aName) { return new DAPPViewSites(aController, aName); }
+auto APPViewSites(DAPPPageController aController) { return new DAPPViewSites(aController); }

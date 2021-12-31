@@ -3,7 +3,7 @@ module uim.apps.controllers.pages.register;
 @safe:
 import uim.apps;
 
-class DAPPRegisterPage : DAPPPage {
+class DAPPRegisterPage : DAPPPageController {
       this() { super(); 
           this.parameters([
       "pageTitle": "Registrierung",

@@ -2,7 +2,7 @@ module uim.apps.controllers.pages.helpers;
 
 @safe:
 import uim.apps;
-
+/* 
 void initPages(DH5App app) {
   app.pages("login", APPLoginPage);
   app.pages("login2", APPLogin2Page);
@@ -12,10 +12,10 @@ void initPages(DH5App app) {
   app.pages("register", APPRegisterPage);
 }
 
-auto initRouter(URLRouter router, DH5App app) {
+auto initRouter(URLRouter router, DAPPAplication app) {
  	/* router
 		.get("/login", &app.loginPage.request)
-		.get("/logout", &app.logoutPage.request); */
+		.get("/logout", &app.logoutPage.request); * /
 
   return router;
-}
+} */

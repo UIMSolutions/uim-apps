@@ -9,15 +9,15 @@ class DAPPTableFooter : DAPPViewComponent {
     }
     this(DAPPView myView) { this().view(myView); }
 
-    mixin(SProperty!("size_t", "pageNo"));
-    mixin(SProperty!("size_t", "visibleEntities"));
-    mixin(SProperty!("DOOPEntity[]", "entities"));
+    mixin(OProperty!("size_t", "pageNo"));
+    mixin(OProperty!("size_t", "visibleEntities"));
 
-    override void beforeH5(STRINGAA options = null) { // hook
-        super.beforeH5(options);
-        if (hasError) { return; }
+    override DH5Obj[] toH5(STRINGAA options = null) { // hook
+        super.toH5(options);
+        if (hasError) { return null; }
 
-      _h5Content ~= BS5CardFooter(["d-flex align-items-center"], 
+      return [
+          BS5CardFooter(["d-flex align-items-center"], 
           H5P(["m-0 text-muted"], "Showing <span>%s</span> to <span>%s</span> of <span>%s</span> entries".format(0, visibleEntities, entities.length)),
               BS5Pagination(["m-0 ms-auto"])
               .item(["disabled"],
@@ -35,7 +35,7 @@ class DAPPTableFooter : DAPPViewComponent {
                   BS5PageLink(["href":"#"], "5"))
               .item(
                   BS5PageLink(["href":"#"], 
-                  "Next"~tablerIcon("chevrons-right"))));
+                  "Next"~tablerIcon("chevrons-right"))))].toH5;
     } 
 
     override void beforeRender(STRINGAA options = null) { // hook

@@ -9,7 +9,7 @@ class DAPPNullSession : DAPPSession{
   this(Session httpSession) {
     super(httpSession); }
 
-  this(Session httpSession, DAPPPage page) {
+  this(Session httpSession, DAPPPageController page) {
     super(httpSession, page); }
 
   override bool isValid(string[] factors, STRINGAA reqParameters) {
@@ -21,5 +21,5 @@ class DAPPNullSession : DAPPSession{
 }
 auto APPNullSession() { return new DAPPNullSession(); }
 auto APPNullSession(Session httpSession) { return new DAPPNullSession(httpSession); }
-auto APPNullSession(Session httpSession, DAPPPage page) { return new DAPPNullSession(httpSession, page); }
+auto APPNullSession(Session httpSession, DAPPPageController page) { return new DAPPNullSession(httpSession, page); }
 

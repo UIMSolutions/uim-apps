@@ -9,12 +9,12 @@ class DAPPTableVersions : DAPPTable {
   this(DOOPEntity myEntity) { this().entity(myEntity); }    
   this(DOOPEntity myEntity, DOOPEntity[] myVersions) { this(); this.entity(myEntity).versions(myVersions); }    
 
-  mixin(SProperty!("DOOPEntity[]", "versions"));
+  mixin(OProperty!("DOOPEntity[]", "versions"));
   O versions(this O)(Json[] jsons) {
       foreach(json; jsons) _versions ~= DOOPEntity(json);
       return cast(O)this; }
 
-  mixin(SProperty!("string[]", "actions"));
+  mixin(OProperty!("string[]", "actions"));
 
   DH5Obj row(DOOPEntity entity, string[] rowActions = ["view", "delete"]) {
       auto link = "?entity_id="~entity.id.toString~"&number="~to!string(entity.versionNumber);

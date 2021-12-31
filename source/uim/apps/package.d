@@ -28,7 +28,6 @@ public import uim.entitybase;
 
 // Packages
 public import uim.apps.applications;
-public import uim.apps.apps;
 public import uim.apps.checks;
 public import uim.apps.consoles;
 public import uim.apps.containers;
@@ -36,6 +35,7 @@ public import uim.apps.controllers;
 public import uim.apps.controllers.validators;
 public import uim.apps.events;
 public import uim.apps.forms;
+public import uim.apps.interfaces;
 public import uim.apps.helpers;
 public import uim.apps.javascripts;
 public import uim.apps.layouts;
@@ -45,6 +45,9 @@ public import uim.apps.requests;
 public import uim.apps.security;
 public import uim.apps.sessions;
 public import uim.apps.views;
+
+// Modules
+public import uim.apps.views.registry;
 
 public import layouts.tabler;
 
@@ -248,7 +251,7 @@ auto hasAllKey(Json parameters, string[] keys) {
   return true;
 }
 
-DAPPViewRegistry uimViewRegistry;
+/* DAPPViewRegistry uimViewRegistry;
 static this() {
   uimViewRegistry = APPViewRegistry;
-}
+} */

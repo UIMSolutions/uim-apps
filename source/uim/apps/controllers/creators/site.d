@@ -5,19 +5,17 @@ import uim.apps;
 
 class DAPPCreatorSite : DAPPCreator {
   this() { super(); }
-  this(DAPPUIM myApp) { this().app(myApp); }
-  this(DAPPUIM myApp, string myName) { this(myApp).name(myName); }
-  this(DAPPUIM myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
-  this(DAPPUIM myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
+  this(DAPPApplication myApp) { this().app(myApp); }
 
   override DOOPEntity create(STRINGAA parameters) {
     auto col = database["central", "sites"];
     if (col.notNull) {
       auto entity = col.create
       .name(parameters.get("site", "site"~to!string(now)));
-      entity.save; }       
+      entity.save; 
+      return entity; }       
 
-    return entity;
+    return null;
   }
 
   override Json message(STRINGAA parameters) {
@@ -33,7 +31,4 @@ class DAPPCreatorSite : DAPPCreator {
   }
 }
 auto APPCreatorSite() { return new DAPPCreatorSite; }
-auto APPCreatorSite(DAPPUIM myApp) { return new DAPPCreatorSite(myApp); }
-auto APPCreatorSite(DAPPUIM myApp, string myName) { return new DAPPCreatorSite(myApp, myName); }
-auto APPCreatorSite(DAPPUIM myApp, DETBBase myDatabase) { return new DAPPCreatorSite(myApp, myDatabase); }
-auto APPCreatorSite(DAPPUIM myApp, string myName, DETBBase myDatabase) { return new DAPPCreatorSite(myApp, myName, myDatabase); }
+auto APPCreatorSite(DAPPApplication myApp) { return new DAPPCreatorSite(myApp); }

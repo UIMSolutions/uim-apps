@@ -3,49 +3,55 @@ module uim.apps.layouts.layout;
 @safe:
 import uim.apps;
 
-class DAPPLayout : DH5AppLayout {
-  this() { super(); 
-    _bodyAttributes["style"] = "background-color: #ffffff;";
+enum DataModes { Local, REST }
 
+class DAPPLayout {
+  this() {  
     this
-    .layoutStyle("tabler");
+      .name("APPLayout")
+      .title("UI Manufaktur")
+      .bodyAttributes(["style": "background-color: #ffffff;"])
+      .layoutStyle("tabler")
+      .links(APPLinkContainer) 
+      .metas(APPMetaContainer) 
+      .scripts(APPScriptContainer)
+      .styles(APPStyleContainer); 
 
     if (layoutStyle == "tabler") {
-      this
-      .styles(
-        ["href":"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css", "rel":"stylesheet"],
-        ["href":"https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap", "rel":"stylesheet"],
-        ["href":"/lib/tabler/last/css/tabler.min.css", "rel":"stylesheet"],
-        ["href":"/lib/tabler/last/css/tabler-flags.min.css", "rel":"stylesheet"],
-        ["href":"/lib/tabler/last/css/tabler-payments.min.css", "rel":"stylesheet"],
-        ["href":"/lib/tabler/last/css/tabler-vendors.min.css", "rel":"stylesheet"])
-      .scripts(
-        ["src":"/lib/apexcharts/last/apexcharts.min.js"],
-        ["src":"/lib/tabler/last/js/tabler.min.js"]);
-    }
+      this.styles.addLinks(
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css",
+        "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap",
+        "/lib/tabler/last/css/tabler.min.css",
+        "/lib/tabler/last/css/tabler-flags.min.css",
+        "/lib/tabler/last/css/tabler-payments.min.css",
+        "/lib/tabler/last/css/tabler-vendors.min.css");
 
-    this
-    .metas(
+      this.scripts.addLinks(
+        "/lib/apexcharts/last/apexcharts.min.js",
+        "/lib/tabler/last/js/tabler.min.js");
+    }
+    
+    this.metas.add(
       ["charset":"utf-8"],
       ["http-equiv":"X-UA-Compatible", "content":"IE=edge"],
       ["name":"viewport", "content":"width=device-width, initial-scale=1"], 
       ["http-equiv":"Content-Type", "content":"text/html; charset=utf-8"],
-      )
-    .links(
+      );
+
+    this.links.add(
       ["rel":"icon", "type":"image/ico", "href":"/img/favicon.ico"],
-      )
-    .styles(
-      ["href":"/lib/kothing/last/kothing-editor.min.css", "rel":"stylesheet"],
-      ["href":"/lib/katex/last/katex.min.css", "rel":"stylesheet"],
-      ["href":"/css/apps/app.css", "rel":"stylesheet"],        
-      ["href":"/css/apps/cms/main.css", "rel":"stylesheet"]
-      )
-    .scripts(
-      ["src":"/lib/kothing/last/kothing-editor.min.js"],
-      ["src":"/lib/katex/last/katex.min.js"],
-      ["src":"/js/apps/app.js"], 
-      )
-    .title("ADMIN!CENTRAL");   
+      );
+
+    this.styles.addLinks(
+      "/lib/kothing/last/kothing-editor.min.css",
+      "/lib/katex/last/katex.min.css",
+      "/css/apps/app.css",
+      "/css/apps/cms/main.css");
+
+    this.scripts.addLinks(
+      "/lib/kothing/last/kothing-editor.min.js",
+      "/lib/katex/last/katex.min.js",
+      "/js/apps/app.js");
 
     _bodyAttributes["style"] = "background-color: #ffffff;";
     _bodyClasses = ["d-flex", "flex-column", "h-100"];
@@ -55,16 +61,152 @@ class DAPPLayout : DH5AppLayout {
     .footer(APPFooter);
   }
 
-  mixin(SProperty!("DAPPNavigation", "navigation"));
-  mixin(SProperty!("DAPPFooter", "footer"));
-  mixin(SProperty!("string", "layoutStyle"));
+  mixin(OProperty!("DAPPNavigation", "navigation"));
+  mixin(OProperty!("DAPPFooter", "footer"));
+  mixin(OProperty!("string", "layoutStyle"));
+  mixin(OProperty!("string", "name"));
+  mixin(OProperty!("string", "title"));
+  mixin(OProperty!("string", "language"));
+  mixin(OProperty!("STRINGAA", "headAttributes"));
+  mixin(OProperty!("string[]", "headClasses"));
+  mixin(OProperty!("STRINGAA", "bodyAttributes"));
+  mixin(OProperty!("string[]", "bodyClasses"));
+  mixin(OProperty!("STRINGAA", "parameters"));
+  mixin(OProperty!("DAPPLayout", "layout"));
+  mixin(OProperty!("Json", "config"));
 
-  override void beforeRender(STRINGAA options = null) {
-    super.beforeRender(options);
+  protected DAPPApplication _app;
+  DAPPApplication app() {
+    if (_app) return _app;
+    return null;
   }
+  O app(this O)(DAPPApplication newApp) {
+    _app = newApp;
+    return cast(O)this;
+  }
+
+  // Containers
+  mixin(OProperty!("DAPPLinkContainer", "links"));
+  mixin(OProperty!("DAPPMetaContainer", "metas"));
+  mixin(OProperty!("DAPPScriptContainer", "scripts"));
+  mixin(OProperty!("DAPPStyleContainer", "styles"));
+
+  string opIndex(string key) {
+    switch(key) {
+      case "title": return this.title;
+      default: return "";
+    }
+  }
+
+  void opIndexAssign(string value, string key) {
+    switch(key) {
+      case "title": this.title = value; break;
+      default: break;
+    }
+  }
+
+// #region render
+
+	void beforeRender(STRINGAA options = null) {
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::beforeRender");
+	}
+
+	string render(DAPPController controller, DAPPView view, STRINGAA options = null) { 
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::render");
+    if (view) {
+      debug writeln("view is -> ", view.name);
+		  return render(controller, view.toH5(options), options);
+    }
+    debug writeln("view is missing ");
+    return render(controller, "", options);
+	}
+
+	string render(DAPPController controller, DH5Obj[] h5Objs, STRINGAA options = null) { 
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::render");
+		if (h5Objs) {
+      return render(controller, h5Objs.map!(h5 => h5.toString).join, options);
+    }
+    return render(controller, "", options);
+	}
+
+	string render(DAPPController controller, string content, STRINGAA options = null) { 
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::render");
+		beforeRender(options);
+
+		// 1. page parameters to options
+    if (controller) {
+      debug writeln("controller is -> ", controller.name);
+		  foreach(k,v; controller.parameters) options[k] = v; 
+    }
+    else { debug writeln("No controller"); }
+
+		// 2. layout parameters to options
+		foreach(k,v; parameters) if (k !in options) options[k] = v;
+		// 3. app parameters to options
+		
+		if (app) {
+			options["rootPath"] = app.rootPath;      
+			foreach(k,v; app.parameters) if (k !in options) options[k] = v; }
+
+    DH5Obj[] actualMetas;
+    DH5Obj[] actualLinks;
+    DH5Obj[] actualStyles;
+		DH5Obj[] actualScripts;
+		if (auto pageController = cast(DAPPPageController)controller) {
+			if (app) actualMetas ~= app.metas.toH5;
+      actualMetas ~= this.metas.toH5;
+      actualMetas ~= (pageController ? pageController.metas.toH5 : null);
+			actualLinks = /* (app ? app.links : null) ~  */this.links.toH5 ~ (pageController ? pageController.links.toH5 : null);
+			actualStyles = (app ? app.styles.toH5 : null) ~ this.styles.toH5 ~ (pageController ? pageController.styles.toH5 : null);
+			actualScripts = (app ? app.scripts.toH5 : null) ~ this.scripts.toH5 ~ (pageController ? pageController.scripts.toH5 : null);
+		}
+
+		// creating HTML page
+		auto _html = H5Html
+		.attributes("lang", options.get("lang", "en")).attributes("dir", options.get("dir", "ltr"));
+		
+    // Head part of HTML
+    auto headContent = 
+      (options.get("title", null) ? "<title>" ~ options.get("title", null) ~ "</title>":null)~
+		  (actualMetas.asString~options.get("metas", null))~
+		  (actualLinks.asString~options.get("links", null))~
+		  ("link" in options ? options["link"] : null)~
+		  (actualStyles.asString~options.get("styles", null))~
+		  ("style" in options ? H5Style(options["style"]).toString : null);
+		renderHead(_html, this.headClasses, this.headAttributes, headContent, options);
+
+		// Body part of HTML
+		auto bodyContent = 
+    (this.layout ?  this.layout.render(controller, content, options) : content)~
+		(actualScripts.asString~options.get("script", null));
+
+		renderBody(_html, this.bodyClasses, this.bodyAttributes, bodyContent, options);
+
+		return _html.toString;
+	}
+	unittest {
+		// writeln(H5AppLayout);
+		// assert(H5AppLayout.render == `<!doctype html><html dir="ltr" lang="en"><head></head><body></body></html>`);
+		//assert(H5AppLayout()("xxx") == `<!doctype html><html dir="ltr" lang="en"><head></head><body>xxx</body></html>`);
+	}
+
+  void renderHead(DH5Html html, string[] classes, STRINGAA attributes, string content, STRINGAA options = null) {
+    html
+    .head(classes)
+		.head(attributes)
+		.head(content);
+  }
+
+  void renderBody(DH5Html html, string[] classes, STRINGAA attributes, string content, STRINGAA options = null) {
+    html
+    .body_(classes)
+		.body_(attributes)
+		.body_(content);
+  }
+  // #endregion render
 }
 
-/*   override string render(DH5AppPage page, DH5AppView view, STRINGAA options = null) {
+/*   override string render(DAPPPageController page, DAPPView view, STRINGAA options = null) {
     super.render(page, view, options);
 
     auto head = ("navigation" in options ? options.get("navigation", "") : navigation.render(options));
@@ -122,13 +264,13 @@ class DAPPLayout : DH5AppLayout {
         "UIM!Central");    
     }
 
-    mixin(SProperty!("DAPPNavbarSlot[]", "slots"));
+    mixin(OProperty!("DAPPNavbarSlot[]", "slots"));
 
     override DH5Obj navbar() {
       return BS5NavbarNav(this.navSlots);
     }
 
-    override string toString(DH5AppPage page, string[string] reqParameters) {
+    override string toString(DAPPPageController page, string[string] reqParameters) {
       foreach(k,v; parameters) if (k !in reqParameters) reqParameters[k] = v;
       foreach(k,v; page.parameters) if (k !in reqParameters) reqParameters[k] = v;
       if (auto app = page.app) {
@@ -299,7 +441,7 @@ auto newNavbar(string[string] Parameters) {
   </nav>`;
 }
 // megamenu2
-auto dropDownItems(string prefix, DH5AppPage[][string] themes) {
+auto dropDownItems(string prefix, DAPPPageController[][string] themes) {
   string result;
   foreach(theme; themes.getKeys(true)) result ~= H5A(["dropdown-item"], ["href":prefix~theme.toLower], theme).toString;
   return result;

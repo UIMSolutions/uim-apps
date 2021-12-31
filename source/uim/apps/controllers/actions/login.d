@@ -3,15 +3,16 @@ module uim.apps.controllers.actions.login;
 @safe:
 import uim.apps;
 
-class DAPPActionLogin : DAPPAction {
-  this() { super(); 
-    this
-    .nextUrl("/login2") 
-    .checks([APPCheckDatabase, APPCheckDatabaseLogins, APPCheckDatabaseSessions]); }
-  this(DAPPUIM myApp) { this().app(myApp); }
-  this(DAPPUIM myApp, string myName) { this(myApp).name(myName); }
-  this(DAPPUIM myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
-  this(DAPPUIM myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
+class DAPPActionLogin : DAPPActionController {
+  this() { super(); }
+  this(DAPPApplication myApp) { this().app(myApp); }
+
+  override void initialize() {
+    super.initialize; 
+    this.name = "APPActionLogin";
+    this.nextUrl("/login2"); 
+    this.checks([APPCheckDatabase, APPCheckDatabaseLogins, APPCheckDatabaseSessions]); 
+  }
 
   override void beforeResponse(STRINGAA options = null) {
     debug writeln(moduleName!DAPPActionLogin~":DAPPActionLogin::beforeResponse(reqParameters)");
@@ -19,7 +20,7 @@ class DAPPActionLogin : DAPPAction {
     if ("redirect" in options) return;
 
     // New Session
-    if (_request.session) _response.terminateSession();
+    if (this.request.session) this.response.terminateSession();
     string appSessionId = options.get("appSessionId", "");     
     if (appSessionId in appSessions) appSessions.remove(appSessionId);
     options.remove("appSessionId");     
@@ -28,7 +29,7 @@ class DAPPActionLogin : DAPPAction {
 
     // appSession missing, create new one
     debug writeln(moduleName!DAPPActionLogin~":DAPPActionLogin::beforeResponse -> Read httpSession");
-    auto httpSession = _response.startSession();
+    auto httpSession = this.response.startSession();
     appSessions[httpSession.id] = APPSession(httpSession);
     options["appSessionId"] = httpSession.id;
 
@@ -58,7 +59,5 @@ class DAPPActionLogin : DAPPAction {
     debug writeln(appSession.debugInfo); }
 }
 auto APPActionLogin() { return new DAPPActionLogin; }
-auto APPActionLogin(DAPPUIM myApp) { return new DAPPActionLogin(myApp); }
-auto APPActionLogin(DAPPUIM myApp, string myName) { return new DAPPActionLogin(myApp, myName); }
-auto APPActionLogin(DAPPUIM myApp, DETBBase myDatabase) { return new DAPPActionLogin(myApp, myDatabase); }
-auto APPActionLogin(DAPPUIM myApp, string myName, DETBBase myDatabase) { return new DAPPActionLogin(myApp, myName, myDatabase); }
+auto APPActionLogin(DAPPApplication myApp) { return new DAPPActionLogin(myApp); }
+

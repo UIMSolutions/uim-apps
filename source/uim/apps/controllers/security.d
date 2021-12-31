@@ -5,10 +5,10 @@ import uim.apps;
 
 class DAPPSecurityController : DAPPController {
   this() { super(); }
-  this(DAPPUIM myApp) { this().app(myApp); }
-  this(DAPPUIM myApp, string myName) { this(myApp).name(myName); }
-  this(DAPPUIM myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
-  this(DAPPUIM myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
+  this(DAPPApplication myApp) { this().app(myApp); }
+  this(DAPPApplication myApp, string myName) { this(myApp).name(myName); }
+  this(DAPPApplication myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
+  this(DAPPApplication myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
 
   override Json message(STRINGAA options) {
     // debug writeln("In DAPPSecurityController");
@@ -59,10 +59,10 @@ class DAPPSecurityController : DAPPController {
     return super.message(json, options); }
 } 
 auto APPSecurityController() { return new DAPPSecurityController; }
-auto APPSecurityController(DAPPUIM myApp) { return new DAPPSecurityController(myApp); }
-auto APPSecurityController(DAPPUIM myApp, string myName) { return new DAPPSecurityController(myApp, myName); }
-auto APPSecurityController(DAPPUIM myApp, DETBBase myDatabase) { return new DAPPSecurityController(myApp, myDatabase); }
-auto APPSecurityController(DAPPUIM myApp, string myName, DETBBase myDatabase) { return new DAPPSecurityController(myApp, myName, myDatabase); }
+auto APPSecurityController(DAPPApplication myApp) { return new DAPPSecurityController(myApp); }
+auto APPSecurityController(DAPPApplication myApp, string myName) { return new DAPPSecurityController(myApp, myName); }
+auto APPSecurityController(DAPPApplication myApp, DETBBase myDatabase) { return new DAPPSecurityController(myApp, myDatabase); }
+auto APPSecurityController(DAPPApplication myApp, string myName, DETBBase myDatabase) { return new DAPPSecurityController(myApp, myName, myDatabase); }
 
 unittest {
   version(uim_apps) {

@@ -3,7 +3,7 @@ module uim.apps.controllers.pages.apps;
 @safe:
 import uim.apps;
 
-/* class DAPPPage : DH5AppPage {
+/* class DAPPPage : DAPPPageController {
   this() { super(); 
     this
     
@@ -18,7 +18,7 @@ import uim.apps;
       });`);
     }
 
-  // mixin(SProperty!("string", "path"));
+  // mixin(OProperty!("string", "path"));
 
 
   DH5Obj action(string name) {

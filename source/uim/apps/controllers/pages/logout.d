@@ -3,7 +3,7 @@ module uim.apps.controllers.pages.logout;
 @safe:
 import uim.apps;
 
-class DAPPLogoutPage : DAPPPage {
+class DAPPLogoutPage : DAPPPageController {
   this() { super(); 
     this.parameters([
           "pageTitle": "Abmeldung erfolgreich",
