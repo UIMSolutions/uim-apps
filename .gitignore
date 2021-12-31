@@ -13,3 +13,6 @@ uim-apps-test-*
 *.o
 *.obj
 *.lst
+source/dub.json
+dub.selections.json
+dub.selections.json
