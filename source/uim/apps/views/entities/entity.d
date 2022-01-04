@@ -10,9 +10,8 @@ class DAPPEntityView : DAPPView, IAPPWithEntity {
     debugMethodCall(moduleName!DAPPEntityView~"::DAPPEntityView:initialize");   
     super.initialize;
 
-    this.name("APPEntityView");
     this.form(APPEntityForm(this));
-    this.pageHeader(APPPageHeader(this).actions(["refresh", "list"]));
+    this.pageHeader(APPPageHeader(this).actions(["refresh", "list", "create"]));
   }
 
   mixin(OProperty!("DOOPEntity", "entity"));

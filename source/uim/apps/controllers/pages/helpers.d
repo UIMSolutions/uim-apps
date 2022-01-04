@@ -4,9 +4,9 @@ module uim.apps.controllers.pages.helpers;
 import uim.apps;
 /* 
 void initPages(DH5App app) {
-  app.pages("login", APPLoginPage);
-  app.pages("login2", APPLogin2Page);
-  app.pages("logout", APPLogoutPage);
+  app.pages("login", APPLoginPageController);
+  app.pages("login2", APPLogin2PageController);
+  app.pages("logout", APPLogoutPageController);
   app.pages("lostaccount", APPLostAccountPage);
   app.pages("lostpw", APPLostPWPage);
   app.pages("register", APPRegisterPage);

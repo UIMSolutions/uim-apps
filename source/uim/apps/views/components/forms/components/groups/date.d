@@ -4,11 +4,11 @@ module uim.apps.views.components.forms.components.groups.date;
 import uim.apps;
 
 class DAPPDateFormGroup : DAPPFormGroup {
-  this() { super(); }
-  this(DOOPEntity myEntity) { this().entity(myEntity); }
-  this(DAPPForm myForm) { this().form(myForm); }
-  this(DAPPForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
+  mixin(APPFormComponentThis!("APPDateFormGroup", true));
 
+  override void initialize() {
+    super.initialize;
+  }
 
   override DH5Obj h5Input(STRINGAA options = null) {
     super.h5Input(options);

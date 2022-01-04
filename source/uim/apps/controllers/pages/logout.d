@@ -3,8 +3,12 @@ module uim.apps.controllers.pages.logout;
 @safe:
 import uim.apps;
 
-class DAPPLogoutPage : DAPPPageController {
-  this() { super(); 
+class DAPPLogoutPageController : DAPPPageController {  
+  mixin(APPPageThis!("APPLogoutPageController"));
+
+  override void initialize() { 
+    super.initialize;
+
     this.parameters([
           "pageTitle": "Abmeldung erfolgreich",
           "pageBreadcrumbs":`<ol class="breadcrumb" aria-label="breadcrumbs">
@@ -14,4 +18,4 @@ class DAPPLogoutPage : DAPPPageController {
       .title("Abmeldung");
   }
 }
-auto APPLogoutPage() { return new DAPPLogoutPage; }
+mixin(APPPageCalls!("APPLogoutPageController"));

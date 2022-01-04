@@ -3,11 +3,15 @@ module uim.apps.controllers.pages.lostaccount;
 @safe:
 import uim.apps;
 
-class DAPPLostAccountPage : DAPPPageController {
-  this() { super(); 
+class DAPPLostAccountPageController : DAPPPageController {
+  mixin(APPPageThis!("APPLostAccountPageController"));
+
+  override void initialize() {
+    super.initialize;
+    
     this.parameters([
-          "pageTitle": "Kennung vergessen?",
-          "pageBreadcrumbs":`<ol class="breadcrumb" aria-label="breadcrumbs">
+      "pageTitle": "Kennung vergessen?",
+      "pageBreadcrumbs":`<ol class="breadcrumb" aria-label="breadcrumbs">
   <li class="breadcrumb-item"><a href="#">Start</a></li>
   <li class="breadcrumb-item active" aria-current="page"><a href="#">Kennung vergessen</a></li>
 </ol>`])
@@ -15,4 +19,4 @@ class DAPPLostAccountPage : DAPPPageController {
       .view(APPLostAccountView(this));
   }
 }
-auto APPLostAccountPage() { return new DAPPLostAccountPage; }
+mixin(APPPageCalls!("APPLostAccountPageController"));

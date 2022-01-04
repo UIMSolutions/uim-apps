@@ -4,8 +4,7 @@ module uim.apps.views.components.forms.components.groups.name;
 import uim.apps;
 
 class DAPPFormGroupName : DAPPTextFormGroup {
-  this() { super(); }
-  this(DAPPForm myForm) { this().form(myForm); }
+  mixin(APPFormComponentThis!("APPFormGroupName"));
   this(DOOPEntity myEntity) { this().entity(myEntity); }
   this(DAPPForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
 
@@ -21,7 +20,6 @@ class DAPPFormGroupName : DAPPTextFormGroup {
     .invalidFeedback("Name ist nicht korrekt");
   }
 }
-auto APPFormGroupName() { return new DAPPFormGroupName; }
-auto APPFormGroupName(DAPPForm myForm) { return new DAPPFormGroupName(myForm); };
+mixin(APPFormComponentCalls!("APPFormGroupName"));
 auto APPFormGroupName(DOOPEntity myEntity) { return new DAPPFormGroupName(myEntity); };
 auto APPFormGroupName(DAPPForm myForm, DOOPEntity myEntity) { return new DAPPFormGroupName(myForm, myEntity); };

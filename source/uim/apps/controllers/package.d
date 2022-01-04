@@ -20,4 +20,16 @@ public import uim.apps.controllers.middlewareoptions;
 public import uim.apps.controllers.security;
 public import uim.apps.controllers.registry;
 
+template AppControllerThis(string name) {
+  const char[] AppControllerThis = `
+this() { super(); this.name("`~name~`"); }
+this(DAPPApplication myApplication) { this().app(myApplication); }
+`;
+}
 
+template AppControllerCalls(string name) {
+  const char[] AppControllerCalls = `
+auto `~name~`() { return new D`~name~`; }
+auto `~name~`(DAPPApplication myApplication) { return new D`~name~`(myApplication); }
+`;
+}

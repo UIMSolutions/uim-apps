@@ -11,6 +11,7 @@ class DAPPNavbarSlot : DAPPViewComponent {
 
     mixin(OProperty!("string", "id"));
     mixin(OProperty!("bool", "active"));
+    mixin(OProperty!("string", "rootPath"));
 
 /*     override string toString() { return toString(null); }
     string toString(STRINGAA options = null) {   

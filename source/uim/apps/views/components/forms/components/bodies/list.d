@@ -4,8 +4,7 @@ module uim.apps.views.components.forms.components.bodies.list;
 import uim.apps;
 
 class DAPPListFormBody : DAPPFormBody {
-  this() { super(); }
-  this(DAPPForm myForm) { this().form(myForm); }
+  mixin(APPFormComponentThis!("APPListFormBody"));
 
   override void initialize() {
     super.initialize;
@@ -45,16 +44,16 @@ class DAPPListFormBody : DAPPFormBody {
           BS5FormCheckInput("${entity.id}", ["m-0 align-middle"], ["type":"checkbox", "aria-label":"Select item"]))// , "checked": entity.selected? `checked`:``)+`>
         .td(["w-1"], entity["createdOn"])
         .td(["w-1"], entity["modifiedOn"])
-        .td(["w-1"], H5A(["href": rootPath~"/view?entity_id="~entity["id"]], entity["name"]))
+        .td(["w-1"], H5A(["href": rootPath~"/view?id="~entity["id"]], entity["name"]))
         .td(entity["display"]) 
         .td(["text-end"], 
           H5Span(["dropdown"], 
             BS5Button(["btn-sm dropdown-toggle align-text-top"], 
               ["data-bs-boundary":"viewport", "data-bs-toggle":"dropdown", "aria-expanded":"false"], "Mehr"),
             BS5DropdownMenu(["dropdown-menu-end"])
-            .link(["href":rootPath~"/view?entity_id="~entity["id"]], "Anzeigen")
-            .link(["href":rootPath~"/edit?entity_id="~entity["id"]], "Edit")
-            .link(["href":rootPath~"/delete?entity_id="~entity["id"]], "Delete")
+            .link(["href":rootPath~"/view?id="~entity["id"]], "Anzeigen")
+            .link(["href":rootPath~"/edit?id="~entity["id"]], "Edit")
+            .link(["href":rootPath~"/delete?id="~entity["id"]], "Delete")
             .divider
             .link(["disabled"], ["href":"#"], "Kopieren")
             .link(["disabled"], ["href":"#"], "Drucken")

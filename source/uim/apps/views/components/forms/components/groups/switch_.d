@@ -4,9 +4,8 @@ module uim.apps.views.components.forms.components.groups.switch_;
 import uim.apps;
 
 class DAPPSwitchFormGroup : DAPPFormGroup {
-  this() { super(); }
+  mixin(APPFormComponentThis!("APPSwitchFormGroup"));
   this(DOOPEntity myEntity) { this().entity(myEntity); }
-  this(DAPPForm myForm) { this().form(myForm); }
   this(DAPPForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
 
   override void initialize() {

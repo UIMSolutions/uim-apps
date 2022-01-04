@@ -3,8 +3,12 @@ module uim.apps.controllers.pages.login;
 @safe:
 import uim.apps;
 
-class DAPPLoginPage : DAPPPageController {
-  this() { super(); 
+class DAPPLoginPageController : DAPPPageController {
+  mixin(APPPageThis!("APPLoginPageController"));
+
+  override void initialize() {
+    super.initialize;
+
     this
     .title("Anmeldung (Kennung)")
 /*     .scripts(`
@@ -25,6 +29,12 @@ class DAPPLoginPage : DAPPPageController {
       .scripts.addLinks(
         "/js/apps/app.js",   
         "/js/apps/login.js");   
-    }
   }
-auto APPLoginPage() { return new DAPPLoginPage; }
+
+  override void beforeResponse(STRINGAA options = null) {
+    super.beforeResponse(options);
+
+    
+  }
+}
+mixin(APPPageCalls!("APPLoginPageController"));

@@ -95,6 +95,12 @@ class DAPPFirstNavbar : DAPPViewComponent {
     super.toH5(options);
     if (hasError) { return null; }
 
+    auto userButton = "appSessionId" in options 
+      ? H5Div(["navbar-nav flex-row order-md-last"], 
+          messagesNavitem(options), userNavitem(options))
+      : H5Div(["nav-item d-none d-md-flex me-3"])( 
+          H5A(["btn btn-outline-info"], ["href":"/login"], tablerIcon("login")~"Login")); 
+
     return [  
       H5Header(["navbar navbar-expand-md navbar-light d-print-none"], 
         H5Div(["container-fluid"], 
@@ -102,24 +108,12 @@ class DAPPFirstNavbar : DAPPViewComponent {
             H5Span(["navbar-toggler-icon"])),
           H5H1(["navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3"], 
             H5A(["p-2 ps-5"], 
-              ["href":"/", "style":"background-repeat: no-repeat; background-position: left center;background-size: 70px auto; background-image:url("~options.get("appLogo", "")~")"], 
-              "&nbsp;"~options.get("appTitle", ""))),
-          ("appSessionId" !in options ? 
-            H5Div(["nav-item d-none d-md-flex me-3"])( 
-              H5A(["btn btn-outline-info"], ["href":"/login"],
-                tablerIcon("login")~"Login")) : 
-            H5Div(["navbar-nav flex-row order-md-last"], 
-              messagesNavitem(options),
-              userNavitem(options))
-          )         
-  /* H5Div(["nav-item d-none d-md-flex"], 
-            H5Div(["btn-list"], 
-                H5A(["btn btn-outline-white"], ["href":"https://github.com/tabler/tabler", "target":"_blank", "rel":"noreferrer"], tablerIcon("brand-github")~"Source code"),
-                H5A(["btn btn-outline-white"], ["href":"https://github.com/sponsors/codecalm", "target":"_blank", "rel":"noreferrer"], tablerIcon("heart")~"Sponsor")
-              ) 
-            ) */        
+              ["href":"/", "style":"background-repeat: no-repeat; background-position: left center;background-size: 70px auto; background-image:url("~options.get("appLogo", null)~")"], 
+              "&nbsp;"~options.get("appTitle", null))),
+            userButton
+          )               
         )
-      )].toH5;
+      ].toH5;
   }
 }
 auto APPFirstNavbar() { return new DAPPFirstNavbar; }

@@ -3,13 +3,12 @@ module uim.apps.controllers.actions.create;
 @safe:
 import uim.apps;
 
-class DAPPActionCreate : DAPPActionController {
-  this() { super(); }
-  this(DAPPApplication myApp) { this().app(myApp); }
+class DAPPCreateActionController : DAPPActionController {
+  mixin(AppControllerThis!("APPCreateActionController"));
 
   override void initialize() {
     super.initialize; 
-    this.name = "APPActionCreate";
+    this.name = "APPCreateActionController";
     this.checks([APPCheckAppSession, APPCheckDatabase, APPCheckSession, APPCheckSite]); 
   }
 
@@ -17,7 +16,7 @@ class DAPPActionCreate : DAPPActionController {
   mixin(OProperty!("string", "pgPath"));
   
   override void beforeResponse(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPActionCreate~":DAPPActionCreate::beforeResponse");
+    debug writeln(moduleName!DAPPCreateActionController~":DAPPCreateActionController::beforeResponse");
     super.beforeResponse(options);   
     if ("redirect" in options) return;
 
@@ -34,12 +33,11 @@ class DAPPActionCreate : DAPPActionController {
     options["redirect"] = pgPath~"/view?id="~entity.id.toString; 
   }
 }
-auto APPActionCreate() { return new DAPPActionCreate; }
-auto APPActionCreate(DAPPApplication myApp) { return new DAPPActionCreate(myApp); }
+mixin(AppControllerCalls!("APPCreateActionController"));
 
 unittest {
   version(uim_apps) {
-    assert(new DAPPActionCreate);
-    assert(APPActionCreate);
-    assert(APPActionCreate.name == "APPActionCreate");
+    assert(new DAPPCreateActionController);
+    assert(APPCreateActionController);
+    assert(APPCreateActionController.name == "APPCreateActionController");
 }}

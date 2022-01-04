@@ -27,6 +27,25 @@ class DAPPViewComponent {
   // Entity data
   mixin(OProperty!("DOOPEntity[]", "entities"));
 
+  DAPPViewComponent clone() {
+    return 
+      APPViewComponent;
+  }
+
+  DAPPViewComponent copy() {
+    return
+      APPViewComponent
+        .debugPrefix(this.debugPrefix) 
+        .name(this.name)
+        .dynamic(this.dynamic)
+        .jsCode(this.jsCode)
+        .style(this.style)
+        .changed(this.changed)
+        .owner(this.owner)
+        .view(this.view)
+        .layout(this.layout); 
+  }
+
   // #region error handling
     mixin(OProperty!("string", "error"));
 

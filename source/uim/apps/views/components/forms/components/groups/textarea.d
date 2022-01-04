@@ -4,9 +4,8 @@ module uim.apps.views.components.forms.components.groups.textarea;
 import uim.apps;
 
 class DAPPTextAreaFormGroup : DAPPFormGroup {
-  this() { super(); }
+  mixin(APPFormComponentThis!("APPTextAreaFormGroup"));
   this(DOOPEntity myEntity) { this().entity(myEntity); }
-  this(DAPPForm myForm) { this().form(myForm); }
   this(DAPPForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
 
   override void initialize() {

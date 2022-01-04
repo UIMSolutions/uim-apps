@@ -4,8 +4,7 @@ module uim.apps.views.components.forms.components.headers.list;
 import uim.apps;
 
 class DAPPListFormHeader : DAPPFormHeader {
-  this() { super(); }
-  this(DAPPForm myForm) { this().form(myForm); }
+  mixin(APPFormComponentThis!("APPListFormHeader"));
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPListFormHeader~"DAPPListFormHeader::toHbeforeH55");

@@ -4,10 +4,14 @@ module uim.apps.views.components.forms.components.bodies.body_;
 import uim.apps;
 
 class DAPPFormBody : DAPPFormComponent {
-  this() { super(); 
-    this.id("formbody-%s".format(uniform(1, 1_000)));
+  mixin(APPFormComponentThis!("APPFormHeader"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+    .id("formbody-%s".format(uniform(1, 1_000)));
   }
-  this(DAPPForm myForm) { this().form(myForm); }
 
   DH5Obj[] formGroup(string field, bool readOnly, STRINGAA options = null) {
     if (readOnly) { options["readonly"] = "readonly"; }

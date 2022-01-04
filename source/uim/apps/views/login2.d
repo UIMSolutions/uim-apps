@@ -5,8 +5,6 @@ import uim.apps;
 
 class DAPPLogin2View : DAPPView {
   mixin(APPViewThis!("APPLogin2View"));
-  this(string aName) { this().name(aName); }
-  this(DAPPPageController aController, string aName) { this(aController).name(aName); }
 
   override void beforeH5(STRINGAA options = null) { 
     debugMethodCall(moduleName!DAPPLogin2View~":DAPPLogin2View::beforeH5");
@@ -16,17 +14,17 @@ class DAPPLogin2View : DAPPView {
   override DH5Obj[] toH5(STRINGAA options = null) {
     super.toH5(options);
 
-    auto loginIdParameter = options.get("loginId", "");
+    DH5Obj[] results;
+    DH5Obj[] inners;
 
-    return [
-      H5Div(["container-tight py-4"], 
-        BS5Row("messages", ["mt-2 mb-2"]),
-        H5Div(["text-center mb-4"], 
-          H5A(["href":"."], H5Img(["src":"/img/uim.png", "height":"80", "alt":"UI Manufaktur UG - Erfolgreich im Internet"]))),
-          appLogin2Form(loginIdParameter))].toH5;       
+    inners ~= BS5Row("messages", ["mt-2 mb-2"]);
+    inners ~= H5Div(["text-center mb-4"], 
+          H5A(["href":"."], H5Img(["src":"/img/uim.png", "height":"80", "alt":"UI Manufaktur UG - Erfolgreich im Internet"])));
+    inners ~= APPLogin2Form.toH5(options);
+
+    results ~= H5Div(["container-tight py-4"], inners);
+
+    return results;       
   }
 }
-auto APPLogin2View() { return new DAPPLogin2View(); }
-auto APPLogin2View(DAPPPageController aController) { return new DAPPLogin2View(aController); }
-auto APPLogin2View(string aName) { return new DAPPLogin2View(aName); }
-auto APPLogin2View(DAPPPageController aController, string aName) { return new DAPPLogin2View(aController, aName); }
+mixin(APPViewCalls!("APPLogin2View"));

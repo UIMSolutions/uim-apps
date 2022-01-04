@@ -1,16 +1,11 @@
-module uim.apps.controllers.pages.register;
+module uim.apps.controllers.pages.userprofile;
 
 @safe:
 import uim.apps;
 
-class DAPPRegisterPageController : DAPPPageController {
-  mixin(APPPageThis!("APPRegisterPageController"));      
-  
-  override void initialize() {
-    super.initialize;
-
-    this
-    .parameters([
+class DAPPUserProfilePageController : DAPPPageController {
+      this() { super(); 
+          this.parameters([
       "pageTitle": "Registrierung",
       "pageBreadcrumbs":`<ol class="breadcrumb" aria-label="breadcrumbs">
   <li class="breadcrumb-item"><a href="#">Start</a></li>
@@ -19,4 +14,4 @@ class DAPPRegisterPageController : DAPPPageController {
       .title("Registrierung");
   }
 }
-mixin(APPPageCalls!("APPRegisterPageController"));
+auto APPUserProfilePageController() { return new DAPPUserProfilePageController; }

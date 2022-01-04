@@ -3,19 +3,19 @@ module uim.apps.controllers.actions.login;
 @safe:
 import uim.apps;
 
-class DAPPActionLogin : DAPPActionController {
-  this() { super(); }
-  this(DAPPApplication myApp) { this().app(myApp); }
+class DAPPLoginActionController : DAPPActionController {
+  mixin(AppControllerThis!("APPLoginActionController"));
 
   override void initialize() {
     super.initialize; 
-    this.name = "APPActionLogin";
+
+    this.name = "APPLoginActionController";
     this.nextUrl("/login2"); 
     this.checks([APPCheckDatabase, APPCheckDatabaseLogins, APPCheckDatabaseSessions]); 
   }
 
   override void beforeResponse(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPActionLogin~":DAPPActionLogin::beforeResponse(reqParameters)");
+    debug writeln(moduleName!DAPPLoginActionController~":DAPPLoginActionController::beforeResponse(reqParameters)");
     super.beforeResponse(options);    
     if ("redirect" in options) return;
 
@@ -28,7 +28,7 @@ class DAPPActionLogin : DAPPActionController {
     auto accountName = options.get("accountName", "");
 
     // appSession missing, create new one
-    debug writeln(moduleName!DAPPActionLogin~":DAPPActionLogin::beforeResponse -> Read httpSession");
+    debug writeln(moduleName!DAPPLoginActionController~":DAPPLoginActionController::beforeResponse -> Read httpSession");
     auto httpSession = this.response.startSession();
     appSessions[httpSession.id] = APPSession(httpSession);
     options["appSessionId"] = httpSession.id;
@@ -36,7 +36,7 @@ class DAPPActionLogin : DAPPActionController {
     // Create login and session object 
     auto appSession = appSessions[httpSession.id];
     auto lastAccessedOn = toTimestamp(now());
-    debug writeln(moduleName!DAPPActionLogin~":DAPPActionLogin::beforeResponse -> New login entity");
+    debug writeln(moduleName!DAPPLoginActionController~":DAPPLoginActionController::beforeResponse -> New login entity");
     auto colLogins = database["central"]["logins"];
     auto login = colLogins.create;
     login.lastAccessedOn = lastAccessedOn;
@@ -45,7 +45,7 @@ class DAPPActionLogin : DAPPActionController {
     appSession.login = colLogins.findOne(login.id);
     if (!appSession.login) // debug writeln("No appSession.login for id ", login.id);
 
-    debug writeln(moduleName!DAPPActionLogin~":DAPPActionLogin::beforeResponse -> New session entity");
+    debug writeln(moduleName!DAPPLoginActionController~":DAPPLoginActionController::beforeResponse -> New session entity");
     auto colSessions = database["central"]["sessions"];
     auto session = colSessions.create;
     session.lastAccessedOn = lastAccessedOn;
@@ -54,10 +54,8 @@ class DAPPActionLogin : DAPPActionController {
     appSession.session = colSessions.findOne(session.id);
     if (!appSession.session) // debug writeln("No appSession.session for id ", session.id);
 
-    debug writeln(moduleName!DAPPActionLogin~":DAPPActionLogin::beforeResponse -> Go to login2");
+    debug writeln(moduleName!DAPPLoginActionController~":DAPPLoginActionController::beforeResponse -> Go to login2");
     options["redirect"] = "/login2?loginId="~appSession.login.id.toString; 
     debug writeln(appSession.debugInfo); }
 }
-auto APPActionLogin() { return new DAPPActionLogin; }
-auto APPActionLogin(DAPPApplication myApp) { return new DAPPActionLogin(myApp); }
-
+mixin(AppControllerCalls!("APPLoginActionController"));

@@ -27,16 +27,24 @@ DH5Obj viewEntities(uint initValue = 10) {
     H5Div("Einträge"));
 }
 
-template APPViewComponentThis(string name) {
+template APPViewComponentThis(string classShortName, bool withEntity = false) {
   const char[] APPViewThis = `
-this() { super(); this.name("`~name~`"); }
+this() { super(); this.name("`~classShortName~`"); initialize; }
 this(DAPPView myView) { this().view(myView); }
-`;
+`~
+(withEntity ? `
+this(DOOPEntity myEntity) { this().entity(myEntity); }
+this(DAPPView myView, DOOPEntity myEntity) { this(myView).entity(myEntity); }
+` : ``);
 }
 
-template APPViewComponentCalls(string name) {
-  const char[] APPViewCalls = `
-auto `~name~`() { return new D`~name~`; }
-auto `~name~`(DAPPView myView) { return new D`~name~`(myView); }
-`;
+template APPViewComponentCalls(string classShortName, bool withEntity = false) {
+  const char[] APPViewComponentCalls = `
+auto `~classShortName~`() { return new D`~classShortName~`; }
+auto `~classShortName~`(DAPPView myView) { return new D`~classShortName~`(myView); }
+`~
+(withEntity ? `
+auto `~classShortName~`(DOOPEntity myEntity) { return new D`~classShortName~`(myEntity); }
+auto `~classShortName~`(DAPPView myView, DOOPEntity myEntity) { return new D`~classShortName~`(myView, myEntity); }
+` : ``);
 }

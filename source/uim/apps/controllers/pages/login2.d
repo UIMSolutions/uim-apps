@@ -3,8 +3,12 @@ module uim.apps.controllers.pages.login2;
 @safe:
 import uim.apps;
 
-class DAPPLogin2Page : DAPPPageController {
-  this() { super(); 
+class DAPPLogin2PageController : DAPPPageController {
+  mixin(APPPageThis!("APPLogin2PageController"));
+
+  override void initialize() {
+    super.initialize;
+
     this
     .title("Anmeldung (Passwort)")
 /*     .scripts(`
@@ -28,5 +32,4 @@ class DAPPLogin2Page : DAPPPageController {
       "/js/apps/login2.js");   
     }
 }
-auto APPLogin2Page() { return new DAPPLogin2Page(); }
-auto APPLogin2Page(DAPPApplication myApplication) { return APPLogin2Page.app(myApplication); }
+mixin(APPPageCalls!("APPLogin2PageController"));

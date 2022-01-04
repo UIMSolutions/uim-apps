@@ -4,10 +4,7 @@ module uim.apps.views.components.forms.components.groups.display;
 import uim.apps;
 
 class DAPPFormGroupDisplay : DAPPTextFormGroup {
-  this() { super(); }
-  this(DOOPEntity myEntity) { this().entity(myEntity); }
-  this(DAPPForm myForm) { this().form(myForm); }
-  this(DAPPForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
+  mixin(APPFormComponentThis!("APPFormGroupDisplay", true));
 
   override void initialize() {
     super.initialize();

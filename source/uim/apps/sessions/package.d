@@ -8,8 +8,8 @@ public import uim.apps.sessions.manager;
 public import uim.apps.sessions.nullsession;
 public import uim.apps.sessions.session;
 
-DAPPSession getAppSession(STRINGAA parameters) {
-  string appSessionId = parameters.get("appSessionId", "");
+DAPPSession getAppSession(STRINGAA options = null) {
+  string appSessionId = options.get("appSessionId", "");
   if (appSessionId in appSessions) return appSessions[appSessionId]; 
   else return null;
 }

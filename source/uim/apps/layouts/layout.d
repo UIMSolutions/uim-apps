@@ -6,7 +6,9 @@ import uim.apps;
 enum DataModes { Local, REST }
 
 class DAPPLayout {
-  this() {  
+  this() { initialize(); }
+
+  void initialize() {
     this
       .name("APPLayout")
       .title("UI Manufaktur")

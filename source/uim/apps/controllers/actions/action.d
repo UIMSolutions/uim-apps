@@ -4,12 +4,10 @@ module uim.apps.controllers.actions.action;
 import uim.apps;
 
 class DAPPActionController : DAPPController {
-  this() { super(); }
-  this(DAPPApplication myApp) { this().app(myApp); }
+  mixin(AppControllerThis!("APPActionController"));
 
   override void initialize() {
     super.initialize; 
-    this.name = "APPActionController";
   }
 
   mixin(OProperty!("string", "nextUrl"));
@@ -60,3 +58,4 @@ class DAPPActionController : DAPPController {
     }
   }
 }
+mixin(AppControllerCalls!("APPActionController"));

@@ -5,8 +5,6 @@ import uim.apps;
 
 class DAPPLostAccountView : DAPPView {
   mixin(APPViewThis!("APPLostAccountView"));
-  this(string aName) { this().name(aName); }
-  this(DAPPPageController aController, string aName) { this(aController).name(aName); }
 
   override void beforeH5(STRINGAA options = null) { 
     debug writeln(StyledString(moduleName!DAPPLostAccountView~":DAPPLostAccountView::beforeH5").setForeground(AnsiColor.black).setBackground(AnsiColor.white));
@@ -40,7 +38,4 @@ class DAPPLostAccountView : DAPPView {
       )].toH5;       
   }      
 }
-auto APPLostAccountView() { return new DAPPLostAccountView(); }
-auto APPLostAccountView(DAPPPageController aController) { return new DAPPLostAccountView(aController); }
-auto APPLostAccountView(string aName) { return new DAPPLostAccountView(aName); }
-auto APPLostAccountView(DAPPPageController aController, string aName) { return new DAPPLostAccountView(aController, aName); }
+mixin(APPViewCalls!("APPLostAccountView"));

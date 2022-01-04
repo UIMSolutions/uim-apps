@@ -4,14 +4,18 @@ module uim.apps.views.components.forms.components.bodies.entity;
 import uim.apps;
 
 class DAPPEntityFormBody : DAPPFormBody, IAPPWithEntity {
-  this() { super(); 
+  mixin(APPFormComponentThis!("APPEntityFormBody"));
+  this(DOOPEntity myEntity) { this().entity(myEntity); }
+  this(DAPPForm myForm, DOOPEntity myEntity) { this().form(myForm).entity(myEntity); }
+
+  override void initialize() {
+    super.initialize;
+
     this
     .id("formbody_%s".format(uniform(1, 1_000)))
     .crudMode(CRUDModes.Create)
-    .fields(["name", "display", "description"]); }
-  this(DAPPForm myForm) { this().form(myForm); }
-  this(DOOPEntity myEntity) { this().entity(myEntity); }
-  this(DAPPForm myForm, DOOPEntity myEntity) { this().form(myForm).entity(myEntity); }
+    .fields(["name", "display", "description"]); 
+  }
 
   mixin(OProperty!("string[]", "fields"));
   mixin(OProperty!("DAPPPanes", "panes"));
@@ -60,7 +64,7 @@ class DAPPEntityFormBody : DAPPFormBody, IAPPWithEntity {
     
     auto col = BS5Col(["col-12"], 
       BS5InputHidden("sessionToken", ["name":"sessionToken"]).value(options.get("sessionToken", null)));
-    if (id.isUUID) col(BS5InputHidden("entity_id", ["name":"entity_id"]).value(entityId));
+    if (entityId) col(BS5InputHidden("entity_id", ["name":"entity_id"]).value(entityId));
     if (auto fGroups = formGroups(options)) col(fGroups);
  
     return 

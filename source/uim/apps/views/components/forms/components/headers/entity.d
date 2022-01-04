@@ -4,8 +4,7 @@ module uim.apps.views.components.forms.components.headers.entity;
 import uim.apps;
 
 class DAPPEntityFormHeader : DAPPFormHeader, IAPPWithEntity {
-  this() { super(); }
-  this(DAPPForm myForm) { this().form(myForm); }
+  mixin(APPFormComponentThis!("APPEntityFormHeader"));
 
   mixin(OProperty!("DOOPEntity", "entity"));
 

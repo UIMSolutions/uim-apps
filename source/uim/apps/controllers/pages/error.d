@@ -3,7 +3,7 @@ module uim.apps.controllers.pages.error;
 @safe:
 import uim.apps;
 
-class DAPPErrorPage : DAPPPageController {
-  this() { super(); }
+class DAPPErrorPageController : DAPPPageController {
+  mixin(APPPageThis!("APPErrorPageController"));
 }
-auto APPErrorPage() { return new DAPPErrorPage; }
+mixin(APPPageCalls!("APPErrorPageController"));

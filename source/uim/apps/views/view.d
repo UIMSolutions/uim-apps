@@ -8,8 +8,10 @@ enum RightBreakpoints = "col-12 col-lg-3 col-xl-2";
 enum MiddleBreakpoints = "col-12 col-sm-6 col-md-8 col-lg-6 col-xl-8";
 
 class DAPPView : IAPPEventDispatcher {
-    this() { initialize; }
-    this(DAPPPageController myController) { this().controller(myController); }
+  this() { initialize; }
+  this(DAPPPageController myController) { this().controller(myController); }
+  this(string myName) { this().name(myName); }
+  this(DAPPPageController myController, string myName) { this(myController).name(myName); }
     
   // Initialization (= hook method)
   void initialize() {
@@ -23,8 +25,6 @@ class DAPPView : IAPPEventDispatcher {
     .styles(APPStyleContainer); 
     }
     
-    mixin(OProperty!("DOOPEntity[]", "entities"));
-
     mixin(OProperty!("DAPPPageController", "controller")); 
     mixin(OProperty!("IAPPEventManager", "eventManager")); 
     mixin(OProperty!("string", "name")); 
@@ -136,7 +136,6 @@ class DAPPView : IAPPEventDispatcher {
     string render(STRINGAA options = null) {
       debugMethodCall(moduleName!DAPPView~":DAPPView::render"); 
 
-      // 1. prepare render
       beforeRender(options);
       if (hasError) { return null; }
       

@@ -11,7 +11,10 @@ class DAPPCheckboxFormGroup : DAPPFormGroup {
   this(DAPPForm myForm) { this().form(myForm); }
   this(DAPPForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
 
-
+  override void initialize() {
+    super.initialize;
+  }
+  
   mixin(OProperty!("bool", "checked"));
  
   override DH5Obj h5Input(STRINGAA options = null) {

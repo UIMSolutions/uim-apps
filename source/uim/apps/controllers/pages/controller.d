@@ -1,4 +1,4 @@
-module uim.apps.controllers.pages.page;
+module uim.apps.controllers.pages.controller;
 /**************************************************/
 /* This package contains general page definitions */
 /**************************************************/
@@ -7,17 +7,13 @@ module uim.apps.controllers.pages.page;
 import uim.apps;
 
 class DAPPPageController : DAPPController {
-  this() { super(); }
-  this(DAPPView myView) { 
-    this().view(myView); // Controller is owner of view
-  }
+  mixin(APPPageThis!("APPPageController"));
 
   // Initialization (= hook method)
   override void initialize() {
     super.initialize;
 
     this
-    .name("APPPageController") 
     .language("en") 
     .mimetype("text/html");
     
@@ -39,6 +35,7 @@ class DAPPPageController : DAPPController {
   mixin(OProperty!("string[]", "pageActions"));
 
   mixin(OProperty!("DAPPView", "view"));
+  mixin(OProperty!("DAPPView", "errorView"));
 
   // Required checks for the page flow
   mixin(OProperty!("DAPPCheck[]", "requiredChecks"));
@@ -143,14 +140,16 @@ class DAPPPageController : DAPPController {
   override string stringResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::stringResponse");
     super.stringResponse(options);
+    if (hasError) { return null; }
 
-    debug writeln("Name of view is now -> ", this.view.name);
-    if (view) return view.render(options);
+    if (view) {
+      return view.render(options);
+    }
     return "";															
   }
 
   DH5Obj[] pageContent(STRINGAA reqParameters) { 
-    // debug writeln("DAPPPage:pageContent(STRINGAA reqParameters)");
+    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::pageContent");
     auto result = form ? form.toH5(reqParameters) : null;
 
     // debug writeln("return result pageContent(STRINGAA reqParameters)");
@@ -158,6 +157,7 @@ class DAPPPageController : DAPPController {
   }
 
   void jsCode(STRINGAA options = null) {
+    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::jsCode");
     string appSessionId = _request && _request.session ? _request.session.id : options.get("appSessionId", "");
     auto appSession = getAppSession(options);
 
@@ -280,8 +280,7 @@ class DAPPPageController : DAPPController {
     return result;
   } */
 }
-auto APPPageController() { return new DAPPPageController; }
-auto APPPageController(DAPPView myView) { return new DAPPPageController(myView); }
+mixin(APPPageCalls!("APPPageController"));
 
 unittest {
 	version(uim_apps) {

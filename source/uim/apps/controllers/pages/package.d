@@ -7,7 +7,7 @@ module uim.apps.controllers.pages;
 import uim.apps;
 
 // Main
-public import uim.apps.controllers.pages.page;
+public import uim.apps.controllers.pages.controller;
 
 //Packages
 public import uim.apps.controllers.pages.entities;

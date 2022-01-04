@@ -43,6 +43,32 @@ class DAPPForm : DAPPViewComponent {
   mixin(OProperty!("string", "bodyTitle"));
   mixin(OProperty!("string", "footerTitle"));
 
+  override DAPPViewComponent clone() {
+    return
+      APPForm;
+  } 
+
+  override DAPPViewComponent copy() {
+    return
+      APPForm
+        .crudMode(this.crudMode)
+        .formHeader(this.formHeader)
+        .formBody(this.formBody)
+        .formFooter(this.formFooter)
+        .rootPath(this.rootPath)
+        .defaults(this.defaults)
+        .fields(this.fields)
+        .panes(this.panes)
+        .action(this.action)
+        .method(this.method)
+        .readonly(this.readonly)
+        .entityName(this.entityName)
+        .entitiesName(this.entitiesName)
+        .headerTitle(this.headerTitle)
+        .bodyTitle(this.bodyTitle)
+        .footerTitle(this.footerTitle);
+  } 
+
   override string opIndex(string name) {
     switch (name) {
       case "rootPath": return this.rootPath; 

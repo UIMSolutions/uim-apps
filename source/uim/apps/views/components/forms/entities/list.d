@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.entities.list;
 @safe:
 import uim.apps;
 
-class DAPPListForm : DAPPForm {
+class DAPPEntitiesListForm : DAPPForm {
   this() { super(); }
   this(DAPPView myView) { this().view(myView); }
 
@@ -16,16 +16,16 @@ class DAPPListForm : DAPPForm {
   }
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPListForm~":DAPPListForm("~this.name~")::beforeH5");
-    debug writeln(moduleName!DAPPListForm~":DAPPListForm("~this.name~")::beforeH5 -> Init.RootPath: ", this.rootPath);
+    debugMethodCall(moduleName!DAPPEntitiesListForm~":DAPPEntitiesListForm("~this.name~")::beforeH5");
+    debug writeln(moduleName!DAPPEntitiesListForm~":DAPPEntitiesListForm("~this.name~")::beforeH5 -> Init.RootPath: ", this.rootPath);
     super.beforeH5(options);
 
-    debug writeln(moduleName!DAPPListForm~":DAPPListForm("~this.name~")::beforeH5 -> RootPath: ", this.rootPath);
+    debug writeln(moduleName!DAPPEntitiesListForm~":DAPPEntitiesListForm("~this.name~")::beforeH5 -> RootPath: ", this.rootPath);
     if (auto listView = cast(DAPPListView)this.view) {
       this.rootPath(listView.rootPath);
     }
 
-    debug writeln(moduleName!DAPPListForm~":DAPPListForm("~this.name~")::beforeH5 -> RootPath: ", this.rootPath);
+    debug writeln(moduleName!DAPPEntitiesListForm~":DAPPEntitiesListForm("~this.name~")::beforeH5 -> RootPath: ", this.rootPath);
     foreach(component; [formHeader, formBody, formFooter]) { 
       if (auto formComponent = cast(DAPPFormComponent)component) {
         formComponent
@@ -36,13 +36,12 @@ class DAPPListForm : DAPPForm {
     }
   }
 }
+auto APPEntitiesListForm() { return new DAPPEntitiesListForm; }
+auto APPEntitiesListForm(DAPPView myView) { return new DAPPEntitiesListForm(myView); }
 
-auto APPListForm() { return new DAPPListForm; }
-auto APPListForm(DAPPView myView) { return new DAPPListForm(myView); }
-
-unittest {
-  version(uim_apps) {
-    assert(new DAPPListForm);
-    assert(APPListForm);
+version(uim_apps) {
+  unittest {
+    assert(new DAPPEntitiesListForm);
+    assert(APPEntitiesListForm);
   }
 }

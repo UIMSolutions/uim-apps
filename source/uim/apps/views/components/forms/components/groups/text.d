@@ -4,9 +4,8 @@ module uim.apps.views.components.forms.components.groups.text;
 import uim.apps;
 
 class DAPPTextFormGroup : DAPPFormGroup {
-  this() { super(); }
+  mixin(APPFormComponentThis!("APPTextFormGroup"));
   this(DOOPEntity myEntity) { this().entity(myEntity); }
-  this(DAPPForm myForm) { this().form(myForm); }
   this(DAPPForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
 
   override DH5Obj h5Input(STRINGAA options = null) {

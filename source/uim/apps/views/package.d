@@ -28,6 +28,8 @@ template APPViewThis(string name) {
   const char[] APPViewThis = `
 this() { super(); this.name("`~name~`"); }
 this(DAPPPageController myController) { this().controller(myController); }
+this(string myName) { this().name(myName); }
+this(DAPPPageController myController, string myName) { this(myController).name(myName); }
 `;
 }
 
@@ -35,5 +37,7 @@ template APPViewCalls(string name) {
   const char[] APPViewCalls = `
 auto `~name~`() { return new D`~name~`; }
 auto `~name~`(DAPPPageController myController) { return new D`~name~`(myController); }
+auto `~name~`(string myName) { return new D`~name~`(myName); }
+auto `~name~`(DAPPPageController myController, string myName) { return new D`~name~`(myController, myName); }
 `;
 }

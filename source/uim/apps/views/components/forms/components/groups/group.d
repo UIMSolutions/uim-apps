@@ -4,9 +4,8 @@ module uim.apps.views.components.forms.components.groups.group;
 import uim.apps;
 
 class DAPPFormGroup : DAPPFormComponent, IAPPWithEntity {
-  this() { super(); }    
+  mixin(APPFormComponentThis!("APPFormGroup"));
   this(DOOPEntity myEntity) { this().entity(myEntity); }
-  this(DAPPForm myForm) { this().form(myForm); }
   this(DAPPForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
 
   override void initialize() {

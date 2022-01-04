@@ -4,12 +4,16 @@ module uim.apps.views.components.forms.components.headers.header;
 import uim.apps;
 
 class DAPPFormHeader : DAPPFormComponent {
-  this() { super(); 
+  mixin(APPFormComponentThis!("APPFormHeader"));
+
+  override void initialize() {
+    super.initialize;
+
     this
     .id("formheader-%s".format(uniform(1,1_000)))
-    .crudMode(CRUDModes.Create); }
-  this(DAPPForm myForm) { this().form(myForm); }
-
+    .crudMode(CRUDModes.Create); 
+  }
+  
   mixin(OProperty!("string", "mainTitle"));
   mixin(OProperty!("string", "subTitle"));
   mixin(OProperty!("string[][]", "actions"));
