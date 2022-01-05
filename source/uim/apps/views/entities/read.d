@@ -22,7 +22,7 @@ class DAPPEntityReadView : DAPPEntityView {
 mixin(APPViewCalls!("APPEntityReadView"));
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     //
   }
 }

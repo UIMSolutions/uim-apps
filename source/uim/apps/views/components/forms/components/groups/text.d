@@ -49,7 +49,7 @@ class DAPPTextFormGroup : DAPPFormGroup {
     ].toH5;
   }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       // 
       }}
 }

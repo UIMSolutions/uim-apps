@@ -42,7 +42,7 @@ class DAPPValidatorLogin : DAPPValidator {
     return null; // Not valid
   }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       /// TODO 
     }}
 
@@ -62,7 +62,7 @@ class DAPPValidatorLogin : DAPPValidator {
     return result;
   }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       /// TODO 
     }}
 }

@@ -20,6 +20,6 @@ class DAPPRequestReader {
 auto APPRequestReader(DAPPPageController page) { return new DAPPRequestReader(page); }
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     // TODO Add Tests
 }}

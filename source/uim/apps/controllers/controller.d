@@ -67,7 +67,7 @@ class DAPPController {
     return APPController;
   }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       /// TODO 
     }}
 
@@ -79,7 +79,7 @@ class DAPPController {
     return result;
   }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       /// TODO 
     }}
 
@@ -88,7 +88,7 @@ class DAPPController {
     return json;
   }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       /// TODO 
     }}
 
@@ -101,7 +101,7 @@ class DAPPController {
     return json;
   }
   unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     /// TODO 
   }}
 
@@ -264,7 +264,7 @@ auto APPController(DAPPApplication myApp) { return new DAPPController(myApp); }
 
 
 unittest {
-	version(uim_apps) {
+	version(test_uim_apps) {
 /* 		assert(APPController.view.name == "H5NullView"); // Controller has default view
 		assert(APPController.view(APPView).view.name == "APPView"); // Controller has new view */
 }}

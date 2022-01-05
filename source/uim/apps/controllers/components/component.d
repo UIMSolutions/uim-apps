@@ -13,8 +13,17 @@ import uim.apps;
 * Creating components keeps controller code clean and allows you to reuse code between different controllers.
 **/
 class DAPPControllerComponent {
-  this() {}
+  this() { initialize; }
+  this(DAPPController myController) { this().controller(myController); }
   
+  void initialize() {
+    this
+    .name(APPControllerComponent);
+  }
+
+  mixin(OProperty!("DAPPController", "controller"));
+  mixin(OProperty!("string", "name"));
+
   // A component lookup table used to lazy load component objects.
   mixin(OProperty!("Json", "componentMap"));
 

@@ -37,7 +37,7 @@ class DAPPDateFormGroup : DAPPFormGroup {
     if (hasError) { return; }
   }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       // 
       }}
 }

@@ -33,7 +33,7 @@ class DAPPTextAreaFormGroup : DAPPFormGroup {
       BS5Col(["col"], input))].toH5;
   }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       // 
       }}
 }

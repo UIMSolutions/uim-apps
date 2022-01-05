@@ -40,7 +40,7 @@ auto login() {
 }
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     auto f = File("../../PUBLIC/js/apps/login.js", "w"); // open for writing
     f.write(login);
 }}

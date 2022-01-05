@@ -42,7 +42,7 @@ class DAPPLogin2Form : DAPPForm {
 }
 mixin(APPFormCalls!("APPLogin2Form"));
 
-version(uim_apps) {
+version(test_uim_apps) {
   unittest {
     // TODO
 }}

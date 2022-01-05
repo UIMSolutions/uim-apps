@@ -133,7 +133,7 @@ class DAPPPageController : DAPPController {
     }
   }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       /// TODO 
     }}
 
@@ -283,7 +283,7 @@ class DAPPPageController : DAPPController {
 mixin(APPPageCalls!("APPPageController"));
 
 unittest {
-	version(uim_apps) {
+	version(test_uim_apps) {
 		assert(APPPageController.view.name == "H5NullView"); // Controller has default view
 		assert(APPPageController.view(APPView).view.name == "APPView"); // Controller has new view
 }}

@@ -41,7 +41,7 @@ class DAPPStyleContainer : DAPPH5Container {
 auto APPStyleContainer() { return new DAPPStyleContainer; }
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
 /*     assert(new DAPPStyleContainer);
     assert(APPStyleContainer);
     assert(cast(DAPPStyleContainer)APPStyleContainer);

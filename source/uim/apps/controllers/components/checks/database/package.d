@@ -1,4 +1,4 @@
-module uim.apps.checks.database;
+module uim.apps.controller.components.checks.database;
 
 @safe:
 import uim.apps;

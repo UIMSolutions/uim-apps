@@ -8,6 +8,6 @@ class DAPPMiddleware {
 } 
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     // TODO Add Tests
 }}

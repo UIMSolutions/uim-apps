@@ -30,7 +30,7 @@ class DAPPCreatorSession : DAPPCreator {
     }
     return result; }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       /// TODO 
     }}
   }
@@ -38,7 +38,7 @@ auto APPCreatorSession() { return new DAPPCreatorSession; }
 auto APPCreatorSession(DAPPApplication myApp) { return new DAPPCreatorSession(myApp); }
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     /// TODO 
   }}
 

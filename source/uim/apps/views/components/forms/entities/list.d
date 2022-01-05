@@ -11,7 +11,7 @@ class DAPPEntitiesListForm : DAPPForm {
     super.initialize;
 
     this
-    .formHeader(APPFormHeader.mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["refresh"], ["create"]]))
+    .formHeader(APPFormHeader(this).mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["refresh"], ["create"]]))
     .formBody(APPListFormBody(this));
   }
 
@@ -25,6 +25,14 @@ class DAPPEntitiesListForm : DAPPForm {
       this.rootPath(listView.rootPath);
     }
 
+    if (auto entitiesView = cast(IAPPWithEntities)this.view) {
+      debug writeln("entitiesView found");
+      this.entities(entitiesView.entities);
+    }
+    else {
+      debug writeln("entitiesView missing");
+    }
+
     debug writeln(moduleName!DAPPEntitiesListForm~":DAPPEntitiesListForm("~this.name~")::beforeH5 -> RootPath: ", this.rootPath);
     foreach(component; [formHeader, formBody, formFooter]) { 
       if (auto formComponent = cast(DAPPFormComponent)component) {
@@ -34,12 +42,19 @@ class DAPPEntitiesListForm : DAPPForm {
         .entities(this.entities);
       }
     }
+
+    if (formBody) {
+      debug writeln("FormBody exists");
+    }
+    else {
+      debug writeln("FormBody missing");
+    }
   }
 }
 auto APPEntitiesListForm() { return new DAPPEntitiesListForm; }
 auto APPEntitiesListForm(DAPPView myView) { return new DAPPEntitiesListForm(myView); }
 
-version(uim_apps) {
+version(test_uim_apps) {
   unittest {
     assert(new DAPPEntitiesListForm);
     assert(APPEntitiesListForm);

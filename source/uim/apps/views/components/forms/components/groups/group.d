@@ -69,7 +69,7 @@ class DAPPFormGroup : DAPPFormComponent, IAPPWithEntity {
     }
   }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       // 
       }}
 
@@ -85,7 +85,7 @@ class DAPPFormGroup : DAPPFormComponent, IAPPWithEntity {
 mixin(APPFormComponentCalls!("APPFormGroup"));
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     assert(new DAPPFormGroup);
     assert(APPFormGroup);
   }

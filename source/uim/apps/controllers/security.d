@@ -51,7 +51,7 @@ class DAPPSecurityController : DAPPController {
     return json;
   }
   unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     /// TODO 
   }}
 
@@ -65,6 +65,6 @@ auto APPSecurityController(DAPPApplication myApp, DETBBase myDatabase) { return 
 auto APPSecurityController(DAPPApplication myApp, string myName, DETBBase myDatabase) { return new DAPPSecurityController(myApp, myName, myDatabase); }
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     /// TODO 
   }}

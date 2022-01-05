@@ -82,7 +82,7 @@ class DAPPFormHeader : DAPPFormComponent {
 mixin(APPFormComponentCalls!("APPFormHeader"));
 
 unittest {
-  version (uim_apps) {
+  version (test_uim_apps) {
     assert(new DAPPFormHeader);
     assert(APPFormHeader);
   }

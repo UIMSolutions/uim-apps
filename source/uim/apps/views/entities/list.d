@@ -10,7 +10,8 @@ class DAPPEntitiesListView : DAPPView, IAPPWithEntities {
     super.initialize;
 
     this
-    .form(APPEntitiesListForm(this))
+    .form(
+      APPEntitiesListForm(this))
     .pageHeader(
       APPPageHeader(this)
         .actions(["refresh", "create"]));
@@ -28,6 +29,7 @@ class DAPPEntitiesListView : DAPPView, IAPPWithEntities {
     super.beforeH5(options);    
   
     if (auto entitiesController = cast(IAPPWithEntities)this.controller) { // Should be the right controller
+      debug writeln("Found entities in controller: ", entitiesController.entities.length);
       this.entities(entitiesController.entities); 
     }
   }
@@ -48,7 +50,7 @@ class DAPPEntitiesListView : DAPPView, IAPPWithEntities {
 mixin(APPViewCalls!("APPEntitiesListView"));
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     //
   }
 }

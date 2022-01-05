@@ -14,14 +14,14 @@ class DAPPValidator : DAPPController {
   DOOPEntity validate(STRINGAA parameters) {
     return null; }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       /// TODO 
     }}
 
   override Json message(STRINGAA parameters) {
     return super.message(parameters); }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       /// TODO 
     }}
 
@@ -32,7 +32,7 @@ class DAPPValidator : DAPPController {
     
     return result; }}
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       /// TODO 
     }}
 auto APPValidator() { return new DAPPValidator; }

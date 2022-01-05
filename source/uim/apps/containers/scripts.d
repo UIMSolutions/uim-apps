@@ -47,7 +47,7 @@ class DAPPScriptContainer : DAPPH5Container {
 auto APPScriptContainer() { return new DAPPScriptContainer; }
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
 /*     assert(new DAPPScriptContainer);
     assert(APPScriptContainer);
     assert(cast(DAPPScriptContainer)APPScriptContainer);

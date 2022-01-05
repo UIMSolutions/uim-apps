@@ -13,7 +13,7 @@ auto changePassword() {
 }
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     auto f = File("../../PUBLIC/js/apps/changePassword.js", "w"); // open for writing
     f.write(changePassword);
 }}

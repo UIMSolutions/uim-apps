@@ -23,7 +23,7 @@ auto editEntity() {
 }
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     auto f = File("../../PUBLIC/js/apps/entities/edit.js", "w"); // open for writing
     f.write(editEntity);
 }}

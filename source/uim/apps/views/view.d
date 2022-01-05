@@ -70,7 +70,7 @@ class DAPPView : IAPPEventDispatcher {
       _error = null; // Delete last error
     }
     unittest {
-      version(uim_apps) {
+      version(test_uim_apps) {
         // TODO
     }}
 
@@ -102,7 +102,7 @@ class DAPPView : IAPPEventDispatcher {
 
     }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       // TODO test
       }} 
     // #endregion h5

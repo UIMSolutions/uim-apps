@@ -27,6 +27,16 @@ class DAPPListFormBody : DAPPFormBody {
       this.readonly(form.readonly); 
       this.rootPath(form.rootPath); 
     }
+
+    if (auto entitiesForm = cast(IAPPWithEntities)this.form) {
+      debug writeln("Found entitiesForm");
+
+      this.entities(entitiesForm.entities);
+    }
+    else {
+      debug writeln("Found missing");
+    }
+
     debug writeln("After RootPath = ", this.rootPath);
   }
 

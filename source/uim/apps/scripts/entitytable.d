@@ -24,7 +24,7 @@ auto entityTableRow() {
 }
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     auto f = File("../../PUBLIC/js/apps/entity_table.js", "w"); // open for writing
     f.write(entityTableRow);
 }}

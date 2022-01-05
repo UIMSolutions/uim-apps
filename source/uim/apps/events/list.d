@@ -15,7 +15,7 @@ class EventList // implements ArrayAccess, Countable
     void flush() {
         _events = []; }
     unittest {
-      version(uim_apps) {
+      version(test_uim_apps) {
         // TODO Add Tests
         }}
 
@@ -23,7 +23,7 @@ class EventList // implements ArrayAccess, Countable
     void add(IAPPEvent anEvent) {
         _events ~= anEvent; }
     unittest {
-      version(uim_apps) {
+      version(test_uim_apps) {
         // TODO Add Tests
         }}
 
@@ -31,7 +31,7 @@ class EventList // implements ArrayAccess, Countable
     bool offsetExists(string anOffset) {
         return false; }
     unittest {
-      version(uim_apps) {
+      version(test_uim_apps) {
         // TODO Add Tests
         }}
 
@@ -43,7 +43,7 @@ class EventList // implements ArrayAccess, Countable
 
       return null; }
     unittest {
-      version(uim_apps) {
+      version(test_uim_apps) {
         // TODO Add Tests
         }}
 

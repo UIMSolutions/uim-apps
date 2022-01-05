@@ -25,6 +25,6 @@ auto APPFormGroupDisplay(DAPPForm myForm, DOOPEntity myEntity) { return new DAPP
 
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     // TODO Add Tests
 }}

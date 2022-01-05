@@ -36,7 +36,7 @@ class DAPPCreateActionController : DAPPActionController {
 mixin(AppControllerCalls!("APPCreateActionController"));
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     assert(new DAPPCreateActionController);
     assert(APPCreateActionController);
     assert(APPCreateActionController.name == "APPCreateActionController");

@@ -38,7 +38,7 @@ class DAPPValidatorEntity : DAPPValidator {
     return null; // Not valid ;
   }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       /// TODO 
     }}
 
@@ -57,7 +57,7 @@ class DAPPValidatorEntity : DAPPValidator {
     return result;
   }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       /// TODO 
     }}
 }

@@ -32,7 +32,7 @@ auto APPCreatorAccount() { return new DAPPCreatorAccount; }
 auto APPCreatorAccount(DAPPApplication myApp) { return new DAPPCreatorAccount(myApp); }
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     /// TODO 
   }}
 

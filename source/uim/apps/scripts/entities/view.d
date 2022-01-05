@@ -12,7 +12,7 @@ auto viewEntity() {
 }
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     auto f = File("../../PUBLIC/js/apps/entities/view.js", "w"); // open for writing
     f.write(viewEntity);
 }}

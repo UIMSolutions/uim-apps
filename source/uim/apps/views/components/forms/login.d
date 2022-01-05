@@ -51,7 +51,7 @@ class DAPPLoginForm : DAPPForm {
 }
 mixin(APPFormCalls!("APPLoginForm"));
 
-version(uim_apps) {
+version(test_uim_apps) {
   unittest {
     // TODO
 }}

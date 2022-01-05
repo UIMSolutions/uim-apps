@@ -299,7 +299,7 @@ class DAPPEventManager : IAPPEventManager {
       if (_eventList) _eventList.add(event);
       return cast(O)this; }
     unittest {
-      version(uim_apps) {
+      version(test_uim_apps) {
         // TODO Add tests
         }}
 
@@ -309,7 +309,7 @@ class DAPPEventManager : IAPPEventManager {
 
       return cast(O)this; }
     unittest {
-      version(uim_apps) {
+      version(test_uim_apps) {
         // TODO Add tests
         }}
 
@@ -317,7 +317,7 @@ class DAPPEventManager : IAPPEventManager {
     bool isTrackingEvents() {
       return _trackEvents && _eventList; }
     unittest {
-      version(uim_apps) {
+      version(test_uim_apps) {
         // TODO Add tests
         }}
 
@@ -329,7 +329,7 @@ class DAPPEventManager : IAPPEventManager {
 
       return cast(O)this; }
     unittest {
-      version(uim_apps) {
+      version(test_uim_apps) {
         // TODO Add tests
         }}
 
@@ -340,7 +340,7 @@ class DAPPEventManager : IAPPEventManager {
 
       return cast(O)this; }
     unittest {
-      version(uim_apps) {
+      version(test_uim_apps) {
         // TODO Add tests
         }}
 

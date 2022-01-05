@@ -22,7 +22,7 @@ class DAPPEntityDeleteView : DAPPEntityView {
 mixin(APPViewCalls!("APPEntityDeleteView"));
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     //
   }
 }

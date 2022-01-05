@@ -37,7 +37,7 @@ class DAPPLinkContainer : DAPPH5Container {
 auto APPLinkContainer() { return new DAPPLinkContainer; }
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
 /*     assert(new DAPPLinkContainer);
     assert(APPLinkContainer);
     assert(cast(DAPPLinkContainer)APPLinkContainer);

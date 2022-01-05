@@ -77,7 +77,7 @@ class DAPPViewComponent {
       _error = null; // Delete last error
     }
     unittest {
-      version(uim_apps) {
+      version(test_uim_apps) {
         // TODO
     }}
 
@@ -89,7 +89,7 @@ class DAPPViewComponent {
       return h5;        
     }
     unittest {
-      version(uim_apps) {
+      version(test_uim_apps) {
         // TODO test
         }} 
       // #endregion h5
@@ -99,7 +99,7 @@ class DAPPViewComponent {
       return h5; // No changes 
     }
     unittest {
-      version(uim_apps) {
+      version(test_uim_apps) {
         // TODO
     }}
   // #region render

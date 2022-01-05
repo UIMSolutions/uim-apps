@@ -47,7 +47,7 @@ class DAPPEntityView : DAPPView, IAPPWithEntity {
 mixin(APPViewCalls!("APPEntityView"));
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     assert(new DAPPEntityView);
     assert(APPEntityView); 
     assert(APPEntityView.form(APPEntityForm).form);

@@ -43,7 +43,7 @@ class DAPPCheckboxFormGroup : DAPPFormGroup {
 mixin(APPFormComponentCalls!("APPSwitchFormGroup"));
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     assert(new DAPPCheckboxFormGroup);
     assert(APPCheckboxFormGroup);
   }

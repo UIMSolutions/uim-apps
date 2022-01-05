@@ -57,7 +57,7 @@ class DAPPReadPage : DAPPEntityPageController {
     }
   }
   unittest {
-    version(uim_apps) {
+    version(test_uim_apps) {
       /// TODO
     }}
 }

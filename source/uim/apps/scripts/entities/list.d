@@ -301,7 +301,7 @@ auto listing() {
 
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     auto f = File("../../PUBLIC/js/apps/entities/list.js", "w"); // open for writing
     f.write(listEntities);
 }}

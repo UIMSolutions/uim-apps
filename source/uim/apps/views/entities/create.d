@@ -11,9 +11,8 @@ class DAPPEntityCreateView : DAPPEntityView {
     super.initialize;
 
     this
-      .name("APPEntityCreateView")
-      .crudMode(CRUDModes.Create);
-    this.pageHeader(APPPageHeader(this).actions(["refresh", "list"]));
+      .crudMode(CRUDModes.Create)
+      .pageHeader(APPPageHeader(this).actions(["refresh", "list"]));
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -25,7 +24,7 @@ class DAPPEntityCreateView : DAPPEntityView {
 mixin(APPViewCalls!("APPEntityCreateView"));
 
 unittest {
-  version(uim_apps) {
+  version(test_uim_apps) {
     //
   }
 }

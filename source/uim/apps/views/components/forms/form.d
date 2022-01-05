@@ -96,6 +96,13 @@ class DAPPForm : DAPPViewComponent {
         .entities(this.entities);
       }
     }
+
+    if (formBody) {
+      debug writeln("FormBody exists");
+    }
+    else {
+      debug writeln("FormBody missing");
+    }
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {
