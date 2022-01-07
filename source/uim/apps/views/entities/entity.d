@@ -23,12 +23,7 @@ class DAPPEntityView : DAPPView, IAPPWithEntity {
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPEntityView~"::DAPPEntityView:beforeH5");   
-    debug writeln("this.entity -> ", this.entity ? this.entity.id.toString : " 'null' " );
-    super.beforeH5(options);    
-  
-    if (auto entityController = cast(IAPPWithEntity)this.controller) { // Should be the right controller
-      this.entity(entityController.entity); 
-    }
+    super.beforeH5(options);      
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {

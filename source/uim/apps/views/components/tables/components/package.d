@@ -4,9 +4,9 @@ module uim.apps.views.components.tables.components;
 import uim.apps;
 
 // Main
-import uim.apps.views.components.tables.components.component;
+public import uim.apps.views.components.tables.components.component;
 
 // Packages
-import uim.apps.views.components.tables.components.bodies;
-import uim.apps.views.components.tables.components.footers;
-import uim.apps.views.components.tables.components.headers;
+public import uim.apps.views.components.tables.components.bodies;
+public import uim.apps.views.components.tables.components.footers;
+public import uim.apps.views.components.tables.components.headers;

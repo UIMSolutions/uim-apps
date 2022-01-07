@@ -4,8 +4,8 @@ module uim.apps.views.components.tables.components.bodies;
 import uim.apps;
 
 // Main
-import uim.apps.views.components.tables.components.bodies.body_;
+public import uim.apps.views.components.tables.components.bodies.body_;
 
 // Module
-import uim.apps.views.components.tables.components.bodies.entities;
-import uim.apps.views.components.tables.components.bodies.entity;
+public import uim.apps.views.components.tables.components.bodies.entities;
+public import uim.apps.views.components.tables.components.bodies.entity;

@@ -4,13 +4,12 @@ module uim.apps.controllers.pages.entities.entity;
 import uim.apps;
 
 class DAPPEntityPageController : DAPPPageController, IAPPWithEntity {
-  this() { super(); }
-  this(DAPPApplication myApp) { this().app(myApp); }    
+  mixin(APPPageThis!("APPEntityPageController"));
 
   mixin(OProperty!("DOOPEntity", "entity"));
 
   override void beforeResponse(STRINGAA reqParameters) {
-    debug writeln(moduleName!DAPPCreatePage~":DAPPCreatePage::beforeResponse");
+    debug writeln(moduleName!DAPPEntityPageController~":DAPPEntityPageController::beforeResponse");
     super.beforeResponse(reqParameters);   
     if ("redirect" in reqParameters) return;
     
@@ -32,5 +31,4 @@ class DAPPEntityPageController : DAPPPageController, IAPPWithEntity {
     }
   }
 }
-auto APPEntityPageController() { return new DAPPEntityPageController; }
-auto APPEntityPageController(DAPPApplication myApp) { return new DAPPEntityPageController(myApp); }
+mixin(APPPageCalls!("APPEntityPageController"));

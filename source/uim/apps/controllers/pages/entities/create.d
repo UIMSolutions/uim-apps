@@ -6,16 +6,22 @@ module uim.apps.controllers.pages.entities.create;
 @safe:
 import uim.apps;
 
-class DAPPCreatePage : DAPPEntityPageController {
-  this() { super(); 
+class DAPPEntityCreateController : DAPPEntityPageController {
+  mixin(APPPageThis!("APPEntityCreateController"));
+
+  override void initialize() {
+    super.initialize;
+
     this
     // Checks to run for page request
     .checks([APPCheckAppSessionExists, APPCheckAppSessionHasSession, APPCheckAppSessionHasSite])
-    .scripts.addLinks(
-      "/js/apps/entities/entity.js", 
-      "/js/apps/entities/create.js");
-    
+    .view(APPEntityCreateView)
+    .scripts
+      .addLinks(
+        "/js/apps/entities/entity.js", 
+        "/js/apps/entities/create.js");
   }
+
   this(string newEntityName) {
     this()
     .entityName(newEntityName)
@@ -25,7 +31,7 @@ class DAPPCreatePage : DAPPEntityPageController {
   }
 
   override void beforeResponse(STRINGAA reqParameters) {
-    debug writeln(moduleName!DAPPCreatePage~":DAPPCreatePage::beforeResponse");
+    debug writeln(moduleName!DAPPEntityCreateController~":DAPPEntityCreateController::beforeResponse");
     super.beforeResponse(reqParameters);   
     if ("redirect" in reqParameters) return;
     
@@ -47,3 +53,4 @@ class DAPPCreatePage : DAPPEntityPageController {
     }
   }
 }
+mixin(APPPageCalls!("APPEntityCreateController"));

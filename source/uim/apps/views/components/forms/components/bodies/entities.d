@@ -9,9 +9,9 @@ class DAPPEntitiesFormBody : DAPPFormBody, IAPPWithEntities {
   override void initialize() {
     super.initialize;
 
-/*     this
+    this
     .tableHeader(APPEntitiesTableHeader)
-    .tableFilter(APPEntitiesTableFilter); */
+    .tableFilter(APPEntitiesTableFilter); 
   }
 
   mixin(OProperty!("DAPPViewComponent", "tableHeader"));

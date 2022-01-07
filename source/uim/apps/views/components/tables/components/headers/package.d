@@ -4,8 +4,8 @@ module uim.apps.views.components.tables.components.headers;
 import uim.apps;
 
 // Main
-import uim.apps.views.components.tables.components.headers.header;
+public import uim.apps.views.components.tables.components.headers.header;
 
 // Modules
-import uim.apps.views.components.tables.components.headers.entities;
-import uim.apps.views.components.tables.components.headers.entity;
+public import uim.apps.views.components.tables.components.headers.entities;
+public import uim.apps.views.components.tables.components.headers.entity;

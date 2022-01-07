@@ -6,14 +6,21 @@ module uim.apps.controllers.pages.entities.read;
 @safe:
 import uim.apps;
 
-class DAPPReadPage : DAPPEntityPageController {
-  this() { super(); 
+class DAPPEntityReadController : DAPPEntityPageController {
+  mixin(APPPageThis!("APPEntityReadController"));
+
+  override void initialize() {
+    super.initialize;
+    
     this
-    .scripts.addLinks(
-      "/js/apps/entities/entity.js", 
-      "/js/apps/entities/view.js", // deprecated
-      "/js/apps/entities/read.js");
+    .view(APPEntityReadView)
+    .scripts
+      .addLinks(
+        "/js/apps/entities/entity.js", 
+        "/js/apps/entities/view.js", // deprecated
+        "/js/apps/entities/read.js");
   }
+
   this(string newEntityName) {
     this()
     .entityName(newEntityName)
@@ -24,7 +31,7 @@ class DAPPReadPage : DAPPEntityPageController {
   }
 
   override void beforeResponse(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPReadPage~":DAPPReadPage::beforeResponse");
+    debug writeln(moduleName!DAPPEntityReadController~":DAPPEntityReadController::beforeResponse");
     super.beforeResponse(options);   
     if ("redirect" in options) {
       // debug writeln("Redirect to "~options["redirect"]);
@@ -40,7 +47,7 @@ class DAPPReadPage : DAPPEntityPageController {
     if (!appSession.isValid(["session", "site"], options)) return; 
 
     auto selector = options.toEntitySelect;
-    debug writeln(moduleName!DAPPReadPage~":DAPPReadPage::beforeResponse - Selecting entity with ", selector);
+    debug writeln(moduleName!DAPPEntityReadController~":DAPPEntityReadController::beforeResponse - Selecting entity with ", selector);
     this.entity(database[appSession.site.name, collectionName].findOne(options.toEntitySelect));
     if (!entity) {
       // TODO Errorhandling required
@@ -61,4 +68,4 @@ class DAPPReadPage : DAPPEntityPageController {
       /// TODO
     }}
 }
-
+mixin(APPPageCalls!("APPEntityReadController"));

@@ -4,8 +4,8 @@ module uim.apps.views.components.tables.components.footers;
 import uim.apps;
 
 // Main
-import uim.apps.views.components.tables.components.footers.footer;
+public import uim.apps.views.components.tables.components.footers.footer;
 
 // Module
-import uim.apps.views.components.tables.components.footers.entities;
-import uim.apps.views.components.tables.components.footers.entity;
+public import uim.apps.views.components.tables.components.footers.entities;
+public import uim.apps.views.components.tables.components.footers.entity;

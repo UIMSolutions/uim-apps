@@ -6,13 +6,21 @@ module uim.apps.controllers.pages.entities.update;
 @safe:
 import uim.apps;
 
-class DAPPUpdatePage : DAPPEntityPageController {
-  this() { super(); 
-    this.scripts.addLinks(         
-      "/js/apps/entities/entity.js", 
-      "/js/apps/entities/edit.js", // deprecated
-      "/js/apps/entities/update.js");
+class DAPPEntityUpdateController : DAPPEntityPageController {
+  mixin(APPPageThis!("APPEntityUpdateController"));
+  
+  override void initialize() {
+    super.initialize;
+  
+    this
+      .view(APPEntityUpdateView)
+      .scripts
+        .addLinks(         
+          "/js/apps/entities/entity.js", 
+          "/js/apps/entities/edit.js", // deprecated
+          "/js/apps/entities/update.js");
   }
+
   this(string newEntityName) {
     this()
     .entityName(newEntityName)
@@ -23,7 +31,7 @@ class DAPPUpdatePage : DAPPEntityPageController {
   }
 
   override void beforeResponse(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPUpdatePage~":DAPPUpdatePage::beforeResponse");
+    debug writeln(moduleName!DAPPEntityUpdateController~":DAPPEntityUpdateController::beforeResponse");
     super.beforeResponse(options);   
     if ("redirect" in options) return;
 
@@ -54,7 +62,8 @@ class DAPPUpdatePage : DAPPEntityPageController {
 });`;
     }
   }
-}
+}  
+mixin(APPPageCalls!("APPEntityUpdateController"));
 
 /* class DAPPUpdatePage : DAPPPage {
     this() { super(); 

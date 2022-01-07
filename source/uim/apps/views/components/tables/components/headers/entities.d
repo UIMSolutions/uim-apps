@@ -3,11 +3,11 @@ module uim.apps.views.components.tables.components.headers.entities;
 @safe:
 import uim.apps;
 
-/* class DAPPEntitiesTableHeader : DAPPTableHeader, IAPPWithEntities {
+class DAPPEntitiesTableHeader : DAPPTableHeader, IAPPWithEntities {
   mixin(APPViewComponentThis!("APPEntitiesTableHeader"));
 
   override void initialize() {
-    supet.initialize;
+    super.initialize;
 
     this.visibleEntities(10);
   }
@@ -43,4 +43,3 @@ import uim.apps;
 }
 mixin(APPViewComponentCalls!("APPEntitiesTableHeader"));
 
- */

@@ -10,8 +10,13 @@ class DAPPEntitiesListForm : DAPPForm, IAPPWithEntities {
     super.initialize;
 
     this
-    .formHeader(APPFormHeader(this).mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["refresh"], ["create"]]))
-    .formBody(APPListFormBody(this));
+    .formHeader(APPFormHeader(this).mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["print", "export"]]))
+    .formBody(APPEntitiesFormBody(this));
+
+    /*       .form
+        .formHeader(APPEntitiesFormHeader(this.form).rootPath("/cms/blogs").mainTitle("Blogs").subTitle("Blogs anzeigen").actions([["print", "export"]]))
+        .formBody(APPListFormBody(this.form).rootPath("/cms/blogs"));
+ */
   }
 
   mixin(OProperty!("DOOPEntity[]", "entities"));
@@ -20,10 +25,6 @@ class DAPPEntitiesListForm : DAPPForm, IAPPWithEntities {
     debugMethodCall(moduleName!DAPPEntitiesListForm~":DAPPEntitiesListForm("~this.name~")::beforeH5");
     debug writeln(moduleName!DAPPEntitiesListForm~":DAPPEntitiesListForm("~this.name~")::beforeH5 -> Init.RootPath: ", this.rootPath);
     super.beforeH5(options);
-
-    if (auto listView = cast(DAPPListView)this.view) {
-      this.rootPath(listView.rootPath);
-    }
 
     if (auto entitiesView = cast(IAPPWithEntities)this.view) {
       this.entities(entitiesView.entities);

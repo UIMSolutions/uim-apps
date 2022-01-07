@@ -6,13 +6,19 @@ module uim.apps.controllers.pages.entities.delete_;
 @safe:
 import uim.apps;
 
-class DAPPDeletePage : DAPPEntityPageController {
-  this() { super(); 
+class DAPPEntityDeleteController : DAPPEntityPageController {
+  mixin(APPPageThis!("APPEntityDeleteController"));
+
+  override void initialize() {
+    super.initialize;
+
     this
+    .view(APPEntityDeleteView)
     .scripts.addLinks(
       "/js/apps/entities/entity.js", 
       "/js/apps/entities/delete.js"); 
   }
+
   this(string newEntityName) {
     this()
     .entityName(newEntityName)
@@ -48,7 +54,7 @@ window.addEventListener('load', (event) => {
     }}
  */
   override void beforeResponse(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCreatePage~":DAPPDeletePage::beforeResponse");
+    debug writeln(moduleName!DAPPEntityDeleteController~":DAPPEntityDeleteController::beforeResponse");
     super.beforeResponse(options);   
     if ("redirect" in options) {
       // debug writeln("Redirect to "~options["redirect"]);
@@ -85,6 +91,8 @@ window.addEventListener('load', (event) => {
       /// TODO
     }}
 }
+mixin(APPPageCalls!("APPEntityDeleteController"));
+
 
 /*
 
