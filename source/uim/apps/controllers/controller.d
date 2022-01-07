@@ -22,6 +22,12 @@ class DAPPController {
   mixin(OProperty!("DAPPController[]", "controllers")); // Cascading controllers
   mixin(OProperty!("DAPPControllerComponent[]", "components")); // Cascading controllers components
 
+  mixin(OProperty!("DAPPCheck[]", "checks"));
+  O addChecks(this O)(DAPPCheck[] newChecks) {
+    this.checks(this.checks~newChecks);
+    return cast(O)this;
+  }
+
   HTTPServerRequest _request;
   HTTPServerRequest request() { return _request; }
   void request(HTTPServerRequest newRequest) { _request = newRequest; }
@@ -32,10 +38,6 @@ class DAPPController {
 
   mixin(OProperty!("DOOPEntity", "session"));
   mixin(OProperty!("string", "responseResult"));
-
-  mixin(OProperty!("bool", "loginRequired"));
-  mixin(OProperty!("bool", "sessionRequired"));
-  mixin(OProperty!("bool", "siteRequired"));
 
   /// Additional parameters
   mixin(OProperty!("STRINGAA", "parameters"));
@@ -137,75 +139,17 @@ class DAPPController {
 
   void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPController~":DAPPController::beforeResponse");
-    this.error(""); // delete old error
+    this.error(""); // delete existing error message
+
     if ("appSessionId" !in options) {      
       options["appSessionId"] = this.request && this.request.session  ? this.request.session.id : null;
     }
     debug writeln(moduleName!DAPPController~":DAPPController::appSessionId -> ", options["appSessionId"]);
 
-    auto appSession = getAppSession(options);
-    if (!appSession) {
-      debug writeln("[INFO] No AppSession with Id '%s'".format(options.get("appSessionId", null)));
-
-      if (loginRequired) {
-        debug writeln("No appSession for Login");        
-        this.error("Login required");
-        options["redirect"] = "/login";
-        return; 
-      }
-      if (sessionRequired) {
-        debug writeln("No appSession for Session");        
-        this.error("Session required - Please login");
-        options["redirect"] = "/login";
-        return; 
-      }
-      if (siteRequired) {
-        debug writeln("No appSession for Site");        
-        this.error("Site required - Please select");
-        options["redirect"] = "/sites";
-        return; 
-      }
-    }
-
-    if (loginRequired) {
-      debug writeln("Has login?");
-      if (appSession && !appSession.login) {
-        debug writeln("No Login");
-
-        this.error("Login required");
-        options["redirect"] = "/login";
-        return; 
-      }
-      else {
-        debug writeln("login found");
-      }
-    }
-
-    if (sessionRequired) {
-      debug writeln("Has session?");
-      if (appSession && !appSession.session) {
-        debug writeln("No Session");
-
-        this.error("Session required - Please login");
-        options["redirect"] = "/login";
-        return; 
-      }
-      else {
-        debug writeln("session found");
-      }
-    }
-
-    if (siteRequired) {
-      debug writeln("Has site?");
-      if(appSession && !appSession.site) {
-        debug writeln("No Site");
-
-        this.error("Site required - Please select");
-        options["redirect"] = "/sites";
-        return; 
-      }
-      else {
-        debug writeln("site found");
+    foreach(check; checks) {
+      if (!check.controller(this).execute(options)) {
+        this.error(check.error);
+        options["redirect"] = check.redirectUrl;
       }
     }
   }    

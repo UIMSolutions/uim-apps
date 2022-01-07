@@ -1,10 +1,10 @@
-module uim.apps.controller.components.checks.requests.password;
+module uim.apps.controllers.components.checks.requests.password;
 
 @safe:
 import uim.apps;
 
-class DAPPCheckHasPasswordInRequest : DAPPCheck {
-  mixin(AppControllerComponentThis!("APPCheckHasPasswordInRequest"));
+class DAPPCheckRequestHasPassword : DAPPCheck {
+  mixin(AppControllerComponentThis!("APPCheckRequestHasPassword"));
 
   override void initialize() {
     super.initialize;
@@ -14,10 +14,26 @@ class DAPPCheckHasPasswordInRequest : DAPPCheck {
   }
 
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckHasPasswordInRequest~":DAPPCheckHasPasswordInRequest::execute");
+    debug writeln(moduleName!DAPPCheckRequestHasPassword~":DAPPCheckRequestHasPassword::execute");
     super.execute(options);
 
-    return (options.get("loginPW", null).length > 0);
+    if ("loginPW" !in options) { // loginPW  missing
+      this.
+        error("No loginPW in Request");
+      return false; 
+    }
+
+    debug writeln("loginPW = ", options["loginPW"]);
+    return true;
   }
 }
-mixin(AppControllerComponentCalls!("APPCheckHasPasswordInRequest"));
+mixin(AppControllerComponentCalls!("APPCheckRequestHasPassword"));
+
+version(test_uim_apps) {
+  unittest {
+    assert(new DAPPCheckRequestHasPassword);
+    assert(APPCheckRequestHasPassword);
+    assert(new DAPPCheckRequestHasPassword(APPController));
+    assert(APPCheckRequestHasPassword(APPController));
+  }
+}

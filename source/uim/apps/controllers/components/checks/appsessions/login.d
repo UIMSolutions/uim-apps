@@ -1,17 +1,16 @@
-module source.uim.apps.controllers.components.checks.appsessions.login;
+module uim.apps.controllers.components.checks.appsessions.login;
 
 @safe:
 import uim.apps;
 
-class DAPPCheckAppSessionHasLogin : DAPPCheckAppSession {
+class DAPPCheckAppSessionHasLogin : DAPPCheckAppSessionExists {
   mixin(AppControllerComponentThis!("APPCheckAppSessionHasLogin"));
 
   override void initialize() {
     super.initialize;
 
     this
-    .redirectUrl("/login")
-    .checks([APPCheckAppSessionExists]);
+    .redirectUrl("/login");
   }
   
   override bool execute(STRINGAA options = null) {
@@ -19,8 +18,8 @@ class DAPPCheckAppSessionHasLogin : DAPPCheckAppSession {
     if (!super.execute(options)) { return false; }
 
     auto login = getAppSession(options).login;
-    if (!login) { // session missing 
-      debug writeln(moduleName!DAPPCheckAppSessionHasLogin~":DAPPCheckAppSessionHasLogin::execute -> No login found");
+    if (!login) { // login missing 
+      this.error("appsession_login_missing");
       return false; 
     }
 

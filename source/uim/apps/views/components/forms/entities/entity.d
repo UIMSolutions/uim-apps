@@ -4,13 +4,12 @@ module uim.apps.views.components.forms.entities.entity;
 import uim.apps;
 
 class DAPPEntityForm : DAPPForm, IAPPWithEntity {
-  this() { super(); }
-  this(DAPPView myView) { this().view(myView); }
+  mixin(APPViewComponentThis!("APPEntityForm", true));
 
   override void initialize() {
     super.initialize;
+
     this
-    .name("APPEntityForm")
     .formBody(APPEntityFormBody(this));
   }
 
@@ -26,5 +25,4 @@ class DAPPEntityForm : DAPPForm, IAPPWithEntity {
     }
   }
 }
-auto APPEntityForm() { return new DAPPEntityForm; }
-auto APPEntityForm(DAPPView myView) { return new DAPPEntityForm(myView); }
+mixin(APPViewComponentCalls!("APPEntityForm", true));

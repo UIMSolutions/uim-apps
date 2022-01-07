@@ -27,7 +27,7 @@ class DAPPValidatorLogin : DAPPValidator {
 
       loginIdParameter = reqParameters["loginId"];
       if (database) { // Look into database
-        auto dbLogin = database["central", "logins"].findOne(UUID(loginIdParameter));
+        auto dbLogin = database["systems", "logins"].findOne(UUID(loginIdParameter));
         if (dbLogin) {
           // found login :-)
           dbLogin.lastAccessedOn = toTimestamp(now);

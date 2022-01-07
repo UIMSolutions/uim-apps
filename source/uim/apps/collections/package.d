@@ -1,2 +1,2 @@
-module source.uim.apps.collections;
+module uim.apps.collections;
 

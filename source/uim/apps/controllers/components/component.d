@@ -18,7 +18,7 @@ class DAPPControllerComponent {
   
   void initialize() {
     this
-    .name(APPControllerComponent);
+    .name("APPControllerComponent");
   }
 
   mixin(OProperty!("DAPPController", "controller"));

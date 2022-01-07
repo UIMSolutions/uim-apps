@@ -9,7 +9,7 @@ class DAPPCreateActionController : DAPPActionController {
   override void initialize() {
     super.initialize; 
     this.name = "APPCreateActionController";
-    this.checks([APPCheckAppSession, APPCheckDatabase, APPCheckSession, APPCheckSite]); 
+    this.checks([APPCheckAppSessionExists, APPCheckDatabaseExists, APPCheckAppSessionHasSession, APPCheckAppSessionHasSite]); 
   }
 
   mixin(OProperty!("string", "pool"));
@@ -18,26 +18,30 @@ class DAPPCreateActionController : DAPPActionController {
   override void beforeResponse(STRINGAA options = null) {
     debug writeln(moduleName!DAPPCreateActionController~":DAPPCreateActionController::beforeResponse");
     super.beforeResponse(options);   
-    if ("redirect" in options) return;
+    if (hasError || "redirect" in options) { return; }
 
     auto appSession = getAppSession(options);
-    auto collection = database[appSession.site.name, pool];
+    auto site = appSession.site;
+
+    auto collection = database[site.name, pool];
     if (!collection) {
       options["redirect"] = pgPath~"/view"; 
       return; }
 
-    auto entity = collection.toEntity(Json(null));
-    entity.fromRequest(options);  
-    collection.insertOne(entity); 
+    auto entity = collection
+      .createEntity
+        .fromRequest(options)
+        .save; 
 
     options["redirect"] = pgPath~"/view?id="~entity.id.toString; 
   }
 }
 mixin(AppControllerCalls!("APPCreateActionController"));
 
-unittest {
-  version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
     assert(new DAPPCreateActionController);
     assert(APPCreateActionController);
     assert(APPCreateActionController.name == "APPCreateActionController");
-}}
+  }
+}

@@ -10,7 +10,7 @@ class DAPPCreatePage : DAPPEntityPageController {
   this() { super(); 
     this
     // Checks to run for page request
-    .requiredChecks([APPCheckAppSession, APPCheckSession, APPCheckSite])
+    .checks([APPCheckAppSessionExists, APPCheckAppSessionHasSession, APPCheckAppSessionHasSite])
     .scripts.addLinks(
       "/js/apps/entities/entity.js", 
       "/js/apps/entities/create.js");

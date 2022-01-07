@@ -23,7 +23,7 @@ class DAPPValidatorEntity : DAPPValidator {
 
       entityIdParameter = reqParameters["entityId"];
       if (database) { // Look into database
-        auto dbEntity = database["central", "entitys"].findOne(UUID(entityIdParameter));
+        auto dbEntity = database["systems", "entitys"].findOne(UUID(entityIdParameter));
         if (dbEntity) {
           // found entity :-)
           dbEntity.lastAccessedOn = toTimestamp(now);

@@ -8,8 +8,13 @@ class DAPPSelectSiteActionController : DAPPActionController {
 
   override void initialize() {
     super.initialize; 
+    
     this.name = "APPSelectSiteActionController";
-    this.checks([APPCheckAppSession, APPCheckSession, APPCheckDatabaseSessions, APPCheckDatabaseSites, APPCheckSiteId]); 
+    this.checks([
+      APPCheckAppSessionHasSession, // AppSession Checks
+      APPCheckDatabaseHasSessions, APPCheckDatabaseHasSites, // Database checks 
+      APPCheckRequestHasSiteId // Request Checks
+    ]); 
   }
   
   override void beforeResponse(STRINGAA options = null) {
@@ -22,7 +27,11 @@ class DAPPSelectSiteActionController : DAPPActionController {
     
     debug writeln(moduleName!DAPPSelectSiteActionController~":DAPPSelectSiteActionController::request - Working with AppSession.session");
     auto session = appSession.session; 
-    auto site = appSession.site;
+    debug writeln(session ? "Found session" : "Missing session");
+
+    auto site = database["systems"]["sites"].findOne(["id":options.get("siteId", null)]);
+    debug writeln(site ? "Found site" : "Missing site");
+
     if (session && site) {
       session.lastAccessedOn = toTimestamp(now());
       session["lastAccessISO"] = now.toISOString;
@@ -35,10 +44,12 @@ class DAPPSelectSiteActionController : DAPPActionController {
       site["lastAccessISO"] = session["lastAccessISO"];
       site.save; 
       appSession.site = site; 
-      setAppSession(appSession, options); }
+      setAppSession(appSession, options); 
+    }
 
-      debug writeln(moduleName!DAPPSelectSiteActionController~":DAPPSelectSiteActionController::request - Redirect to /");
+    debug writeln(moduleName!DAPPSelectSiteActionController~":DAPPSelectSiteActionController::request - Redirect to /");
     options["redirect"] = "/";
+    debug writeln(appSession.debugInfo);
 	}
 }
 mixin(AppControllerCalls!("APPSelectSiteActionController"));

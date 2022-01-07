@@ -82,26 +82,24 @@ class DAPPForm : DAPPViewComponent {
   override void beforeH5(STRINGAA options = null) {
     super.beforeH5(options);
 
-    if (auto entityView = cast(DAPPEntityView)this.view) {
-      this.crudMode(entityView.crudMode);
-      this.readonly(entityView.readonly);
-      this.rootPath(entityView.rootPath);
-    }
-
     foreach(component; [formHeader, formBody, formFooter]) { 
       if (auto formComponent = cast(DAPPFormComponent)component) {
         formComponent
         .crudMode(this.crudMode)
-        .rootPath(this.rootPath)
-        .entities(this.entities);
+        .rootPath(this.rootPath);
       }
     }
 
-    if (formBody) {
-      debug writeln("FormBody exists");
+    if (formHeader) {
+      formHeader.title(headerTitle); 
     }
-    else {
-      debug writeln("FormBody missing");
+
+    if (formBody) { 
+      formBody.title(bodyTitle); 
+    }
+    
+    if (formFooter) {
+      formFooter.title(footerTitle);
     }
   }
 
@@ -111,11 +109,10 @@ class DAPPForm : DAPPViewComponent {
     DBS5Col _col = BS5Col(["col-12"]);
     _col(
       H5Form("entityForm", ["card"], ["method":method, "action":action], 
-        (formHeader ? formHeader.title(headerTitle).toH5(options) : null)~
-        (formBody ? formBody.title(bodyTitle).entities(this.entities).toH5(options) : null)~
-        (formFooter ? formFooter.title(footerTitle).entities(this.entities).toH5(options) : null)
+        (formHeader ? formHeader.toH5(options) : null)~
+        (formBody ? formBody.toH5(options) : null)~
+        (formFooter ? formFooter.toH5(options) : null)
       ));
-    if (crudMode != CRUDModes.Create && panes) _col(panes.toH5(options));
     
     return [_col].toH5;
   }  

@@ -38,7 +38,6 @@ class DAPPPageController : DAPPController {
   mixin(OProperty!("DAPPView", "errorView"));
 
   // Required checks for the page flow
-  mixin(OProperty!("DAPPCheck[]", "requiredChecks"));
   mixin(OProperty!("string[]", "sessionData"));
   mixin(OProperty!("string", "title"));
 	unittest {
@@ -124,13 +123,6 @@ class DAPPPageController : DAPPController {
     debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::beforeResponse");
     super.beforeResponse(options);
     if ("redirect" in options) { return; }
-
-    foreach (check; requiredChecks) {
-      if (auto redirectUrl = check.execute(this.request, this.response, options)) {
-        options["redirect"] = redirectUrl;
-        break;   
-      }
-    }
   }
   unittest {
     version(test_uim_apps) {

@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.bodies.list;
 @safe:
 import uim.apps;
 
-class DAPPListFormBody : DAPPFormBody {
+class DAPPListFormBody : DAPPFormBody, IAPPWithEntities {
   mixin(APPFormComponentThis!("APPListFormBody"));
 
   override void initialize() {
@@ -16,10 +16,14 @@ class DAPPListFormBody : DAPPFormBody {
 
   mixin(OProperty!("DAPPListTableHeader", "tableHeader"));
   mixin(OProperty!("DAPPListTableFilter", "tableFilter"));
+  mixin(OProperty!("DOOPEntity[]", "entities"));
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPListFormBody~"DAPPListFormBody::beforeH5");
     super.beforeH5(options);
+    if (hasError || "redirect" in options) { return; }
+
+    debug writeln("in DAPPEntitiesListForm "~(this.entities ? "Has %s entities".format(this.entities.length) : "No entities"));
 
     debug writeln("Before RootPath = ", this.rootPath);
     if (form) {
@@ -29,15 +33,8 @@ class DAPPListFormBody : DAPPFormBody {
     }
 
     if (auto entitiesForm = cast(IAPPWithEntities)this.form) {
-      debug writeln("Found entitiesForm");
-
       this.entities(entitiesForm.entities);
     }
-    else {
-      debug writeln("Found missing");
-    }
-
-    debug writeln("After RootPath = ", this.rootPath);
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -48,6 +45,7 @@ class DAPPListFormBody : DAPPFormBody {
 
     auto row(DOOPEntity entity) {
       if (!entity) return null;
+      
       return
         H5Tr
         .td(
@@ -71,6 +69,7 @@ class DAPPListFormBody : DAPPFormBody {
           ));
     }
 
+    debug writeln("Found entities for table = ", entities.length);
     string rows = entities.map!(a => a ? row(a).toString : "").join; 
 
     auto table = H5Div(["table-responsive"],
@@ -101,3 +100,12 @@ class DAPPListFormBody : DAPPFormBody {
   } 
 }
 mixin(APPFormComponentCalls!("APPListFormBody"));
+
+version(test_uim_apps) {
+  unittest {
+    assert(new DAPPListFormBody);
+    assert(APPListFormBody);
+    assert(new DAPPListFormBody(APPController));
+    assert(APPListFormBody(APPController));
+  }
+}

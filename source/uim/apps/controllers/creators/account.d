@@ -16,7 +16,7 @@ class DAPPCreatorAccount : DAPPCreator {
       .id(randomUUID)
       .name(parameters.get("account", "account"~to!string(now)));
     entity["peer"] = parameters.get("peer", "");
-    if (database) database["central", "accounts"].insertOne(entity);        
+    if (database) database["systems", "accounts"].insertOne(entity);        
 
     return entity;
   }

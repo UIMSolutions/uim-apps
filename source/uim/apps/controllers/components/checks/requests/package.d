@@ -1,9 +1,14 @@
-module uim.apps.controller.components.checks.requests;
+module uim.apps.controllers.components.checks.requests;
 
 @safe:
 import uim.apps;
 
-public import uim.apps.controller.components.checks.requests.account;
-public import uim.apps.controller.components.checks.requests.name;
-public import uim.apps.controller.components.checks.requests.password;
+// Main
+public import uim.apps.controllers.components.checks.requests.request;
+
+// Modules
+public import uim.apps.controllers.components.checks.requests.accountid;
+public import uim.apps.controllers.components.checks.requests.accountname;
+public import uim.apps.controllers.components.checks.requests.password;
+public import uim.apps.controllers.components.checks.requests.siteid;
 

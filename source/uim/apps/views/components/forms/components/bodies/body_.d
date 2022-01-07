@@ -34,3 +34,12 @@ class DAPPFormBody : DAPPFormComponent {
   }
 }
 mixin(APPFormComponentCalls!("APPFormBody"));
+
+version(test_uim_apps) {
+  unittest {
+    assert(new DAPPFormBody);
+    assert(APPFormBody);
+    assert(new DAPPFormBody(APPController));
+    assert(APPFormBody(APPController));
+  }
+}

@@ -27,24 +27,31 @@ DH5Obj viewEntities(uint initValue = 10) {
     H5Div("Einträge"));
 }
 
-template APPViewComponentThis(string classShortName, bool withEntity = false) {
-  const char[] APPViewThis = `
-this() { super(); this.name("`~classShortName~`"); initialize; }
-this(DAPPView myView) { this().view(myView); }
-`~
+template APPViewComponentThis(string classShortName, bool withEntity = false, bool withEntities = false) {
+  const char[] APPViewComponentThis = `
+this() { super(); this.name("`~classShortName~`"); }
+this(DAPPView myView) { this().view(myView); }`~
 (withEntity ? `
 this(DOOPEntity myEntity) { this().entity(myEntity); }
 this(DAPPView myView, DOOPEntity myEntity) { this(myView).entity(myEntity); }
+` : ``)~
+(withEntities ? `
+this(DOOPEntity[] myEntities) { this().entities(myEntities); }
+this(DAPPView myView, DOOPEntity[] myEntities) { this(myView).entities(myEntities); }
 ` : ``);
+
 }
 
-template APPViewComponentCalls(string classShortName, bool withEntity = false) {
+template APPViewComponentCalls(string classShortName, bool withEntity = false, bool withEntities = false) {
   const char[] APPViewComponentCalls = `
 auto `~classShortName~`() { return new D`~classShortName~`; }
-auto `~classShortName~`(DAPPView myView) { return new D`~classShortName~`(myView); }
-`~
+auto `~classShortName~`(DAPPView myView) { return new D`~classShortName~`(myView); }`~
 (withEntity ? `
 auto `~classShortName~`(DOOPEntity myEntity) { return new D`~classShortName~`(myEntity); }
 auto `~classShortName~`(DAPPView myView, DOOPEntity myEntity) { return new D`~classShortName~`(myView, myEntity); }
+` : ``)~
+(withEntities ? `
+auto `~classShortName~`(DOOPEntity[] myEntities) { return new D`~classShortName~`(myEntities); }
+auto `~classShortName~`(DAPPView myView, DOOPEntity[] myEntities) { return new D`~classShortName~`(myView, myEntities); }
 ` : ``);
 }

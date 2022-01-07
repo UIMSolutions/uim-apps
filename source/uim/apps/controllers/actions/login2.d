@@ -9,14 +9,35 @@ class DAPPLogin2ActionController : DAPPActionController {
   override void initialize() {
     super.initialize; 
     this.name = "APPLogin2ActionController";
-    this.nextUrl("/");
-    this.checks([APPCheckAppSession, APPCheckLogin, APPCheckLoginPW, APPCheckAccountName, APPCheckPassword]);
+    this
+      .checks([
+        APPCheckAppSessionHasLogin, // AppSession checks
+        APPCheckRequestHasPassword, // Request checks
+        APPCheckDatabaseHasPasswords
+      ]);
   }
   
   override void beforeResponse(STRINGAA options = null) {
     debug writeln(moduleName!DAPPLogin2ActionController~":DAPPLogin2ActionController::beforeResponse");
     super.beforeResponse(options);    
-    if ("redirect" in options) return;
+    if (hasError || "redirect" in options) { return; }
+
+    auto appSession = getAppSession(options);
+
+    auto tenant = database["systems"];
+
+    auto account = tenant["accounts"].findOne(["name":appSession.login["accountName"]]);
+    if (!account) {
+      this.error("database_account_missing");
+      return;
+    }
+    appSession.account = account;
+
+    auto password = tenant["passwords"].findOne(["accountId": account.id.toString]);
+    if (!account) {
+      this.error("database_password_missing");
+      return;
+    }
 
     options["redirect"] = "/"; 
     debug writeln(getAppSession(options).debugInfo); }

@@ -10,14 +10,15 @@ class DAPPLoginActionController : DAPPActionController {
     super.initialize; 
 
     this.name = "APPLoginActionController";
-    this.nextUrl("/login2"); 
-    this.checks([APPCheckDatabase, APPCheckDatabaseLogins, APPCheckDatabaseSessions]); 
+    this
+    //.nextUrl("/login2") 
+    .checks([APPCheckDatabaseHasLogins, APPCheckDatabaseHasSessions]); 
   }
 
   override void beforeResponse(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPLoginActionController~":DAPPLoginActionController::beforeResponse(reqParameters)");
+    debug writeln(moduleName!DAPPLoginActionController~":DAPPLoginActionController::beforeResponse");
     super.beforeResponse(options);    
-    if ("redirect" in options) return;
+    if (hasError || "redirect" in options) { return; }
 
     // New Session
     if (this.request.session) this.response.terminateSession();
@@ -25,8 +26,6 @@ class DAPPLoginActionController : DAPPActionController {
     if (appSessionId in appSessions) appSessions.remove(appSessionId);
     options.remove("appSessionId");     
         
-    auto accountName = options.get("accountName", "");
-
     // appSession missing, create new one
     debug writeln(moduleName!DAPPLoginActionController~":DAPPLoginActionController::beforeResponse -> Read httpSession");
     auto httpSession = this.response.startSession();
@@ -37,17 +36,30 @@ class DAPPLoginActionController : DAPPActionController {
     auto appSession = appSessions[httpSession.id];
     auto lastAccessedOn = toTimestamp(now());
     debug writeln(moduleName!DAPPLoginActionController~":DAPPLoginActionController::beforeResponse -> New login entity");
-    auto colLogins = database["central"]["logins"];
-    auto login = colLogins.create;
+    
+    auto tenant = database["systems"];
+    auto colLogins = tenant["logins"];
+
+    debug writeln("x");
+    auto login = colLogins.createEntity;
+    debug writeln("xx");
     login.lastAccessedOn = lastAccessedOn;
+    debug writeln("xxx");
+    
+    auto accountName = options.get("accountName", "");
     login["accountName"] = accountName;    
+    debug writeln("xxxx");
     colLogins.insertOne(login);
+    debug writeln("xxxxx");
     appSession.login = colLogins.findOne(login.id);
-    if (!appSession.login) // debug writeln("No appSession.login for id ", login.id);
+    if (!appSession.login) {
+      debug writeln("No appSession.login for id ", login.id);
+      return; 
+    }
 
     debug writeln(moduleName!DAPPLoginActionController~":DAPPLoginActionController::beforeResponse -> New session entity");
-    auto colSessions = database["central"]["sessions"];
-    auto session = colSessions.create;
+    auto colSessions = tenant["sessions"];
+    auto session = colSessions.createEntity;
     session.lastAccessedOn = lastAccessedOn;
     session["loginId"] = login.id;    
     colSessions.insertOne(session);

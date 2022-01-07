@@ -17,11 +17,14 @@ class DAPPCheck : DAPPControllerComponent {
   mixin(OProperty!("string", "redirectUrl"));
   mixin(OProperty!("string", "error"));
   mixin(OProperty!("DAPPCheck[]", "checks"));
+  O addChecks(this O)(DAPPCheck[] newChecks) {
+    this.checks(this.checks~newChecks);
+    return cast(O)this;
+  }
 
   bool execute(STRINGAA options = null) {
     foreach(check; checks) {
-      if (this.controller) check.controller(this.controller);
-      if (!check.execute(options)) {
+      if (!check.controller(this.controller).execute(options)) {
         this
         .error(check.error)
         .redirectUrl(check.redirectUrl);
@@ -29,5 +32,14 @@ class DAPPCheck : DAPPControllerComponent {
       }
     }
     return true;
+  }
+}
+
+version(test_uim_apps) {
+  unittest {
+    assert(new DAPPCheck);
+    assert(APPCheck);
+    assert(new DAPPCheck(APPController));
+    assert(APPCheck(APPController));
   }
 }

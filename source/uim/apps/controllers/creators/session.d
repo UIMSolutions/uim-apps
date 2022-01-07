@@ -11,7 +11,7 @@ class DAPPCreatorSession : DAPPCreator {
     auto entity = createEntities["session"](Json.emptyObject)
       .id(randomUUID)
       .name(parameters.get("session", "session"~to!string(now)));
-    if (database) database["central", "sessions"].insertOne(entity);        
+    if (database) database["systems", "sessions"].insertOne(entity);        
 
     return entity;
   }

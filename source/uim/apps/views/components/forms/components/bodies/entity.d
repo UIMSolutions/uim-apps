@@ -92,3 +92,12 @@ class DAPPEntityFormBody : DAPPFormBody, IAPPWithEntity {
   }
 }
 mixin(APPFormComponentCalls!("APPEntityFormBody"));
+
+version(test_uim_apps) {
+  unittest {
+    assert(new DAPPEntityFormBody);
+    assert(APPEntityFormBody);
+    assert(new DAPPEntityFormBody(APPController));
+    assert(APPEntityFormBody(APPController));
+  }
+}

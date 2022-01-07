@@ -1,13 +1,15 @@
-module uim.apps.controller.components.checks.appsession;
+module uim.apps.controllers.components.checks.appsessions;
 
 @safe:
 import uim.apps;
 
 // Main
-public import module uim.apps.controller.components.checks.appsessions.appsession;
+public import uim.apps.controllers.components.checks.appsessions.appsession;
 
 // Modules
-public import module uim.apps.controller.components.checks.appsessions.login;
-public import module uim.apps.controller.components.checks.appsessions.session;
-public import module uim.apps.controller.components.checks.appsessions.site;
+public import uim.apps.controllers.components.checks.appsessions.account;
+public import uim.apps.controllers.components.checks.appsessions.login;
+public import uim.apps.controllers.components.checks.appsessions.session;
+public import uim.apps.controllers.components.checks.appsessions.site;
+public import uim.apps.controllers.components.checks.appsessions.siteid;
 

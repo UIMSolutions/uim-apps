@@ -23,7 +23,7 @@ class DAPPValidatorSession : DAPPValidator {
 
       sessionIdParameter = reqParameters["sessionId"];
       if (database) { // Look into database
-        auto dbSession = database["central", "sessions"].findOne(UUID(sessionIdParameter));
+        auto dbSession = database["systems", "sessions"].findOne(UUID(sessionIdParameter));
         if (dbSession) {
           // found session :-)
           dbSession.lastAccessedOn = toTimestamp(now);

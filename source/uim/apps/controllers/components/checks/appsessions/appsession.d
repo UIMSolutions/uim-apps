@@ -1,4 +1,4 @@
-module source.uim.apps.controllers.components.checks.appsession.appsession;
+module uim.apps.controllers.components.checks.appsessions.appsession;
 
 @safe:
 import uim.apps;
@@ -10,19 +10,19 @@ class DAPPCheckAppSessionExists : DAPPCheck {
     super.initialize;
 
     this
-    .redirectUrl("/account")
-    .checks([APPCheckAppSessionExists]);
+    .redirectUrl("/account");
   }
 
   override bool execute(STRINGAA options = null) {    
-    debug writeln(moduleName!DAPPCheckSession~":DAPPCheckSession::check");
+    debug writeln(moduleName!DAPPCheckAppSessionExists~":DAPPCheckAppSessionExists::check");
 
-    auto appSession = getAppSession(reqParameters);
-    if (!appSession) { // login missing 
-      debug writeln(moduleName!DAPPCheckSession~":DAPPCheckSession::check -> No appSession :-(");
-      return redirectUrl; }
-    debug writeln(moduleName!DAPPCheckSession~":DAPPCheckSession::check -> AppSession found :-)");
-    return null;
+    auto appSession = getAppSession(options);
+    if (!appSession) { // appsession missing 
+      this.error("appsession_missing");
+      return false; 
+    }
+
+    return true;
   }
 }
 mixin(AppControllerComponentCalls!("APPCheckAppSessionExists"));

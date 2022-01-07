@@ -60,3 +60,12 @@ class DAPPEntityFormHeader : DAPPFormHeader, IAPPWithEntity {
   } 
 }
 mixin(APPFormComponentCalls!("APPEntityFormHeader"));
+
+version(test_uim_apps) {
+  unittest {
+    assert(new DAPPEntityFormHeader);
+    assert(APPEntityFormHeader);
+    assert(new DAPPEntityFormHeader(APPController));
+    assert(APPEntityFormHeader(APPController));
+  }
+}

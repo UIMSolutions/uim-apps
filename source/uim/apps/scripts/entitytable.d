@@ -1,4 +1,4 @@
-module source.uim.apps.scripts.entitytable;
+module uim.apps.scripts.entitytable;
 
 @safe:
 import uim.apps;

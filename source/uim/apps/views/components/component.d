@@ -24,9 +24,6 @@ class DAPPViewComponent {
   mixin(OProperty!("DAPPView", "view")); 
   mixin(OProperty!("DAPPLayout", "layout")); 
 
-  // Entity data
-  mixin(OProperty!("DOOPEntity[]", "entities"));
-
   DAPPViewComponent clone() {
     return 
       APPViewComponent;

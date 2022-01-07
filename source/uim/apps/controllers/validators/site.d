@@ -30,7 +30,7 @@ class DAPPValidatorSite : DAPPValidator {
           return null;
         
         if (database) { // Look into database, site exists?
-          auto dbSite = database["central", "sites"].findOne(UUID(siteIdParameter));
+          auto dbSite = database["systems", "sites"].findOne(UUID(siteIdParameter));
           if (dbSite) {
             // found site :-)
             dbSite.lastAccessedOn = toTimestamp(now);

@@ -3,7 +3,11 @@ module uim.apps.controllers.components;
 @safe:
 import uim.apps;
 
+// Main
 public import uim.apps.controllers.components.component;
+
+// Packages
+public import uim.apps.controllers.components.checks;
 public import uim.apps.controllers.components.registry;
 
 template AppControllerComponentThis(string name) {

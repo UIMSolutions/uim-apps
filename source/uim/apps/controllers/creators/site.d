@@ -8,12 +8,14 @@ class DAPPCreatorSite : DAPPCreator {
   this(DAPPApplication myApp) { this().app(myApp); }
 
   override DOOPEntity create(STRINGAA parameters) {
-    auto col = database["central", "sites"];
+    auto col = database["systems", "sites"];
+
     if (col.notNull) {
-      auto entity = col.create
-      .name(parameters.get("site", "site"~to!string(now)));
-      entity.save; 
-      return entity; }       
+      return col
+        .createEntity
+        .name(parameters.get("site", "site"~to!string(now)))  
+        .save; 
+    }       
 
     return null;
   }

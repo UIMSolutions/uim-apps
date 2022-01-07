@@ -24,20 +24,37 @@ public import uim.apps.views.sites;
 
 enum ViewModes { HTML, JS, XML }
 
-template APPViewThis(string name) {
+template APPViewThis(string name, bool withEntity = false, bool withEntities = false) {
   const char[] APPViewThis = `
 this() { super(); this.name("`~name~`"); }
 this(DAPPPageController myController) { this().controller(myController); }
 this(string myName) { this().name(myName); }
 this(DAPPPageController myController, string myName) { this(myController).name(myName); }
-`;
+`~
+(withEntity ? `
+this(DOOPEntity myEntity) { this().entity(myEntity); }
+this(DAPPPageController myController, DOOPEntity myEntity) { this(myController).entity(myEntity); }
+` : ``)~
+(withEntities ? `
+this(DOOPEntity[] myEntities) { this().entities(myEntities); }
+this(DAPPPageController myController, DOOPEntity[] myEntities) { this(myController).entities(myEntities); }
+` : ``);
+;
 }
 
-template APPViewCalls(string name) {
+template APPViewCalls(string classShortName, bool withEntity = false, bool withEntities = false) {
   const char[] APPViewCalls = `
-auto `~name~`() { return new D`~name~`; }
-auto `~name~`(DAPPPageController myController) { return new D`~name~`(myController); }
-auto `~name~`(string myName) { return new D`~name~`(myName); }
-auto `~name~`(DAPPPageController myController, string myName) { return new D`~name~`(myController, myName); }
-`;
+auto `~classShortName~`() { return new D`~classShortName~`; }
+auto `~classShortName~`(DAPPPageController myController) { return new D`~classShortName~`(myController); }
+auto `~classShortName~`(string myName) { return new D`~classShortName~`(myName); }
+auto `~classShortName~`(DAPPPageController myController, string myName) { return new D`~classShortName~`(myController, myName); }`~
+(withEntity ? `
+auto `~classShortName~`(DOOPEntity myEntity) { return new D`~classShortName~`(myEntity); }
+auto `~classShortName~`(DAPPPageController myController, DOOPEntity myEntity) { return new D`~classShortName~`(myController, myEntity); }
+` : ``)~
+(withEntities ? `
+auto `~classShortName~`(DOOPEntity[] myEntities) { return new D`~classShortName~`(myEntities); }
+auto `~classShortName~`(DAPPPageController myController, DOOPEntity[] myEntities) { return new D`~classShortName~`(myController, myEntities); }
+` : ``);
+
 }

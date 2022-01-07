@@ -6,3 +6,4 @@ import uim.apps;
 class DAPPFormFooter : DAPPFormComponent {
   
 }
+
