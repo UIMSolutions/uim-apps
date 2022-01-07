@@ -8,6 +8,7 @@ public import uim.apps.views.components.forms.components.bodies.body_;
 
 // Modules
 public import uim.apps.views.components.forms.components.bodies.entity;
+public import uim.apps.views.components.forms.components.bodies.entities;
 public import uim.apps.views.components.forms.components.bodies.list;
 
 // Tests

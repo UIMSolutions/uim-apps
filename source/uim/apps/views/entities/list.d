@@ -4,7 +4,7 @@ module uim.apps.views.entities.list;
 import uim.apps;
 
 class DAPPEntitiesListView : DAPPView, IAPPWithEntities {
-  mixin(APPViewThis!("APPEntitiesListView"));
+  mixin(APPViewThis!("APPEntitiesListView", false, true));
 
   override void initialize() {
     super.initialize;
@@ -32,6 +32,7 @@ class DAPPEntitiesListView : DAPPView, IAPPWithEntities {
       debug writeln("Found entities in controller: ", entitiesController.entities.length);
       this.entities(entitiesController.entities); 
     }
+    debug writeln(this.entities ? "Has %s entities".format(this.entities.length) : "No entities");
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {

@@ -3,7 +3,7 @@ module uim.apps.views.components.tables.filter;
 @safe:
 import uim.apps;
 
-class DAPPListTableFilter : DAPPViewComponent {
+class DAPPEntitiesTableFilter : DAPPViewComponent {
   this() { super(); this.visibleEntities(10); }
   this(DAPPView myView) { this().view(myView); }
 
@@ -20,4 +20,4 @@ class DAPPListTableFilter : DAPPViewComponent {
         .th()];
   }
 }
-auto APPListTableFilter() { return new DAPPListTableFilter; }
+auto APPEntitiesTableFilter() { return new DAPPEntitiesTableFilter; }

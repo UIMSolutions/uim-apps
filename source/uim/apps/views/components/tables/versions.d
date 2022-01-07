@@ -3,11 +3,8 @@ module uim.apps.views.components.tables.versions;
 @safe:
 import uim.apps;
 
-class DAPPTableVersions : DAPPTable {
-  this() { super(); }
-  this(DAPPView myView) { this().view(myView); }
-  this(DOOPEntity myEntity) { this().entity(myEntity); }    
-  this(DOOPEntity myEntity, DOOPEntity[] myVersions) { this(); this.entity(myEntity).versions(myVersions); }    
+/* class DAPPTableVersions : DAPPEntitiesTableHeader {
+  mixin(APPViewComponentThis!("APPTableVersions"));
 
   mixin(OProperty!("DOOPEntity[]", "versions"));
   O versions(this O)(Json[] jsons) {
@@ -40,7 +37,9 @@ class DAPPTableVersions : DAPPTable {
           .td(H5Div(["btn-list"], buttons));
   }
 
-  override void tableContent(STRINGAA options = null) {    
+  override void beforeH5(STRINGAA options = null) {   
+    super.beforeH5(options);
+     
     auto rows = versions.map!(a => row(a)).array;
 
     _header =  H5Thead(
@@ -55,8 +54,5 @@ class DAPPTableVersions : DAPPTable {
     _body = H5Tbody(rows);
   }
 }
-auto APPTableVersions() { return new DAPPTableVersions; }
-auto APPTableVersions(DAPPView myView) { return new DAPPTableVersions(myView); }
-//auto APPTableVersions(DOOPEntity myEntity) { return APPTableVersions.entity(myEntity); }
-// auto APPTableVersions(DOOPEntity myEntity, DOOPEntity[] versions) { return APPTableVersions(myEntity).versions(versions); }
-  
+mixin(APPViewComponentCalls!("APPTableVersions"));
+   */

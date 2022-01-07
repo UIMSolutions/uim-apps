@@ -24,7 +24,7 @@ class DAPPPaneHistory : DAPPPane {
         H5Div(["card-title"], options.get("title", "History")),
         BS5Row( 
           BS5Col(["col-12"], 
-            APPTableHistory.history(history).toH5(options)
+            /* APPTableHistory.history(history).toH5(options) */
           )))].toH5;
   } 
 }

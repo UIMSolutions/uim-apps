@@ -80,10 +80,12 @@ class DAPPForm : DAPPViewComponent {
   }
 
   override void beforeH5(STRINGAA options = null) {
+    debugMethodCall(moduleName!DAPPForm~":DAPPForm("~this.name~")::beforeH5");
     super.beforeH5(options);
 
     foreach(component; [formHeader, formBody, formFooter]) { 
       if (auto formComponent = cast(DAPPFormComponent)component) {
+        debug writeln("formComponent ", formComponent.name);
         formComponent
         .crudMode(this.crudMode)
         .rootPath(this.rootPath);
@@ -91,19 +93,23 @@ class DAPPForm : DAPPViewComponent {
     }
 
     if (formHeader) {
+      debug writeln("Has formHeader");
       formHeader.title(headerTitle); 
     }
 
     if (formBody) { 
+      debug writeln("Has formBody");
       formBody.title(bodyTitle); 
     }
     
     if (formFooter) {
+      debug writeln("Has formFooter");
       formFooter.title(footerTitle);
     }
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {
+    debugMethodCall(moduleName!DAPPForm~":DAPPForm("~this.name~")::toH5");
     super.toH5(options);
     
     DBS5Col _col = BS5Col(["col-12"]);

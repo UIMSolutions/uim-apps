@@ -3,11 +3,9 @@ module uim.apps.views.components.tables.history;
 @safe:
 import uim.apps;
 
-class DAPPTableHistory : DAPPTable {
+/* class DAPPTableHistory : DAPPEntitiesTableHeader {
   this() { super(); }
   this(DAPPView myView) { this().view(myView); }
-  this(DOOPEntity myEntity) { this(); this.entity(myEntity); }    
-  this(DOOPEntity myEntity, DOOPEntity[] myHistory) { this(); this.entity(myEntity).history(myHistory); }    
 
   mixin(OProperty!("DOOPEntity[]", "history"));
   O history(this O)(Json[] jsons) {
@@ -33,7 +31,9 @@ class DAPPTableHistory : DAPPTable {
           );
   }
 
-  override void tableContent(STRINGAA parameters) {    
+  override void beforeH5(STRINGAA options = null) {    
+    super.beforeH5(options);
+
     auto rows = history.map!(a => row(a)).array;
 
     _header = H5Thead(
@@ -58,13 +58,12 @@ class DAPPTableHistory : DAPPTable {
                 )
         ).toString;
 
-  } */
+  } * /
 }
 auto APPTableHistory() { return new DAPPTableHistory; }
-auto APPTableHistory(DOOPEntity myEntity) { return APPTableHistory.entity(myEntity); }
-auto APPTableHistory(DOOPEntity myEntity, DOOPEntity[] myHistory) { return APPTableHistory(myEntity).history(myHistory); }
 /* auto APPTableHistory(string myKey, string myTitle) { return APPTableHistory.key(myKey).title(myTitle); }
 auto APPTableHistory(string myKey, string myTitle, string myPath) { return APPTableHistory.key(myKey).title(myTitle).path(myPath); }
- */  
+ * /  
 
   
+ */

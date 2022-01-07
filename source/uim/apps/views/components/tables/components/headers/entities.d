@@ -1,15 +1,29 @@
-module uim.apps.views.components.tables.header;
+module uim.apps.views.components.tables.components.headers.entities;
 
 @safe:
 import uim.apps;
 
-class DAPPTableHeader : DAPPViewComponent {
-  this() { this.visibleEntities(10); }
-  this(DAPPView myView) { this().view(myView); }
+/* class DAPPEntitiesTableHeader : DAPPTableHeader, IAPPWithEntities {
+  mixin(APPViewComponentThis!("APPEntitiesTableHeader"));
+
+  override void initialize() {
+    supet.initialize;
+
+    this.visibleEntities(10);
+  }
 
   mixin(OProperty!("string", "mainTitle"));
   mixin(OProperty!("size_t", "visibleEntities"));
+  mixin(OProperty!("DOOPEntity[]", "entities"));
 
+  override void beforeH5(STRINGAA options = null) { 
+    super.beforeH5(options);
+
+    if (auto entitiesTable = cast(IAPPWithEntities)table) {
+      this.entities = entitiesTable.entities;
+    }
+  }
+  
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
     super.toH5(options);
     if (hasError) { return null; }
@@ -27,5 +41,6 @@ class DAPPTableHeader : DAPPViewComponent {
           BS5InputText(["form-control-sm"], ["aria-label":"Search "~mainTitle.toLower]))))].toH5;
   }
 }
-auto APPTableHeader() { return new DAPPTableHeader; }
+mixin(APPViewComponentCalls!("APPEntitiesTableHeader"));
 
+ */

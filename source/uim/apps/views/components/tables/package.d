@@ -3,12 +3,18 @@ module uim.apps.views.components.tables;
 @safe:
 import uim.apps;
 
+// Main
+public import uim.apps.views.components.tables.table;
+
+// Packages
+public import uim.apps.views.components.tables.components;
+
+// Modules
+public import uim.apps.views.components.tables.entities;
+public import uim.apps.views.components.tables.entity;
 public import uim.apps.views.components.tables.filter;
-public import uim.apps.views.components.tables.footer;
-public import uim.apps.views.components.tables.header;
 public import uim.apps.views.components.tables.history;
 public import uim.apps.views.components.tables.listheader;
-public import uim.apps.views.components.tables.table;
 public import uim.apps.views.components.tables.versions;
 
 auto listEntities(T:DOOPEntity)(string rootPath, string mainTitle, int numberEntities, STRINGAA[] columns, T[] entities, int startPos, int endPos, size_t sumEntities) {
