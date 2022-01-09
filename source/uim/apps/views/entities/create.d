@@ -12,7 +12,9 @@ class DAPPEntityCreateView : DAPPEntityView {
 
     this
       .crudMode(CRUDModes.Create)
-      .pageHeader(APPPageHeader(this).actions(["refresh", "list"]));
+      .pageHeader(
+        APPPageHeader(this)
+          .actions(["refresh", "list"]));
   }
 
   override void beforeH5(STRINGAA options = null) {

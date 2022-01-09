@@ -10,8 +10,17 @@ class DAPPEntityUpdateView : DAPPEntityView {
     super.initialize;
 
     this
-      .name("APPEntityUpdateView")
-      .crudMode(CRUDModes.Update);
+      .pageHeader(
+        APPPageHeader(this) 
+          .actions(["refresh", "list", "create"]))
+      .form(
+        APPEntityForm(this)
+          .crudMode(CRUDModes.Update))
+      .form
+        .formHeader(
+            APPEntityFormHeader(this.form)
+              .actions([["cancel2list", "save"], ["edit", "version", "delete"], ["print", "export"]])
+      );
   }
 
   override void beforeH5(STRINGAA options = null) {

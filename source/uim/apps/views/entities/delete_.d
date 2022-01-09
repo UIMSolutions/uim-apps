@@ -10,8 +10,11 @@ class DAPPEntityDeleteView : DAPPEntityView {
     super.initialize;
 
     this
-      .name("APPEntityDeleteView")
-      .crudMode(CRUDModes.Delete);
+      .crudMode(CRUDModes.Delete)
+      .pageHeader(
+        APPPageHeader(this)
+        .actions(["refresh", "list"]
+      ));
   }
 
   override void beforeH5(STRINGAA options = null) {

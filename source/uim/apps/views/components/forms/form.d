@@ -25,9 +25,9 @@ class DAPPForm : DAPPViewComponent {
 
   mixin(OProperty!("CRUDModes", "crudMode"));
   
-  mixin(OProperty!("DAPPFormComponent", "formHeader"));
-  mixin(OProperty!("DAPPFormComponent", "formBody"));
-  mixin(OProperty!("DAPPFormComponent", "formFooter"));
+  mixin(OProperty!("DAPPFormHeader", "formHeader"));
+  mixin(OProperty!("DAPPFormBody", "formBody"));
+  mixin(OProperty!("DAPPFormFooter", "formFooter"));
 
   mixin(OProperty!("string", "rootPath"));
 

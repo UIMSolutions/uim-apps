@@ -95,7 +95,14 @@ class DAPPFirstNavbar : DAPPViewComponent {
     super.toH5(options);
     if (hasError) { return null; }
 
-    auto userButton = "appSessionId" in options 
+    auto isLogin = false;
+    if (auto appSession = getAppSession(options)) {
+      if (appSession.session) {
+        isLogin = true;
+      }
+    }
+
+    auto userButton = isLogin 
       ? H5Div(["navbar-nav flex-row order-md-last"], 
           messagesNavitem(options), userNavitem(options))
       : H5Div(["nav-item d-none d-md-flex me-3"])( 
@@ -164,8 +171,15 @@ class DAPPSecondNavbar : DAPPViewComponent {
     super.toH5(options);
     if (hasError) { return null; }
 
+    auto isLogin = false;
+    if (auto appSession = getAppSession(options)) {
+      if (appSession.session) {
+        isLogin = true;
+      }
+    }
+
     string navslots;
-    if ("appSessionId" in options) {
+    if (isLogin) {
       // debug writeln("has sessionId -> ", reqParameters.get("sessionId", ""));
       auto selNavitem = options.get("selNavitem", "");
       foreach(slot; this.slots) {

@@ -9,8 +9,11 @@ class DAPPEntityReadView : DAPPEntityView {
   override void initialize() {
     super.initialize;
 
-    this.name("APPEntityReadView");
-    this.crudMode(CRUDModes.Read);
+    this
+      .crudMode(CRUDModes.Read)
+      .pageHeader(
+        APPPageHeader(this)
+          .actions(["refresh", "create"]));
   }
 
   override void beforeH5(STRINGAA options = null) {

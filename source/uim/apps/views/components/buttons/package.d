@@ -103,7 +103,7 @@ DH5Obj buttonLinkVersion(string rootPath, string id, string[] classes = ["me-1"]
 DH5Obj buttonLinkPrint(string rootPath, string id, string[] classes = ["me-1"]) {
   return BS5ButtonLink(
     ["text-white"]~classes, ["style":"background-color:#35A6FF", "href":rootPath~"/version?entity_id="~id], 
-    tablerIcon("print", ["text-white"])~"Drucken");
+    tablerIcon("printer", ["text-white"])~"Drucken");
 }
 
 DH5Obj buttonLinkExport(string rootPath, string id, string[] classes = ["me-1"]) {
@@ -117,7 +117,6 @@ DH5Obj buttonLinkDelete(string rootPath, string id, string[] classes = null) {
     ["text-white"]~classes, ["style":"background-color:#35A6FF", "href":rootPath~"/delete?entity_id="~id], 
     tablerIcon("trash", ["text-white"])~"Löschen");
 }
-
 
 DH5Obj submitDelete(string[] classes = null) {
   return BS5ButtonSubmit(
