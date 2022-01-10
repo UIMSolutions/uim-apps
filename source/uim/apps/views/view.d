@@ -31,8 +31,8 @@ class DAPPView : IAPPEventDispatcher {
 
     // view components
     mixin(OProperty!("DAPPViewComponent", "messages")); 
-    mixin(OProperty!("DAPPViewComponent", "pageHeader")); 
-    mixin(OProperty!("DAPPViewComponent", "pageFooter")); 
+    mixin(OProperty!("DAPPPageHeader", "pageHeader")); 
+    mixin(OProperty!("DAPPPageFooter", "pageFooter")); 
     mixin(OProperty!("DAPPViewComponent", "pageSideLeft")); 
     mixin(OProperty!("DAPPViewComponent", "pageSideRight")); 
     mixin(OProperty!("DAPPViewComponent", "pageContent")); 

@@ -7,7 +7,7 @@ module uim.apps.controllers.pages.entities.read;
 import uim.apps;
 
 class DAPPEntityReadController : DAPPEntityPageController {
-  mixin(APPPageThis!("APPEntityReadController"));
+  mixin(APPPageControllerThis!("APPEntityReadController"));
 
   override void initialize() {
     super.initialize;
@@ -68,4 +68,4 @@ class DAPPEntityReadController : DAPPEntityPageController {
       /// TODO
     }}
 }
-mixin(APPPageCalls!("APPEntityReadController"));
+mixin(APPPageControllerCalls!("APPEntityReadController"));

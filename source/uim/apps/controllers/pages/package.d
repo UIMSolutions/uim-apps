@@ -24,8 +24,8 @@ public import uim.apps.controllers.pages.helpers;
 public import uim.apps.controllers.pages.register;
 public import uim.apps.controllers.pages.sites;
 
-template APPPageThis(string name) {
-  const char[] APPPageThis = `
+template APPPageControllerThis(string name) {
+  const char[] APPPageControllerThis = `
 this() { super(); this.name("`~name~`"); }
 this(DAPPApplication myApplication) { this().app(myApplication); }
 this(DAPPView myView) { this().view(myView); }
@@ -33,8 +33,8 @@ this(DAPPApplication myApplication, DAPPView myView) { this().view(myView); }
 `;
 }
 
-template APPPageCalls(string name) {
-  const char[] APPPageCalls = `
+template APPPageControllerCalls(string name) {
+  const char[] APPPageControllerCalls = `
 auto `~name~`() { return new D`~name~`; }
 auto `~name~`(DAPPApplication myApplication) { return new D`~name~`(myApplication); }
 auto `~name~`(DAPPView myView) { return new D`~name~`(myView); }

@@ -7,7 +7,7 @@ module uim.apps.controllers.pages.entities.update;
 import uim.apps;
 
 class DAPPEntityUpdateController : DAPPEntityPageController {
-  mixin(APPPageThis!("APPEntityUpdateController"));
+  mixin(APPPageControllerThis!("APPEntityUpdateController"));
   
   override void initialize() {
     super.initialize;
@@ -63,7 +63,7 @@ class DAPPEntityUpdateController : DAPPEntityPageController {
     }
   }
 }  
-mixin(APPPageCalls!("APPEntityUpdateController"));
+mixin(APPPageControllerCalls!("APPEntityUpdateController"));
 
 /* class DAPPUpdatePage : DAPPPage {
     this() { super(); 

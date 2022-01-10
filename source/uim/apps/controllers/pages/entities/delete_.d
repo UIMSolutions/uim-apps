@@ -7,7 +7,7 @@ module uim.apps.controllers.pages.entities.delete_;
 import uim.apps;
 
 class DAPPEntityDeleteController : DAPPEntityPageController {
-  mixin(APPPageThis!("APPEntityDeleteController"));
+  mixin(APPPageControllerThis!("APPEntityDeleteController"));
 
   override void initialize() {
     super.initialize;
@@ -91,7 +91,7 @@ window.addEventListener('load', (event) => {
       /// TODO
     }}
 }
-mixin(APPPageCalls!("APPEntityDeleteController"));
+mixin(APPPageControllerCalls!("APPEntityDeleteController"));
 
 
 /*

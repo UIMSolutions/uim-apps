@@ -13,8 +13,14 @@ class DAPPEntityDeleteView : DAPPEntityView {
       .crudMode(CRUDModes.Delete)
       .pageHeader(
         APPPageHeader(this)
-        .actions(["refresh", "list"]
-      ));
+          .actions(["refresh", "list", "create"]))
+      .form(
+        APPEntityForm(this)
+          .crudMode(CRUDModes.Delete))
+      .form
+        .formHeader(
+          APPEntityFormHeader(this.form)
+            .actions([["cancel2root", "finalDelete"], ["view", "version", "edit"], ["print", "export"]]));
   }
 
   override void beforeH5(STRINGAA options = null) {

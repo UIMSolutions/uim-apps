@@ -7,7 +7,7 @@ module uim.apps.controllers.pages.entities.create;
 import uim.apps;
 
 class DAPPEntityCreateController : DAPPEntityPageController {
-  mixin(APPPageThis!("APPEntityCreateController"));
+  mixin(APPPageControllerThis!("APPEntityCreateController"));
 
   override void initialize() {
     super.initialize;
@@ -53,4 +53,4 @@ class DAPPEntityCreateController : DAPPEntityPageController {
     }
   }
 }
-mixin(APPPageCalls!("APPEntityCreateController"));
+mixin(APPPageControllerCalls!("APPEntityCreateController"));

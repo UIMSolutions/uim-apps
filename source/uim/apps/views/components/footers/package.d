@@ -3,7 +3,7 @@ module uim.apps.views.components.footers;
 @safe:
 import uim.apps;
 
-class DAPPFooter : DAPPViewComponent {
+class DAPPPageFooter : DAPPViewComponent {
   this() { super(); 
     this.inner = `Version 1.0.1 - Copyright 2017-2021 UI-Manufaktur UG (haftungsbeschränkt) - License UIM`;
   }
@@ -33,5 +33,5 @@ class DAPPFooter : DAPPViewComponent {
         ))].toH5;
   }
 }
-auto APPFooter() { return new DAPPFooter; }
-auto APPFooter(DAPPView myView) { return new DAPPFooter(myView); }
+auto APPPageFooter() { return new DAPPPageFooter; }
+auto APPPageFooter(DAPPView myView) { return new DAPPPageFooter(myView); }

@@ -54,7 +54,7 @@ class DAPPPaneVersions : DAPPPane {
 
   override void inner(STRINGAA options = null) {
     /*_col(
-      /* APPTableVersions.versions(versions).toH5(options) )*/;
+      /* APPTableVersions.versions(versions).toH5(options) );*/
   }
 }
 auto APPPaneVersions() { return new DAPPPaneVersions; }

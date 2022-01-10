@@ -7,7 +7,7 @@ module uim.apps.controllers.pages.entities.list;
 import uim.apps;
 
 class DAPPListPage : DAPPPageController {
-  mixin(APPPageThis!("APPListPage"));
+  mixin(APPPageControllerThis!("APPListPage"));
 
   override void initialize() {
     super.initialize(); 

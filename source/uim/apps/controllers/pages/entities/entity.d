@@ -4,7 +4,7 @@ module uim.apps.controllers.pages.entities.entity;
 import uim.apps;
 
 class DAPPEntityPageController : DAPPPageController, IAPPWithEntity {
-  mixin(APPPageThis!("APPEntityPageController"));
+  mixin(APPPageControllerThis!("APPEntityPageController"));
 
   mixin(OProperty!("DOOPEntity", "entity"));
 
@@ -31,4 +31,4 @@ class DAPPEntityPageController : DAPPPageController, IAPPWithEntity {
     }
   }
 }
-mixin(APPPageCalls!("APPEntityPageController"));
+mixin(APPPageControllerCalls!("APPEntityPageController"));

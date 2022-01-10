@@ -46,12 +46,12 @@ class DAPPEntitiesFormBody : DAPPFormBody, IAPPWithEntities {
     auto row(DOOPEntity entity) {
       if (!entity) return null;
       
-      return
+      return [
         H5Tr
         .td(
           BS5FormCheckInput("${entity.id}", ["m-0 align-middle"], ["type":"checkbox", "aria-label":"Select item"]))// , "checked": entity.selected? `checked`:``)+`>
-        .td(["w-1"], entity["createdOn"])
-        .td(["w-1"], entity["modifiedOn"])
+        .td(["w-1"], germanDate(to!long(entity["createdOn"])))
+        .td(["w-1"], germanDate(to!long(entity["modifiedOn"])))
         .td(["w-1"], H5A(["href": rootPath~"/view?id="~entity["id"]], entity["name"]))
         .td(entity["display"]) 
         .td(["text-end"], 
@@ -66,11 +66,11 @@ class DAPPEntitiesFormBody : DAPPFormBody, IAPPWithEntities {
             .link(["disabled"], ["href":"#"], "Kopieren")
             .link(["disabled"], ["href":"#"], "Drucken")
             .link(["disabled"], ["href":"#"], "Exportieren")
-          ));
+          ))].toH5;
     }
 
     debug writeln("Found entities for table = ", entities.length);
-    string rows = entities.map!(a => a ? row(a).toString : "").join; 
+    DH5Obj[] rows = entities.map!(a => a ? row(a) : null).join; 
 
     auto table = H5Div(["table-responsive"],
       BS5Table(["card-table table-vcenter text-nowrap datatable table table-hover"])

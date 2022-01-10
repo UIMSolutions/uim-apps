@@ -4,7 +4,7 @@ module uim.apps.controllers.pages.logout;
 import uim.apps;
 
 class DAPPLogoutPageController : DAPPPageController {  
-  mixin(APPPageThis!("APPLogoutPageController"));
+  mixin(APPPageControllerThis!("APPLogoutPageController"));
 
   override void initialize() { 
     super.initialize;
@@ -18,4 +18,4 @@ class DAPPLogoutPageController : DAPPPageController {
       .title("Abmeldung");
   }
 }
-mixin(APPPageCalls!("APPLogoutPageController"));
+mixin(APPPageControllerCalls!("APPLogoutPageController"));

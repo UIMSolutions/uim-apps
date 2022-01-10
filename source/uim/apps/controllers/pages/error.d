@@ -4,6 +4,6 @@ module uim.apps.controllers.pages.error;
 import uim.apps;
 
 class DAPPErrorPageController : DAPPPageController {
-  mixin(APPPageThis!("APPErrorPageController"));
+  mixin(APPPageControllerThis!("APPErrorPageController"));
 }
-mixin(APPPageCalls!("APPErrorPageController"));
+mixin(APPPageControllerCalls!("APPErrorPageController"));

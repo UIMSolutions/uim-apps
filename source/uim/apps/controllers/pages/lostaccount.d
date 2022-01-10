@@ -4,7 +4,7 @@ module uim.apps.controllers.pages.lostaccount;
 import uim.apps;
 
 class DAPPLostAccountPageController : DAPPPageController {
-  mixin(APPPageThis!("APPLostAccountPageController"));
+  mixin(APPPageControllerThis!("APPLostAccountPageController"));
 
   override void initialize() {
     super.initialize;
@@ -19,4 +19,4 @@ class DAPPLostAccountPageController : DAPPPageController {
       .view(APPLostAccountView(this));
   }
 }
-mixin(APPPageCalls!("APPLostAccountPageController"));
+mixin(APPPageControllerCalls!("APPLostAccountPageController"));

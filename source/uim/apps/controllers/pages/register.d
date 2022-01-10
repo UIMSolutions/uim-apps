@@ -4,7 +4,7 @@ module uim.apps.controllers.pages.register;
 import uim.apps;
 
 class DAPPRegisterPageController : DAPPPageController {
-  mixin(APPPageThis!("APPRegisterPageController"));      
+  mixin(APPPageControllerThis!("APPRegisterPageController"));      
   
   override void initialize() {
     super.initialize;
@@ -19,4 +19,4 @@ class DAPPRegisterPageController : DAPPPageController {
       .title("Registrierung");
   }
 }
-mixin(APPPageCalls!("APPRegisterPageController"));
+mixin(APPPageControllerCalls!("APPRegisterPageController"));

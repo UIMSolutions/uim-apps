@@ -18,9 +18,8 @@ class DAPPEntityUpdateView : DAPPEntityView {
           .crudMode(CRUDModes.Update))
       .form
         .formHeader(
-            APPEntityFormHeader(this.form)
-              .actions([["cancel2list", "save"], ["edit", "version", "delete"], ["print", "export"]])
-      );
+          APPEntityFormHeader(this.form)
+            .actions([["cancel2list", "save"], ["edit", "version", "delete"], ["print", "export"]]));
   }
 
   override void beforeH5(STRINGAA options = null) {

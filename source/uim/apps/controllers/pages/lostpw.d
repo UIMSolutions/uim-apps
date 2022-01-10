@@ -4,7 +4,7 @@ module uim.apps.controllers.pages.lostpw;
 import uim.apps;
 
 class DLostPasswordPageController : DAPPPageController {
-  mixin(APPPageThis!("LostPasswordPageController"));
+  mixin(APPPageControllerThis!("LostPasswordPageController"));
 
   override void initialize() {
     super.initialize;
@@ -19,4 +19,4 @@ class DLostPasswordPageController : DAPPPageController {
       .view(APPLostPasswordView(this));
   }
 }
-mixin(APPPageCalls!("LostPasswordPageController"));
+mixin(APPPageControllerCalls!("LostPasswordPageController"));

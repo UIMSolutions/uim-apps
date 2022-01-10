@@ -4,9 +4,9 @@ module uim.apps.controllers.actions.action;
 import uim.apps;
 
 class DAPPActionController : DAPPController {
-  mixin(AppControllerThis!("APPActionController"));
+  mixin(APPControllerThis!("APPActionController"));
 }
-mixin(AppControllerCalls!("APPActionController"));
+mixin(APPControllerCalls!("APPActionController"));
 
 version(test_uim_apps) {
   unittest {

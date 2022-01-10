@@ -4,7 +4,7 @@ module uim.apps.controllers.pages.login2;
 import uim.apps;
 
 class DAPPLogin2PageController : DAPPPageController {
-  mixin(APPPageThis!("APPLogin2PageController"));
+  mixin(APPPageControllerThis!("APPLogin2PageController"));
 
   override void initialize() {
     super.initialize;
@@ -32,4 +32,4 @@ class DAPPLogin2PageController : DAPPPageController {
       "/js/apps/login2.js");   
     }
 }
-mixin(APPPageCalls!("APPLogin2PageController"));
+mixin(APPPageControllerCalls!("APPLogin2PageController"));

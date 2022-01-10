@@ -4,7 +4,7 @@ module uim.apps.controllers.pages.login;
 import uim.apps;
 
 class DAPPLoginPageController : DAPPPageController {
-  mixin(APPPageThis!("APPLoginPageController"));
+  mixin(APPPageControllerThis!("APPLoginPageController"));
 
   override void initialize() {
     super.initialize;
@@ -37,4 +37,4 @@ class DAPPLoginPageController : DAPPPageController {
     
   }
 }
-mixin(APPPageCalls!("APPLoginPageController"));
+mixin(APPPageControllerCalls!("APPLoginPageController"));

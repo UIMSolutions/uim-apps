@@ -86,10 +86,7 @@ auto APPSecondNavbar(DAPPNavbarSlot[] slots) { return APPSecondNavbar.slots(slot
  */
 
 class DAPPFirstNavbar : DAPPViewComponent {
-  this() { super(); }
-  this(DAPPView myView) { 
-    this().view(myView); 
-  }
+  mixin(APPViewComponentThis!("APPFirstNavbar"));
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
     super.toH5(options);
@@ -123,8 +120,8 @@ class DAPPFirstNavbar : DAPPViewComponent {
       ].toH5;
   }
 }
-auto APPFirstNavbar() { return new DAPPFirstNavbar; }
-auto APPFirstNavbar(DAPPView myView) { return new DAPPFirstNavbar(myView); }
+mixin(APPViewComponentCalls!("APPFirstNavbar"));
+
 
 auto messagesNavitem(STRINGAA options = null) {
   return H5Div(["nav-item dropdown d-none d-md-flex me-3"], 
@@ -161,8 +158,7 @@ auto userNavitem(STRINGAA options = null) {
 }
 
 class DAPPSecondNavbar : DAPPViewComponent {
-  this() { super(); }
-  this(DAPPView myView) { this().view(myView); }
+  mixin(APPViewComponentThis!("APPSecondNavbar"));
 
   mixin(OProperty!("DAPPNavbarSlot[]", "slots"));
   mixin(OProperty!("string[string]", "brand"));
@@ -207,8 +203,7 @@ class DAPPSecondNavbar : DAPPViewComponent {
       )].toH5;
   }
 }
-auto APPSecondNavbar() { return new DAPPSecondNavbar; }
-auto APPSecondNavbar(DAPPView myView) { return new DAPPSecondNavbar(myView); }
+mixin(APPViewComponentCalls!("APPSecondNavbar"));
 auto APPSecondNavbar(DAPPNavbarSlot[] slots) { return APPSecondNavbar.slots(slots); }
 
 /*

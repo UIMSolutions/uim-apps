@@ -4,7 +4,7 @@ module uim.apps.controllers.actions.create;
 import uim.apps;
 
 class DAPPCreateActionController : DAPPActionController {
-  mixin(AppControllerThis!("APPCreateActionController"));
+  mixin(APPControllerThis!("APPCreateActionController"));
 
   override void initialize() {
     super.initialize; 
@@ -36,7 +36,7 @@ class DAPPCreateActionController : DAPPActionController {
     options["redirect"] = pgPath~"/view?id="~entity.id.toString; 
   }
 }
-mixin(AppControllerCalls!("APPCreateActionController"));
+mixin(APPControllerCalls!("APPCreateActionController"));
 
 version(test_uim_apps) {
   unittest {

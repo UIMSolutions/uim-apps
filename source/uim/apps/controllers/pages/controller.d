@@ -7,7 +7,7 @@ module uim.apps.controllers.pages.controller;
 import uim.apps;
 
 class DAPPPageController : DAPPController {
-  mixin(APPPageThis!("APPPageController"));
+  mixin(APPPageControllerThis!("APPPageController"));
 
   // Initialization (= hook method)
   override void initialize() {
@@ -272,7 +272,7 @@ class DAPPPageController : DAPPController {
     return result;
   } */
 }
-mixin(APPPageCalls!("APPPageController"));
+mixin(APPPageControllerCalls!("APPPageController"));
 
 unittest {
 	version(test_uim_apps) {

@@ -4,7 +4,7 @@ module uim.apps.controllers.actions.setsite;
 import uim.apps;
 
 class DAPPSelectSiteActionController : DAPPActionController {
-  mixin(AppControllerThis!("APPSelectSiteActionController"));
+  mixin(APPControllerThis!("APPSelectSiteActionController"));
 
   override void initialize() {
     super.initialize; 
@@ -52,4 +52,4 @@ class DAPPSelectSiteActionController : DAPPActionController {
     debug writeln(appSession.debugInfo);
 	}
 }
-mixin(AppControllerCalls!("APPSelectSiteActionController"));
+mixin(APPControllerCalls!("APPSelectSiteActionController"));

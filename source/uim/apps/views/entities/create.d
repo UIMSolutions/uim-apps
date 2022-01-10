@@ -11,17 +11,24 @@ class DAPPEntityCreateView : DAPPEntityView {
     super.initialize;
 
     this
-      .crudMode(CRUDModes.Create)
-      .pageHeader(
-        APPPageHeader(this)
-          .actions(["refresh", "list"]));
+      .pageHeader( // set page header
+        APPPageHeader(this).actions(["refresh", "list"]))
+      .form( // Set form 
+        APPEntityForm(this)
+        .crudMode(CRUDModes.Create)) 
+      .form // Set form components
+        .formHeader(
+          APPEntityFormHeader(this.form).actions([["cancel", "save"], ["print", "export"]]))
+        .formBody(
+          APPEntityFormBody(this.form)
+          .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"]) 
+      );
   }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPEntityCreateView~"::DAPPEntityCreateView:beforeH5");    
     super.beforeH5(options);    
   }
-
 }
 mixin(APPViewCalls!("APPEntityCreateView"));
 
