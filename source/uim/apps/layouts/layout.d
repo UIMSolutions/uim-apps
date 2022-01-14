@@ -44,7 +44,7 @@ class DAPPLayout {
       //["rel":"icon", "type":"image/ico", "href":"/img/favicon.ico"],
       );
 
-    this.links.add(
+/*     this.links.add(
       ["rel":"apple-touch-icon", "sizes":"57x57", "href":"/apple-icon-57x57.png"],
       ["rel":"apple-touch-icon", "sizes":"60x60", "href":"/apple-icon-60x60.png"],
       ["rel":"apple-touch-icon", "sizes":"72x72", "href":"/apple-icon-72x72.png"],
@@ -58,7 +58,7 @@ class DAPPLayout {
       ["rel":"icon", "type":"image/png", "sizes":"32x32", "href":"/favicon-32x32.png"],
       ["rel":"icon", "type":"image/png", "sizes":"96x96", "href":"/favicon-96x96.png"],
       ["rel":"icon", "type":"image/png", "sizes":"16x16", "href":"/favicon-16x16.png"],
-      ["rel":"manifest", "href":"/manifest.json"]);
+      ["rel":"manifest", "href":"/manifest.json"]); */
 
     this.styles.addLinks(
       "/lib/kothing/last/kothing-editor.min.css",

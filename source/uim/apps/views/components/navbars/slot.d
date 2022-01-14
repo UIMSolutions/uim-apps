@@ -4,14 +4,16 @@ module uim.apps.views.components.navbars.slot;
 import uim.apps;
 
 class DAPPNavbarSlot : DAPPViewComponent {
-    this() {}
+    mixin(APPViewComponentThis!("APPNavbarSlot"));
     this(string newId) {
       this.id(newId);
     }
 
     mixin(OProperty!("string", "id"));
     mixin(OProperty!("bool", "active"));
+    mixin(OProperty!("string", "title"));
     mixin(OProperty!("string", "rootPath"));
+    mixin(OProperty!("DBS5DropdownMenu", "menu"));
 
 /*     override string toString() { return toString(null); }
     string toString(STRINGAA options = null) {   
@@ -24,5 +26,16 @@ class DAPPNavbarSlot : DAPPViewComponent {
         super.beforeH5(options);
         if (hasError) { return; }
     }
+
+    override DH5Obj[] toH5(STRINGAA options = null) {
+        super.toH5(options);
+
+    return [
+      BS5NavItem(["dropdown"], 
+        BS5NavLink(["dropdown-toggle"], ["href":"#navbar-slot", "data-bs-toggle":"dropdown", "role":"button", "aria-expanded":"false"], 
+            BS5NavLinkTitle(title)),
+        menu
+      )].toH5;
+    }
 }
-auto APPNavbarSlot() { return new DAPPNavbarSlot; }
+mixin(APPViewComponentCalls!("APPNavbarSlot"));

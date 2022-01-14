@@ -65,7 +65,7 @@ class DAPPView : IAPPEventDispatcher {
 
   // #region h5 content
     void beforeH5(STRINGAA options = null) {
-      debugMethodCall(moduleName!DAPPView~":DAPPView::beforeH5"); 
+      debugMethodCall(moduleName!DAPPView~":DAPPView::beforeH5");
       // init
       _error = null; // Delete last error
     }

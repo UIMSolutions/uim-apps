@@ -8,6 +8,7 @@ public import uim.apps.views.components.component;
 
 // Packages
 public import uim.apps.views.components.buttons;
+public import uim.apps.views.components.cards;
 public import uim.apps.views.components.entities;
 public import uim.apps.views.components.filter;
 public import uim.apps.views.components.forms;
