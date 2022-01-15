@@ -79,7 +79,7 @@ class DAPPView : IAPPEventDispatcher {
     beforeH5(options);
 
     return [
-      H5Main(["content"],
+      H5Main(["content"], ["style":"margin-bottom:200px"],
           (pageHeader ? pageHeader.toH5(options) : null)~
           BS5Row(["mt-2 row-cards"], 
               BS5Container.fluid()

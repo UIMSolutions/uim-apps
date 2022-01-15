@@ -15,7 +15,8 @@ class DAPPCardsViewComponent : DAPPViewComponent {
   override DH5Obj[] toH5(STRINGAA options = null) {
     super.toH5(options);
 
-    return this.cards;
+    return [
+      BS5Row(["row-cards"], this.cards)].toH5;
   }
 }
 mixin(APPViewComponentCalls!("APPCardsViewComponent"));
