@@ -13,7 +13,9 @@ class DAPPCardsViewComponent : DAPPViewComponent {
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {
+    debugMethodCall(moduleName!DAPPCardsViewComponent~":DAPPCardsViewComponent::toH5");
     super.toH5(options);
+    if (hasError || "redirect" in options) { return null; }
 
     return [
       BS5Row(["row-cards"], this.cards)].toH5;
