@@ -21,7 +21,7 @@
 		"../uim-html",
 		"../uim-javascript",
 		"../uim-bootstrap",
-		"../uim-web",
+
 		"../uim-jsonbase",
 		"../uim-entities",
 		"../uim-entitybase",
@@ -35,7 +35,7 @@
 		"../uim-html",
 		"../uim-javascript",
 		"../uim-bootstrap",
-		"../uim-web",
+		
 		"../uim-jsonbase",
 		"../uim-entities",
 		"../uim-entitybase",
@@ -45,11 +45,67 @@
 	"targetType": "library",
 	"configurations": [
 		{
-			"name": "offline"
+			"name": "offline",
+			"importPaths": [
+				"../uim-core",
+				"../uim-oop",
+				"../uim-css",
+				"../uim-html",
+				"../uim-javascript",
+				"../uim-bootstrap",
+		
+				"../uim-jsonbase",
+				"../uim-entities",
+				"../uim-entitybase",
+				"../../LAYOUTS/layout-tabler/source/layouts",
+				"./"
+			],
+			"sourcePaths": [
+				"../uim-core",
+				"../uim-oop",
+				"../uim-css",
+				"../uim-html",
+				"../uim-javascript",
+				"../uim-bootstrap",
+				
+				"../uim-jsonbase",
+				"../uim-entities",
+				"../uim-entitybase",
+				"../../LAYOUTS/layout-tabler/source/layouts",
+				"./"
+			]		
 		},
 		{
-			"name": "uim_apps",
-			"versions": ["uim_apps"]
+			"name": "test-offline",
+			"versions": ["test_uim_apps"],
+			"importPaths": [
+				"../uim-core",
+				"../uim-oop",
+				"../uim-css",
+				"../uim-html",
+				"../uim-javascript",
+				"../uim-bootstrap",
+		
+				"../uim-jsonbase",
+				"../uim-entities",
+				"../uim-entitybase",
+				"../../LAYOUTS/layout-tabler/source/layouts",
+				"./"
+			],
+			"sourcePaths": [
+				"../uim-core",
+				"../uim-oop",
+				"../uim-css",
+				"../uim-html",
+				"../uim-javascript",
+				"../uim-bootstrap",
+				
+				"../uim-jsonbase",
+				"../uim-entities",
+				"../uim-entitybase",
+				"../../LAYOUTS/layout-tabler/source/layouts",
+				"./"
+			]
 		}
 	]
 }
