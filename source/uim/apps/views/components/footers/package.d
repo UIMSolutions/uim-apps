@@ -4,21 +4,22 @@ module uim.apps.views.components.footers;
 import uim.apps;
 
 class DAPPPageFooter : DAPPViewComponent {
-  this() { super(); 
-    this.inner = `Version 1.0.1 - Copyright 2017-2021 UI-Manufaktur UG (haftungsbeschränkt) - License UIM`;
+  mixin(APPViewComponentThis!("APPPageFooter"));
+
+  override void initialize() {
+    super.initialize; 
+    
+    this
+      .inner = `Version 1.0.1 - Copyright 2017-2021 UI-Manufaktur UG (haftungsbeschränkt) - License APP`;
   }
     
-  this(DAPPView myView) { 
-    this().view(myView); 
-  }
-
   mixin(OProperty!("string", "backgroundColor"));
   mixin(OProperty!("string", "backgroundImage"));
   mixin(OProperty!("string", "inner"));
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
     super.toH5(options);
-    if (hasError) { return null; }
+    if (hasError || "redirect" in options) { return null; }
 
     auto rootPath = options.get("rootPath", "/");
 
@@ -33,5 +34,4 @@ class DAPPPageFooter : DAPPViewComponent {
         ))].toH5;
   }
 }
-auto APPPageFooter() { return new DAPPPageFooter; }
-auto APPPageFooter(DAPPView myView) { return new DAPPPageFooter(myView); }
+mixin(APPViewComponentCalls!("APPPageFooter"));

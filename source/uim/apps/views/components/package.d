@@ -7,6 +7,7 @@ import uim.apps;
 public import uim.apps.views.components.component;
 
 // Packages
+public import uim.apps.views.components.accordions;
 public import uim.apps.views.components.buttons;
 public import uim.apps.views.components.cards;
 public import uim.apps.views.components.entities;
@@ -14,6 +15,7 @@ public import uim.apps.views.components.filter;
 public import uim.apps.views.components.forms;
 public import uim.apps.views.components.footers;
 public import uim.apps.views.components.icons;
+public import uim.apps.views.components.lists;
 public import uim.apps.views.components.navbars;
 public import uim.apps.views.components.modals;
 public import uim.apps.views.components.panes;

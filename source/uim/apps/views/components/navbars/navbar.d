@@ -88,6 +88,9 @@ auto APPSecondNavbar(DAPPNavbarSlot[] slots) { return APPSecondNavbar.slots(slot
 class DAPPFirstNavbar : DAPPViewComponent {
   mixin(APPViewComponentThis!("APPFirstNavbar"));
 
+  mixin(OProperty!("string", "appLogo"));
+  mixin(OProperty!("string", "appTitle"));
+
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
     super.toH5(options);
     if (hasError) { return null; }
@@ -103,17 +106,17 @@ class DAPPFirstNavbar : DAPPViewComponent {
       ? H5Div(["navbar-nav flex-row order-md-last"], 
           messagesNavitem(options), userNavitem(options))
       : H5Div(["nav-item d-none d-md-flex me-3"])( 
-          H5A(["btn btn-outline-info"], ["href":"/login"], tablerIcon("login")~"Login")); 
+          H5A(["btn btn-outline-info text-blue"], ["href":"/login"], tablerIcon("login")~"Login")); 
 
     return [  
       H5Header(["navbar navbar-expand-md navbar-light d-print-none"], 
         H5Div(["container-fluid"], 
           H5Button(["navbar-toggler"], ["type":"button", "data-bs-toggle":"collapse", "data-bs-target":"#navbar-menu"],
             H5Span(["navbar-toggler-icon"])),
-          H5H1(["navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3"], 
+          H5H1(["navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3 text-blue"], 
             H5A(["p-2 ps-5"], 
-              ["href":"/", "style":"background-repeat: no-repeat; background-position: left center;background-size: 70px auto; background-image:url("~options.get("appLogo", null)~")"], 
-              "&nbsp;"~options.get("appTitle", null))),
+              ["href":"/", "style":"background-repeat: no-repeat; background-position: left center;background-size: 60px auto; background-image:url("~this.appLogo~")"], 
+              this.appTitle)),
             userButton
           )               
         )
@@ -142,7 +145,7 @@ auto userNavitem(STRINGAA options = null) {
       H5A(["nav-link d-flex lh-1 text-reset p-0"], ["href":"#", "data-bs-toggle":"dropdown", "aria-label":"Benutzermenü"], 
         BS5Avatar(["avatar-sm"], ["style":"background-image: url(/lib/tabler/tabler-1.0.0-alpha.7/static/avatars/000m.jpg)"]),
         H5Div(["d-none d-xl-block ps-2"], 
-          H5Div("Mr. UIM"),
+          H5Div("Mr. APP"),
           H5Div(["mt-1 small text-muted"], "UI Designer")
         )
       ),
