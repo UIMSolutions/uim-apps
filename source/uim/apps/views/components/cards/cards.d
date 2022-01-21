@@ -18,7 +18,7 @@ class DAPPCardsViewComponent : DAPPViewComponent {
     if (hasError || "redirect" in options) { return null; }
 
     return [
-      BS5Row(["row-cards"], this.cards)].toH5;
+      BS5Row(["row-cards"], ["data-masonry":"{&quot;percentPosition&quot;: true }"], this.cards)].toH5;
   }
 }
 mixin(APPViewComponentCalls!("APPCardsViewComponent"));

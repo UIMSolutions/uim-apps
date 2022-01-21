@@ -114,7 +114,7 @@ class DAPPLayout {
 	}
 
 	string render(DAPPPageController controller, DAPPView view, STRINGAA options = null) { 
-		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::render");
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::render(DAPPPageController controller, DAPPView view, STRINGAA options = null)");
     if (view) {
       debug writeln("view is -> ", view.name);
 		  return render(controller, view.toH5(options), options);
@@ -124,7 +124,7 @@ class DAPPLayout {
 	}
 
 	string render(DAPPPageController controller, DH5Obj[] h5Objs, STRINGAA options = null) { 
-		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::render");
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::render(DAPPPageController controller, DH5Obj[] h5Objs, STRINGAA options = null)");
 		if (h5Objs) {
       return render(controller, h5Objs.map!(h5 => h5.toString).join, options);
     }
@@ -132,7 +132,7 @@ class DAPPLayout {
 	}
 
 	string render(DAPPPageController controller, string content, STRINGAA options = null) { 
-		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::render");
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::render(DAPPPageController controller, string content, STRINGAA options = null)");
 		beforeRender(options);
 
 		// 1. page parameters to options
@@ -154,14 +154,29 @@ class DAPPLayout {
     DH5Obj[] actualLinks;
     DH5Obj[] actualStyles;
 		DH5Obj[] actualScripts;
+
+		if (app) {
+      debug writeln("Found app");
+
+      actualMetas ~= app.metas.toH5;
+			actualLinks ~= app.links.toH5;
+			actualStyles ~= app.styles.toH5;
+			actualScripts ~= app.scripts.toH5;
+		} else { debug writeln("No app :-("); }
+
+    actualMetas ~= this.metas.toH5;
+    actualLinks ~= this.links.toH5;
+    actualStyles ~= this.styles.toH5;
+    actualScripts ~= this.scripts.toH5;
+
 		if (auto pageController = cast(DAPPPageController)controller) {
-			if (app) actualMetas ~= app.metas.toH5;
-      actualMetas ~= this.metas.toH5;
-      actualMetas ~= (pageController ? pageController.metas.toH5 : null);
-			actualLinks = /* (app ? app.links : null) ~  */this.links.toH5 ~ (pageController ? pageController.links.toH5 : null);
-			actualStyles = (app ? app.styles.toH5 : null) ~ this.styles.toH5 ~ (pageController ? pageController.styles.toH5 : null);
-			actualScripts = (app ? app.scripts.toH5 : null) ~ this.scripts.toH5 ~ (pageController ? pageController.scripts.toH5 : null);
-		}
+      debug writeln("Found pageController");
+
+      actualMetas ~= pageController.metas.toH5;
+			actualLinks ~= pageController.links.toH5;
+			actualStyles ~= pageController.styles.toH5;
+			actualScripts ~= pageController.scripts.toH5;
+		} else { debug writeln("No pageController :-("); }
 
 		// creating HTML page
 		auto _html = H5Html

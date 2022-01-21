@@ -40,6 +40,7 @@ class DAPPPageController : DAPPController {
   // Required checks for the page flow
   mixin(OProperty!("string[]", "sessionData"));
   mixin(OProperty!("string", "title"));
+  mixin(OProperty!("string", "canonical"));
 	unittest {
 /* 		assert(H5AppPage.title("aTitle").title == "aTitle");	
 		assert(H5AppPage.title("aTitle").title("otherTitle").title == "otherTitle"); */
@@ -123,6 +124,8 @@ class DAPPPageController : DAPPController {
     debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::beforeResponse");
     super.beforeResponse(options);
     if ("redirect" in options) { return; }
+
+    this.links.add(["rel":"canonical", "href":this.canonical]);
   }
   unittest {
     version(test_uim_apps) {
