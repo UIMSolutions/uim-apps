@@ -6,6 +6,7 @@ import uim.apps;
 class DAPPEntityPageController : DAPPPageController, IAPPWithEntity {
   mixin(APPPageControllerThis!("APPEntityPageController"));
 
+  mixin(OProperty!("string", "entityName"));
   mixin(OProperty!("DOOPEntity", "entity"));
 
   override void beforeResponse(STRINGAA reqParameters) {

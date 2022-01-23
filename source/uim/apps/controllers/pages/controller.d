@@ -70,7 +70,6 @@ class DAPPPageController : DAPPController {
   mixin(OProperty!("string", "jsPath"));
   mixin(OProperty!("string", "pgPath"));
   mixin(OProperty!("string", "entitiesName"));
-  mixin(OProperty!("string", "entityName"));
 
 
 	/// layout for page
