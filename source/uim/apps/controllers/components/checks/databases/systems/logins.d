@@ -17,7 +17,7 @@ class DAPPCheckDatabaseHasLogins : DAPPCheckDatabaseHasSystems {
     debug writeln(moduleName!DAPPCheckDatabaseHasLogins~":DAPPCheckDatabaseHasLogins::check");
     if (!super.execute(options)) { return false; }
 
-    if (!this.database.hasCollection("systems", "logins")) { // collection logins missing 
+    if (!this.database.hasCollection("systems", "system_logins")) { // collection logins missing 
       this.error("collection_logins_missing");
       return false; }
     

@@ -42,19 +42,19 @@ class DAPPSessionReader {
       foreach (name; page.sessionData) {
           switch(name) {
             case "login": 
-              appSession.login = page.database["systems", "logins"].findOne(["id": reqParameters.get("loginId", "")]);
+              appSession.login = page.database["systems", "system_logins"].findOne(["id": reqParameters.get("loginId", "")]);
               break;
             case "session":
-              appSession.session = page.database["systems", "sessions"].findOne(["id": reqParameters.get("sessionId", "")]);
+              appSession.session = page.database["systems", "system_sessions"].findOne(["id": reqParameters.get("sessionId", "")]);
               break;
             case "site": 
-              appSession.site = page.database["systems", "sites"].findOne(["id": reqParameters.get("siteId", "")]);
+              appSession.site = page.database["systems", "system_sites"].findOne(["id": reqParameters.get("siteId", "")]);
               break;
             case "account": 
-              appSession.account = page.database["systems", "accounts"].findOne(["id": reqParameters.get("accountId", "")]);
+              appSession.account = page.database["systems", "system_accounts"].findOne(["id": reqParameters.get("accountId", "")]);
               break;
             case "user": 
-              appSession.user = page.database["systems", "users"].findOne(["id": reqParameters.get("userId", "")]);
+              appSession.user = page.database["systems", "system_users"].findOne(["id": reqParameters.get("userId", "")]);
               break;
             default: break;
           }        

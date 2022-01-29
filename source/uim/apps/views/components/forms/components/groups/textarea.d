@@ -4,9 +4,7 @@ module uim.apps.views.components.forms.components.groups.textarea;
 import uim.apps;
 
 class DAPPTextAreaFormGroup : DAPPFormGroup {
-  mixin(APPFormComponentThis!("APPTextAreaFormGroup"));
-  this(DOOPEntity myEntity) { this().entity(myEntity); }
-  this(DAPPForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
+  mixin(APPFormComponentThis!("APPTextAreaFormGroup", true));
 
   override void initialize() {
     super.initialize;
@@ -23,7 +21,7 @@ class DAPPTextAreaFormGroup : DAPPFormGroup {
     super.toH5(options);
     if (hasError) { return null; }
     
-    auto input = BS5InputTextarea(id, ["rows":rows, "name":name, "autocomplete":autocomplete, "placeholder":placeholder], entity ? entity[fieldName] : "");
+    auto input = BS5InputTextarea(id, ["rows":rows, "name":formName, "autocomplete":autocomplete, "placeholder":placeholder], entity ? entity[fieldName] : "");
     if (readonly) input.attribute("readonly","readonly");
     if (crudMode == CRUDModes.Read || crudMode == CRUDModes.Delete) input.attribute("readonly","readonly");
 
@@ -37,4 +35,4 @@ class DAPPTextAreaFormGroup : DAPPFormGroup {
       // 
       }}
 }
-mixin(APPFormComponentCalls!("APPTextAreaFormGroup"));
+mixin(APPFormComponentCalls!("APPTextAreaFormGroup", true));

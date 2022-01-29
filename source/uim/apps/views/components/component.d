@@ -6,13 +6,6 @@ import uim.apps;
 class DAPPViewComponent {
   this() { initialize; }  
   this(DAPPView myView) { this(); this.view(myView); }
-
-  void initialize() {
-    this
-    .debugPrefix(moduleName!DAPPViewComponent~":DAPPViewComponent::")
-    .changed(true)
-    .dynamic(true); 
-  }
   
   mixin(OProperty!("string", "debugPrefix")); 
   mixin(OProperty!("string", "name")); 
@@ -23,6 +16,13 @@ class DAPPViewComponent {
   mixin(OProperty!("DAPPViewComponent", "owner")); 
   mixin(OProperty!("DAPPView", "view")); 
   mixin(OProperty!("DAPPLayout", "layout")); 
+
+  void initialize() {
+    this
+    .debugPrefix(moduleName!DAPPViewComponent~":DAPPViewComponent::")
+    .changed(true)
+    .dynamic(true); 
+  }
 
   DAPPViewComponent clone() {
     return 

@@ -4,9 +4,7 @@ module uim.apps.views.components.forms.components.groups.startenddate;
 import uim.apps;
 
 class DAPPStartEndDateFormGroup : DAPPFormGroup {
-  mixin(APPFormComponentThis!("APPStartEndDateFormGroup"));
-  this(DOOPEntity myEntity) { this().entity(myEntity); }
-  this(DAPPForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
+  mixin(APPFormComponentThis!("APPStartEndDateFormGroup", true));
 
   DH5Obj h5StartInput(STRINGAA options = null) {
     super.h5Input(options);
@@ -76,4 +74,4 @@ class DAPPStartEndDateFormGroup : DAPPFormGroup {
       // 
       }}
 }
-mixin(APPFormComponentCalls!("APPStartEndDateFormGroup"));
+mixin(APPFormComponentCalls!("APPStartEndDateFormGroup", true));

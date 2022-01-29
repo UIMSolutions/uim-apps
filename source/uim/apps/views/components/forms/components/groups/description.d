@@ -11,17 +11,13 @@ class DAPPDescriptionFormGroup : DAPPTextAreaFormGroup {
      
     this
     .id("entity_description")
-    .name("entity_description")
+    .formName("entity_description")
     .fieldName("description")
     .label("Beschreibung")
     .placeholder("Beschreibung eingeben"); 
   }
 }
-auto APPDescriptionFormGroup() { return new DAPPDescriptionFormGroup; }
-auto APPDescriptionFormGroup(DAPPForm myForm) { return new DAPPDescriptionFormGroup(myForm); };
-auto APPDescriptionFormGroup(DOOPEntity myEntity) { return new DAPPDescriptionFormGroup(myEntity); };
-auto APPDescriptionFormGroup(DAPPForm myForm, DOOPEntity myEntity) { return new DAPPDescriptionFormGroup(myForm, myEntity); };
-
+mixin(APPFormComponentCalls!("APPDescriptionFormGroup", true));
 
 unittest {
   version(test_uim_apps) {

@@ -11,17 +11,14 @@ class DAPPFormGroupDisplay : DAPPTextFormGroup {
 
     this
     .id("entity_display")
-    .name("entity_display")
+    .formName("entity_display")
     .fieldName("display")
     .label("Titel")
     .placeholder("Titel eingeben")
     .invalidFeedback("Titel ist nicht korrekt"); 
   }
 }
-auto APPFormGroupDisplay() { return new DAPPFormGroupDisplay; }
-auto APPFormGroupDisplay(DAPPForm myForm) { return new DAPPFormGroupDisplay(myForm); };
-auto APPFormGroupDisplay(DOOPEntity myEntity) { return new DAPPFormGroupDisplay(myEntity); };
-auto APPFormGroupDisplay(DAPPForm myForm, DOOPEntity myEntity) { return new DAPPFormGroupDisplay(myForm, myEntity); };
+mixin(APPFormComponentCalls!("APPFormGroupDisplay", true));
 
 
 unittest {

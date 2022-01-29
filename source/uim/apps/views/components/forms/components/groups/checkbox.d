@@ -4,23 +4,21 @@ module uim.apps.views.components.forms.components.groups.checkbox;
 import uim.apps;
 
 class DAPPCheckboxFormGroup : DAPPFormGroup {
-  this() { super(); 
-    this.fieldValue("false");
-  }
-  this(DOOPEntity myEntity) { this().entity(myEntity); }
-  this(DAPPForm myForm) { this().form(myForm); }
-  this(DAPPForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
+  mixin(APPFormComponentThis!("APPCheckboxFormGroup", true));
 
   override void initialize() {
     super.initialize;
+
+    this
+      .fieldValue("false");
   }
-  
+
   mixin(OProperty!("bool", "checked"));
  
   override DH5Obj h5Input(STRINGAA options = null) {
     super.h5Input(options); 
 
-    auto input = H5Input(name, ["form-check-input me-1"], ["type":"checkbox", "name": name]);
+    auto input = H5Input(name, ["form-check-input me-1"], ["type":"checkbox", "name":formName]);
     if (!checked) this.checked("checked" in options && options["checked"] == "checked");
     if (checked) input.attribute("checked", "checked");    
     if (entity) { this.fieldValue = entity[fieldName]; }

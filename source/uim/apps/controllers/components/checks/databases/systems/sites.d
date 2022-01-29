@@ -17,7 +17,7 @@ class DAPPCheckDatabaseHasSites : DAPPCheckDatabaseHasSystems {
     debug writeln(moduleName!DAPPCheckDatabaseHasSites~":DAPPCheckDatabaseHasSites::check");
     if (!super.execute(options)) { return false; }
 
-    if (!this.database.hasCollection("systems", "sites")) { // collection sites missing 
+    if (!this.database.hasCollection("systems", "system_sites")) { // collection sites missing 
       this.error("collection_sites_missing");
       return false; }
     

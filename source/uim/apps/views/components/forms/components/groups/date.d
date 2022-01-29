@@ -6,10 +6,6 @@ import uim.apps;
 class DAPPDateFormGroup : DAPPFormGroup {
   mixin(APPFormComponentThis!("APPDateFormGroup", true));
 
-  override void initialize() {
-    super.initialize;
-  }
-
   override DH5Obj h5Input(STRINGAA options = null) {
     super.h5Input(options);
 
@@ -41,7 +37,4 @@ class DAPPDateFormGroup : DAPPFormGroup {
       // 
       }}
 }
-auto APPDateFormGroup() { return new DAPPDateFormGroup; }
-auto APPDateFormGroup(DAPPForm myForm) { return new DAPPDateFormGroup(myForm); }
-auto APPDateFormGroup(DOOPEntity myEntity) { return new DAPPDateFormGroup(myEntity); }
-auto APPDateFormGroup(DAPPForm myForm, DOOPEntity myEntity) { return new DAPPDateFormGroup(myForm, myEntity); }
+mixin(APPFormComponentCalls!("APPDateFormGroup", true));

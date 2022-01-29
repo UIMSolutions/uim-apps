@@ -21,13 +21,8 @@ class DAPPEntityCreateView : DAPPEntityView {
           APPEntityFormHeader(this.form).actions([["cancel", "save"], ["print", "export"]]))
         .formBody(
           APPEntityFormBody(this.form)
-          .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"]) 
+          .fields(["name", "display", "description"]) 
       );
-  }
-
-  override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntityCreateView~"::DAPPEntityCreateView:beforeH5");    
-    super.beforeH5(options);    
   }
 }
 mixin(APPViewCalls!("APPEntityCreateView"));

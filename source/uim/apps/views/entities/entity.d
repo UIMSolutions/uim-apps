@@ -17,7 +17,22 @@ class DAPPEntityView : DAPPView, IAPPWithEntity {
         APPEntityForm(this));
   }
 
-  mixin(OProperty!("DOOPEntity", "entity"));
+  DOOPEntity _entity;
+  @property DOOPEntity entity() { 
+    return _entity; 
+  }
+
+  @property O entity(this O)(DOOPEntity newEntity) {
+    _entity = newEntity;
+
+    if (auto entityForm = cast(DAPPEntityForm)this.form) {
+      debug writeln("Found entityView");
+      entityForm.entity(this.entity);
+    }
+
+    return cast(O)this;
+  }
+
 
   mixin(OProperty!("CRUDModes", "crudMode"));
   mixin(OProperty!("string", "rootPath"));
@@ -26,7 +41,7 @@ class DAPPEntityView : DAPPView, IAPPWithEntity {
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPEntityView~"::DAPPEntityView:beforeH5");   
-    super.beforeH5(options);      
+    super.beforeH5(options);
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {

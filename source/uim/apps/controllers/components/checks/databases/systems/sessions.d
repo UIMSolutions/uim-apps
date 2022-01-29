@@ -23,7 +23,7 @@ class DAPPCheckDatabaseHasSessions : DAPPCheckDatabaseHasSystems {
     if (!this.database.hasTenant("systems")) {
       debug writeln("tenant systsms missing"); }
 
-    if (!this.database["systems"].hasCollection("sessions")) { // collection sessions missing 
+    if (!this.database["systems"].hasCollection("system_sessions")) { // collection sessions missing 
       this.error("collection_sessions_missing");
       return false; }
     

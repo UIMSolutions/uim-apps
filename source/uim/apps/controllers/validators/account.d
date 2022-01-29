@@ -28,7 +28,7 @@ class DAPPValidatorAccount : DAPPValidator {
 
         accountIdParameter = reqParameters["accountId"];
         if (database) { // Look into database
-          auto dbAccount = database["systems", "accounts"].findOne(UUID(accountIdParameter));
+          auto dbAccount = database["systems", "system_accounts"].findOne(UUID(accountIdParameter));
           if (dbAccount) {
             // found account :-)
             dbAccount.lastAccessedOn = toTimestamp(now);

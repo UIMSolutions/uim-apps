@@ -26,14 +26,14 @@ class DAPPLogin2ActionController : DAPPActionController {
 
     auto tenant = database["systems"];
 
-    auto account = tenant["accounts"].findOne(["name":appSession.login["accountName"]]);
+    auto account = tenant["system_accounts"].findOne(["name":appSession.login["accountName"]]);
     if (!account) {
       this.error("database_account_missing");
       return;
     }
     appSession.account = account;
 
-    auto password = tenant["passwords"].findOne(["accountId": account.id.toString]);
+    auto password = tenant["system_passwords"].findOne(["accountId": account.id.toString]);
     if (!account) {
       this.error("database_password_missing");
       return;

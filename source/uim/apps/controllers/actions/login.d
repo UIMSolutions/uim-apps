@@ -38,10 +38,10 @@ class DAPPLoginActionController : DAPPActionController {
     debug writeln(moduleName!DAPPLoginActionController~":DAPPLoginActionController::beforeResponse -> New login entity");
     
     auto tenant = database["systems"];
-    auto colLogins = tenant["logins"];
+    auto colLogins = tenant["system_logins"];
 
     debug writeln("x");
-    auto login = colLogins.createEntity;
+    auto login = colLogins.cloneEntity;
     debug writeln("xx");
     login.lastAccessedOn = lastAccessedOn;
     debug writeln("xxx");
@@ -58,8 +58,8 @@ class DAPPLoginActionController : DAPPActionController {
     }
 
     debug writeln(moduleName!DAPPLoginActionController~":DAPPLoginActionController::beforeResponse -> New session entity");
-    auto colSessions = tenant["sessions"];
-    auto session = colSessions.createEntity;
+    auto colSessions = tenant["system_sessions"];
+    auto session = colSessions.cloneEntity;
     session.lastAccessedOn = lastAccessedOn;
     session["loginId"] = login.id;    
     colSessions.insertOne(session);

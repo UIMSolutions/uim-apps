@@ -12,7 +12,7 @@ class DAPPCreatorLogin : DAPPCreator {
       .id(randomUUID)
       .name(parameters.get("login", "login"~to!string(now)));
     entity["accountName"] = parameters.getValue(["entity_accountName", "accountName"], "");
-    if (database) database["systems", "logins"].insertOne(entity);        
+    if (database) database["systems", "system_logins"].insertOne(entity);        
 
     return entity;
   }

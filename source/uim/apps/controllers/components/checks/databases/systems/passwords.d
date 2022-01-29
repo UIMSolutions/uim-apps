@@ -17,7 +17,7 @@ class DAPPCheckDatabaseHasPasswords : DAPPCheckDatabaseHasSystems {
     debug writeln(moduleName!DAPPCheckDatabaseHasPasswords~":DAPPCheckDatabaseHasPasswords::check");
     if (!super.execute(options)) { return false; }
 
-    if (!this.database.hasCollection("systems", "passwords")) { // collection passwords missing 
+    if (!this.database.hasCollection("systems", "system_passwords")) { // collection passwords missing 
       this.error("collection_passwords_missing");
       return false; 
     }

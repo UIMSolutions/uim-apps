@@ -17,7 +17,7 @@ class DAPPCheckDatabaseHasAccounts : DAPPCheckDatabaseHasSystems {
     debug writeln(moduleName!DAPPCheckDatabaseHasAccounts~":DAPPCheckDatabaseHasAccounts::check");
     if (!super.execute(options)) { return false; }
 
-    if (!this.database.hasCollection("systems", "accounts")) { // collection accounts missing 
+    if (!this.database.hasCollection("systems", "system_accounts")) { // collection accounts missing 
       this.error("collection_accounts_missing");
       return false; }
     

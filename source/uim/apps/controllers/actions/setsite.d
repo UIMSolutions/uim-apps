@@ -29,7 +29,7 @@ class DAPPSelectSiteActionController : DAPPActionController {
     auto session = appSession.session; 
     debug writeln(session ? "Found session" : "Missing session");
 
-    auto site = database["systems"]["sites"].findOne(["id":options.get("siteId", null)]);
+    auto site = database["systems"]["system_sites"].findOne(["id":options.get("siteId", null)]);
     debug writeln(site ? "Found site" : "Missing site");
 
     if (session && site) {

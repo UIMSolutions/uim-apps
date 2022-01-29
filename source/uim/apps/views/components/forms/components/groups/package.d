@@ -5,6 +5,7 @@ import uim.apps;
 
 // Main
 public import uim.apps.views.components.forms.components.groups.group;
+public import uim.apps.views.components.forms.components.groups.handler;
 
 // Modules
 public import uim.apps.views.components.forms.components.groups.checkbox;

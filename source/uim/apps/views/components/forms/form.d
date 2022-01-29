@@ -4,14 +4,7 @@ module uim.apps.views.components.forms.form;
 import uim.apps;
 
 class DAPPForm : DAPPViewComponent {
-  this() { super(); }
-  /* this(string myPath, CRUDModes crudMode) {
-    this();
-    this
-    .rootPath(myPath).crudMode(crudMode)
-    .action(myPath~"/actions/"~to!string(crudMode).toLower);
-  } */
-  this(DAPPView myView) { this().view(myView); }
+  mixin(APPFormThis!("APPForm"));
 
   override void initialize() {
     super.initialize;
@@ -123,5 +116,4 @@ class DAPPForm : DAPPViewComponent {
     return [_col].toH5;
   }  
 }
-auto APPForm() { return new DAPPForm; }
-auto APPForm(DAPPView myView) { return new DAPPForm(myView); }
+mixin(APPFormCalls!("APPForm"));

@@ -10,7 +10,8 @@ class DAPPEntityForm : DAPPForm, IAPPWithEntity {
     super.initialize;
 
     this
-    .formBody(APPEntityFormBody(this));
+      .formBody(
+        APPEntityFormBody(this));
   }
 
   mixin(OProperty!("DOOPEntity", "entity"));
@@ -19,9 +20,11 @@ class DAPPEntityForm : DAPPForm, IAPPWithEntity {
     debugMethodCall(moduleName!DAPPEntityForm~"::DAPPEntityForm:beforeH5"); 
     debug writeln("this.entity -> ", this.entity ? this.entity.id.toString : " 'null' " );
     super.beforeH5(options);
+    if (hasError || "redirect" in options) { return; }
 
-    if (auto entityView = cast(IAPPWithEntity)this.view) {
-      this.entity(entityView.entity);
+    if (auto entityFormBody = cast(DAPPEntityFormBody)this.formBody) {
+      debug writeln("Found entityFormBody");
+      entityFormBody.entity(this.entity);
     }
   }
 }

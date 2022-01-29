@@ -29,7 +29,7 @@ class DAPPCreateActionController : DAPPActionController {
       return; }
 
     auto entity = collection
-      .createEntity
+      .cloneEntity
         .fromRequest(options)
         .save; 
 
