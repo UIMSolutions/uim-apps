@@ -10,14 +10,10 @@ class DAPPCreatorSite : DAPPCreator {
   override DOOPEntity create(STRINGAA parameters) {
     auto col = database["systems", "system_sites"];
 
-    if (col.notNull) {
-      return col
-        .cloneEntity
-        .name(parameters.get("site", "site"~to!string(now)))  
-        .save; 
-    }       
-
-    return null;
+    return  col.notNull ? col
+      .createFromTemplate
+      .name(parameters.get("site", "site"~to!string(now)))  
+      .save : null;
   }
 
   override Json message(STRINGAA parameters) {

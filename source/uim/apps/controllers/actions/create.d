@@ -29,9 +29,9 @@ class DAPPCreateActionController : DAPPActionController {
       return; }
 
     auto entity = collection
-      .cloneEntity
-        .fromRequest(options)
-        .save; 
+      .createFromTemplate
+      .fromRequest(options)
+      .save; 
 
     options["redirect"] = pgPath~"/view?id="~entity.id.toString; 
   }
