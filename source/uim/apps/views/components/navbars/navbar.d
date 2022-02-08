@@ -90,6 +90,7 @@ class DAPPFirstNavbar : DAPPViewComponent {
 
   mixin(OProperty!("string", "appLogo"));
   mixin(OProperty!("string", "appTitle"));
+  mixin(OProperty!("bool", "requiresLogin"));
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
     super.toH5(options);
@@ -163,8 +164,12 @@ auto userNavitem(STRINGAA options = null) {
 class DAPPSecondNavbar : DAPPViewComponent {
   mixin(APPViewComponentThis!("APPSecondNavbar"));
 
-  mixin(OProperty!("DAPPNavbarSlot[]", "slots"));
+  mixin(OProperty!("DAPPNavbarSlot[]", "leftSlots"));
+  mixin(OProperty!("DAPPNavbarSlot[]", "rightSlots"));
+  mixin(OProperty!("DAPPNavbarSlot[]", "leftSlotsWithLogin"));
+  mixin(OProperty!("DAPPNavbarSlot[]", "rightSlotsWithLogin"));
   mixin(OProperty!("string[string]", "brand"));
+  mixin(OProperty!("string[string]", "brandWithLogin"));
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
     super.toH5(options);
@@ -177,18 +182,45 @@ class DAPPSecondNavbar : DAPPViewComponent {
       }
     }
 
-    string navslots;
+    string navLeftSlots;
+    string navRightSlots;
+    auto selNavitem = options.get("selNavitem", "");
+    
     if (isLogin) {
       // debug writeln("has sessionId -> ", reqParameters.get("sessionId", ""));
-      auto selNavitem = options.get("selNavitem", "");
-      foreach(slot; this.slots) {
+
+      foreach(slot; this.leftSlotsWithLogin) {
         if (!slot) { continue; }
          //debug writeln(slot);
         const active = (selNavitem.length > 0) && (slot.id == selNavitem);
         slot.active(active);
-        navslots ~= slot.toH5(options).toString;
+        navLeftSlots ~= slot.toH5(options).toString;
       }
-      // debug writeln("navslots -> ", navslots);
+
+      foreach(slot; this.rightSlotsWithLogin) {
+        if (!slot) { continue; }
+         //debug writeln(slot);
+        const active = (selNavitem.length > 0) && (slot.id == selNavitem);
+        slot.active(active);
+        navRightSlots ~= slot.toH5(options).toString;
+      }
+    }
+    else { // no login
+      foreach(slot; this.leftSlots) {
+        if (!slot) { continue; }
+         //debug writeln(slot);
+        const active = (selNavitem.length > 0) && (slot.id == selNavitem);
+        slot.active(active);
+        navLeftSlots ~= slot.toH5(options).toString;
+      }
+
+      foreach(slot; this.rightSlots) {
+        if (!slot) { continue; }
+         //debug writeln(slot);
+        const active = (selNavitem.length > 0) && (slot.id == selNavitem);
+        slot.active(active);
+        navRightSlots ~= slot.toH5(options).toString;
+      }
     }
     // debug writeln("return content...");
     
@@ -197,8 +229,11 @@ class DAPPSecondNavbar : DAPPViewComponent {
         H5Div("navbar-menu", ["collapse navbar-collapse"], 
           H5Div("navbar-2", ["navbar navbar-dark"], ["style":"background-color:#35A6FF"], 
             H5Div(["container-fluid"], 
-              H5Ul("navbarnav-2", ["navbar-nav"], 
-                navslots
+              H5Ul("navbarnav-2left", ["navbar-nav"], 
+                navLeftSlots
+              ),
+              H5Ul("navbarnav-2right", ["navbar-nav ms-auto"], 
+                navRightSlots
               )
             )
           )
@@ -207,7 +242,6 @@ class DAPPSecondNavbar : DAPPViewComponent {
   }
 }
 mixin(APPViewComponentCalls!("APPSecondNavbar"));
-auto APPSecondNavbar(DAPPNavbarSlot[] slots) { return APPSecondNavbar.slots(slots); }
 
 /*
 BS5NavItem(["active"], 

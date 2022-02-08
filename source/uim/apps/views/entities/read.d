@@ -19,11 +19,14 @@ class DAPPEntityReadView : DAPPEntityView {
       .pageHeader(
         APPPageHeader(this).actions(["refresh", "list", "create"]))
       .form(
-        APPEntityForm(this)
-          .crudMode(CRUDModes.Read))
+        APPEntityForm(this))
       .form
         .formHeader(
           APPEntityFormHeader(this.form).actions([["edit", "version", "delete"], ["print", "export"]]));
+    
+    this      
+      .form
+        .crudMode(CRUDModes.Read);
   }
 
   override void beforeH5(STRINGAA options = null) {

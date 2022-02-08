@@ -16,14 +16,9 @@ class DAPPForm : DAPPViewComponent {
     .method("post");
   }
 
-  mixin(OProperty!("CRUDModes", "crudMode"));
-  
   mixin(OProperty!("DAPPFormHeader", "formHeader"));
   mixin(OProperty!("DAPPFormBody", "formBody"));
   mixin(OProperty!("DAPPFormFooter", "formFooter"));
-
-  mixin(OProperty!("string", "rootPath"));
-
   mixin(OProperty!("string[string]", "defaults"));
   mixin(OProperty!("string[]", "fields"));
   mixin(OProperty!("DAPPPanes", "panes"));
@@ -35,6 +30,33 @@ class DAPPForm : DAPPViewComponent {
   mixin(OProperty!("string", "headerTitle"));
   mixin(OProperty!("string", "bodyTitle"));
   mixin(OProperty!("string", "footerTitle"));
+
+  // #region crudMode
+    CRUDModes _crudMode;
+    CRUDModes crudMode() { return _crudMode; }
+    O crudMode(this O)(CRUDModes newCrudMode) {
+      _crudMode = newCrudMode;
+
+      if (formHeader) formHeader.crudMode(this.crudMode);
+      if (formBody) formBody.crudMode(this.crudMode);
+      if (formFooter) formFooter.crudMode(this.crudMode);
+
+      return cast(O)this; 
+    }
+  // #endregion crudMode
+
+  string _rootPath;
+  string rootPath() { return _rootPath; }
+  O rootPath(this O)(string newRootPath) {
+    _rootPath = newRootPath;
+
+    if (formHeader) formHeader.rootPath(this.rootPath);
+    if (formBody) formBody.rootPath(this.rootPath);
+    if (formFooter) formFooter.rootPath(this.rootPath);
+
+    return cast(O)this; 
+  }
+
 
   override DAPPViewComponent clone() {
     return
