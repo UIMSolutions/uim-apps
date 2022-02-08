@@ -108,7 +108,6 @@ class DAPPLayout {
   }
 
 // #region render
-
 	void beforeRender(STRINGAA options = null) {
 		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::beforeRender");
 	}
