@@ -1,10 +1,15 @@
+/***********************************************************************************************************************
+*	Copyright: © 2017-2022 UI Manufaktur UG / 2022 Ozan Nurettin Süel (sicherheitsschmiede)                              *
+*	License: Licensed under Apache 2 [https://apache.org/licenses/LICENSE-2.0.txt]                                       *
+*	Authors: UI Manufaktur UG Team, Ozan Nurettin Süel (Sicherheitsschmiede)										                         * 
+***********************************************************************************************************************/
 module uim.apps.views.components.pages.components.titles.title;
 
 @safe:
 import uim.apps;
 
 class DAPPPageTitle : DAPPViewComponent { 
-  this()  { super(); }
+  mixin(APPViewComponentThis!("APPPageTitle"));
 
   override DH5Obj[] toH5(STRINGAA options = null) { 
     return
@@ -25,4 +30,4 @@ class DAPPPageTitle : DAPPViewComponent {
       )].toH5;  
   }
 }
-auto APPPageTitle() { return new DAPPPageTitle; }
+mixin(APPViewComponentCalls!("APPPageTitle"));

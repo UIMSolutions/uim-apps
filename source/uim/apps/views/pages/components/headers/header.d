@@ -1,11 +1,15 @@
+/***********************************************************************************************************************
+*	Copyright: © 2017-2022 UI Manufaktur UG / 2022 Ozan Nurettin Süel (sicherheitsschmiede)                              *
+*	License: Licensed under Apache 2 [https://apache.org/licenses/LICENSE-2.0.txt]                                       *
+*	Authors: UI Manufaktur UG Team, Ozan Nurettin Süel (Sicherheitsschmiede)										                         * 
+***********************************************************************************************************************/
 module uim.apps.views.pages.components.headers.header;
 
 @safe:
 import uim.apps;
 
 class DAPPPageHeader : DAPPViewComponent {
-  this() { super(); }
-  this(DAPPView myView) { this().view(myView); }
+  mixin(APPViewComponentThis!("APPPageHeader"));
 
   mixin(OProperty!("string", "id"));
   mixin(OProperty!("string", "rootPath"));
@@ -67,8 +71,7 @@ class DAPPPageHeader : DAPPViewComponent {
       ].toH5;
   }
 }
-auto APPPageHeader() { return new DAPPPageHeader(); }
-auto APPPageHeader(DAPPView myView) { return new DAPPPageHeader(myView); }
+mixin(APPViewComponentCalls!("APPPageHeader"));
 auto APPPageHeader(string rootPath) { return APPPageHeader.rootPath(rootPath); }
 auto APPPageHeader(string rootPath, string preTitle) { return APPPageHeader.rootPath(rootPath).preTitle(preTitle); }
 auto APPPageHeader(string rootPath, string preTitle, string title) { return APPPageHeader.rootPath(rootPath).preTitle(preTitle).title(title); }
