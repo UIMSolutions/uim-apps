@@ -16,3 +16,16 @@ uim-apps-test-*
 source/dub.json
 dub.selections.json
 dub.selections.json
+dub.selections.json
+source/dub.json
+tests/entities/024e745b-9c4a-4f5f-aac7-38012f594685/1.json
+tests/entities/15de912a-5c78-412d-972c-552e1c1292c5/1.json
+tests/entities/2eab869b-4e0d-49ad-8c2b-97e3ef7e780d/1.json
+tests/entities/54dd130e-5bcc-484e-acc4-2bc0171fab86/1.json
+tests/entities/62adf64d-4355-4802-a612-1a2a10fbffc9/1.json
+tests/entities/7bd538a3-ad02-4bc6-bb79-69f60724bebb/1.json
+tests/entities/8797b927-8ae8-4c48-a4e1-0252e435a432/1.json
+tests/entities/d9ce2b84-6353-4450-a1b0-19ec6480d7da/1.json
+tests/entities/da324633-30ee-4c57-8b00-fa0bffa626a4/1.json
+tests/entities/de90b0ba-c69d-48bd-a61f-1ef357b53af7/1.json
+tests/entities/df01e2e1-54d8-4336-a0f6-658ab4898c70/1.json
