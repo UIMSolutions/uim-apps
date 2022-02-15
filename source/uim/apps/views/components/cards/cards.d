@@ -8,10 +8,6 @@ class DAPPCardsViewComponent : DAPPViewComponent {
 
   mixin(OProperty!("DH5Obj[]", "cards"));
 
-  override void initialize() {
-    super.initialize;
-  }
-
   override DH5Obj[] toH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPCardsViewComponent~":DAPPCardsViewComponent::toH5");
     super.toH5(options);
