@@ -4,12 +4,38 @@ module uim.apps.views.components.lists.list;
 import uim.apps;
 
 class DAPPListComponent : DAPPViewComponent {
-  this() { super(); }
-  this(DAPPView myView) { this().view(myView); }
+  mixin(APPViewComponentThis!("APPListComponent"));
 
   mixin(OProperty!("DOOPEntity[]", "entities"));
   mixin(SProperty!("DH5Obj", "noEntities"));
   mixin(SProperty!("DOOPEntity[UUID]", "themesById"));
+
+  mixin(OProperty!("DH5Obj[]", "header"));
+  mixin(OProperty!("DH5Obj[]", "content"));
+  mixin(OProperty!("DH5Obj[]", "footer"));
+
+  mixin(OProperty!("DAPPListEntityComponent", "itemTemplate"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+      .header([BS5CardTitle("Last commits")].toH5)
+      .content([
+        BS5ListGroup(["list-group-flush", "list-group-hoverable"])
+          .item(
+            BS5Row(["align-items-center"],
+              BS5Col(["col-auto"], 
+                H5Span(["badge bg-red"])),
+              BS5Col(["col-auto"], 
+                H5A(["href":"#"],
+                  H5Span(["avatar"], ["style":"background-image: url(./static/avatars/000m.jpg)"]))),
+              BS5Col(["col", "text-truncate"],
+                H5A(["text-body d-block"], ["href":"#"], "Paweł Kuna"), 
+                H5Small(["d-block", "text-muted", "text-truncate", "mt-n1"], "Change deprecated html tags to text decoration classes (#29604)")),
+              BS5Col(["col-auto"], 
+                H5A(["list-group-item-actions"], ["href":"#"], tablerIcon("star")))))].toH5);
+  }
 
   override DH5Obj[] toH5(STRINGAA options = null) { 
     super.beforeH5(options);
@@ -17,11 +43,20 @@ class DAPPListComponent : DAPPViewComponent {
 
     debug writeln("Found entities: ", entities.length);
 
-    DH5Obj[] inners;
+    auto listGroup = BS5ListGroup(["list-group-flush", "list-group-hoverable"]);
+    foreach(entity; this.entities) {
+      listGroup.item(itemTemplate.entity(entity).toH5(options));
+    }
+
+    this
+      .content([listGroup].toH5);
     
-    return [
-      BS5Row(["row-cards"], ["data-masonry":"{&quot;percentPosition&quot;: true }"], inners)].toH5; 
+    auto card = BS5Card;
+    if (this.header) card.header(this.header);
+    if (this.content) card(this.content);
+    if (this.footer) card.footer(this.footer);
+
+    return [card].toH5;
   }
 }
-auto APPListComponent() { return new DAPPListComponent(); }
-auto APPListComponent(DAPPView myView) { return new DAPPListComponent(myView); }
+mixin(APPViewComponentCalls!("APPListComponent"));

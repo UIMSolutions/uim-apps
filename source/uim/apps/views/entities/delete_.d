@@ -11,9 +11,8 @@ class DAPPEntityDeleteView : DAPPEntityView {
 
     this
       .crudMode(CRUDModes.Delete)
-      .pageHeader(
-        APPPageHeader(this)
-          .actions(["refresh", "list", "create"]))
+      .header(
+        APPPageHeader(this).actions(["refresh", "list", "create"]))
       .form(
         APPEntityForm(this)
           .crudMode(CRUDModes.Delete))

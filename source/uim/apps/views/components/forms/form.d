@@ -57,15 +57,9 @@ class DAPPForm : DAPPViewComponent {
     return cast(O)this; 
   }
 
-
-  override DAPPViewComponent clone() {
-    return
-      APPForm;
-  } 
-
   override DAPPViewComponent copy() {
     return
-      APPForm
+      (cast(DAPPForm)copy)
         .crudMode(this.crudMode)
         .formHeader(this.formHeader)
         .formBody(this.formBody)

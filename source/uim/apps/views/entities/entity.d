@@ -11,7 +11,7 @@ class DAPPEntityView : DAPPView, IAPPWithEntity {
     super.initialize;
 
     this
-      .pageHeader(
+      .header(
         APPPageHeader(this).actions(["refresh", "list", "create"]))
       .form(
         APPEntityForm(this));
@@ -50,10 +50,10 @@ class DAPPEntityView : DAPPView, IAPPWithEntity {
 
     return [
       H5Div(["container-xl"],
-        (pageHeader ? pageHeader.toH5(options) : null)~ 
+        (this.header ? this.header.toH5(options) : null)~ 
         (messages ? BS5Row("messages", ["mb-2"]) : null)~
         BS5Row(["row-deck row-cards mb-2"], form.toH5(options))~
-        (pageFooter ? pageFooter.toH5(options) : null)
+        (this.footer ? this.footer.toH5(options) : null)
       )].toH5;             
   }
 }

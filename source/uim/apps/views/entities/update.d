@@ -10,7 +10,7 @@ class DAPPEntityUpdateView : DAPPEntityView {
     super.initialize;
 
     this
-      .pageHeader(
+      .header(
         APPPageHeader(this) 
           .actions(["refresh", "list", "create"]))
       .form(

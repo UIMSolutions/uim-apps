@@ -11,13 +11,10 @@ class DAPPEntityReadView : DAPPEntityView {
 
     this
       .crudMode(CRUDModes.Read)
-      .pageHeader(
-        APPPageHeader(this)
-          .actions(["refresh", "create"]));
+      .header(
+        APPPageHeader(this).actions(["refresh", "list", "create"]));
 
     this
-      .pageHeader(
-        APPPageHeader(this).actions(["refresh", "list", "create"]))
       .form(
         APPEntityForm(this))
       .form
@@ -33,12 +30,10 @@ class DAPPEntityReadView : DAPPEntityView {
     debugMethodCall(moduleName!DAPPEntityView~"::DAPPEntityView:beforeH5");    
     super.beforeH5(options);   
   }
-
 }
 mixin(APPViewCalls!("APPEntityReadView"));
 
-unittest {
-  version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
     //
-  }
-}
+}}

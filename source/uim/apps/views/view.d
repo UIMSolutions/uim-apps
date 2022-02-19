@@ -8,10 +8,6 @@ module uim.apps.views.view;
 @safe:
 import uim.apps;
 
-enum LeftBreakpoints = "col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2";
-enum RightBreakpoints = "col-12 col-lg-3 col-xl-2";
-enum MiddleBreakpoints = "col-12 col-sm-6 col-md-8 col-lg-6 col-xl-8";
-
 class DAPPView : IAPPEventDispatcher {
   this() { initialize; }
   this(DAPPPageController myController) { this().controller(myController); }
@@ -23,11 +19,14 @@ class DAPPView : IAPPEventDispatcher {
     debugMethodCall(moduleName!DAPPView~"::DAPPView:initialize");   
 
     this
-    .name("APPView") 
-    .links(APPLinkContainer) 
-    .metas(APPMetaContainer) 
-    .scripts(APPScriptContainer) 
-    .styles(APPStyleContainer); 
+      .name("APPView") 
+      .links(APPLinkContainer) 
+      .metas(APPMetaContainer) 
+      .scripts(APPScriptContainer) 
+      .styles(APPStyleContainer)
+      .leftClasses(["d-none", "d-md-block", "col-12", "col-sm-6", "col-md-4", "col-lg-3", "col-xl-2"])
+      .mainClasses(["col-12", "col-md-8", "col-lg-6", "col-xl-8"]) 
+      .rightClasses(["d-none", "d-lg-block", "col-12", "col-sm-6", "col-md-4", "col-lg-3", "col-xl-2"]);
     }
     
     mixin(OProperty!("DAPPPageController", "controller")); 
@@ -36,11 +35,14 @@ class DAPPView : IAPPEventDispatcher {
 
     // view components
     mixin(OProperty!("DAPPViewComponent", "messages")); 
-    mixin(OProperty!("DAPPPageHeader", "pageHeader")); 
-    mixin(OProperty!("DAPPPageFooter", "pageFooter")); 
-    mixin(OProperty!("DAPPViewComponent", "pageSideLeft")); 
-    mixin(OProperty!("DAPPViewComponent", "pageSideRight")); 
-    mixin(OProperty!("DAPPViewComponent", "pageContent")); 
+    mixin(OProperty!("DAPPPageHeader", "header")); 
+    mixin(OProperty!("DAPPPageFooter", "footer")); 
+    mixin(OProperty!("string[]", "leftClasses")); 
+    mixin(OProperty!("DAPPViewComponent", "leftComponent")); 
+    mixin(OProperty!("string[]", "mainClasses")); 
+    mixin(OProperty!("DAPPViewComponent", "mainComponent")); 
+    mixin(OProperty!("string[]", "rightClasses")); 
+    mixin(OProperty!("DAPPViewComponent", "rightComponent")); 
 
   // #region error handling
     mixin(OProperty!("string", "error"));
@@ -85,15 +87,15 @@ class DAPPView : IAPPEventDispatcher {
 
     return [
       H5Main(["content"], ["style":"margin-bottom:200px"],
-          (pageHeader ? pageHeader.toH5(options) : null)~
+          (this.header ? this.header.toH5(options) : null)~
           BS5Row(["mt-2 row-cards"], 
               BS5Container.fluid()
-              .row("messages", ["section"], messages ? messages.toH5(options) : null)
+              .row("messages", ["section"], this.messages ? this.messages.toH5(options) : null)
               .row(["section"], 
-                  BS5Col([LeftBreakpoints], pageSideLeft ? pageSideLeft.toH5(options) : null),
-                  BS5Col([MiddleBreakpoints], pageContent ? pageContent.toH5(options) : null),
-                  BS5Col([RightBreakpoints], pageSideRight ? pageSideRight.toH5(options) : null)))
-          (pageFooter ? pageFooter.toH5(options) : null))].toH5;
+                  BS5Col(this.leftClasses, this.leftComponent ? this.leftComponent.toH5(options) : null),
+                  BS5Col(this.mainClasses, this.mainComponent ? this.mainComponent.toH5(options) : null),
+                  BS5Col(this.rightClasses, this.rightComponent ? this.rightComponent.toH5(options) : null)))
+          (this.footer ? this.footer.toH5(options) : null))].toH5;
 
 /* H5Div(["wrapper"], 
         head~

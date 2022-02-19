@@ -10,6 +10,7 @@ class DAPPViewComponent {
   mixin(OProperty!("string", "debugPrefix")); 
   mixin(OProperty!("string", "name")); 
   mixin(OProperty!("bool", "dynamic")); 
+  mixin(OProperty!("bool", "isNull")); 
   mixin(OProperty!("string", "jsCode")); 
   mixin(OProperty!("STRINGAA", "style")); 
   mixin(OProperty!("bool", "changed")); 
@@ -24,14 +25,13 @@ class DAPPViewComponent {
     .dynamic(true); 
   }
 
-  DAPPViewComponent clone() {
-    return 
-      APPViewComponent;
+  O clone(this O)() {
+    return new O;
   }
 
   DAPPViewComponent copy() {
     return
-      APPViewComponent
+      clone
         .debugPrefix(this.debugPrefix) 
         .name(this.name)
         .dynamic(this.dynamic)
@@ -106,8 +106,8 @@ class DAPPViewComponent {
     void beforeRender(STRINGAA options = null) {
       debugMethodCall(debugPrefix~"beforeRender"); 
     }
-    unittest {
-      version(uim_html) {
+    version(test_uim_apps) {
+      unittest {
         // TODO Add Test
         }}
 
@@ -115,8 +115,8 @@ class DAPPViewComponent {
       debugMethodCall(debugPrefix~"afterRender"); 
       return content; // No changes
     }
-    unittest {
-      version(uim_html) {
+    version(test_uim_apps) {
+      unittest {
         // TODO Add Test
         }}
 
@@ -138,11 +138,10 @@ class DAPPViewComponent {
       if (hasError) { return null; }
 
       return result; }
-    unittest {
-      version(uim_html) {
+    version(test_uim_apps) {
+      unittest {
         /// TODO
       }}
     // #endregion render 
 }
-auto APPViewComponent() { return new DAPPViewComponent; }
-auto APPViewComponent(DAPPView myView) { return new DAPPViewComponent(myView); }
+mixin(APPViewComponentCalls!("APPViewComponent"));

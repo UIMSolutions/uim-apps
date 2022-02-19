@@ -12,9 +12,8 @@ class DAPPEntitiesListView : DAPPView, IAPPWithEntities {
     this
     .form(
       APPEntitiesListForm(this))
-    .pageHeader(
-      APPPageHeader(this)
-        .actions(["refresh", "create"]));
+    .header(
+      APPPageHeader(this).actions(["refresh", "create"]));
   }
 
   mixin(OProperty!("DOOPEntity[]", "entities"));
@@ -41,10 +40,10 @@ class DAPPEntitiesListView : DAPPView, IAPPWithEntities {
 
     return [
       H5Div(["container-xl"],
-        (pageHeader ? pageHeader.toH5(options) : null)~ 
+        (this.header ? this.header.toH5(options) : null)~ 
         (messages ? BS5Row("messages", ["mb-2"]) : null)~
         BS5Row(["row-deck row-cards mb-2"], form.toH5(options))~
-        (pageFooter ? pageFooter.toH5(options) : null)
+        (this.footer ? this.footer.toH5(options) : null)
       )].toH5;             
   }
 }

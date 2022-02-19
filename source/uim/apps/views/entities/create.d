@@ -11,7 +11,7 @@ class DAPPEntityCreateView : DAPPEntityView {
     super.initialize;
 
     this
-      .pageHeader( // set page header
+      .header( // set page header
         APPPageHeader(this).actions(["refresh", "list"]))
       .form( // Set form 
         APPEntityForm(this)
