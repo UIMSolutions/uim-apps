@@ -1,4 +1,4 @@
-module uim.apps.views.components.forms.entities.list;
+module uim.apps.views.components.forms.crud.list;
 
 @safe:
 import uim.apps;
@@ -10,12 +10,12 @@ class DAPPEntitiesListForm : DAPPForm, IAPPWithEntities {
     super.initialize;
 
     this
-    .formHeader(APPFormHeader(this).mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["print", "export"]]))
-    .formBody(APPEntitiesFormBody(this));
+    .header(APPheader(this).mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["print", "export"]]))
+    .body_(APPEntitiesbody_(this));
 
     /*       .form
-        .formHeader(APPEntitiesFormHeader(this.form).rootPath("/cms/blogs").mainTitle("Blogs").subTitle("Blogs anzeigen").actions([["print", "export"]]))
-        .formBody(APPListFormBody(this.form).rootPath("/cms/blogs"));
+        .header(APPEntitiesheader(this.form).rootPath("/cms/blogs").mainTitle("Blogs").subTitle("Blogs anzeigen").actions([["print", "export"]]))
+        .body_(APPListbody_(this.form).rootPath("/cms/blogs"));
  */
   }
 
@@ -38,9 +38,9 @@ class DAPPEntitiesListForm : DAPPForm, IAPPWithEntities {
     DBS5Col _col = BS5Col(["col-12"]);
     _col(
       H5Form("entityForm", ["card"], ["method":method, "action":action], 
-        (formHeader ? formHeader.toH5(options) : null)~
-        (formBody ? formBody.toH5(options) : null)~
-        (formFooter ? formFooter.toH5(options) : null)
+        (this.header ? this.header.toH5(options) : null)~
+        (this.body_ ? this.body_.toH5(options) : null)~
+        (this.footer ? this.footer.toH5(options) : null)
       ));
     
     return [_col].toH5;

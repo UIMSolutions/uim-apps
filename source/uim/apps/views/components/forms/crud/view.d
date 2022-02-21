@@ -1,4 +1,4 @@
-module uim.apps.views.components.forms.entities.read;
+module uim.apps.views.components.forms.crud.read;
 
 @safe:
 import uim.apps;

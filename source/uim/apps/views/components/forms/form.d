@@ -10,15 +10,16 @@ class DAPPForm : DAPPViewComponent {
     super.initialize;
 
     this
-    .crudMode(CRUDModes.Read)
-    .formHeader(APPFormHeader)
-    .formBody(APPFormBody)
-    .method("post");
+      .crudMode(CRUDModes.Read)
+      .header(APPheader)
+      .body_(APPbody_)
+      .method("post");
   }
 
-  mixin(OProperty!("DAPPFormHeader", "formHeader"));
-  mixin(OProperty!("DAPPFormBody", "formBody"));
-  mixin(OProperty!("DAPPFormFooter", "formFooter"));
+  mixin(OProperty!("DAPPFormHeader", "header"));
+  mixin(OProperty!("DAPPFormBody", "body_"));
+  mixin(OProperty!("DAPPFormFooter", "footer"));
+
   mixin(OProperty!("string[string]", "defaults"));
   mixin(OProperty!("string[]", "fields"));
   mixin(OProperty!("DAPPPanes", "panes"));
@@ -37,9 +38,9 @@ class DAPPForm : DAPPViewComponent {
     O crudMode(this O)(CRUDModes newCrudMode) {
       _crudMode = newCrudMode;
 
-      if (formHeader) formHeader.crudMode(this.crudMode);
-      if (formBody) formBody.crudMode(this.crudMode);
-      if (formFooter) formFooter.crudMode(this.crudMode);
+      if (header) header.crudMode(this.crudMode);
+      if (body_) body_.crudMode(this.crudMode);
+      if (footer) footer.crudMode(this.crudMode);
 
       return cast(O)this; 
     }
@@ -50,9 +51,9 @@ class DAPPForm : DAPPViewComponent {
   O rootPath(this O)(string newRootPath) {
     _rootPath = newRootPath;
 
-    if (formHeader) formHeader.rootPath(this.rootPath);
-    if (formBody) formBody.rootPath(this.rootPath);
-    if (formFooter) formFooter.rootPath(this.rootPath);
+    if (header) header.rootPath(this.rootPath);
+    if (body_) body_.rootPath(this.rootPath);
+    if (footer) footer.rootPath(this.rootPath);
 
     return cast(O)this; 
   }
@@ -61,9 +62,9 @@ class DAPPForm : DAPPViewComponent {
     return
       (cast(DAPPForm)copy)
         .crudMode(this.crudMode)
-        .formHeader(this.formHeader)
-        .formBody(this.formBody)
-        .formFooter(this.formFooter)
+        .header(this.header)
+        .body_(this.body_)
+        .footer(this.footer)
         .rootPath(this.rootPath)
         .defaults(this.defaults)
         .fields(this.fields)
@@ -92,7 +93,7 @@ class DAPPForm : DAPPViewComponent {
     debugMethodCall(moduleName!DAPPForm~":DAPPForm("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    foreach(component; [formHeader, formBody, formFooter]) { 
+    foreach(component; [header, body_, footer]) { 
       if (auto formComponent = cast(DAPPFormComponent)component) {
         debug writeln("formComponent ", formComponent.name);
         formComponent
@@ -101,19 +102,19 @@ class DAPPForm : DAPPViewComponent {
       }
     }
 
-    if (formHeader) {
-      debug writeln("Has formHeader");
-      formHeader.title(headerTitle); 
+    if (header) {
+      debug writeln("Has header");
+      header.title(headerTitle); 
     }
 
-    if (formBody) { 
-      debug writeln("Has formBody");
-      formBody.title(bodyTitle); 
+    if (body_) { 
+      debug writeln("Has body_");
+      body_.title(bodyTitle); 
     }
     
-    if (formFooter) {
-      debug writeln("Has formFooter");
-      formFooter.title(footerTitle);
+    if (footer) {
+      debug writeln("Has footer");
+      footer.title(footerTitle);
     }
   }
 
@@ -124,9 +125,9 @@ class DAPPForm : DAPPViewComponent {
     DBS5Col _col = BS5Col(["col-12"]);
     _col(
       H5Form("entityForm", ["card"], ["method":method, "action":action], 
-        (formHeader ? formHeader.toH5(options) : null)~
-        (formBody ? formBody.toH5(options) : null)~
-        (formFooter ? formFooter.toH5(options) : null)
+        (header ? header.toH5(options) : null)~
+        (body_ ? body_.toH5(options) : null)~
+        (footer ? footer.toH5(options) : null)
       ));
     
     return [_col].toH5;

@@ -1,4 +1,4 @@
-module uim.apps.views.components.forms.entities.create;
+module uim.apps.views.components.forms.crud.create;
 
 @safe:
 import uim.apps;
@@ -23,12 +23,12 @@ auto createPageHeader(string path, string mainTitle, string subTitle) {
 auto createForm(string path, string id, STRINGAA reqParameters) {
   return 
     H5Form("entity_create", ["card"], 
-      createFormHeader(path, id, reqParameters),
-      APPCreateFormBody.path(path).id(id).toH5(reqParameters)
+      createheader(path, id, reqParameters),
+      APPCreatebody_.path(path).id(id).toH5(reqParameters)
     );
 }
 
-auto createFormHeader(string path, string id, STRINGAA reqParameters) {
+auto createheader(string path, string id, STRINGAA reqParameters) {
   return 
     BS5CardHeader( 
       H5H4(["card-title me-auto"], "ID: "~id),

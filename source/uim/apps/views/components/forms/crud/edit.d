@@ -1,9 +1,9 @@
-module uim.apps.views.components.forms.entities.update;
+module uim.apps.views.components.forms.crud.update;
 
 @safe:
 import uim.apps;
 /* 
-auto editFormHeader(T:DOOPEntity)(string path, T entity, DAPPPanes panes, STRINGAA reqParameters) {
+auto editheader(T:DOOPEntity)(string path, T entity, DAPPPanes panes, STRINGAA reqParameters) {
   return 
     BS5CardHeader( 
       H5H4(["card-title me-auto"], "ID: "~entity.id.toString), 
@@ -17,7 +17,7 @@ auto editFormHeader(T:DOOPEntity)(string path, T entity, DAPPPanes panes, STRING
     );
 }
 
-auto editFormBody(T:DOOPEntity)(string path, T entity, DAPPPanes panes, STRINGAA reqParameters) {
+auto editbody_(T:DOOPEntity)(string path, T entity, DAPPPanes panes, STRINGAA reqParameters) {
   return 
     BS5CardBody(
       BS5Row.col(["col-12"], 
@@ -58,7 +58,7 @@ DH5Obj[] entityFormGroups_Edit(DOOPEntity entity, string[] fields = ["name", "di
   return results;
 }
 
-class DAPPEditFormBody : DAPPFormBody {
+class DAPPEditbody_ : DAPPbody_ {
   this() { super();
     _fields = ["name", "display", "description"]; }
 
@@ -106,6 +106,6 @@ class DAPPEditFormBody : DAPPFormBody {
       );
   } 
 }
-auto APPEditFormBody() { return new DAPPEditFormBody(); }
+auto APPEditbody_() { return new DAPPEditbody_(); }
 
  */

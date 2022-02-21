@@ -1,10 +1,10 @@
-module uim.apps.views.components.forms.entities.delete_;
+module uim.apps.views.components.forms.crud.delete_;
 
 @safe:
 import uim.apps;
 
 
-/* auto deleteFormHeader(string path, DOOPEntity entity, DAPPPanes panes, STRINGAA reqParameters) {  
+/* auto deleteheader(string path, DOOPEntity entity, DAPPPanes panes, STRINGAA reqParameters) {  
   return 
     BS5CardHeader( 
       H5H4(["card-title me-auto"], "ID: "~entity.id.toString),
@@ -16,7 +16,7 @@ import uim.apps;
     );
 } */
 
-/* class DAPPDeleteFormBody : DAPPFormBody {
+/* class DAPPDeletebody_ : DAPPbody_ {
   this() { super();
     _fields = ["name", "display", "description"]; }
 
@@ -64,6 +64,6 @@ import uim.apps;
       );
   } 
 }
-auto APPDeleteFormBody() { return new DAPPDeleteFormBody(); }
+auto APPDeletebody_() { return new DAPPDeletebody_(); }
 
  */
