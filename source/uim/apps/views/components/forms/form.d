@@ -11,8 +11,8 @@ class DAPPForm : DAPPViewComponent {
 
     this
       .crudMode(CRUDModes.Read)
-      .header(APPheader)
-      .body_(APPbody_)
+      .header(APPFormHeader)
+      .body_(APPFormBody)
       .method("post");
   }
 

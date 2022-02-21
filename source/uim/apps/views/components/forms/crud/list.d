@@ -10,8 +10,8 @@ class DAPPEntitiesListForm : DAPPForm, IAPPWithEntities {
     super.initialize;
 
     this
-    .header(APPheader(this).mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["print", "export"]]))
-    .body_(APPEntitiesbody_(this));
+    .header(APPFormHeader(this).mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["print", "export"]]))
+    .body_(APPEntitiesFormBody(this));
 
     /*       .form
         .header(APPEntitiesheader(this.form).rootPath("/cms/blogs").mainTitle("Blogs").subTitle("Blogs anzeigen").actions([["print", "export"]]))

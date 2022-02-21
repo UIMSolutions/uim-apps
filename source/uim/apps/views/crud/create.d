@@ -17,9 +17,9 @@ class DAPPEntityCreateView : DAPPEntityCRUDView {
         APPEntityForm(this)
         .crudMode(CRUDModes.Create)) 
       .form // Set form components
-        .formHeader(
+        .header(
           APPEntityFormHeader(this.form).actions([["cancel", "save"], ["print", "export"]]))
-        .formBody(
+        .body_(
           APPEntityFormBody(this.form)
           .fields(["name", "display", "description"]) 
       );

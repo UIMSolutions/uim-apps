@@ -17,7 +17,7 @@ class DAPPEntityDeleteView : DAPPEntityCRUDView {
         APPEntityForm(this)
           .crudMode(CRUDModes.Delete))
       .form
-        .formHeader(
+        .header(
           APPEntityFormHeader(this.form)
             .actions([["cancel2root", "finalDelete"], ["view", "version", "edit"], ["print", "export"]]));
   }

@@ -23,7 +23,7 @@ class DAPPEntityCRUDView : DAPPEntityView {
       .form(
         APPEntityForm(this))
       .form
-        .formHeader(
+        .header(
           APPEntityFormHeader(this.form).actions([["edit", "version", "delete"], ["print", "export"]]));
     
     this      
