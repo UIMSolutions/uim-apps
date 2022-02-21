@@ -6,6 +6,6 @@ import uim.apps;
 class DAPPTableComponent : DAPPViewComponent {
   mixin(APPViewComponentThis!("APPTableComponent"));
 
-  mixin(OProperty!("DAPPTable", "table"));
+  mixin(OProperty!("DAPPTableViewComponent", "table"));
 }
 mixin(APPViewComponentCalls!("APPTableComponent"));

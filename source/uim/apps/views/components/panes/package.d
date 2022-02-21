@@ -3,6 +3,9 @@ module uim.apps.views.components.panes;
 @safe:
 import uim.apps;
 
+public import uim.apps.views.components.panes.entity;
+public import uim.apps.views.components.panes.entities;
+
 public import uim.apps.views.components.panes.general;
 public import uim.apps.views.components.panes.history;
 public import uim.apps.views.components.panes.pane;
@@ -54,8 +57,8 @@ class DAPPPanes {
     return cast(O)this;}
 
   mixin(OProperty!("string", "path"));
-  mixin(OProperty!("DAPPPane[]", "panes"));
-  O panes(this O)(DAPPPane[] newPanes...) { 
+  mixin(OProperty!("DAPPPaneViewComponent[]", "panes"));
+  O panes(this O)(DAPPPaneViewComponent[] newPanes...) { 
     _panes = newPanes;
     return cast(O)this;}
 
@@ -70,7 +73,7 @@ class DAPPPanes {
     auto tabContent = BS5TabContent;
 
     foreach(pane; panes) {   
-      pane.entity(_entity);
+      if (auto entityPane = cast(DAPPEntityPaneViewComponent)pane) entityPane.entity(_entity);
 
       if (pane.disabled) {
         navTabs.item(

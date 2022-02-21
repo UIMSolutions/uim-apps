@@ -1,4 +1,4 @@
-module uim.apps.controllers.pages.entities.delete_;
+module uim.apps.controllers.pages.crud.delete_;
 /**************************************************/
 /* This package contains general delete_ page definitions */
 /**************************************************/
@@ -6,7 +6,7 @@ module uim.apps.controllers.pages.entities.delete_;
 @safe:
 import uim.apps;
 
-class DAPPEntityDeleteController : DAPPEntityPageController {
+class DAPPEntityDeleteController : DAPPEntityCrudPageController {
   mixin(APPPageControllerThis!("APPEntityDeleteController"));
 
   override void initialize() {

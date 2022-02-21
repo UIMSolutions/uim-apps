@@ -1,9 +1,9 @@
-module uim.apps.views.entities.update;
+module uim.apps.views.crud.update;
 
 @safe:
 import uim.apps;
 
-class DAPPEntityUpdateView : DAPPEntityView {
+class DAPPEntityUpdateView : DAPPEntityCRUDView {
   mixin(APPViewThis!("APPEntityUpdateView"));
 
   override void initialize() {
@@ -20,11 +20,6 @@ class DAPPEntityUpdateView : DAPPEntityView {
         .formHeader(
           APPEntityFormHeader(this.form)
             .actions([["cancel2list", "save"], ["edit", "version", "delete"], ["print", "export"]]));
-  }
-
-  override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntityUpdateView~"::DAPPEntityUpdateView:beforeH5");    
-    super.beforeH5(options);    
   }
 }
 mixin(APPViewCalls!("APPEntityUpdateView"));

@@ -1,4 +1,4 @@
-module uim.apps.controllers.pages.entities.list;
+module uim.apps.controllers.pages.crud.list;
 /**************************************************/
 /* This package contains general list page definitions */
 /**************************************************/
@@ -6,7 +6,7 @@ module uim.apps.controllers.pages.entities.list;
 @safe:
 import uim.apps;
 
-class DAPPListPage : DAPPPageController {
+class DAPPListPage : DAPPEntitiesPageController {
   mixin(APPPageControllerThis!("APPListPage"));
 
   mixin(OProperty!("string", "entityName"));
@@ -44,7 +44,6 @@ class DAPPListPage : DAPPPageController {
 
   mixin(OProperty!("DH5Obj", "columns"));
   mixin(OProperty!("DH5Obj", "filters"));
-  mixin(OProperty!("DOOPEntity[]", "entities"));
 }
 
 /*

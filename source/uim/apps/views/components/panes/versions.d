@@ -3,11 +3,20 @@ module uim.apps.views.components.panes.versions;
 @safe:
 import uim.apps;
 
+class DAPPVersionsPaneViewComponent : DAPPEntitiesPaneViewComponent {
+  mixin(APPViewComponentThis!("APPVersionsPaneViewComponent"));
+
+  override void initialize() {
+    super.initialize;
+  }
+}
+mixin(APPViewComponentCalls!("APPVersionsPaneViewComponent"));
+/* 
 auto versionsPane(T:DOOPEntity)(T entity, STRINGAA Parameters) {
         T[] entities;
         /* foreach(item; repository.find(entity.id)) {
             entities ~= new T(json);
-        } */
+        } * /
 
         string rows;
         // foreach(item; entities) rows ~= row(item).toString; 
@@ -54,7 +63,7 @@ class DAPPPaneVersions : DAPPPane {
 
   override void inner(STRINGAA options = null) {
     /*_col(
-      /* APPTableVersions.versions(versions).toH5(options) );*/
+      /* APPTableVersions.versions(versions).toH5(options) );* /
   }
 }
 auto APPPaneVersions() { return new DAPPPaneVersions; }
@@ -63,4 +72,4 @@ auto APPPaneVersions(DOOPEntity myEntity, DOOPEntity[] versions) { return APPPan
 
 auto APPPaneVersions(string myKey, string myTitle) { return APPPaneVersions.key(myKey).title(myTitle); }
 auto APPPaneVersions(string myKey, string myTitle, string myPath) { return APPPaneVersions.key(myKey).title(myTitle).path(myPath); }
-  
+   */

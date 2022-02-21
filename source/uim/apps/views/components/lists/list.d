@@ -3,8 +3,8 @@ module uim.apps.views.components.lists.list;
 @safe:
 import uim.apps;
 
-class DAPPListComponent : DAPPViewComponent {
-  mixin(APPViewComponentThis!("APPListComponent"));
+class DAPPListViewComponent : DAPPViewComponent {
+  mixin(APPViewComponentThis!("APPListViewComponent"));
 
   mixin(OProperty!("DOOPEntity[]", "entities"));
   mixin(SProperty!("DH5Obj", "noEntities"));
@@ -59,4 +59,4 @@ class DAPPListComponent : DAPPViewComponent {
     return [card].toH5;
   }
 }
-mixin(APPViewComponentCalls!("APPListComponent"));
+mixin(APPViewComponentCalls!("APPListViewComponent"));

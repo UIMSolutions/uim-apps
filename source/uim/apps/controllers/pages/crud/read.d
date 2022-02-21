@@ -1,4 +1,4 @@
-module uim.apps.controllers.pages.entities.read;
+module uim.apps.controllers.pages.crud.read;
 /**************************************************/
 /* This package contains general view page definitions */
 /**************************************************/
@@ -6,7 +6,7 @@ module uim.apps.controllers.pages.entities.read;
 @safe:
 import uim.apps;
 
-class DAPPEntityReadController : DAPPEntityPageController {
+class DAPPEntityReadController : DAPPEntityCrudPageController {
   mixin(APPPageControllerThis!("APPEntityReadController"));
 
   override void initialize() {

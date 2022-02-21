@@ -1,10 +1,16 @@
-module uim.apps.views.entities.list;
+module uim.apps.views.crud.list;
 
 @safe:
 import uim.apps;
 
-class DAPPEntitiesListView : DAPPView, IAPPWithEntities {
+class DAPPEntitiesListView : DAPPEntitiesView {
   mixin(APPViewThis!("APPEntitiesListView", false, true));
+
+
+  mixin(OProperty!("CRUDModes", "crudMode"));
+  mixin(OProperty!("string", "rootPath"));
+  mixin(OProperty!("bool", "readonly"));
+  mixin(OProperty!("DAPPEntitiesListForm", "form"));
 
   override void initialize() {
     super.initialize;
@@ -16,21 +22,10 @@ class DAPPEntitiesListView : DAPPView, IAPPWithEntities {
       APPPageHeader(this).actions(["refresh", "create"]));
   }
 
-  mixin(OProperty!("DOOPEntity[]", "entities"));
 
-  mixin(OProperty!("CRUDModes", "crudMode"));
-  mixin(OProperty!("string", "rootPath"));
-  mixin(OProperty!("bool", "readonly"));
-  mixin(OProperty!("DAPPEntitiesListForm", "form"));
+  override void _afterSetEntities() {
+    super._afterSetEntities;
 
-  override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView:beforeH5");   
-    super.beforeH5(options);    
-  
-    if (auto entitiesController = cast(IAPPWithEntities)this.controller) { // Should be the right controller
-      debug writeln("Found entities in controller: ", entitiesController.entities.length);
-      this.entities(entitiesController.entities); 
-    }
     debug writeln(this.entities ? "Has %s entities".format(this.entities.length) : "No entities");
   }
 
@@ -49,8 +44,8 @@ class DAPPEntitiesListView : DAPPView, IAPPWithEntities {
 }
 mixin(APPViewCalls!("APPEntitiesListView"));
 
-unittest {
-  version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
     //
   }
 }

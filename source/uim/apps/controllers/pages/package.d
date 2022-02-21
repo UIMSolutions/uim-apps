@@ -8,9 +8,11 @@ import uim.apps;
 
 // Main
 public import uim.apps.controllers.pages.controller;
+public import uim.apps.controllers.pages.entities;
+public import uim.apps.controllers.pages.entity;
 
 //Packages
-public import uim.apps.controllers.pages.entities;
+public import uim.apps.controllers.pages.crud;
 
 // Modules
 public import uim.apps.controllers.pages.apps;

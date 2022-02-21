@@ -1,16 +1,15 @@
-module uim.apps.views.entities.read;
+module uim.apps.views.crud.read;
 
 @safe:
 import uim.apps;
 
-class DAPPEntityReadView : DAPPEntityView {
+class DAPPEntityReadView : DAPPEntityCRUDView {
   mixin(APPViewThis!("APPEntityReadView"));
 
   override void initialize() {
     super.initialize;
 
     this
-      .crudMode(CRUDModes.Read)
       .header(
         APPPageHeader(this).actions(["refresh", "list", "create"]));
 
@@ -24,11 +23,6 @@ class DAPPEntityReadView : DAPPEntityView {
     this      
       .form
         .crudMode(CRUDModes.Read);
-  }
-
-  override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntityView~"::DAPPEntityView:beforeH5");    
-    super.beforeH5(options);   
   }
 }
 mixin(APPViewCalls!("APPEntityReadView"));

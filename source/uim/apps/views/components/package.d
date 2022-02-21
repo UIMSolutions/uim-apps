@@ -12,6 +12,8 @@ public import uim.apps.views.components.accordions;
 public import uim.apps.views.components.buttons;
 public import uim.apps.views.components.cards;
 public import uim.apps.views.components.entities;
+
+public import uim.apps.views.components.entity;
 public import uim.apps.views.components.filter;
 public import uim.apps.views.components.forms;
 public import uim.apps.views.components.footers;

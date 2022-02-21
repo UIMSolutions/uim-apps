@@ -3,8 +3,8 @@ module uim.apps.views.components.tables.table;
 @safe:
 import uim.apps;
 
-class DAPPTable : DAPPViewComponent {
-  mixin(APPViewComponentThis!("APPTable"));
+class DAPPTableViewComponent : DAPPViewComponent {
+  mixin(APPViewComponentThis!("APPTableViewComponent"));
   
   mixin(OProperty!("string", "path"));
 
@@ -30,7 +30,7 @@ class DAPPTable : DAPPViewComponent {
       )].toH5;
   }
 }
-mixin(APPViewComponentCalls!("APPTable"));
+mixin(APPViewComponentCalls!("APPTableViewComponent"));
 
 
 

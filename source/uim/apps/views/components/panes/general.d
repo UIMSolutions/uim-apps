@@ -1,7 +1,17 @@
 module uim.apps.views.components.panes.general;
 
-import uim.apps;
 @safe:
+import uim.apps;
+
+class DAPPGeneralPaneViewComponent : DAPPEntityPaneViewComponent {
+  mixin(APPViewComponentThis!("APPGeneralPaneViewComponent"));
+
+  override void initialize() {
+    super.initialize;
+  }
+}
+mixin(APPViewComponentCalls!("APPGeneralPaneViewComponent"));
+/* 
 auto generalPane(T:DOOPEntity)(T entity, STRINGAA options = null) {
     return 
         BS5CardBody(
@@ -170,10 +180,4 @@ class DAPPPaneGeneral : DAPPPane {
     }
   }
 }
-auto APPPaneGeneral() { return new DAPPPaneGeneral; }
-auto APPPaneGeneral(DOOPEntity myEntity) { return APPPaneGeneral.entity(myEntity); }
-
-auto APPPaneGeneral(string myKey, string myTitle) { return APPPaneGeneral.key(myKey).title(myTitle); }
-auto APPPaneGeneral(string myKey, string myTitle, string myPath) { return APPPaneGeneral.key(myKey).title(myTitle).path(myPath); }
-auto APPPaneGeneral(DOOPEntity myEntity, string myKey, string myTitle, string myPath) { return APPPaneGeneral(myEntity).key(myKey).title(myTitle).path(myPath); }
-  
+   */

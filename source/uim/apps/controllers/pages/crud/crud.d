@@ -1,16 +1,15 @@
-module uim.apps.controllers.pages.entities.entity;
+module uim.apps.controllers.pages.crud.crud;
 
 @safe:
 import uim.apps;
 
-class DAPPEntityPageController : DAPPPageController, IAPPWithEntity {
-  mixin(APPPageControllerThis!("APPEntityPageController"));
+class DAPPEntityCrudPageController : DAPPEntityPageController {
+  mixin(APPPageControllerThis!("APPEntityCrudPageController"));
 
   mixin(OProperty!("string", "entityName"));
-  mixin(OProperty!("DOOPEntity", "entity"));
 
   override void beforeResponse(STRINGAA reqParameters) {
-    debug writeln(moduleName!DAPPEntityPageController~":DAPPEntityPageController::beforeResponse");
+    debug writeln(moduleName!DAPPEntityCrudPageController~":DAPPEntityCrudPageController::beforeResponse");
     super.beforeResponse(reqParameters);   
     if ("redirect" in reqParameters) return;
     
@@ -32,4 +31,4 @@ class DAPPEntityPageController : DAPPPageController, IAPPWithEntity {
     }
   }
 }
-mixin(APPPageControllerCalls!("APPEntityPageController"));
+mixin(APPPageControllerCalls!("APPEntityCrudPageController"));

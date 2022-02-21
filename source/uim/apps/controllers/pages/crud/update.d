@@ -1,4 +1,4 @@
-module uim.apps.controllers.pages.entities.update;
+module uim.apps.controllers.pages.crud.update;
 /**************************************************/
 /* This package contains general edit page definitions */
 /**************************************************/
@@ -6,7 +6,7 @@ module uim.apps.controllers.pages.entities.update;
 @safe:
 import uim.apps;
 
-class DAPPEntityUpdateController : DAPPEntityPageController {
+class DAPPEntityUpdateController : DAPPEntityCrudPageController {
   mixin(APPPageControllerThis!("APPEntityUpdateController"));
   
   override void initialize() {

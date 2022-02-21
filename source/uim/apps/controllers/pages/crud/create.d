@@ -1,4 +1,4 @@
-module uim.apps.controllers.pages.entities.create;
+module uim.apps.controllers.pages.crud.create;
 /**************************************************/
 /* This package contains general create page definitions */
 /**************************************************/
@@ -6,7 +6,7 @@ module uim.apps.controllers.pages.entities.create;
 @safe:
 import uim.apps;
 
-class DAPPEntityCreateController : DAPPEntityPageController {
+class DAPPEntityCreateController : DAPPEntityCrudPageController {
   mixin(APPPageControllerThis!("APPEntityCreateController"));
 
   override void initialize() {

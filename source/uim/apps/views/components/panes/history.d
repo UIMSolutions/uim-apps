@@ -3,6 +3,15 @@ module uim.apps.views.components.panes.history;
 @safe:
 import uim.apps;
 
+class DAPPHistoryPaneViewComponent : DAPPEntitiesPaneViewComponent {
+  mixin(APPViewComponentThis!("APPHistoryPaneViewComponent"));
+
+  override void initialize() {
+    super.initialize;
+  }
+}
+mixin(APPViewComponentCalls!("APPHistoryPaneViewComponent"));
+/* 
 class DAPPPaneHistory : DAPPPane {
   this() { super();     
     this.title("History");
@@ -24,16 +33,9 @@ class DAPPPaneHistory : DAPPPane {
         H5Div(["card-title"], options.get("title", "History")),
         BS5Row( 
           BS5Col(["col-12"], 
-            /* APPTableHistory.history(history).toH5(options) */
+            /* APPTableHistory.history(history).toH5(options) * /
           )))].toH5;
   } 
 }
-auto APPPaneHistory() { return new DAPPPaneHistory; }
-auto APPPaneHistory(DOOPEntity myEntity) { return APPPaneHistory.entity(myEntity); }
-auto APPPaneHistory(DOOPEntity myEntity, DOOPEntity[] myHistory) { return APPPaneHistory(myEntity).history(myHistory); }
 
-auto APPPaneHistory(string myKey, string myTitle) { return APPPaneHistory.key(myKey).title(myTitle); }
-auto APPPaneHistory(string myKey, string myTitle, string myPath) { return APPPaneHistory.key(myKey).title(myTitle).path(myPath); }
-  
-
-  
+   */

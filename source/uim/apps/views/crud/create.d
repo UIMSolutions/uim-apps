@@ -1,9 +1,9 @@
-module uim.apps.views.entities.create;
+module uim.apps.views.crud.create;
 
 @safe:
 import uim.apps;
 
-class DAPPEntityCreateView : DAPPEntityView {
+class DAPPEntityCreateView : DAPPEntityCRUDView {
   mixin(APPViewThis!("APPEntityCreateView"));
 
   override void initialize() {

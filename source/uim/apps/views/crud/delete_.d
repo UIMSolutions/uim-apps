@@ -1,9 +1,9 @@
-module uim.apps.views.entities.delete_;
+module uim.apps.views.crud.delete_;
 
 @safe:
 import uim.apps;
 
-class DAPPEntityDeleteView : DAPPEntityView {
+class DAPPEntityDeleteView : DAPPEntityCRUDView {
   mixin(APPViewThis!("APPEntityDeleteView"));
 
   override void initialize() {
@@ -20,11 +20,6 @@ class DAPPEntityDeleteView : DAPPEntityView {
         .formHeader(
           APPEntityFormHeader(this.form)
             .actions([["cancel2root", "finalDelete"], ["view", "version", "edit"], ["print", "export"]]));
-  }
-
-  override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntityDeleteView~"::DAPPEntityDeleteView:beforeH5");    
-    super.beforeH5(options);    
   }
 }
 mixin(APPViewCalls!("APPEntityDeleteView"));

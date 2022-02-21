@@ -9,10 +9,13 @@ public import uim.apps.views.list;
 
 // Packages
 public import uim.apps.views.components;
-public import uim.apps.views.entities;
+public import uim.apps.views.crud;
 public import uim.apps.views.pages;
 
 // pageses
+public import uim.apps.views.entity;
+public import uim.apps.views.entities;
+public import uim.apps.views.block;
 public import uim.apps.views.block;
 public import uim.apps.views.login;
 public import uim.apps.views.login2;
