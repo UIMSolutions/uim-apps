@@ -46,8 +46,10 @@ class DAPPSecurityController : DAPPController {
 
     return json;
   }
-  unittest {
   version(test_uim_apps) {
+    unittest {
+      writeln("--- Test in ", __MODULE__, "/", __LINE__);
+      
     /// TODO 
   }}
 

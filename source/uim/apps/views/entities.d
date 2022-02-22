@@ -28,6 +28,8 @@ mixin(APPViewCalls!("APPEntitiesView"));
 
 version(test_uim_apps) {
   unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+    
     assert(new DAPPEntitiesView);
     assert(APPEntitiesView); 
     assert(APPEntitiesView); 

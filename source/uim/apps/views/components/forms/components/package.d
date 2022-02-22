@@ -16,7 +16,7 @@ public import uim.apps.views.components.forms.components.footers;
 
 template APPFormComponentThis(string name, bool withEntity = false, bool withEntities = false) {
   const char[] APPFormComponentThis = `
-this() { super(); this.name = "`~name~`"; }
+this() { super(); this.name("`~name~`"); }
 this(DAPPForm myForm) { this().form(myForm); }
 this(string myName) { this().name(myName); }
 this(DAPPForm myForm, string myName) { this(myForm).name(myName); }

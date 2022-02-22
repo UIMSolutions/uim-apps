@@ -111,8 +111,9 @@ class DAPPView : IAPPEventDispatcher {
       // init
       _error = null; // Delete last error
     }
-    unittest {
-      version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO
     }}
 
@@ -143,8 +144,9 @@ class DAPPView : IAPPEventDispatcher {
  */      
 
     }
+version(test_uim_apps) {
   unittest {
-    version(test_uim_apps) {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
       // TODO test
       }} 
     // #endregion h5
@@ -156,8 +158,9 @@ class DAPPView : IAPPEventDispatcher {
     void beforeRender(STRINGAA options = null) {
       debugMethodCall(moduleName!DAPPView~":DAPPView::beforeRender"); 
     }
-    unittest {
-      version(uim_html) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add Test
         }}
 
@@ -170,8 +173,9 @@ class DAPPView : IAPPEventDispatcher {
 
       return renderedContent; 
     }
-    unittest {
-      version(uim_html) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add Test
         }}
 
@@ -198,8 +202,9 @@ class DAPPView : IAPPEventDispatcher {
       if (hasError) { return null; }
 
       return finalRender; }
-    unittest {
-      version(uim_html) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         /// TODO
       }}
   // #endregion render 

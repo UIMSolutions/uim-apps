@@ -4,8 +4,7 @@ module uim.apps.controllers.creators.session;
 import uim.apps;
 
 class DAPPCreatorSession : DAPPCreator {
-  this() { super(); }
-  this(DAPPApplication myApp) { this().app(myApp); }
+  mixin(APPControllerThis!("APPCreatorSession"));
 
   override DOOPEntity create(STRINGAA parameters) {
     auto entity = createEntities["session"](Json.emptyObject)
@@ -36,8 +35,7 @@ version(test_uim_apps) {
       /// TODO 
     }}
   }
-auto APPCreatorSession() { return new DAPPCreatorSession; }
-auto APPCreatorSession(DAPPApplication myApp) { return new DAPPCreatorSession(myApp); }
+mixin(APPControllerCalls!("APPCreatorSession"));
 
 version(test_uim_apps) {
   unittest {

@@ -10,7 +10,7 @@ class DAPPFormBody : DAPPFormComponent {
     super.initialize;
 
     this
-    .id("formbody-%s".format(uniform(1, 1_000)));
+      .id("formbody-%s".format(uniform(1, 1_000)));
   }
 
   DH5Obj bodyContent(STRINGAA options = null) {
@@ -22,6 +22,8 @@ mixin(APPFormComponentCalls!("APPFormBody"));
 
 version(test_uim_apps) {
   unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
     assert(new DAPPFormBody);
     assert(APPFormBody);
     assert(APPFormBody.name == "APPFormBody");

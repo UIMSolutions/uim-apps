@@ -110,8 +110,10 @@ version(test_uim_apps) {
     auto json = message(Json.emptyObject, options);
     return json;
   }
-  unittest {
-    version(test_uim_apps) {
+  version(test_uim_apps) {
+    unittest {
+      writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
       /// TODO 
     }}
 
@@ -123,8 +125,10 @@ version(test_uim_apps) {
 
     return json;
   }
-  unittest {
   version(test_uim_apps) {
+    unittest {
+      writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
     /// TODO 
   }}
 
@@ -219,8 +223,10 @@ version(test_uim_apps) {
     afterResponse(options);
     
 		this.response.writeBody(result, this.mimetype); }
-	unittest {
-		version(uim_html) {
+  version(test_uim_apps) {
+    unittest {
+      writeln("--- Test in ", __MODULE__, "/", __LINE__);
+      
 			/// TODO
 	}}
 }

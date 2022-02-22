@@ -4,8 +4,7 @@ module uim.apps.controllers.creators.site;
 import uim.apps;
 
 class DAPPCreatorSite : DAPPCreator {
-  this() { super(); }
-  this(DAPPApplication myApp) { this().app(myApp); }
+  mixin(APPControllerThis!("APPCreatorSite"));
 
   override DOOPEntity create(STRINGAA parameters) {
     auto col = database["systems", "system_sites"];
@@ -28,5 +27,4 @@ class DAPPCreatorSite : DAPPCreator {
     return result;
   }
 }
-auto APPCreatorSite() { return new DAPPCreatorSite; }
-auto APPCreatorSite(DAPPApplication myApp) { return new DAPPCreatorSite(myApp); }
+mixin(APPControllerCalls!("APPCreatorSite"));

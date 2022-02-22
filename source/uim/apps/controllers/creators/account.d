@@ -8,8 +8,7 @@ import uim.apps;
 }
  */
 class DAPPCreatorAccount : DAPPCreator {
-  this() { super(); }
-  this(DAPPApplication myApp) { this().app(myApp); }
+  mixin(APPControllerThis!("APPCreatorAccount"));
 
   override DOOPEntity create(STRINGAA parameters) {
     auto entity = createEntities["account"](Json.emptyObject)
@@ -28,8 +27,8 @@ class DAPPCreatorAccount : DAPPCreator {
     return result;
   }
 }
-auto APPCreatorAccount() { return new DAPPCreatorAccount; }
-auto APPCreatorAccount(DAPPApplication myApp) { return new DAPPCreatorAccount(myApp); }
+mixin(APPControllerCalls!("APPCreatorSite"));
+
 
 version(test_uim_apps) {
   unittest {

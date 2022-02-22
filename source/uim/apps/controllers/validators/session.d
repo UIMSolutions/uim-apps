@@ -4,11 +4,7 @@ module uim.apps.controllers.validators.session;
 import uim.apps;
 
 class DAPPValidatorSession : DAPPValidator {
-  this() { super(); }
-  this(DAPPApplication myApp) { this().app(myApp); }
-  this(DAPPApplication myApp, string myName) { this(myApp).name(myName); }
-  this(DAPPApplication myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
-  this(DAPPApplication myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
+  mixin(APPControllerThis!("APPValidatorSession"));
   
   override DOOPEntity validate(STRINGAA reqParameters) {
     // Looking for a sessionId
@@ -54,9 +50,6 @@ class DAPPValidatorSession : DAPPValidator {
     return result;
   }
 }
-auto APPValidatorSession() { return new DAPPValidatorSession; }
-auto APPValidatorSession(DAPPApplication myApp) { return new DAPPValidatorSession(myApp); }
-auto APPValidatorSession(DAPPApplication myApp, string myName) { return new DAPPValidatorSession(myApp, myName); }
-auto APPValidatorSession(DAPPApplication myApp, DETBBase myDatabase) { return new DAPPValidatorSession(myApp, myDatabase); }
-auto APPValidatorSession(DAPPApplication myApp, string myName, DETBBase myDatabase) { return new DAPPValidatorSession(myApp, myName, myDatabase); }
+mixin(APPControllerCalls!("APPValidatorSession"));
+
 

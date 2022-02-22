@@ -69,8 +69,9 @@ class DAPPStartEndDateFormGroup : DAPPFormGroup {
             h5Input(options), H5Div(["invalid-feedback"], invalidFeedback)))
       ].toH5;
   }
-  unittest {
-    version(test_uim_apps) {
+  version(test_uim_apps) {
+    unittest {
+      writeln("--- Test in ", __MODULE__, "/", __LINE__);
       // 
       }}
 }

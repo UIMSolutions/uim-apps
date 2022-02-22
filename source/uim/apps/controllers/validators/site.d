@@ -4,11 +4,7 @@ module uim.apps.controllers.validators.site;
 import uim.apps;
 
 class DAPPValidatorSite : DAPPValidator {
-  this() { super(); }
-  this(DAPPApplication myApp) { this().app(myApp); }
-  this(DAPPApplication myApp, string myName) { this(myApp).name(myName); }
-  this(DAPPApplication myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
-  this(DAPPApplication myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
+  mixin(APPControllerThis!("APPValidatorSite"));
   
   bool siteIdValid(string siteId) { return siteId.isUUID && UUID(siteId) != UUID(); }
 
@@ -62,8 +58,5 @@ class DAPPValidatorSite : DAPPValidator {
     return result;
   }
 }
-auto APPValidatorSite() { return new DAPPValidatorSite; }
-auto APPValidatorSite(DAPPApplication myApp) { return new DAPPValidatorSite(myApp); }
-auto APPValidatorSite(DAPPApplication myApp, string myName) { return new DAPPValidatorSite(myApp, myName); }
-auto APPValidatorSite(DAPPApplication myApp, DETBBase myDatabase) { return new DAPPValidatorSite(myApp, myDatabase); }
-auto APPValidatorSite(DAPPApplication myApp, string myName, DETBBase myDatabase) { return new DAPPValidatorSite(myApp, myName, myDatabase); }
+mixin(APPControllerCalls!("APPValidatorSite"));
+

@@ -16,16 +16,18 @@ class DAPPNullComponent : DAPPViewComponent {
   override DH5Obj[] toH5(STRINGAA options = null) {
       return null;        
   }
-  version(test_uim_apps) {
-    unittest {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
       // TODO test
   }} 
 
   override string render(STRINGAA options = null) {
     return null; 
   }
-  version(test_uim_apps) {
-    unittest {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
       /// TODO
   }}
 }

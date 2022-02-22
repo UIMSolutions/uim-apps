@@ -10,6 +10,8 @@ mixin(APPFormComponentCalls!("APPListFormBody"));
 
 version(test_uim_apps) {
   unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+    
     assert(new DAPPListFormBody);
     assert(APPListFormBody);
     assert(new DAPPListFormBody(APPForm));

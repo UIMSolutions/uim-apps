@@ -90,8 +90,9 @@ class DAPPViewComponent {
       // init
       _error = null; // Delete last error
     }
-    unittest {
-      version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO
     }}
 
@@ -102,8 +103,9 @@ class DAPPViewComponent {
     auto h5 = afterH5(preh5, options);
     return h5;        
   }
+version(test_uim_apps) {
   unittest {
-    version(test_uim_apps) {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
       // TODO test
       }} 
     // #endregion h5
@@ -112,8 +114,9 @@ class DAPPViewComponent {
       debugMethodCall(moduleName!DAPPViewComponent~":DAPPViewComponent("~this.name~")::afterH5");
       return h5; // No changes 
     }
-    unittest {
-      version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO
     }}
   // #region render
@@ -123,8 +126,9 @@ class DAPPViewComponent {
     void beforeRender(STRINGAA options = null) {
       debugMethodCall(debugPrefix~"beforeRender"); 
     }
-    version(test_uim_apps) {
-      unittest {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add Test
         }}
 
@@ -132,8 +136,9 @@ class DAPPViewComponent {
       debugMethodCall(debugPrefix~"afterRender"); 
       return content; // No changes
     }
-    version(test_uim_apps) {
-      unittest {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add Test
         }}
 
@@ -155,8 +160,9 @@ class DAPPViewComponent {
       if (hasError) { return null; }
 
       return result; }
-    version(test_uim_apps) {
-      unittest {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         /// TODO
       }}
     // #endregion render 

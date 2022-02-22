@@ -276,11 +276,11 @@ version(test_uim_apps) {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
-		assert(APPPageController.view.name == "H5NullView"); // Controller has default view
+		assert(APPPageController.name == "APPPageController"); // Controller has default view
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
-		assert(APPPageController.view["name"] == "H5NullView"); // Controller has default view
+		assert(APPPageController["name"] == "APPPageController"); // Controller has default view
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 		assert(APPPageController.view(APPView).view.name == "APPView"); // Controller has new view
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
-		assert(APPPageController.view(APPView).view()["name"] == "APPView"); // Controller has new view
+		assert(APPPageController.view(APPView).view["name"] == "APPView"); // Controller has new view
 }}

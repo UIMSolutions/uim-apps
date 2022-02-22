@@ -29,5 +29,7 @@ mixin(APPViewCalls!("APPEntityReadView"));
 
 version(test_uim_apps) {
   unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+    
     //
 }}

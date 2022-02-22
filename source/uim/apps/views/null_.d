@@ -4,10 +4,7 @@ module uim.apps.views.null_;
 import uim.apps;
 
 class DAPPNullView : DAPPView {
-  this() { 
-    super(); 
-    this.name = "APPNullView"; }
-  this(DAPPPageController aController) { this().controller(aController); }
+  mixin(APPViewThis!("APPNullView"));
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     return null;
@@ -20,16 +17,19 @@ class DAPPNullView : DAPPView {
   override string render(STRINGAA options = null) {
     return null;
   }
-	unittest {
-		version(uim_html) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
 			// TODO
 			}}  
 }
-auto APPNullView() { return new DAPPNullView(); }
-auto APPNullView(DAPPPageController aController) { return new DAPPNullView(aController); }
+mixin(APPViewCalls!("APPNullView"));
 
-unittest {
-  version(uim_html) {
-    assert(H5NullView.name == "H5NullView");
-    assert(H5NullView.name("newView").name == "newView");
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
+    assert(APPNullView.name == "APPNullView");
+    assert(APPNullView.name("newView").name == "newView");
 }}

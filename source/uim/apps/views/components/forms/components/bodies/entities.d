@@ -105,6 +105,8 @@ mixin(APPFormComponentCalls!("APPEntitiesFormBody"));
 
 version(test_uim_apps) {
   unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+    
     assert(new DAPPEntitiesFormBody);
     assert(APPEntitiesFormBody);
     assert(new DAPPEntitiesFormBody(APPForm));

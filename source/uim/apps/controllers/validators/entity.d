@@ -4,11 +4,7 @@ module uim.apps.controllers.validators.entity;
 import uim.apps;
 
 class DAPPValidatorEntity : DAPPValidator {
-  this() { super(); }
-  this(DAPPApplication myApp) { this().app(myApp); }
-  this(DAPPApplication myApp, string myName) { this(myApp).name(myName); }
-  this(DAPPApplication myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
-  this(DAPPApplication myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
+  mixin(APPControllerThis!("APPValidatorEntity"));
  
   override DOOPEntity validate(STRINGAA reqParameters) {
     string appSessionId = reqParameters.get("appSessionId", "");
@@ -65,8 +61,4 @@ version(test_uim_apps) {
       /// TODO 
     }}
 }
-auto APPValidatorEntity() { return new DAPPValidatorEntity; }
-auto APPValidatorEntity(DAPPApplication myApp) { return new DAPPValidatorEntity(myApp); }
-auto APPValidatorEntity(DAPPApplication myApp, string myName) { return new DAPPValidatorEntity(myApp, myName); }
-auto APPValidatorEntity(DAPPApplication myApp, DETBBase myDatabase) { return new DAPPValidatorEntity(myApp, myDatabase); }
-auto APPValidatorEntity(DAPPApplication myApp, string myName, DETBBase myDatabase) { return new DAPPValidatorEntity(myApp, myName, myDatabase); }
+mixin(APPControllerCalls!("APPValidatorEntity"));
