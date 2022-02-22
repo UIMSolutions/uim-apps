@@ -30,6 +30,7 @@ class DAPPEntityFormBody : DAPPFormBody, IAPPWithEntity {
     debugMethodCall(moduleName!DAPPEntityFormBody~"::DAPPEntityFormBody:formGroups");    
     DH5Obj[] results;
 
+    debug writeln(entity ? "Has entity: "~entity.name : "No entity");
     if (formGroupHandler) {
       debug writeln("Found formGroupHandler:",formGroupHandler.name);
 
@@ -55,8 +56,8 @@ class DAPPEntityFormBody : DAPPFormBody, IAPPWithEntity {
     auto col = BS5Col(["col-12"], 
       BS5InputHidden("sessionToken", ["name":"sessionToken"]).value(options.get("sessionToken", null)));
     
+    debug writeln(entity ? "Found entity : "~entity.name : "No entity");
     if (entity) {
-      debug writeln("Found entity Id: ", entity.id.toString);
       col(BS5InputHidden("entity_id", ["name":"entity_id"]).value(entity.id.toString));
     }
 
@@ -76,7 +77,6 @@ class DAPPEntityFormBody : DAPPFormBody, IAPPWithEntity {
     super.toH5(options);
     
     debug writeln(entity ? "Has entity" : "no entity :-(");
-
     return [
       BS5CardBody(id,
         bodyContent(options)
@@ -89,7 +89,7 @@ version(test_uim_apps) {
   unittest {
     assert(new DAPPEntityFormBody);
     assert(APPEntityFormBody);
-    assert(new DAPPEntityFormBody(APPController));
-    assert(APPEntityFormBody(APPController));
+    assert(new DAPPEntityFormBody(APPForm));
+    assert(APPEntityFormBody(APPForm));
   }
 }

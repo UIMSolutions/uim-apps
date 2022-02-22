@@ -10,15 +10,15 @@ public import uim.apps.controllers.components.component;
 public import uim.apps.controllers.components.checks;
 public import uim.apps.controllers.components.registry;
 
-template AppControllerComponentThis(string name) {
-  const char[] AppControllerComponentThis = `
+template APPControllerComponentThis(string name, bool withEntity = false, bool withEntities = false) {
+  const char[] APPControllerComponentThis = `
 this() { super(); this.name("`~name~`"); }
 this(DAPPController myController) { this().controller(myController); }
 `;
 }
 
-template AppControllerComponentCalls(string name) {
-  const char[] AppControllerComponentCalls = `
+template APPControllerComponentCalls(string name, bool withEntity = false, bool withEntities = false) {
+  const char[] APPControllerComponentCalls = `
 auto `~name~`() { return new D`~name~`; }
 auto `~name~`(DAPPController myController) { return new D`~name~`(myController); }
 `;

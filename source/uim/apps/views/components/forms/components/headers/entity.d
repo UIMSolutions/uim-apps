@@ -65,7 +65,7 @@ version(test_uim_apps) {
   unittest {
     assert(new DAPPEntityFormHeader);
     assert(APPEntityFormHeader);
-    assert(new DAPPEntityFormHeader(APPController));
-    assert(APPEntityFormHeader(APPController));
+    assert(new DAPPEntityFormHeader(APPForm));
+    assert(APPEntityFormHeader(APPForm));
   }
 }

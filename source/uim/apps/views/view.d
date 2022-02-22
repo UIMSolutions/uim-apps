@@ -31,9 +31,44 @@ class DAPPView : IAPPEventDispatcher {
     
     mixin(OProperty!("DAPPPageController", "controller")); 
     mixin(OProperty!("IAPPEventManager", "eventManager")); 
-    mixin(OProperty!("string", "name")); 
+    
+    mixin(OProperty!("STRINGAA", "parameters")); 
+    string parameter(string key) {
+      return _parameters.get(key, null);
+    }
+    O parameter(this O)(string key, string newValue) {
+      _parameters[key] = newValue;
+      return cast(O)this;
+    }
 
+    string name() { 
+      return parameter("name"); 
+    } 
+    O name(this O)(string newValue) { 
+      this.parameter("name", newValue);
+      return cast(O)this; 
+    } 
+
+    string opIndex(string key){      
+      return this.parameter(key);
+    }
+    O opIndexAssign(this O)(string key, string newValue) {
+      this.parameter(key, newValue);
+      return cast(O)this;
+    }
     // view components
+    mixin(OProperty!("DAPPViewComponent[string]", "components")); 
+    bool hasComponent(string key) {
+      return (this.components.get(key, null) !is null);
+    }
+    DAPPViewComponent component(string key) {
+      return this.components.get(key, null);
+    }
+    O component(this O)(string key, DAPPViewComponent newComponent) {
+      components[key] = newComponent;
+      return cast(O)this;
+    }
+
     mixin(OProperty!("DAPPViewComponent", "messages")); 
     mixin(OProperty!("DAPPPageHeader", "header")); 
     mixin(OProperty!("DAPPPageFooter", "footer")); 

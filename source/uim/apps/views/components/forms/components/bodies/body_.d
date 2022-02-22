@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.components.bodies.body_;
 import uim.apps;
 
 class DAPPFormBody : DAPPFormComponent {
-  mixin(APPFormComponentThis!("APPFormHeader"));
+  mixin(APPFormComponentThis!("APPFormBody"));
 
   override void initialize() {
     super.initialize;
@@ -24,7 +24,10 @@ version(test_uim_apps) {
   unittest {
     assert(new DAPPFormBody);
     assert(APPFormBody);
-    assert(new DAPPFormBody(APPController));
-    assert(APPFormBody(APPController));
+    assert(APPFormBody.name == "APPFormBody");
+    assert(new DAPPFormBody(APPForm));
+    assert(APPFormBody(APPForm));
+    assert(APPFormBody(APPForm).name == "APPFormBody");
+    assert(APPFormBody(APPForm).form.name == "APPForm");
   }
 }

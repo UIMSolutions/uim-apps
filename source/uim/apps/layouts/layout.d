@@ -200,11 +200,13 @@ class DAPPLayout {
 
 		return _html.toString;
 	}
-	unittest {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
 		// writeln(H5AppLayout);
 		// assert(H5AppLayout.render == `<!doctype html><html dir="ltr" lang="en"><head></head><body></body></html>`);
 		//assert(H5AppLayout()("xxx") == `<!doctype html><html dir="ltr" lang="en"><head></head><body>xxx</body></html>`);
-	}
+	}}
 
   void renderHead(DH5Html html, string[] classes, STRINGAA attributes, string content, STRINGAA options = null) {
     html

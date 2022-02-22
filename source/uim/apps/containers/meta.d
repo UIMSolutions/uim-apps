@@ -21,8 +21,9 @@ class DAPPMetaContainer : DAPPH5Container {
 }
 auto APPMetaContainer() { return new DAPPMetaContainer; }
 
-unittest {
-  version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
 /*     assert(new DAPPLinkContainer);
     assert(APPLinkContainer);
     assert(cast(DAPPLinkContainer)APPLinkContainer);

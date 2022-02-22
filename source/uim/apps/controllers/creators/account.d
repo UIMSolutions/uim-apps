@@ -31,8 +31,10 @@ class DAPPCreatorAccount : DAPPCreator {
 auto APPCreatorAccount() { return new DAPPCreatorAccount; }
 auto APPCreatorAccount(DAPPApplication myApp) { return new DAPPCreatorAccount(myApp); }
 
-unittest {
-  version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
     /// TODO 
   }}
 

@@ -28,31 +28,42 @@ class DAPPPageController : DAPPController {
   }
 
   mixin(OProperty!("Session", "globalSession"));
-  mixin(OProperty!("bool", "hasGlobalSession"));
-
-  mixin(OProperty!("string", "pageTitle"));
-  mixin(OProperty!("string", "pageBreadcrumbs"));
   mixin(OProperty!("string[]", "pageActions"));
+  mixin(OProperty!("bool", "hasGlobalSession"));
 
   mixin(OProperty!("DAPPView", "view"));
   mixin(OProperty!("DAPPView", "errorView"));
 
   // Required checks for the page flow
   mixin(OProperty!("string[]", "sessionData"));
-  mixin(OProperty!("string", "title"));
-  mixin(OProperty!("string", "canonical"));
-	unittest {
+
+  mixin(APPParameter!("canonical")); 
+  mixin(APPParameter!("collectionName")); 
+  mixin(APPParameter!("entitiesName")); 
+  mixin(APPParameter!("jsPath")); 
+	mixin(APPParameter!("language"));
+  mixin(APPParameter!("pageTitle"));
+  mixin(APPParameter!("pageBreadcrumbs"));
+  mixin(APPParameter!("pgPath")); 
+  mixin(APPParameter!("title")); 
+
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
 /* 		assert(H5AppPage.title("aTitle").title == "aTitle");	
 		assert(H5AppPage.title("aTitle").title("otherTitle").title == "otherTitle"); */
-	}
+	}}
 
-	mixin(OProperty!("string", "language"));
-	unittest {		
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+	
 /* 			assert(H5App.lang("aLanguage").lang == "aLanguage");	
 			assert(H5App.lang("aLanguage").lang("otherLanguage").lang == "otherLanguage");
 			assert(H5App.language("aLanguage").language == "aLanguage");	
 			assert(H5App.language("aLanguage").language("otherLanguage").language == "otherLanguage"); */
-	}
+	}}
 
   DAPPRequestReader requestReader;
   DAPPSessionReader sessionReader;
@@ -66,12 +77,6 @@ class DAPPPageController : DAPPController {
   
   mixin(OProperty!("DAPPForm", "form"));
 
-  mixin(OProperty!("string", "collectionName"));
-  mixin(OProperty!("string", "jsPath"));
-  mixin(OProperty!("string", "pgPath"));
-  mixin(OProperty!("string", "entitiesName"));
-
-
 	/// layout for page
 	DAPPLayout _layout;
 	O layout(this O)(DAPPLayout newlayout) { 
@@ -83,9 +88,12 @@ class DAPPPageController : DAPPController {
     if (this.app) return this.app.layout; 
     return null; 
   }
-	unittest {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
 		/// TODO		
-	}
+	}}
 
   O pageActions(this O)(string[] actions...) { this.pageActions(actions); return cast(O)this; }
   O addPageActions(this O)(string[] actions...) { this.addPageActions(actions); return cast(O)this; }
@@ -105,31 +113,18 @@ class DAPPPageController : DAPPController {
   mixin(OProperty!("DAPPScriptContainer", "scripts"));
   mixin(OProperty!("DAPPStyleContainer", "styles"));
 
-  string opIndex(string key) {
-    switch(key) {
-      case "title": return this.title;
-      default: return "";
-    }
-  }
-
-  void opIndexAssign(string value, string key) {
-    switch(key) {
-      case "title": this.title = value; break;
-      default: break;
-    }
-  }
-
   override void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::beforeResponse");
     super.beforeResponse(options);
     if ("redirect" in options) { return; }
 
-    this.links.add(["rel":"canonical", "href":this.canonical]);
+    this.links.add(["rel":"canonical", "href": this.canonical]);
   }
-  unittest {
-    version(test_uim_apps) {
-      /// TODO 
-    }}
+  version(test_uim_apps) {
+    unittest {
+      writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
+      }}
 
   override string stringResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::stringResponse");
@@ -276,8 +271,16 @@ class DAPPPageController : DAPPController {
 }
 mixin(APPPageControllerCalls!("APPPageController"));
 
-unittest {
-	version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
 		assert(APPPageController.view.name == "H5NullView"); // Controller has default view
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+		assert(APPPageController.view["name"] == "H5NullView"); // Controller has default view
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
 		assert(APPPageController.view(APPView).view.name == "APPView"); // Controller has new view
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+		assert(APPPageController.view(APPView).view()["name"] == "APPView"); // Controller has new view
 }}

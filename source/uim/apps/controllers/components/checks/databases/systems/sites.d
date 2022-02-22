@@ -4,7 +4,7 @@ module uim.apps.controllers.components.checks.databases.systems.sites;
 import uim.apps;
 
 class DAPPCheckDatabaseHasSites : DAPPCheckDatabaseHasSystems {
-  mixin(AppControllerComponentThis!("APPCheckDatabaseHasSites"));
+  mixin(APPControllerComponentThis!("APPCheckDatabaseHasSites"));
 
   override void initialize() {
     super.initialize;
@@ -24,13 +24,15 @@ class DAPPCheckDatabaseHasSites : DAPPCheckDatabaseHasSystems {
     return true;
   }
 }
-mixin(AppControllerComponentCalls!("APPCheckDatabaseHasSites"));
+mixin(APPControllerComponentCalls!("APPCheckDatabaseHasSites"));
 
 version(test_uim_apps) {
   unittest {
-    assert(new DAPPCheckDatabaseHasSItes);
-    assert(APPCheckDatabaseHasSItes);
-    assert(new DAPPCheckDatabaseHasSItes(APPController));
-    assert(APPCheckDatabaseHasSItes(APPController));
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
+    assert(new DAPPCheckDatabaseHasSites);
+    assert(APPCheckDatabaseHasSites);
+    assert(new DAPPCheckDatabaseHasSites(APPController));
+    assert(APPCheckDatabaseHasSites(APPController));
   }
 }

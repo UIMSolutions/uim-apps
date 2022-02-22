@@ -86,8 +86,10 @@ window.addEventListener('load', (event) => {
       if (auto entityForm = cast(DAPPEntityForm)form) entityForm.entity(entity); 
     }
   }
+version(test_uim_apps) {
   unittest {
-    version(uim_cms) {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
       /// TODO
     }}
 }

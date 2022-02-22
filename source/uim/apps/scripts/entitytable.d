@@ -23,8 +23,9 @@ auto entityTableRow() {
       "return '<tr>'+tableRow+'</tr>';");
 }
 
-unittest {
-  version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
     auto f = File("../../PUBLIC/js/apps/entity_table.js", "w"); // open for writing
     f.write(entityTableRow);
 }}

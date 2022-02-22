@@ -260,3 +260,15 @@ auto hasAllKey(Json parameters, string[] keys) {
 static this() {
   uimViewRegistry = APPViewRegistry;
 } */
+
+
+template APPParameter(string name) {
+  const char[] APPParameter = `
+string `~name~`() { 
+  return parameter("`~name~`"); 
+} 
+O `~name~`(this O)(string newValue) { 
+  this.parameter("`~name~`", newValue);
+  return cast(O)this; 
+}`;
+}

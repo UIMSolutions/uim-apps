@@ -298,8 +298,9 @@ class DAPPEventManager : IAPPEventManager {
     O addEventToList(this O)(IAPPEvent event) {
       if (_eventList) _eventList.add(event);
       return cast(O)this; }
-    unittest {
-      version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add tests
         }}
 
@@ -308,16 +309,18 @@ class DAPPEventManager : IAPPEventManager {
       _trackEvents = enabled;
 
       return cast(O)this; }
-    unittest {
-      version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add tests
         }}
 
     // Returns whether this manager is set up to track events
     bool isTrackingEvents() {
       return _trackEvents && _eventList; }
-    unittest {
-      version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add tests
         }}
 
@@ -328,8 +331,9 @@ class DAPPEventManager : IAPPEventManager {
       _trackEvents = true;
 
       return cast(O)this; }
-    unittest {
-      version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add tests
         }}
 
@@ -339,8 +343,9 @@ class DAPPEventManager : IAPPEventManager {
       _trackEvents = false;
 
       return cast(O)this; }
-    unittest {
-      version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add tests
         }}
 

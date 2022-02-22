@@ -4,11 +4,10 @@ module uim.apps.views.components.component;
 import uim.apps;
 
 class DAPPViewComponent {
-  this() { initialize; }  
+  this() { initialize; this.name = "APPViewComponent"; }  
   this(DAPPView myView) { this(); this.view(myView); }
   
   mixin(OProperty!("string", "debugPrefix")); 
-  mixin(OProperty!("string", "name")); 
   mixin(OProperty!("bool", "dynamic")); 
   mixin(OProperty!("bool", "isNull")); 
   mixin(OProperty!("string", "jsCode")); 
@@ -18,9 +17,29 @@ class DAPPViewComponent {
   mixin(OProperty!("DAPPView", "view")); 
   mixin(OProperty!("DAPPLayout", "layout")); 
 
+  string name() {
+    return this.name;
+  }
+  O name(this O)(string newName) {
+    this.name = newName;
+    return cast(O)this;
+  }
+
+  // view components
+  mixin(OProperty!("DAPPViewComponent[string]", "components")); 
+  bool hasComponent(string key) {
+    return (components.get(key, null) !is null);
+  }
+  DAPPViewComponent component(string key) {
+    return components.get(key, null);
+  }
+  O component(this O)(string key, DAPPViewComponent newComponent) {
+    components[key] = newComponent;
+    return cast(O)this;
+  }
+
   void initialize() {
     this
-    .debugPrefix(moduleName!DAPPViewComponent~":DAPPViewComponent::")
     .changed(true)
     .dynamic(true); 
   }
@@ -33,7 +52,7 @@ class DAPPViewComponent {
     return
       clone
         .debugPrefix(this.debugPrefix) 
-        .name(this.name)
+        .parameters(this.parameters)
         .dynamic(this.dynamic)
         .jsCode(this.jsCode)
         .style(this.style)
@@ -50,26 +69,24 @@ class DAPPViewComponent {
   // #endregion error
 
 
-  string opIndex(string name) {
-    switch (name) {
-      case "ownerName": return owner ? owner.name : null; 
-      case "viewName": return view ? view.name : null; 
-      case "layoutName" : return layout ? layout.name : null; 
-
-      default: return null;
-    }
+  mixin(OProperty!("STRINGAA", "parameters")); 
+  string opIndex(string key) {
+    return parameters.get(key, null); 
   }
-
-  void opIndexAssign(string value, string name) {
-    switch (name) {
-      case "name": this.name(value); break; 
-      default: break;
-    }
+  void opIndexAssign(string value, string key) {
+    _parameters[key] = value;
+  }
+  string parameter(string key) {
+    return _parameters.get(key, null);
+  }
+  O parameter(this O)(string key, string newValue) {
+    _parameters[key] = newValue;
+    return cast(O)this;
   }
 
   // #region h5 content 
     void beforeH5(STRINGAA options = null) {
-      debugMethodCall(debugPrefix~"beforeH5"); 
+      debugMethodCall(moduleName!DAPPViewComponent~":DAPPViewComponent("~this.name~")::beforeH5");
       // init
       _error = null; // Delete last error
     }
@@ -79,20 +96,20 @@ class DAPPViewComponent {
     }}
 
   DH5Obj[] toH5(STRINGAA options = null) {
-      debugMethodCall(debugPrefix~"toH5"); 
-      beforeH5(options);
-      DH5Obj[] preh5 = null;
-      auto h5 = afterH5(preh5, options);
-      return h5;        
-    }
-    unittest {
-      version(test_uim_apps) {
-        // TODO test
-        }} 
-      // #endregion h5
+    debugMethodCall(moduleName!DAPPViewComponent~":DAPPViewComponent("~this.name~")::toH5");
+    beforeH5(options);
+    DH5Obj[] preh5 = null;
+    auto h5 = afterH5(preh5, options);
+    return h5;        
+  }
+  unittest {
+    version(test_uim_apps) {
+      // TODO test
+      }} 
+    // #endregion h5
 
   DH5Obj[] afterH5(DH5Obj[] h5, STRINGAA options = null) {
-      debugMethodCall(debugPrefix~"beforeH5"); 
+      debugMethodCall(moduleName!DAPPViewComponent~":DAPPViewComponent("~this.name~")::afterH5");
       return h5; // No changes 
     }
     unittest {

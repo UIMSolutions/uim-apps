@@ -4,6 +4,7 @@ module uim.apps.views.components.forms.components.footers.footer;
 import uim.apps;
 
 class DAPPFormFooter : DAPPFormComponent {
-  
+  mixin(APPFormComponentThis!("APPFormFooter"));
 }
+mixin(APPFormComponentCalls!("APPFormFooter"));
 

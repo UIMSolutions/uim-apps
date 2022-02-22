@@ -4,7 +4,7 @@ module uim.apps.controllers.components.checks.requests.accountid;
 import uim.apps;
 
 class DAPPCheckRequestHasAccountId : DAPPCheckDatabaseHasAccounts {
-  mixin(AppControllerComponentThis!("APPCheckAccountIdInSession"));
+  mixin(APPControllerComponentThis!("APPCheckAccountIdInSession"));
 
   override void initialize() {
     super.initialize;
@@ -26,4 +26,4 @@ class DAPPCheckRequestHasAccountId : DAPPCheckDatabaseHasAccounts {
     return true;
   }
 }
-mixin(AppControllerComponentCalls!("APPCheckRequestHasAccountId"));
+mixin(APPControllerComponentCalls!("APPCheckRequestHasAccountId"));

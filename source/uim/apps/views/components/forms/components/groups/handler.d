@@ -27,6 +27,7 @@ class DAPPFormGroupHandler : DAPPFormComponent, IAPPWithEntity {
   DH5Obj[] group(string field, bool readonly, STRINGAA options = null) {
     debug writeln(moduleName!DAPPFormGroupHandler, ":DAPPFormGroupHandler::group");
 
+    debug writeln(entity ? ("Found entity: %s".format(entity.id)) : "entity missing");
     if (entity) {
       debug writeln("Found entity:", entity.id);
       

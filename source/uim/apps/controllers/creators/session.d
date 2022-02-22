@@ -29,16 +29,20 @@ class DAPPCreatorSession : DAPPCreator {
       result["errors"] ~= error;
     }
     return result; }
+version(test_uim_apps) {
   unittest {
-    version(test_uim_apps) {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
       /// TODO 
     }}
   }
 auto APPCreatorSession() { return new DAPPCreatorSession; }
 auto APPCreatorSession(DAPPApplication myApp) { return new DAPPCreatorSession(myApp); }
 
-unittest {
-  version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
     /// TODO 
   }}
 

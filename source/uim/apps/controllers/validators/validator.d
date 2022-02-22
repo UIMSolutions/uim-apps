@@ -4,11 +4,7 @@ module uim.apps.controllers.validators.validator;
 import uim.apps;
 
 class DAPPValidator : DAPPController {
-  this() { super(); }
-  this(DAPPApplication myApp) { this().app(myApp); }
-  this(DAPPApplication myApp, string myName) { this(myApp).name(myName); }
-  this(DAPPApplication myApp, DETBBase myDatabase) { this(myApp).database(myDatabase); }
-  this(DAPPApplication myApp, string myName, DETBBase myDatabase) { this(myApp, myName).database(myDatabase); }
+  mixin(APPControllerThis!("APPValidator"));
 
   /// Main function of Controller
   DOOPEntity validate(STRINGAA parameters) {
@@ -20,23 +16,31 @@ class DAPPValidator : DAPPController {
 
   override Json message(STRINGAA parameters) {
     return super.message(parameters); }
-  unittest {
     version(test_uim_apps) {
-      /// TODO 
-    }}
+      unittest {
+        writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
+          /// TODO 
+        }}
 
   override Json message(Json json, STRINGAA parameters) {    
     auto result = super.message(json, parameters);
     
     if ("results" !in result) result["results"] = Json.emptyObject; 
     
-    return result; }}
+    return result; }
+  }
+version(test_uim_apps) {
   unittest {
-    version(test_uim_apps) {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
       /// TODO 
     }}
-auto APPValidator() { return new DAPPValidator; }
-auto APPValidator(DAPPApplication myApp) { return new DAPPValidator(myApp); }
-auto APPValidator(DAPPApplication myApp, string myName) { return new DAPPValidator(myApp, myName); }
-auto APPValidator(DAPPApplication myApp, DETBBase myDatabase) { return new DAPPValidator(myApp, myDatabase); }
-auto APPValidator(DAPPApplication myApp, string myName, DETBBase myDatabase) { return new DAPPValidator(myApp, myName, myDatabase); }
+    
+mixin(APPControllerCalls!("APPValidator"));
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
+      /// TODO 
+    }}

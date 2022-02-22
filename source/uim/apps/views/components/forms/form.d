@@ -16,10 +16,6 @@ class DAPPForm : DAPPViewComponent {
       .method("post");
   }
 
-  mixin(OProperty!("DAPPFormHeader", "header"));
-  mixin(OProperty!("DAPPFormBody", "body_"));
-  mixin(OProperty!("DAPPFormFooter", "footer"));
-
   mixin(OProperty!("string[string]", "defaults"));
   mixin(OProperty!("string[]", "fields"));
   mixin(OProperty!("DAPPPanes", "panes"));
@@ -32,15 +28,41 @@ class DAPPForm : DAPPViewComponent {
   mixin(OProperty!("string", "bodyTitle"));
   mixin(OProperty!("string", "footerTitle"));
 
+  DAPPViewComponent header() { 
+    return this.component("header");
+  }
+  O header(this O)(DAPPViewComponent newComponent) { 
+    this.component("header", newComponent);
+    return cast(O)this;
+  }
+
+  DAPPViewComponent body_() { 
+    return this.component("body");
+  }
+  O body_(this O)(DAPPViewComponent newComponent) { 
+    this.component("body", newComponent);
+    return cast(O)this;
+  }
+
+  DAPPViewComponent footer() { 
+    return this.component("footer");
+  }
+  O footer(this O)(DAPPViewComponent newComponent) { 
+    this.component("footer", newComponent);
+    return cast(O)this;
+  }
+
   // #region crudMode
     CRUDModes _crudMode;
     CRUDModes crudMode() { return _crudMode; }
     O crudMode(this O)(CRUDModes newCrudMode) {
       _crudMode = newCrudMode;
 
-      if (header) header.crudMode(this.crudMode);
-      if (body_) body_.crudMode(this.crudMode);
-      if (footer) footer.crudMode(this.crudMode);
+      foreach(viewComponent; components) {
+        if (auto formComponent = cast(DAPPFormComponent)viewComponent) {
+          formComponent.crudMode(this.crudMode);
+        }
+      }
 
       return cast(O)this; 
     }
@@ -51,9 +73,11 @@ class DAPPForm : DAPPViewComponent {
   O rootPath(this O)(string newRootPath) {
     _rootPath = newRootPath;
 
-    if (header) header.rootPath(this.rootPath);
-    if (body_) body_.rootPath(this.rootPath);
-    if (footer) footer.rootPath(this.rootPath);
+    foreach(viewComponent; components) {
+      if (auto formComponent = cast(DAPPFormComponent)viewComponent) {
+        formComponent.rootPath(this.rootPath);
+      }
+    }
 
     return cast(O)this; 
   }
@@ -97,24 +121,24 @@ class DAPPForm : DAPPViewComponent {
       if (auto formComponent = cast(DAPPFormComponent)component) {
         debug writeln("formComponent ", formComponent.name);
         formComponent
-        .crudMode(this.crudMode)
-        .rootPath(this.rootPath);
+          .crudMode(this.crudMode)
+          .rootPath(this.rootPath);
       }
     }
 
     if (header) {
       debug writeln("Has header");
-      header.title(headerTitle); 
+      header["title"] = headerTitle; 
     }
 
     if (body_) { 
       debug writeln("Has body_");
-      body_.title(bodyTitle); 
+      body_["title"] = bodyTitle; 
     }
     
     if (footer) {
       debug writeln("Has footer");
-      footer.title(footerTitle);
+      footer["title"] = footerTitle;
     }
   }
 

@@ -4,7 +4,7 @@ module uim.apps.controllers.components.checks.databases.database;
 import uim.apps;
 
 class DAPPCheckDatabaseExists : DAPPCheck {
-  mixin(AppControllerComponentThis!("APPCheckDatabaseExists"));
+  mixin(APPControllerComponentThis!("APPCheckDatabaseExists"));
 
   override void initialize() {
     super.initialize;
@@ -31,10 +31,12 @@ class DAPPCheckDatabaseExists : DAPPCheck {
     return true;
   }
 }
-mixin(AppControllerComponentCalls!("APPCheckDatabaseExists"));
+mixin(APPControllerComponentCalls!("APPCheckDatabaseExists"));
 
 version(test_uim_apps) {
   unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
     // TODO
   }
 }

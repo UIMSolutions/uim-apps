@@ -63,8 +63,10 @@ class DAPPEntityReadController : DAPPEntityCrudPageController {
       if (auto entityForm = cast(DAPPEntityForm)form) entityForm.entity(entity); 
     }
   }
+version(test_uim_apps) {
   unittest {
-    version(test_uim_apps) {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
       /// TODO
     }}
 }

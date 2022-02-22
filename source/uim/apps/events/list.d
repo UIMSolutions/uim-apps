@@ -14,24 +14,27 @@ class EventList // implements ArrayAccess, Countable
     // Empties the list of dispatched events.
     void flush() {
         _events = []; }
-    unittest {
-      version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add Tests
         }}
 
     // Adds an event to the list when event listing is enabled.
     void add(IAPPEvent anEvent) {
         _events ~= anEvent; }
-    unittest {
-      version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add Tests
         }}
 
     // Whether a offset exists
     bool offsetExists(string anOffset) {
         return false; }
-    unittest {
-      version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add Tests
         }}
 
@@ -42,8 +45,9 @@ class EventList // implements ArrayAccess, Countable
       }
 
       return null; }
-    unittest {
-      version(test_uim_apps) {
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add Tests
         }}
 
@@ -70,3 +74,7 @@ class EventList // implements ArrayAccess, Countable
       return false;
     }
 }
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+  }}

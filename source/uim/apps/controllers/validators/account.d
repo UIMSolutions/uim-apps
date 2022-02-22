@@ -43,8 +43,10 @@ class DAPPValidatorAccount : DAPPValidator {
     
     return null; // Not valid ;
   }
+version(test_uim_apps) {
   unittest {
-    version(test_uim_apps) {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
       /// TODO 
     }}
 
@@ -63,8 +65,10 @@ class DAPPValidatorAccount : DAPPValidator {
     }
     return result;
   }
+version(test_uim_apps) {
   unittest {
-    version(test_uim_apps) {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
       /// TODO 
     }}
 }

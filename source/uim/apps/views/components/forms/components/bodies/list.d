@@ -12,7 +12,7 @@ version(test_uim_apps) {
   unittest {
     assert(new DAPPListFormBody);
     assert(APPListFormBody);
-    assert(new DAPPListFormBody(APPController));
-    assert(APPListFormBody(APPController));
+    assert(new DAPPListFormBody(APPForm));
+    assert(APPListFormBody(APPForm));
   }
 }

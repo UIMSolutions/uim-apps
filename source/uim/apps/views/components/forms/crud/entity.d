@@ -14,16 +14,13 @@ class DAPPEntityCRUDForm : DAPPEntityForm {
         APPEntityFormBody(this));
   }
 
-  override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntityCRUDForm~"::DAPPEntityCRUDForm:beforeH5"); 
-    debug writeln("this.entity -> ", this.entity ? this.entity.id.toString : " 'null' " );
-    super.beforeH5(options);
-    if (hasError || "redirect" in options) { return; }
+  override void _afterSetEntity() {
+    super._afterSetEntity;
 
-    if (auto entitybody_ = cast(DAPPEntityFormBody)this.body_) {
-      debug writeln("Found entitybody_");
-      entitybody_.entity(this.entity);
-    }
+    if (auto formBody = cast(DAPPEntityFormBody)this.body_) {
+      debug writeln("Found formBody");
+      formBody.entity(this.entity);
+    } 
   }
 }
 mixin(APPViewComponentCalls!("APPEntityCRUDForm", true));

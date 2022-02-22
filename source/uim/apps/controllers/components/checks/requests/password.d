@@ -4,7 +4,7 @@ module uim.apps.controllers.components.checks.requests.password;
 import uim.apps;
 
 class DAPPCheckRequestHasPassword : DAPPCheck {
-  mixin(AppControllerComponentThis!("APPCheckRequestHasPassword"));
+  mixin(APPControllerComponentThis!("APPCheckRequestHasPassword"));
 
   override void initialize() {
     super.initialize;
@@ -27,10 +27,12 @@ class DAPPCheckRequestHasPassword : DAPPCheck {
     return true;
   }
 }
-mixin(AppControllerComponentCalls!("APPCheckRequestHasPassword"));
+mixin(APPControllerComponentCalls!("APPCheckRequestHasPassword"));
 
 version(test_uim_apps) {
   unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
     assert(new DAPPCheckRequestHasPassword);
     assert(APPCheckRequestHasPassword);
     assert(new DAPPCheckRequestHasPassword(APPController));

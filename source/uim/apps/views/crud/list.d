@@ -22,16 +22,17 @@ class DAPPEntitiesListView : DAPPEntitiesView {
       APPPageHeader(this).actions(["refresh", "create"]));
   }
 
-
+/* 
   override void _afterSetEntities() {
     super._afterSetEntities;
 
     debug writeln(this.entities ? "Has %s entities".format(this.entities.length) : "No entities");
-  }
+  } */
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView:toH5");    
     super.toH5(options);
+    if (hasError || "redirect" in options) { return null; }
 
     return [
       H5Div(["container-xl"],

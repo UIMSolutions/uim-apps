@@ -53,7 +53,8 @@ class DAPPFormGroup : DAPPFormComponent, IAPPWithEntity {
     super.beforeH5(options);
     if (hasError) { return; }
 
-    if (this.entity) {
+    debug writeln(entity ? "Has entity" : "no entity");
+    if (this.entity) {      
       this.fieldValue = this.entity[this.fieldName];
     }
   }

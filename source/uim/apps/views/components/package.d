@@ -36,7 +36,7 @@ DH5Obj viewEntities(uint initValue = 10) {
 
 template APPViewComponentThis(string classShortName, bool withEntity = false, bool withEntities = false) {
   const char[] APPViewComponentThis = `
-this() { super(); this.name("`~classShortName~`"); }
+this() { super(); this.name = "`~classShortName~`"; }
 this(DAPPView myView) { this().view(myView); }`~
 (withEntity ? `
 this(DOOPEntity myEntity) { this().entity(myEntity); }

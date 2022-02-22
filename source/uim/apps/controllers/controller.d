@@ -13,14 +13,14 @@ class DAPPController {
     this.name = "APPController"; 
   }
   
+  mixin(APPParameter!("mimetype")); 
+  mixin(APPParameter!("name")); 
+
   /// Owning controller
   mixin(OProperty!("DAPPApplication", "app"));
   mixin(OProperty!("UUID", "id"));
-  mixin(OProperty!("string", "name"));
-  mixin(OProperty!("string", "mimetype"));
   mixin(OProperty!("DAPPController", "controller"));
-  mixin(OProperty!("DAPPController[]", "controllers")); // Cascading controllers
-  mixin(OProperty!("DAPPControllerComponent[]", "components")); // Cascading controllers components
+  mixin(OProperty!("DAPPControllerComponent[string]", "components")); // Cascading controllers components
 
   mixin(OProperty!("DAPPCheck[]", "checks"));
   O addChecks(this O)(DAPPCheck[] newChecks) {
@@ -40,7 +40,22 @@ class DAPPController {
   mixin(OProperty!("string", "responseResult"));
 
   /// Additional parameters
-  mixin(OProperty!("STRINGAA", "parameters"));
+  mixin(OProperty!("STRINGAA", "parameters")); 
+  string parameter(string key) {
+    return _parameters.get(key, null);
+  }
+  O parameter(this O)(string key, string newValue) {
+    _parameters[key] = newValue;
+    return cast(O)this;
+  }
+
+  string opIndex(string key){      
+    return this.parameter(key);
+  }
+  O opIndexAssign(this O)(string key, string newValue) {
+    this.parameter(key, newValue);
+    return cast(O)this;
+  }
 
   /// Configuration of controller
   mixin(OProperty!("Json", "config"));
@@ -68,8 +83,11 @@ class DAPPController {
   DAPPController create() {
     return APPController;
   }
+
+version(test_uim_apps) {
   unittest {
-    version(test_uim_apps) {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
       /// TODO 
     }}
 
@@ -80,8 +98,11 @@ class DAPPController {
     result.controller = this.controller;
     return result;
   }
+
+version(test_uim_apps) {
   unittest {
-    version(test_uim_apps) {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
       /// TODO 
     }}
 
@@ -192,12 +213,12 @@ class DAPPController {
       newResponse.redirect(redirect);
     } 
 
-		debug writeln("_mimetype = '"~_mimetype~"'");
+		debug writeln("_mimetype = '"~this.mimetype~"'");
     auto result = stringResponse(options);
 
     afterResponse(options);
     
-		this.response.writeBody(result, _mimetype); }
+		this.response.writeBody(result, this.mimetype); }
 	unittest {
 		version(uim_html) {
 			/// TODO
@@ -206,9 +227,10 @@ class DAPPController {
 auto APPController() { return new DAPPController; }
 auto APPController(DAPPApplication myApp) { return new DAPPController(myApp); }
 
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
-unittest {
-	version(test_uim_apps) {
 /* 		assert(APPController.view.name == "H5NullView"); // Controller has default view
 		assert(APPController.view(APPView).view.name == "APPView"); // Controller has new view */
 }}

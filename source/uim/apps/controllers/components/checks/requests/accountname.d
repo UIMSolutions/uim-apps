@@ -4,7 +4,7 @@ module uim.apps.controllers.components.checks.requests.accountname;
 import uim.apps;
 
 class DAPPCheckRequestHasAccountName : DAPPCheckDatabaseHasAccounts {
-  mixin(AppControllerComponentThis!("APPCheckRequestHasAccountName"));
+  mixin(APPControllerComponentThis!("APPCheckRequestHasAccountName"));
 
   override void initialize() {
     super.initialize;
@@ -26,10 +26,12 @@ class DAPPCheckRequestHasAccountName : DAPPCheckDatabaseHasAccounts {
     return true;
   }
 }
-mixin(AppControllerComponentCalls!("APPCheckRequestHasAccountName"));
+mixin(APPControllerComponentCalls!("APPCheckRequestHasAccountName"));
 
 version(test_uim_apps) {
   unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
     assert(new DAPPCheckRequestHasAccountName);
     assert(APPCheckRequestHasAccountName);
     assert(new DAPPCheckRequestHasAccountName(APPController));

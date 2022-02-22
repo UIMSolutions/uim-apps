@@ -4,7 +4,7 @@ module uim.apps.controllers.components.checks.appsessions.appsession;
 import uim.apps;
 
 class DAPPCheckAppSessionExists : DAPPCheck {
-  mixin(AppControllerComponentThis!("APPCheckAppSessionExists"));
+  mixin(APPControllerComponentThis!("APPCheckAppSessionExists"));
 
   override void initialize() {
     super.initialize;
@@ -25,4 +25,4 @@ class DAPPCheckAppSessionExists : DAPPCheck {
     return true;
   }
 }
-mixin(AppControllerComponentCalls!("APPCheckAppSessionExists"));
+mixin(APPControllerComponentCalls!("APPCheckAppSessionExists"));

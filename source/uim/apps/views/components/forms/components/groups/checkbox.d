@@ -38,7 +38,7 @@ class DAPPCheckboxFormGroup : DAPPFormGroup {
           h5Input(options), H5Span(["form-check-label"], label))));
   }
 }
-mixin(APPFormComponentCalls!("APPSwitchFormGroup"));
+mixin(APPFormComponentCalls!("APPCheckboxFormGroup"));
 
 unittest {
   version(test_uim_apps) {

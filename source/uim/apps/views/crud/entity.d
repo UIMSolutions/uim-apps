@@ -31,18 +31,23 @@ class DAPPEntityCRUDView : DAPPEntityView {
         .crudMode(CRUDModes.Read);
   }
 
-  override void _afterSetEntity() {
-    super._afterSetEntity;
+  override void beforeH5(STRINGAA options = null) {
+    debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):beforeH5");    
+    super.beforeH5(options);
+    debug writeln(entity ? "Has entity" : "no entity");
 
     if (auto entityForm = cast(DAPPEntityForm)this.form) {
-      debug writeln("Found entityView");
+      debug writeln("Found entityForm");
       entityForm.entity(this.entity);
-    } 
+    } else debug writeln("No entityForm"); 
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntityView~"::DAPPEntityView:toH5");    
+    debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):toH5");    
     super.toH5(options);
+    if (hasError || "redirect" in options) { return null; }
+
+    debug writeln(entity ? "Has entity" : "no entity");
 
     auto panes = 
       BS5Card(

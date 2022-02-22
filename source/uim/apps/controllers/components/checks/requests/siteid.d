@@ -4,7 +4,7 @@ module uim.apps.controllers.components.checks.requests.siteid;
 import uim.apps;
 
 class DAPPCheckRequestHasSiteId : DAPPCheckDatabaseHasAccounts {
-  mixin(AppControllerComponentThis!("APPCheckRequestHasSiteId"));
+  mixin(APPControllerComponentThis!("APPCheckRequestHasSiteId"));
 
   override void initialize() {
     super.initialize;
@@ -28,10 +28,12 @@ class DAPPCheckRequestHasSiteId : DAPPCheckDatabaseHasAccounts {
     return true;
   }
 }
-mixin(AppControllerComponentCalls!("APPCheckRequestHasSiteId"));
+mixin(APPControllerComponentCalls!("APPCheckRequestHasSiteId"));
 
 version(test_uim_apps) {
   unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
     assert(new DAPPCheckRequestHasSiteId);
     assert(APPCheckRequestHasSiteId);
     assert(new DAPPCheckRequestHasSiteId(APPController));

@@ -18,9 +18,10 @@ class DAPPPageFooter : DAPPViewComponent {
   mixin(OProperty!("string", "inner"));
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
+    debugMethodCall(moduleName!DAPPPageFooter~":DAPPPageFooter("~this.name~")::toH5");
     super.toH5(options);
-    if (hasError || "redirect" in options) { return null; }
-
+    if (hasError || "redirect" in options) { return null; }    
+    
     auto rootPath = options.get("rootPath", "/");
 
     string style;

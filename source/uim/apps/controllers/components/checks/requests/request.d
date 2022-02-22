@@ -4,7 +4,7 @@ module uim.apps.controllers.components.checks.requests.request;
 import uim.apps;
 
 class DAPPCheckRequestExists : DAPPCheck {
-  mixin(AppControllerComponentThis!("APPCheckRequestExists"));
+  mixin(APPControllerComponentThis!("APPCheckRequestExists"));
 
   override void initialize() {
     super.initialize;
@@ -26,10 +26,12 @@ class DAPPCheckRequestExists : DAPPCheck {
     return true;
   }
 }
-mixin(AppControllerComponentCalls!("APPCheckRequestExists"));
+mixin(APPControllerComponentCalls!("APPCheckRequestExists"));
 
 version(test_uim_apps) {
   unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+
     assert(new DAPPCheckRequestExists);
     assert(APPCheckRequestExists);
     assert(new DAPPCheckRequestExists(APPController));

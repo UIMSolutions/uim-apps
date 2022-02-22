@@ -32,7 +32,9 @@ class DAPPEntitiesFormBody : DAPPFormBody, IAPPWithEntities {
       this.rootPath(form.rootPath); 
     }
 
+    debug writeln(entities ? "Has entities" : "No entities");
     if (auto entitiesForm = cast(IAPPWithEntities)this.form) {
+      debug writeln("Found entitiesForm");
       this.entities(entitiesForm.entities);
     }
   }
@@ -105,7 +107,7 @@ version(test_uim_apps) {
   unittest {
     assert(new DAPPEntitiesFormBody);
     assert(APPEntitiesFormBody);
-    assert(new DAPPEntitiesFormBody(APPController));
-    assert(APPEntitiesFormBody(APPController));
+    assert(new DAPPEntitiesFormBody(APPForm));
+    assert(APPEntitiesFormBody(APPForm));
   }
 }
