@@ -76,3 +76,36 @@ DAPPPageController pageByName(DAPPController[] controllers, string name) {
 	}
 	return null; 
 }
+
+void testPageController(DAPPPageController controller) {
+	assert(controller);	
+
+	controller["id"] = "testId1";
+	assert(controller.id == "testId1");	
+	assert(controller["id"] == "testId1");	
+
+	controller.id("testId2");
+	assert(controller.id("testId2").id == "testId2");	
+	assert(controller.id("testId2")["id"] == "testId2");	
+
+	controller["name"] = "testName1";
+	assert(controller.name == "testName1");	
+	assert(controller["name"] == "testName1");	
+
+	controller.name("testName2");
+	assert(controller.name("testName2").name == "testName2");	
+	assert(controller.name("testName2")["name"] == "testName2");	
+
+	controller["mimetype"] = "testMimetype1";
+	assert(controller.mimetype == "testMimetype1");	
+	assert(controller["mimetype"] == "testMimetype1");	
+
+	assert(controller.mimetype == "text/html");	
+
+	controller.mimetype("testMimetype2");
+	assert(controller.mimetype("testMimetype2").mimetype == "testMimetype2");	
+	assert(controller.mimetype("testMimetype2")["mimetype"] == "testMimetype2");			
+
+	assert(controller.view(APPView).view.name == "APPView", "Found error"); 
+	assert(controller.view(APPView).view["name"] == "APPView", "Found error"); 
+}

@@ -11,9 +11,8 @@ mixin(APPControllerCalls!("APPActionController"));
 version(test_uim_apps) {
   unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
+    testController(new DAPPActionController);
 
-    assert(new DAPPActionController);
-    assert(APPActionController);
-    assert(APPActionController.name == "APPActionController");
-  }
-}
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+    testController(APPActionController);
+}}

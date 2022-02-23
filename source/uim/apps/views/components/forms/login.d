@@ -14,11 +14,11 @@ class DAPPLoginForm : DAPPForm {
     this.showLostAccount(true);
   }
   
-  override DAPPViewComponent copy() {
+/*   override DAPPViewComponent copy() {
     return
       (cast(DAPPLoginForm)copy)
       .showLostAccount(this.showLostAccount);
-  }
+  } */
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     super.toH5(options);

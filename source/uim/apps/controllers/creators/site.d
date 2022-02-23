@@ -6,24 +6,24 @@ import uim.apps;
 class DAPPCreatorSite : DAPPCreator {
   mixin(APPControllerThis!("APPCreatorSite"));
 
-  override DOOPEntity create(STRINGAA parameters) {
+  override DOOPEntity create(STRINGAA options) {
     auto col = database["systems", "system_sites"];
 
     return  col.notNull ? col
       .createFromTemplate
-      .name(parameters.get("site", "site"~to!string(now)))  
+      .name(options.get("site", "site"~to!string(now)))  
       .save : null;
   }
 
-  override Json message(STRINGAA parameters) {
+  override Json message(STRINGAA options) {
     auto result = Json.emptyObject;
-    return super.message(result, parameters);
+    return super.message(result, options);
   }
 
-  override Json message(Json json, STRINGAA parameters) {    
-    auto result = super.message(json, parameters);
+  override Json message(Json json, STRINGAA options) {    
+    auto result = super.message(json, options);
 
-    result["results"]["site"] = create(parameters).toJson;
+    result["results"]["site"] = create(options).toJson;
     return result;
   }
 }

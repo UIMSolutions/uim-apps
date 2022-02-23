@@ -3,20 +3,29 @@ module uim.apps.controllers.pages.lostpw;
 @safe:
 import uim.apps;
 
-class DLostPasswordPageController : DAPPPageController {
-  mixin(APPPageControllerThis!("LostPasswordPageController"));
+class DAPPLostPasswordPageController : DAPPPageController {
+  mixin(APPPageControllerThis!("APPLostPasswordPageController"));
 
   override void initialize() {
     super.initialize;
 
-    this.parameters([
-      "pageTitle": "Passwort vergessen?",
-      "pageBreadcrumbs":`<ol class="breadcrumb" aria-label="breadcrumbs">
+    this
+      .parameter("pageTitle", "Passwort vergessen?")
+      .parameter("pageBreadcrumbs",`<ol class="breadcrumb" aria-label="breadcrumbs">
   <li class="breadcrumb-item"><a href="#">Start</a></li>
   <li class="breadcrumb-item active" aria-current="page"><a href="#">Passwort vergessen</a></li>
-</ol>`])
+</ol>`)
       .title("Passwort vergessen")
       .view(APPLostPasswordView(this));
   }
 }
-mixin(APPPageControllerCalls!("LostPasswordPageController"));
+mixin(APPPageControllerCalls!("APPLostPasswordPageController"));
+
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DAPPLostPasswordPageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(APPLostPasswordPageController); 
+}}

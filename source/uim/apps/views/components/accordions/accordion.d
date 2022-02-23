@@ -12,8 +12,7 @@ class DAPPAccordion : DAPPViewComponent {
     this.id("accordion-viewcomponent");
   }
 
-  mixin(OProperty!("string", "id"));
-  mixin(OProperty!("string", "title"));
+  mixin(APPParameter!("title"));
   mixin(OProperty!("DH5Obj[]", "accordionBody"));
 
   override DH5Obj[] toH5(STRINGAA options = null) { 

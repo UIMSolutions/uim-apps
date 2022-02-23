@@ -8,15 +8,16 @@ module uim.apps.views.view;
 @safe:
 import uim.apps;
 
-class DAPPView : IAPPEventDispatcher {
-  this() { initialize; }
+class DAPPView : DAPPObject, IAPPEventDispatcher {
+  this() { super(); }
   this(DAPPPageController myController) { this().controller(myController); }
   this(string myName) { this().name(myName); }
   this(DAPPPageController myController, string myName) { this(myController).name(myName); }
     
   // Initialization (= hook method)
-  void initialize() {
-    debugMethodCall(moduleName!DAPPView~"::DAPPView:initialize");   
+  override void initialize() {
+    debugMethodCall(moduleName!DAPPView~"::DAPPView("~this.name~"):initialize");   
+    super.initialize;
 
     this
       .name("APPView") 
@@ -27,35 +28,11 @@ class DAPPView : IAPPEventDispatcher {
       .leftClasses(["d-none", "d-md-block", "col-12", "col-sm-6", "col-md-4", "col-lg-3", "col-xl-2"])
       .mainClasses(["col-12", "col-md-8", "col-lg-6", "col-xl-8"]) 
       .rightClasses(["d-none", "d-lg-block", "col-12", "col-sm-6", "col-md-4", "col-lg-3", "col-xl-2"]);
-    }
-    
-    mixin(OProperty!("DAPPPageController", "controller")); 
-    mixin(OProperty!("IAPPEventManager", "eventManager")); 
-    
-    mixin(OProperty!("STRINGAA", "parameters")); 
-    string parameter(string key) {
-      return _parameters.get(key, null);
-    }
-    O parameter(this O)(string key, string newValue) {
-      _parameters[key] = newValue;
-      return cast(O)this;
-    }
+  }
 
-    string name() { 
-      return parameter("name"); 
-    } 
-    O name(this O)(string newValue) { 
-      this.parameter("name", newValue);
-      return cast(O)this; 
-    } 
-
-    string opIndex(string key){      
-      return this.parameter(key);
-    }
-    O opIndexAssign(this O)(string key, string newValue) {
-      this.parameter(key, newValue);
-      return cast(O)this;
-    }
+  mixin(OProperty!("DAPPPageController", "controller")); 
+  mixin(OProperty!("IAPPEventManager", "eventManager")); 
+    
     // view components
     mixin(OProperty!("DAPPViewComponent[string]", "components")); 
     bool hasComponent(string key) {
@@ -78,12 +55,6 @@ class DAPPView : IAPPEventDispatcher {
     mixin(OProperty!("DAPPViewComponent", "mainComponent")); 
     mixin(OProperty!("string[]", "rightClasses")); 
     mixin(OProperty!("DAPPViewComponent", "rightComponent")); 
-
-  // #region error handling
-    mixin(OProperty!("string", "error"));
-
-    bool hasError() { return (this.error.length > 0); } 
-  // #endregion error
 
     protected DAPPLayout _layout;
     O layout(this O)(DAPPLayout newLayout) { 

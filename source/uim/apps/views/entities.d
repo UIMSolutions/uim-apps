@@ -21,7 +21,12 @@ class DAPPEntitiesView : DAPPView, IAPPWithEntities {
         entitiesViewComponent.entities(this.entities); 
       }
     } 
+
+    _afterSetEntities;
+
     return cast(O)this;
+  }
+  void _afterSetEntities() {
   }
 }
 mixin(APPViewCalls!("APPEntitiesView"));

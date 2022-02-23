@@ -6,7 +6,7 @@ import uim.apps;
 class DAPPEntitiesFormHeader : DAPPFormHeader, IAPPWithEntities {
   mixin(APPFormComponentThis!("APPEntitiesFormHeader", false, true));
 
- mixin(OProperty!("DOOPEntity[]", "entities"));
+  mixin(OProperty!("DOOPEntity[]", "entities"));
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPEntitiesFormHeader~"DAPPEntitiesFormHeader::toHbeforeH55");

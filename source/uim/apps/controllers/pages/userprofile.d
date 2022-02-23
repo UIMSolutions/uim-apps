@@ -4,14 +4,27 @@ module uim.apps.controllers.pages.userprofile;
 import uim.apps;
 
 class DAPPUserProfilePageController : DAPPPageController {
-      this() { super(); 
-          this.parameters([
-      "pageTitle": "Registrierung",
-      "pageBreadcrumbs":`<ol class="breadcrumb" aria-label="breadcrumbs">
+  mixin(APPPageControllerThis!("APPUserProfilePageController"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+      .parameter("pageTitle", "Registrierung")
+      .parameter("pageBreadcrumbs", `<ol class="breadcrumb" aria-label="breadcrumbs">
   <li class="breadcrumb-item"><a href="#">Start</a></li>
   <li class="breadcrumb-item active" aria-current="page"><a href="#">Registrierung</a></li>
-</ol>`])
+</ol>`)
       .title("Registrierung");
   }
 }
-auto APPUserProfilePageController() { return new DAPPUserProfilePageController; }
+mixin(APPPageControllerCalls!("APPUserProfilePageController"));
+
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DAPPUserProfilePageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(APPUserProfilePageController); 
+}}

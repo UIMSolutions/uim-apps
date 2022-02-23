@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.crud.list;
 @safe:
 import uim.apps;
 
-class DAPPEntitiesListForm : DAPPForm, IAPPWithEntities {
+class DAPPEntitiesListForm : DAPPEntitiesForm {
   mixin(APPViewComponentThis!("APPEntitiesListForm", false, true));
 
   override void initialize() {
@@ -17,18 +17,6 @@ class DAPPEntitiesListForm : DAPPForm, IAPPWithEntities {
         .header(APPEntitiesheader(this.form).rootPath("/cms/blogs").mainTitle("Blogs").subTitle("Blogs anzeigen").actions([["print", "export"]]))
         .body_(APPListbody_(this.form).rootPath("/cms/blogs"));
  */
-  }
-
-  mixin(OProperty!("DOOPEntity[]", "entities"));
-  
-  override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntitiesListForm~":DAPPEntitiesListForm("~this.name~")::beforeH5");
-    debug writeln(moduleName!DAPPEntitiesListForm~":DAPPEntitiesListForm("~this.name~")::beforeH5 -> Init.RootPath: ", this.rootPath);
-    super.beforeH5(options);
-
-    if (auto entitiesView = cast(IAPPWithEntities)this.view) {
-      this.entities(entitiesView.entities);
-    }
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {

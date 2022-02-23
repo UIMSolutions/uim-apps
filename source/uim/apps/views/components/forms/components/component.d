@@ -11,7 +11,6 @@ class DAPPFormComponent : DAPPViewComponent {
   mixin(OProperty!("bool", "readonly")); 
 
   mixin(APPParameter!("rootPath"));
-  mixin(APPParameter!("id"));
   mixin(APPParameter!("title"));  
 }
 mixin(APPViewComponentCalls!("APPFormComponent"));

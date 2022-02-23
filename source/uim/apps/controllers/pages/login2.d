@@ -18,12 +18,11 @@ class DAPPLogin2PageController : DAPPPageController {
           login("loginForm");
         })
       });`) */
-      .parameters([
-        "pageTitle": "Anmeldung",
-        "pageBreadcrumbs":`<ol class="breadcrumb" aria-label="breadcrumbs">
+      .parameter("pageTitle", "Anmeldung")
+      .parameter("pageBreadcrumbs", `<ol class="breadcrumb" aria-label="breadcrumbs">
   <li class="breadcrumb-item"><a href="#">Start</a></li>
   <li class="breadcrumb-item active" aria-current="page"><a href="#">Anmeldung (Passwort)</a></li>
-</ol>`])
+</ol>`)
       .title("Anmeldung (Passwort)")
       .view(APPLogin2View(this));
     
@@ -33,3 +32,12 @@ class DAPPLogin2PageController : DAPPPageController {
     }
 }
 mixin(APPPageControllerCalls!("APPLogin2PageController"));
+
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DAPPLogin2PageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(APPLogin2PageController); 
+}}

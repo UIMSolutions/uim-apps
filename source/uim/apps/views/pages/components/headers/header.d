@@ -11,13 +11,12 @@ import uim.apps;
 class DAPPPageHeader : DAPPViewComponent {
   mixin(APPViewComponentThis!("APPPageHeader"));
 
-  mixin(OProperty!("string", "id"));
-  mixin(OProperty!("string", "rootPath"));
-  mixin(OProperty!("string", "preTitle"));
-  mixin(OProperty!("string", "title"));
+  mixin(APPParameter!("rootPath"));
+  mixin(APPParameter!("preTitle"));
+  mixin(APPParameter!("title"));
   mixin(OProperty!("string[]", "actions"));
-  mixin(OProperty!("string", "mainTitle"));
-  mixin(OProperty!("string", "subTitle"));
+  mixin(APPParameter!("mainTitle"));
+  mixin(APPParameter!("subTitle"));
   mixin(OProperty!("DH5Obj", "breadcrumbs"));
 
   DH5Obj actionButton(string action, STRINGAA options = null) {

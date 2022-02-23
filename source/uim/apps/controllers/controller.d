@@ -3,22 +3,24 @@ module uim.apps.controllers.controller;
 @safe:
 import uim.apps;
 
-class DAPPController {
-  this() { initialize; }
-  this(DAPPApplication myApp) { this().app(myApp); }
+class DAPPController : DAPPObject {
+  mixin(APPControllerThis!("APPController"));
 
   // Initialization (= hook method)
-  void initialize() {
-    this.id = randomUUID;
-    this.name = "APPController"; 
+  override void initialize() {
+    debugMethodCall(moduleName!DAPPController~"::DAPPController("~this.name~"):initialize");   
+    super.initialize;
+
+    this
+      .name("APPController"); 
+
+    debug writeln("MimeType = ", this.mimetype);
   }
   
   mixin(APPParameter!("mimetype")); 
-  mixin(APPParameter!("name")); 
 
   /// Owning controller
   mixin(OProperty!("DAPPApplication", "app"));
-  mixin(OProperty!("UUID", "id"));
   mixin(OProperty!("DAPPController", "controller"));
   mixin(OProperty!("DAPPControllerComponent[string]", "components")); // Cascading controllers components
 
@@ -39,33 +41,9 @@ class DAPPController {
   mixin(OProperty!("DOOPEntity", "session"));
   mixin(OProperty!("string", "responseResult"));
 
-  /// Additional parameters
-  mixin(OProperty!("STRINGAA", "parameters")); 
-  string parameter(string key) {
-    return _parameters.get(key, null);
-  }
-  O parameter(this O)(string key, string newValue) {
-    _parameters[key] = newValue;
-    return cast(O)this;
-  }
-
-  string opIndex(string key){      
-    return this.parameter(key);
-  }
-  O opIndexAssign(this O)(string key, string newValue) {
-    this.parameter(key, newValue);
-    return cast(O)this;
-  }
-
   /// Configuration of controller
   mixin(OProperty!("Json", "config"));
 
-  // #region error handling
-    mixin(OProperty!("string", "error"));
-
-    bool hasError() { return (this.error.length > 0); } 
-  // #endregion error
-  
   // #region database
     DETBBase _database; 
     O database(this O)(DETBBase aDatabase) { 
@@ -80,10 +58,6 @@ class DAPPController {
     }
   // #endregion database
 
-  DAPPController create() {
-    return APPController;
-  }
-
 version(test_uim_apps) {
   unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
@@ -91,13 +65,6 @@ version(test_uim_apps) {
       /// TODO 
     }}
 
-    DAPPController copy() {
-    auto result = create;
-    result.app = this.app;
-    result.name = this.name;
-    result.controller = this.controller;
-    return result;
-  }
 
 version(test_uim_apps) {
   unittest {
@@ -165,6 +132,7 @@ version(test_uim_apps) {
   void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPController~":DAPPController::beforeResponse");
     this.error(""); // delete existing error message
+    debug writeln("MimeType = ", this.mimetype);
 
     if ("appSessionId" !in options) {      
       options["appSessionId"] = this.request && this.request.session  ? this.request.session.id : null;
@@ -195,12 +163,16 @@ version(test_uim_apps) {
   }
 
   void request(HTTPServerRequest newRequest, HTTPServerResponse newResponse, STRINGAA options = null) {
-		debugMethodCall(moduleName!DAPPController~":DAPPController::request(req, res, reqParameters)");
+		debugMethodCall(moduleName!DAPPController~":DAPPController("~this.name~")::request(req, res, reqParameters)");
+
+    debug writeln("1 Mimetype = ", this.mimetype);
 
 		this.request = newRequest; this.response = newResponse;
     options = requestParameters(options);
 		beforeResponse(options);
 
+    debug writeln("2 Mimetype = ", this.mimetype);
+    
     if (hasError) {
       debug writeln("Found error -> ", this.error);
       if ("redirect" in options) {
@@ -230,13 +202,13 @@ version(test_uim_apps) {
 			/// TODO
 	}}
 }
-auto APPController() { return new DAPPController; }
-auto APPController(DAPPApplication myApp) { return new DAPPController(myApp); }
+mixin(APPControllerCalls!("APPController"));
 
 version(test_uim_apps) {
   unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
+    testController(new DAPPController);
 
-/* 		assert(APPController.view.name == "H5NullView"); // Controller has default view
-		assert(APPController.view(APPView).view.name == "APPView"); // Controller has new view */
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+    testController(APPController);
 }}

@@ -6,19 +6,19 @@ import uim.apps;
 class DAPPCreatorSession : DAPPCreator {
   mixin(APPControllerThis!("APPCreatorSession"));
 
-  override DOOPEntity create(STRINGAA parameters) {
+  override DOOPEntity create(STRINGAA options) {
     auto entity = createEntities["session"](Json.emptyObject)
       .id(randomUUID)
-      .name(parameters.get("session", "session"~to!string(now)));
+      .name(options.get("session", "session"~to!string(now)));
     if (database) database["systems", "system_sessions"].insertOne(entity);        
 
     return entity;
   }
 
-  override Json message(Json json, STRINGAA parameters) {    
-    auto result = super.message(json, parameters);
+  override Json message(Json json, STRINGAA options) {    
+    auto result = super.message(json, options);
 
-    if (auto session = create(parameters)) {
+    if (auto session = create(options)) {
       result["results"]["session"] = session.toJson;
     }
     else { // not validation error

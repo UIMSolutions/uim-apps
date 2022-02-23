@@ -7,7 +7,9 @@ class DAPPLoginPageController : DAPPPageController {
   mixin(APPPageControllerThis!("APPLoginPageController"));
 
   override void initialize() {
+    debugMethodCall(moduleName!DAPPLoginPageController~"::DAPPLoginPageController("~this.name~"):initialize");   
     super.initialize;
+    debug writeln("MimeType = ", this.mimetype);
 
     this
     .title("Anmeldung (Kennung)")
@@ -18,12 +20,11 @@ class DAPPLoginPageController : DAPPPageController {
           login("loginForm");
         })
       });`) */
-    .parameters([
-          "pageTitle": "Anmeldung",
-          "pageBreadcrumbs":`<ol class="breadcrumb" aria-label="breadcrumbs">
+    .parameter("pageTitle", "Anmeldung")
+    .parameter("pageBreadcrumbs", `<ol class="breadcrumb" aria-label="breadcrumbs">
   <li class="breadcrumb-item"><a href="#">Start</a></li>
   <li class="breadcrumb-item active" aria-current="page"><a href="#">Anmeldung (Kennung)</a></li>
-</ol>`])
+</ol>`)
       .title("Anmeldung (Kennung)")
       .view(APPLoginView(this))
       .scripts.addLinks(
@@ -32,9 +33,20 @@ class DAPPLoginPageController : DAPPPageController {
   }
 
   override void beforeResponse(STRINGAA options = null) {
+    debugMethodCall(moduleName!DAPPLoginPageController~":DAPPLoginPageController("~this.name~")::beforeResponse");
     super.beforeResponse(options);
+    if (hasError || "redirect" in options) { return; }
 
-    
+    debug writeln("MImeType: ", this.mimetype);
   }
 }
 mixin(APPPageControllerCalls!("APPLoginPageController"));
+
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DAPPLoginPageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(APPLoginPageController); 
+}}

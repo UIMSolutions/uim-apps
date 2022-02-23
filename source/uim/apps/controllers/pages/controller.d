@@ -11,12 +11,15 @@ class DAPPPageController : DAPPController {
 
   // Initialization (= hook method)
   override void initialize() {
+    debugMethodCall(moduleName!DAPPPageController~"::DAPPPageController("~this.name~"):initialize");   
     super.initialize;
 
     this
     .language("en") 
     .mimetype("text/html");
     
+    debug writeln("MimeType = ", this.mimetype);
+
     requestReader = APPRequestReader(this);
     sessionReader = APPSessionReader(this);  
 
@@ -114,9 +117,11 @@ version(test_uim_apps) {
   mixin(OProperty!("DAPPStyleContainer", "styles"));
 
   override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::beforeResponse");
+    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController("~this.name~")::beforeResponse");
     super.beforeResponse(options);
-    if ("redirect" in options) { return; }
+    if (hasError || "redirect" in options) { return; }
+    
+    debug writeln("MimeType = ", this.mimetype);
 
     this.links.add(["rel":"canonical", "href": this.canonical]);
   }
@@ -130,6 +135,7 @@ version(test_uim_apps) {
     debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::stringResponse");
     super.stringResponse(options);
     if (hasError) { return null; }
+    debug writeln("MimeType = ", this.mimetype);
 
     if (view) {
       return view.render(options);
@@ -138,7 +144,7 @@ version(test_uim_apps) {
   }
 
   DH5Obj[] pageContent(STRINGAA reqParameters) { 
-    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::pageContent");
+    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController("~this.name~")::pageContent");
     auto result = form ? form.toH5(reqParameters) : null;
 
     // debug writeln("return result pageContent(STRINGAA reqParameters)");
@@ -273,14 +279,9 @@ mixin(APPPageControllerCalls!("APPPageController"));
 
 version(test_uim_apps) {
   unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DAPPPageController); 
 
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-		assert(APPPageController.name == "APPPageController"); // Controller has default view
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-		assert(APPPageController["name"] == "APPPageController"); // Controller has default view
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-		assert(APPPageController.view(APPView).view.name == "APPView"); // Controller has new view
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-		assert(APPPageController.view(APPView).view["name"] == "APPView"); // Controller has new view
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(APPPageController); 
 }}

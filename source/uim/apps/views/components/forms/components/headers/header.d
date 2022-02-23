@@ -14,8 +14,8 @@ class DAPPFormHeader : DAPPFormComponent {
     .crudMode(CRUDModes.Create); 
   }
   
-  mixin(OProperty!("string", "mainTitle"));
-  mixin(OProperty!("string", "subTitle"));
+  mixin(APPParameter!("mainTitle"));
+  mixin(APPParameter!("subTitle"));
   mixin(OProperty!("string[][]", "actions"));
 /*   O actions(this O)(string[][] newActions...) { 
     this.actions(newActions); 

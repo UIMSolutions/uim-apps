@@ -3,27 +3,19 @@ module uim.apps.views.components.component;
 @safe:
 import uim.apps;
 
-class DAPPViewComponent {
-  this() { initialize; this.name = "APPViewComponent"; }  
+class DAPPViewComponent : DAPPObject {
+  this() { super(); this.name("APPViewComponent"); }  
   this(DAPPView myView) { this(); this.view(myView); }
   
-  mixin(OProperty!("string", "debugPrefix")); 
   mixin(OProperty!("bool", "dynamic")); 
   mixin(OProperty!("bool", "isNull")); 
-  mixin(OProperty!("string", "jsCode")); 
   mixin(OProperty!("STRINGAA", "style")); 
   mixin(OProperty!("bool", "changed")); 
   mixin(OProperty!("DAPPViewComponent", "owner")); 
   mixin(OProperty!("DAPPView", "view")); 
   mixin(OProperty!("DAPPLayout", "layout")); 
-
-  string name() {
-    return this.name;
-  }
-  O name(this O)(string newName) {
-    this.name = newName;
-    return cast(O)this;
-  }
+  mixin(APPParameter!("jsCode")); 
+  mixin(APPParameter!("debugPrefix")); 
 
   // view components
   mixin(OProperty!("DAPPViewComponent[string]", "components")); 
@@ -38,16 +30,14 @@ class DAPPViewComponent {
     return cast(O)this;
   }
 
-  void initialize() {
+  override void initialize() {
+    super.initialize; 
+
     this
     .changed(true)
     .dynamic(true); 
   }
-
-  O clone(this O)() {
-    return new O;
-  }
-
+/* 
   DAPPViewComponent copy() {
     return
       clone
@@ -60,35 +50,13 @@ class DAPPViewComponent {
         .owner(this.owner)
         .view(this.view)
         .layout(this.layout); 
-  }
-
-  // #region error handling
-    mixin(OProperty!("string", "error"));
-
-    bool hasError() { return (this.error.length > 0); } 
-  // #endregion error
-
-
-  mixin(OProperty!("STRINGAA", "parameters")); 
-  string opIndex(string key) {
-    return parameters.get(key, null); 
-  }
-  void opIndexAssign(string value, string key) {
-    _parameters[key] = value;
-  }
-  string parameter(string key) {
-    return _parameters.get(key, null);
-  }
-  O parameter(this O)(string key, string newValue) {
-    _parameters[key] = newValue;
-    return cast(O)this;
-  }
+  } */
 
   // #region h5 content 
     void beforeH5(STRINGAA options = null) {
       debugMethodCall(moduleName!DAPPViewComponent~":DAPPViewComponent("~this.name~")::beforeH5");
       // init
-      _error = null; // Delete last error
+      this.clearError; // Delete last error
     }
 version(test_uim_apps) {
   unittest {

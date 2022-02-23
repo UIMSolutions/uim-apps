@@ -4,7 +4,11 @@ module uim.apps.controllers.pages.sites;
 import uim.apps;
 
 class DAPPSitesPage : DAPPPageController {
-  this() { super(); 
+  mixin(APPPageControllerThis!("APPSitesPage"));
+
+  override void initialize() {
+    super.initialize;
+
     this
     .title("Anmeldung (Kennung)")
     .view(APPViewSites(this));
@@ -22,6 +26,13 @@ class DAPPSitesPage : DAPPPageController {
       });`);
     }
   }
+mixin(APPPageControllerCalls!("APPSitesPage"));
 
-auto APPSitesPage() { return new DAPPSitesPage; }
-auto APPSitesPage(DAPPApplication myApplication) { return APPSitesPage.app(myApplication); }
+version(test_uim_apps) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DAPPSitesPage); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(APPSitesPage); 
+}}

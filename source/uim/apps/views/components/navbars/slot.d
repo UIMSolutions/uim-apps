@@ -9,7 +9,6 @@ class DAPPNavbarSlot : DAPPViewComponent {
       this.id(newId);
     }
 
-    mixin(OProperty!("string", "id"));
     mixin(OProperty!("bool", "active"));
     mixin(OProperty!("string", "title"));
     mixin(OProperty!("string", "rootPath"));

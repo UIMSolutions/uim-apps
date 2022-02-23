@@ -53,10 +53,11 @@ public import uim.apps.views;
 
 // Modules
 public import uim.apps.views.registry;
+public import uim.apps.object_;
 
 public import layouts.tabler;
 
-enum CRUDModes { Create, Read, Update, Delete };
+enum CRUDModes { Create, Read, Update, Delete }
 
 size_t appErrorPrefix = 100000; 
 string[size_t] appErrorCodes; 

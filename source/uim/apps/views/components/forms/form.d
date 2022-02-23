@@ -19,14 +19,16 @@ class DAPPForm : DAPPViewComponent {
   mixin(OProperty!("string[string]", "defaults"));
   mixin(OProperty!("string[]", "fields"));
   mixin(OProperty!("DAPPPanes", "panes"));
-  mixin(OProperty!("string", "action"));
-  mixin(OProperty!("string", "method"));
+  mixin(APPParameter!("action"));
+  mixin(APPParameter!("rootPath"));
+  mixin(APPParameter!("method"));
   mixin(OProperty!("bool", "readonly"));
-  mixin(OProperty!("string", "entityName"));
-  mixin(OProperty!("string", "entitiesName"));
-  mixin(OProperty!("string", "headerTitle"));
-  mixin(OProperty!("string", "bodyTitle"));
-  mixin(OProperty!("string", "footerTitle"));
+  mixin(OProperty!("CRUDModes", "crudMode"));  
+  mixin(APPParameter!("entityName"));
+  mixin(APPParameter!("entitiesName"));
+  mixin(APPParameter!("headerTitle"));
+  mixin(APPParameter!("bodyTitle"));
+  mixin(APPParameter!("footerTitle"));
 
   DAPPViewComponent header() { 
     return this.component("header");
@@ -52,37 +54,7 @@ class DAPPForm : DAPPViewComponent {
     return cast(O)this;
   }
 
-  // #region crudMode
-    CRUDModes _crudMode;
-    CRUDModes crudMode() { return _crudMode; }
-    O crudMode(this O)(CRUDModes newCrudMode) {
-      _crudMode = newCrudMode;
-
-      foreach(viewComponent; components) {
-        if (auto formComponent = cast(DAPPFormComponent)viewComponent) {
-          formComponent.crudMode(this.crudMode);
-        }
-      }
-
-      return cast(O)this; 
-    }
-  // #endregion crudMode
-
-  string _rootPath;
-  string rootPath() { return _rootPath; }
-  O rootPath(this O)(string newRootPath) {
-    _rootPath = newRootPath;
-
-    foreach(viewComponent; components) {
-      if (auto formComponent = cast(DAPPFormComponent)viewComponent) {
-        formComponent.rootPath(this.rootPath);
-      }
-    }
-
-    return cast(O)this; 
-  }
-
-  override DAPPViewComponent copy() {
+/*   override DAPPViewComponent copy() {
     return
       (cast(DAPPForm)copy)
         .crudMode(this.crudMode)
@@ -101,25 +73,14 @@ class DAPPForm : DAPPViewComponent {
         .headerTitle(this.headerTitle)
         .bodyTitle(this.bodyTitle)
         .footerTitle(this.footerTitle);
-  } 
-
-  override string opIndex(string name) {
-    switch (name) {
-      case "rootPath": return this.rootPath; 
-      case "action": return this.action; 
-      case "method": return this.method; 
-
-      default: return super.opIndex(name);
-    }
-  }
+  }  */
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPForm~":DAPPForm("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    foreach(component; [header, body_, footer]) { 
-      if (auto formComponent = cast(DAPPFormComponent)component) {
-        debug writeln("formComponent ", formComponent.name);
+    foreach(viewComponent; components) {
+      if (auto formComponent = cast(DAPPFormComponent)viewComponent) {
         formComponent
           .crudMode(this.crudMode)
           .rootPath(this.rootPath);

@@ -6,11 +6,17 @@ import uim.apps;
 class DAPPEntitiesListView : DAPPEntitiesView {
   mixin(APPViewThis!("APPEntitiesListView", false, true));
 
-
   mixin(OProperty!("CRUDModes", "crudMode"));
-  mixin(OProperty!("string", "rootPath"));
+  mixin(APPParameter!("rootPath"));
   mixin(OProperty!("bool", "readonly"));
-  mixin(OProperty!("DAPPEntitiesListForm", "form"));
+  
+  DAPPForm form() {
+    return cast(DAPPForm)this.component("form");
+  }
+  O form(this O)(DAPPForm newForm) {
+    this.component("form", newForm);
+    return cast(O)this;
+  }
 
   override void initialize() {
     super.initialize;
@@ -22,12 +28,13 @@ class DAPPEntitiesListView : DAPPEntitiesView {
       APPPageHeader(this).actions(["refresh", "create"]));
   }
 
-/* 
   override void _afterSetEntities() {
     super._afterSetEntities;
 
-    debug writeln(this.entities ? "Has %s entities".format(this.entities.length) : "No entities");
-  } */
+    if (auto entitiesForm = cast(DAPPEntitiesForm)this.form) {
+      entitiesForm.entities(this.entities);
+    }
+  }
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView:toH5");    
