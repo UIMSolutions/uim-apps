@@ -14,8 +14,6 @@ class DAPPEntityReadView : DAPPEntityCRUDView {
         APPPageHeader(this).actions(["refresh", "list", "create"]));
 
     this
-      .form(
-        APPEntityForm(this))
       .form
         .header(
           APPEntityFormHeader(this.form).actions([["edit", "version", "delete"], ["print", "export"]]));

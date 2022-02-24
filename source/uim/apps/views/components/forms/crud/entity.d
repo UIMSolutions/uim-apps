@@ -14,13 +14,13 @@ class DAPPEntityCRUDForm : DAPPEntityForm {
         APPEntityFormBody(this));
   }
 
-  override void _afterSetEntity() {
+/*   override void _afterSetEntity() {
     super._afterSetEntity;
 
     if (auto formBody = cast(DAPPEntityFormBody)this.body_) {
       debug writeln("Found formBody");
       formBody.entity(this.entity);
     } 
-  }
+  } */
 }
 mixin(APPViewComponentCalls!("APPEntityCRUDForm", true));
