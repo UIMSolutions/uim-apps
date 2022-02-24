@@ -26,8 +26,9 @@ mixin(APPViewCalls!("APPEntityDeleteView"));
 
 version(test_uim_apps) {
   unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    
-    //
-  }
-}
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DAPPEntityDeleteView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(APPEntityDeleteView); 
+}}

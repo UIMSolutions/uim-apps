@@ -4,6 +4,7 @@ module uim.apps.views;
 import uim.apps;
 
 // Main
+public import uim.apps.views.object_;
 public import uim.apps.views.view;
 public import uim.apps.views.list;
 
@@ -59,5 +60,24 @@ auto `~classShortName~`(DAPPPageController myController, DOOPEntity myEntity) { 
 auto `~classShortName~`(DOOPEntity[] myEntities) { return new D`~classShortName~`(myEntities); }
 auto `~classShortName~`(DAPPPageController myController, DOOPEntity[] myEntities) { return new D`~classShortName~`(myController, myEntities); }
 ` : ``);
+}
 
+void testView(DAPPView view) {
+	assert(view);	
+
+	view["id"] = "testId1";
+	assert(view.id == "testId1");	
+	assert(view["id"] == "testId1");	
+
+	view.id("testId2");
+	assert(view.id("testId2").id == "testId2");	
+	assert(view.id("testId2")["id"] == "testId2");	
+
+	view["name"] = "testName1";
+	assert(view.name == "testName1");	
+	assert(view["name"] == "testName1");	
+
+	view.name("testName2");
+	assert(view.name("testName2").name == "testName2");	
+	assert(view.name("testName2")["name"] == "testName2");	
 }

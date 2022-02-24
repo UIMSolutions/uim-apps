@@ -3,7 +3,7 @@ module uim.apps.controllers.controller;
 @safe:
 import uim.apps;
 
-class DAPPController : DAPPObject {
+class DAPPController : DAPPControllerObject {
   mixin(APPControllerThis!("APPController"));
 
   // Initialization (= hook method)
@@ -13,8 +13,6 @@ class DAPPController : DAPPObject {
 
     this
       .name("APPController"); 
-
-    debug writeln("MimeType = ", this.mimetype);
   }
   
   mixin(APPParameter!("mimetype")); 
@@ -22,7 +20,6 @@ class DAPPController : DAPPObject {
   /// Owning controller
   mixin(OProperty!("DAPPApplication", "app"));
   mixin(OProperty!("DAPPController", "controller"));
-  mixin(OProperty!("DAPPControllerComponent[string]", "components")); // Cascading controllers components
 
   mixin(OProperty!("DAPPCheck[]", "checks"));
   O addChecks(this O)(DAPPCheck[] newChecks) {
@@ -132,7 +129,6 @@ version(test_uim_apps) {
   void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPController~":DAPPController::beforeResponse");
     this.error(""); // delete existing error message
-    debug writeln("MimeType = ", this.mimetype);
 
     if ("appSessionId" !in options) {      
       options["appSessionId"] = this.request && this.request.session  ? this.request.session.id : null;
@@ -165,14 +161,10 @@ version(test_uim_apps) {
   void request(HTTPServerRequest newRequest, HTTPServerResponse newResponse, STRINGAA options = null) {
 		debugMethodCall(moduleName!DAPPController~":DAPPController("~this.name~")::request(req, res, reqParameters)");
 
-    debug writeln("1 Mimetype = ", this.mimetype);
-
 		this.request = newRequest; this.response = newResponse;
     options = requestParameters(options);
 		beforeResponse(options);
 
-    debug writeln("2 Mimetype = ", this.mimetype);
-    
     if (hasError) {
       debug writeln("Found error -> ", this.error);
       if ("redirect" in options) {
@@ -189,7 +181,6 @@ version(test_uim_apps) {
       newResponse.redirect(redirect);
     } 
 
-		debug writeln("_mimetype = '"~this.mimetype~"'");
     auto result = stringResponse(options);
 
     afterResponse(options);

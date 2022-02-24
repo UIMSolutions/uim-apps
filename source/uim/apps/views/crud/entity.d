@@ -7,18 +7,23 @@ class DAPPEntityCRUDView : DAPPEntityView {
   mixin(APPViewThis!("APPEntityCRUDView"));
 
   mixin(OProperty!("CRUDModes", "crudMode"));
-  mixin(OProperty!("string", "rootPath"));
   mixin(OProperty!("bool", "readonly"));
-  mixin(OProperty!("DAPPEntityForm", "form"));
+
+  mixin(APPParameter!("rootPath"));
+  mixin(APPViewProperty!("DAPPEntityForm", "form"));
 
   override void initialize() {
+    debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):initialize");   
     super.initialize;
 
+    debug writeln("In ", __MODULE__, "/", __LINE__);
+  
     this
       .crudMode(CRUDModes.Read)
       .header(
-        APPPageHeader(this).actions(["refresh", "list", "create"]));
+        APPPageHeader(this).actions(["refresh", "list", "create"])); 
 
+    debug writeln("In ", __MODULE__, "/", __LINE__);
     this
       .form(
         APPEntityForm(this))
@@ -26,6 +31,7 @@ class DAPPEntityCRUDView : DAPPEntityView {
         .header(
           APPEntityFormHeader(this.form).actions([["edit", "version", "delete"], ["print", "export"]]));
     
+    debug writeln("In ", __MODULE__, "/", __LINE__);
     this      
       .form
         .crudMode(CRUDModes.Read);
@@ -83,7 +89,9 @@ mixin(APPViewCalls!("APPEntityCRUDView"));
 
 version(test_uim_apps) {
   unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    
-    //
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DAPPEntityCRUDView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(APPEntityCRUDView); 
 }}

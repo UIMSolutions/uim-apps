@@ -5,6 +5,11 @@ import uim.apps;
 
 class DAPPListFormBody : DAPPFormBody {
   mixin(APPFormComponentThis!("APPListFormBody"));
+
+  override void initialize() {
+    debugMethodCall(moduleName!DAPPListFormBody~"::DAPPListFormBody("~this.name~"):initialize");   
+    super.initialize;
+  }
 }
 mixin(APPFormComponentCalls!("APPListFormBody"));
 

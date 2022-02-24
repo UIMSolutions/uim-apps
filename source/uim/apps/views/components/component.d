@@ -3,7 +3,7 @@ module uim.apps.views.components.component;
 @safe:
 import uim.apps;
 
-class DAPPViewComponent : DAPPObject {
+class DAPPViewComponent : DAPPViewObject {
   this() { super(); this.name("APPViewComponent"); }  
   this(DAPPView myView) { this(); this.view(myView); }
   
@@ -16,19 +16,6 @@ class DAPPViewComponent : DAPPObject {
   mixin(OProperty!("DAPPLayout", "layout")); 
   mixin(APPParameter!("jsCode")); 
   mixin(APPParameter!("debugPrefix")); 
-
-  // view components
-  mixin(OProperty!("DAPPViewComponent[string]", "components")); 
-  bool hasComponent(string key) {
-    return (components.get(key, null) !is null);
-  }
-  DAPPViewComponent component(string key) {
-    return components.get(key, null);
-  }
-  O component(this O)(string key, DAPPViewComponent newComponent) {
-    components[key] = newComponent;
-    return cast(O)this;
-  }
 
   override void initialize() {
     super.initialize; 

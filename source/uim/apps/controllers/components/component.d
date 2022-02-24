@@ -12,17 +12,10 @@ import uim.apps;
 * you should consider creating your own component to contain the functionality. 
 * Creating components keeps controller code clean and allows you to reuse code between different controllers.
 **/
-class DAPPControllerComponent {
-  this() { initialize; }
-  this(DAPPController myController) { this().controller(myController); }
+class DAPPControllerComponent : DAPPControllerObject {
+  mixin(APPControllerComponentThis!("APPControllerComponent"));
   
-  void initialize() {
-    this
-    .name("APPControllerComponent");
-  }
-
   mixin(OProperty!("DAPPController", "controller"));
-  mixin(OProperty!("string", "name"));
 
   // A component lookup table used to lazy load component objects.
   mixin(OProperty!("Json", "componentMap"));
@@ -75,3 +68,4 @@ log() public
 Convenience method to write a message to Log. See Log::write() for more information on writing to logs.
 */ 
 }
+mixin(APPControllerComponentCalls!("APPControllerComponent"));

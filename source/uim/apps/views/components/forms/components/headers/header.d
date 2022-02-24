@@ -7,7 +7,10 @@ class DAPPFormHeader : DAPPFormComponent {
   mixin(APPFormComponentThis!("APPFormHeader"));
 
   override void initialize() {
+    debugMethodCall(moduleName!DAPPFormHeader~"::DAPPFormHeader("~this.name~"):initialize");   
     super.initialize;
+    debug writeln("In ", __MODULE__, "/", __LINE__);
+
 
     this
     .id("formheader-%s".format(uniform(1,1_000)))

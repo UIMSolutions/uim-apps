@@ -96,11 +96,11 @@ void testPageController(DAPPPageController controller) {
 	assert(controller.name("testName2").name == "testName2");	
 	assert(controller.name("testName2")["name"] == "testName2");	
 
+	assert(controller.mimetype == "text/html");	
+
 	controller["mimetype"] = "testMimetype1";
 	assert(controller.mimetype == "testMimetype1");	
 	assert(controller["mimetype"] == "testMimetype1");	
-
-	assert(controller.mimetype == "text/html");	
 
 	controller.mimetype("testMimetype2");
 	assert(controller.mimetype("testMimetype2").mimetype == "testMimetype2");	

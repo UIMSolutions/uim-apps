@@ -7,6 +7,11 @@ class DAPPEntitiesFormFooter : DAPPFormFooter, IAPPWithEntities {
   mixin(APPFormComponentThis!("APPEntitiesFormFooter", false, true));
 
   mixin(OProperty!("DOOPEntity[]", "entities"));
+
+  override void initialize() {
+    debugMethodCall(moduleName!DAPPEntitiesFormFooter~"::DAPPEntitiesFormFooter("~this.name~"):initialize");   
+    super.initialize;
+  }
 }
 mixin(APPFormComponentCalls!("APPEntitiesFormFooter", false, true));
 

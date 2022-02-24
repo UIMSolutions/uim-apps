@@ -7,7 +7,10 @@ class DAPPForm : DAPPViewComponent {
   mixin(APPFormThis!("APPForm"));
 
   override void initialize() {
+    debugMethodCall(moduleName!DAPPForm~"::DAPPForm("~this.name~"):initialize");   
     super.initialize;
+    writeln("In ", __MODULE__, "/", __LINE__);
+ 
 
     this
       .crudMode(CRUDModes.Read)
@@ -30,29 +33,9 @@ class DAPPForm : DAPPViewComponent {
   mixin(APPParameter!("bodyTitle"));
   mixin(APPParameter!("footerTitle"));
 
-  DAPPViewComponent header() { 
-    return this.component("header");
-  }
-  O header(this O)(DAPPViewComponent newComponent) { 
-    this.component("header", newComponent);
-    return cast(O)this;
-  }
-
-  DAPPViewComponent body_() { 
-    return this.component("body");
-  }
-  O body_(this O)(DAPPViewComponent newComponent) { 
-    this.component("body", newComponent);
-    return cast(O)this;
-  }
-
-  DAPPViewComponent footer() { 
-    return this.component("footer");
-  }
-  O footer(this O)(DAPPViewComponent newComponent) { 
-    this.component("footer", newComponent);
-    return cast(O)this;
-  }
+  mixin(APPViewProperty!("DAPPFormHeader", "header"));
+  mixin(APPViewProperty!("DAPPFormBody", "body_"));
+  mixin(APPViewProperty!("DAPPFormFooter", "footer"));
 
 /*   override DAPPViewComponent copy() {
     return

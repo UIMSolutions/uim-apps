@@ -21,6 +21,15 @@ protected DOOPEntity[] _entities;
         entitiesComponent.entities(this.entities); 
       }
     } 
+    if (auto entitiesHeader = cast(DAPPEntitiesFormHeader)this.header) {
+      entitiesHeader.entities(this.entities); 
+    }
+    if (auto entitiesBody = cast(DAPPEntitiesFormBody)this.body_) {
+      entitiesBody.entities(this.entities); 
+    }
+    if (auto entitiesFooter = cast(DAPPEntitiesFormFooter)this.footer) {
+      entitiesFooter.entities(this.entities); 
+    }
 
     _afterSetEntities;
 

@@ -10,22 +10,16 @@ class DAPPEntitiesListView : DAPPEntitiesView {
   mixin(APPParameter!("rootPath"));
   mixin(OProperty!("bool", "readonly"));
   
-  DAPPForm form() {
-    return cast(DAPPForm)this.component("form");
-  }
-  O form(this O)(DAPPForm newForm) {
-    this.component("form", newForm);
-    return cast(O)this;
-  }
+  mixin(OProperty!("DAPPEntitiesForm", "form"));
 
   override void initialize() {
+    debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView("~this.name~"):in");    
     super.initialize;
 
     this
-    .form(
-      APPEntitiesListForm(this))
+    .form(APPEntitiesListForm)
     .header(
-      APPPageHeader(this).actions(["refresh", "create"]));
+      APPPageHeader.actions(["refresh", "create"])); 
   }
 
   override void _afterSetEntities() {
@@ -37,15 +31,15 @@ class DAPPEntitiesListView : DAPPEntitiesView {
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView:toH5");    
+    debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView("~this.name~"):toH5");    
     super.toH5(options);
     if (hasError || "redirect" in options) { return null; }
 
     return [
       H5Div(["container-xl"],
         (this.header ? this.header.toH5(options) : null)~ 
-        (messages ? BS5Row("messages", ["mb-2"]) : null)~
-        BS5Row(["row-deck row-cards mb-2"], form.toH5(options))~
+        (this.messages ? BS5Row("messages", ["mb-2"]) : null)~
+        BS5Row(["row-deck row-cards mb-2"], this.form ? form.toH5(options) : null)~
         (this.footer ? this.footer.toH5(options) : null)
       )].toH5;             
   }
@@ -54,8 +48,9 @@ mixin(APPViewCalls!("APPEntitiesListView"));
 
 version(test_uim_apps) {
   unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    
-    //
-  }
-}
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DAPPEntitiesListView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(APPEntitiesListView); 
+}}

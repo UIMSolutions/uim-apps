@@ -6,6 +6,12 @@ import uim.apps;
 class DAPPEntityView : DAPPView, IAPPWithEntity {
   mixin(APPViewThis!("APPEntityView"));
 
+  override void initialize() {
+    debugMethodCall(moduleName!DAPPEntityView~"::DAPPEntityView("~this.name~"):initialize");   
+    super.initialize;
+    writeln("In ", __MODULE__, "/", __LINE__);
+  }
+
   // #region entity
     protected DOOPEntity _entity;
     bool hasEntity() {

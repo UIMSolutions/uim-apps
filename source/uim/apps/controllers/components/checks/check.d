@@ -14,7 +14,6 @@ class DAPPCheck : DAPPControllerComponent {
   }
 
   mixin(OProperty!("string", "redirectUrl"));
-  mixin(OProperty!("string", "error"));
   mixin(OProperty!("DAPPCheck[]", "checks"));
   O addChecks(this O)(DAPPCheck[] newChecks) {
     this.checks(this.checks~newChecks);
@@ -30,6 +29,7 @@ class DAPPCheck : DAPPControllerComponent {
         return false;
       }
     }
+   
     return true;
   }
 }

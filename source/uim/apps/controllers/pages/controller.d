@@ -18,8 +18,6 @@ class DAPPPageController : DAPPController {
     .language("en") 
     .mimetype("text/html");
     
-    debug writeln("MimeType = ", this.mimetype);
-
     requestReader = APPRequestReader(this);
     sessionReader = APPSessionReader(this);  
 
@@ -121,8 +119,6 @@ version(test_uim_apps) {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
     
-    debug writeln("MimeType = ", this.mimetype);
-
     this.links.add(["rel":"canonical", "href": this.canonical]);
   }
   version(test_uim_apps) {
@@ -135,8 +131,7 @@ version(test_uim_apps) {
     debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::stringResponse");
     super.stringResponse(options);
     if (hasError) { return null; }
-    debug writeln("MimeType = ", this.mimetype);
-
+    
     if (view) {
       return view.render(options);
     }

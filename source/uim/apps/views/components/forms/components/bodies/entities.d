@@ -7,7 +7,9 @@ class DAPPEntitiesFormBody : DAPPFormBody, IAPPWithEntities {
   mixin(APPFormComponentThis!("APPEntitiesFormBody"));
 
   override void initialize() {
+    debugMethodCall(moduleName!DAPPEntitiesFormBody~"::DAPPEntitiesFormBody("~this.name~"):initialize");   
     super.initialize;
+    debug writeln("In ", __MODULE__, "/", __LINE__);
 
     this
     .tableHeader(APPEntitiesTableHeader)

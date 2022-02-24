@@ -7,6 +7,7 @@ class DAPPEntityFormBody : DAPPFormBody, IAPPWithEntity {
   mixin(APPFormComponentThis!("APPEntityFormBody", true));
 
   override void initialize() {
+    debugMethodCall(moduleName!DAPPEntityFormBody~"::DAPPEntityFormBody("~this.name~"):initialize");   
     super.initialize;
 
     this

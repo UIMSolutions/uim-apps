@@ -28,7 +28,7 @@ class DAPPEntitiesListForm : DAPPEntitiesForm {
       H5Form("entityForm", ["card"], ["method":method, "action":action], 
         (this.header ? this.header.toH5(options) : null)~
         (this.body_ ? this.body_.toH5(options) : null)~
-        (this.footer ? this.footer.toH5(options) : null)
+        (this.footer ? this.footer.toH5(options) : null) 
       ));
     
     return [_col].toH5;

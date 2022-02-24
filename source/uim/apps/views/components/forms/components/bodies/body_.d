@@ -7,7 +7,10 @@ class DAPPFormBody : DAPPFormComponent {
   mixin(APPFormComponentThis!("APPFormBody"));
 
   override void initialize() {
+    debugMethodCall(moduleName!DAPPFormBody~"::DAPPFormBody("~this.name~"):initialize");   
     super.initialize;
+
+    debug writeln("In ", __MODULE__, "/", __LINE__);
 
     this
       .id("formbody-%s".format(uniform(1, 1_000)));

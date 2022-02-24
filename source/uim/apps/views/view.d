@@ -8,11 +8,8 @@ module uim.apps.views.view;
 @safe:
 import uim.apps;
 
-class DAPPView : DAPPObject, IAPPEventDispatcher {
-  this() { super(); }
-  this(DAPPPageController myController) { this().controller(myController); }
-  this(string myName) { this().name(myName); }
-  this(DAPPPageController myController, string myName) { this(myController).name(myName); }
+class DAPPView : DAPPViewObject, IAPPEventDispatcher {
+  mixin(APPViewThis!("APPView"));
     
   // Initialization (= hook method)
   override void initialize() {
@@ -32,29 +29,16 @@ class DAPPView : DAPPObject, IAPPEventDispatcher {
 
   mixin(OProperty!("DAPPPageController", "controller")); 
   mixin(OProperty!("IAPPEventManager", "eventManager")); 
+  mixin(OProperty!("string[]", "leftClasses")); 
+  mixin(OProperty!("string[]", "mainClasses")); 
+  mixin(OProperty!("string[]", "rightClasses")); 
     
-    // view components
-    mixin(OProperty!("DAPPViewComponent[string]", "components")); 
-    bool hasComponent(string key) {
-      return (this.components.get(key, null) !is null);
-    }
-    DAPPViewComponent component(string key) {
-      return this.components.get(key, null);
-    }
-    O component(this O)(string key, DAPPViewComponent newComponent) {
-      components[key] = newComponent;
-      return cast(O)this;
-    }
-
-    mixin(OProperty!("DAPPViewComponent", "messages")); 
-    mixin(OProperty!("DAPPPageHeader", "header")); 
-    mixin(OProperty!("DAPPPageFooter", "footer")); 
-    mixin(OProperty!("string[]", "leftClasses")); 
-    mixin(OProperty!("DAPPViewComponent", "leftComponent")); 
-    mixin(OProperty!("string[]", "mainClasses")); 
-    mixin(OProperty!("DAPPViewComponent", "mainComponent")); 
-    mixin(OProperty!("string[]", "rightClasses")); 
-    mixin(OProperty!("DAPPViewComponent", "rightComponent")); 
+  mixin(APPViewProperty!("DAPPViewComponent", "messages")); 
+  mixin(APPViewProperty!("DAPPPageHeader", "header")); 
+  mixin(APPViewProperty!("DAPPPageFooter", "footer")); 
+  mixin(APPViewProperty!("DAPPViewComponent", "leftComponent")); 
+  mixin(APPViewProperty!("DAPPViewComponent", "mainComponent")); 
+  mixin(APPViewProperty!("DAPPViewComponent", "rightComponent")); 
 
     protected DAPPLayout _layout;
     O layout(this O)(DAPPLayout newLayout) { 
@@ -94,15 +78,15 @@ version(test_uim_apps) {
 
     return [
       H5Main(["content"], ["style":"margin-bottom:200px"],
-          (this.header ? this.header.toH5(options) : null)~
-          BS5Row(["mt-2 row-cards"], 
-              BS5Container.fluid()
-              .row("messages", ["section"], this.messages ? this.messages.toH5(options) : null)
-              .row(["section"], 
-                  BS5Col(this.leftClasses, this.leftComponent ? this.leftComponent.toH5(options) : null),
-                  BS5Col(this.mainClasses, this.mainComponent ? this.mainComponent.toH5(options) : null),
-                  BS5Col(this.rightClasses, this.rightComponent ? this.rightComponent.toH5(options) : null)))
-          (this.footer ? this.footer.toH5(options) : null))].toH5;
+        (this.header ? this.header.toH5(options) : null)~
+        BS5Row(["mt-2 row-cards"], 
+          BS5Container.fluid()
+          .row("messages", ["section"], this.messages ? this.messages.toH5(options) : null)
+          .row(["section"], 
+              BS5Col(this.leftClasses, this.leftComponent ? this.leftComponent.toH5(options) : null),
+              BS5Col(this.mainClasses, this.mainComponent ? this.mainComponent.toH5(options) : null),
+              BS5Col(this.rightClasses, this.rightComponent ? this.rightComponent.toH5(options) : null)))
+        (this.footer ? this.footer.toH5(options) : null))].toH5;
 
 /* H5Div(["wrapper"], 
         head~
@@ -181,3 +165,12 @@ version(test_uim_apps) {
   // #endregion render 
 }
 mixin(APPViewCalls!("APPView"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DAPPView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(APPView); 
+}}

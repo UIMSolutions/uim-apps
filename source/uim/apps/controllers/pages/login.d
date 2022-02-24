@@ -9,7 +9,6 @@ class DAPPLoginPageController : DAPPPageController {
   override void initialize() {
     debugMethodCall(moduleName!DAPPLoginPageController~"::DAPPLoginPageController("~this.name~"):initialize");   
     super.initialize;
-    debug writeln("MimeType = ", this.mimetype);
 
     this
     .title("Anmeldung (Kennung)")

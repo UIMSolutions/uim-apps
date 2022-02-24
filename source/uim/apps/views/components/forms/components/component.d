@@ -6,6 +6,13 @@ import uim.apps;
 class DAPPFormComponent : DAPPViewComponent {
   mixin(APPViewComponentThis!("APPFormComponent"));
 
+  override void initialize() {
+    debugMethodCall(moduleName!DAPPFormComponent~"::DAPPFormComponent("~this.name~"):initialize");   
+    super.initialize;
+
+    debug writeln("In ", __MODULE__, "/", __LINE__);
+  }
+
   mixin(OProperty!("CRUDModes", "crudMode"));
   mixin(OProperty!("DAPPForm", "form"));
   mixin(OProperty!("bool", "readonly")); 

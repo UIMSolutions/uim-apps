@@ -5,6 +5,7 @@ import uim.apps;
 
 // Main
 public import uim.apps.controllers.controller;
+public import uim.apps.controllers.object_;
 
 // packages
 public import uim.apps.controllers.actions;
