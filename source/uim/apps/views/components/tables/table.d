@@ -8,9 +8,9 @@ class DAPPTableViewComponent : DAPPViewComponent {
   
   mixin(OProperty!("string", "path"));
 
-  mixin(OProperty!("DAPPViewComponent", "header"));
-  mixin(OProperty!("DAPPViewComponent", "body_"));
-  mixin(OProperty!("DAPPViewComponent", "footer"));
+  mixin(APPViewProperty!("DAPPViewComponent", "header"));
+  mixin(APPViewProperty!("DAPPViewComponent", "body_"));
+  mixin(APPViewProperty!("DAPPViewComponent", "footer"));
 
   override void beforeH5(STRINGAA options = null) { 
     super.beforeH5(options); 
@@ -18,7 +18,7 @@ class DAPPTableViewComponent : DAPPViewComponent {
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
     super.toH5(options);
-    if (hasError) { return null; } 
+    if (hasError || "redirect" in options) { return null; } 
 
     return [
       H5Div(["table-responsive"], 

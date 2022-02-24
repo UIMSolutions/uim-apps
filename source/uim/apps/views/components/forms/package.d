@@ -5,6 +5,10 @@ import uim.apps;
 
 // Main
 public import uim.apps.views.components.forms.form;
+public import uim.apps.views.components.forms.create;
+public import uim.apps.views.components.forms.read;
+public import uim.apps.views.components.forms.update;
+public import uim.apps.views.components.forms.delete_;
 
 // Packages
 public import uim.apps.views.components.forms.components;
@@ -22,15 +26,13 @@ template APPFormThis(string name, bool withEntity = false, bool withEntities = f
 this() { super(); this.name("`~name~`"); initialize; }
 this(DAPPView myView) { this().view(myView); }
 this(string myName) { this().name(myName); }
-this(DAPPView myView, string myName) { this(myView).name(myName); }`
-~
+this(DAPPView myView, string myName) { this(myView).name(myName); }`~
 (withEntity ? `
 this(DOOPEntity myEntity) { this().entity(myEntity); }
 this(DAPPView myView, DOOPEntity myEntity) { this(myView).entity(myEntity); }
 this(string myName, DOOPEntity myEntity) { this(myName).entity(myEntity); }
 this(DAPPView myView, string myName, DOOPEntity myEntity) { this(myView, myName).entity(myEntity); }
-` : ``)
-~
+` : ``)~
 (withEntities ? `
 this(DOOPEntity[] myEntities) { this().entities(myEntities); }
 this(DAPPView myView, DOOPEntity[] myEntities) { this(myView).entities(myEntities); }

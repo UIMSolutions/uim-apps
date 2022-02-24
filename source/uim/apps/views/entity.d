@@ -28,6 +28,7 @@ class DAPPEntityView : DAPPView, IAPPWithEntity {
           entityViewComponent.entity(this.entity); 
         }
       }
+
       return cast(O)this;
     }
   // #endregion entity

@@ -71,17 +71,17 @@ class DAPPForm : DAPPViewComponent {
     }
 
     if (header) {
-      debug writeln("Has header");
+      debug writeln("Has header (%s)".format(header.name));
       header["title"] = headerTitle; 
     }
 
     if (body_) { 
-      debug writeln("Has body_");
+      debug writeln("Has body_ (%s)".format(body_.name));
       body_["title"] = bodyTitle; 
     }
     
     if (footer) {
-      debug writeln("Has footer");
+      debug writeln("Has footer (%s)".format(footer.name));
       footer["title"] = footerTitle;
     }
   }
