@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.groups.text;
 @safe:
 import uim.apps;
 
-class DAPPTextFormGroup : DAPPFormGroup {
+class DAPPTextFormGroup : DAPPEntityFormGroup {
   mixin(APPFormComponentThis!("APPTextFormGroup", true));
 
   override DH5Obj h5Input(STRINGAA options = null) {
@@ -15,7 +15,7 @@ class DAPPTextFormGroup : DAPPFormGroup {
     debug writeln("Entity -> ", entity ? entity.name : "'null'"); 
     debug writeln("FieldValue -> ", fieldValue); 
 
-    auto input = BS5InputText(inputId, ["name": formName, "autocomplete":"off", "placeholder":placeholder]);
+    auto input = BS5InputText(inputId, ["name": inputName, "autocomplete":"off", "placeholder":placeholder]);
     if (readonly) input.attribute("readonly","readonly");
     if (crudMode == CRUDModes.Read || crudMode == CRUDModes.Delete) input.attribute("readonly","readonly");
     input.value(fieldValue); 

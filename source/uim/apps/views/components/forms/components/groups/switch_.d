@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.groups.switch_;
 @safe:
 import uim.apps;
 
-class DAPPSwitchFormGroup : DAPPFormGroup {
+class DAPPSwitchFormGroup : DAPPEntityFormGroup {
   mixin(APPFormComponentThis!("APPSwitchFormGroup", true));
 
   override void initialize() {
@@ -19,7 +19,7 @@ class DAPPSwitchFormGroup : DAPPFormGroup {
     debugMethodCall(moduleName!DAPPSwitchFormGroup~":DAPPSwitchFormGroup::h5Input");
     super.h5Input(options);
     
-    auto input = H5Input(name, ["form-check-input me-1"], ["type":"checkbox", "name":formName]);
+    auto input = H5Input(name, ["form-check-input me-1"], ["type":"checkbox", "name":inputName]);
     if (entity) {
       this.checked = (entity[fieldName] == "true"); 
     }

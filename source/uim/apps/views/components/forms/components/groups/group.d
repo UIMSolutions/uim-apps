@@ -3,15 +3,15 @@ module uim.apps.views.components.forms.components.groups.group;
 @safe:
 import uim.apps;
 
-class DAPPFormGroup : DAPPFormComponent, IAPPWithEntity {
-  mixin(APPFormComponentThis!("APPFormGroup", true));
+class DAPPFormGroup : DAPPFormComponent {
+  mixin(APPFormComponentThis!("APPFormGroup"));
 
   // id of label element
   mixin(OProperty!("string", "labelId")); 
 
   // id of input element
   mixin(OProperty!("string", "inputId")); 
-  mixin(OProperty!("string", "formName"));
+  mixin(OProperty!("string", "inputName"));
   mixin(OProperty!("string", "fieldName"));
   mixin(OProperty!("string", "fieldValue"));
   mixin(OProperty!("string", "label"));
@@ -20,7 +20,6 @@ class DAPPFormGroup : DAPPFormComponent, IAPPWithEntity {
   mixin(OProperty!("string[]", "fields"));
   mixin(OProperty!("string", "path"));
   mixin(OProperty!("DAPPPanes", "panes"));
-  mixin(OProperty!("DOOPEntity", "entity"));
 
   override void initialize() {
     super.initialize();
@@ -53,9 +52,8 @@ class DAPPFormGroup : DAPPFormComponent, IAPPWithEntity {
     super.beforeH5(options);
     if (hasError) { return; }
 
-    debug writeln(entity ? "Has entity" : "no entity");
-    if (this.entity) {      
-      this.fieldValue = this.entity[this.fieldName];
+    if (this.form) { // Owner Class
+      this.crudMode(this.form.crudMode);
     }
   }
   version(test_uim_apps) {
@@ -73,7 +71,7 @@ class DAPPFormGroup : DAPPFormComponent, IAPPWithEntity {
       ];
   }
 }
-mixin(APPFormComponentCalls!("APPFormGroup", true));
+mixin(APPFormComponentCalls!("APPFormGroup"));
 
 version(test_uim_apps) {
   unittest {

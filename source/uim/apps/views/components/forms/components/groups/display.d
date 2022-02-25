@@ -11,7 +11,7 @@ class DAPPFormGroupDisplay : DAPPTextFormGroup {
 
     this
     .id("entity_display")
-    .formName("entity_display")
+    .inputName("entity_display")
     .fieldName("display")
     .label("Titel")
     .placeholder("Titel eingeben")

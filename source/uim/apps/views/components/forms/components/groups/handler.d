@@ -24,16 +24,33 @@ class DAPPFormGroupHandler : DAPPFormComponent, IAPPWithEntity {
         "description": APPDescriptionFormGroup]);
   } 
 
+  override void _afterSetForm() {
+    super._afterSetForm;
+
+    foreach(key, formGroup; formGroups) {
+      if (formGroup) formGroup.form(this.form);
+    }
+  }
+
   DH5Obj[] group(string field, bool readonly, STRINGAA options = null) {
     debug writeln(moduleName!DAPPFormGroupHandler, ":DAPPFormGroupHandler::group");
+    debug writeln("CrudMode:", this.crudMode);
 
-    debug writeln(entity ? ("Found entity: %s".format(entity.id)) : "entity missing");
+    foreach(key, formGroup; formGroups) {
+      if (formGroup) formGroup.form(this.form);
+    }
+
+    debug writeln(entity ? ("Found entity: %s".format(entity.name)) : "entity missing");
     if (entity) {
-      debug writeln("Found entity:", entity.id);
+      debug writeln("Found entity:", entity.name);
       
-      if (auto formGroup = this.formGroups.get(field, null)) {
+      if (auto formGroup = this.formGroups.get(field.toLower, null)) { // field name not case sensitive !
         debug writeln("Found formGroup for field:", field);
-        return formGroup.form(form).entity(entity).toH5(options);
+        formGroup.crudMode(this.crudMode).form(form);
+        if (auto entityFormGroup = cast(DAPPEntityFormGroup)formGroup) {
+          return entityFormGroup.entity(entity).toH5(options);
+        }
+        return formGroup.toH5(options);
     }}
     return null;
   }

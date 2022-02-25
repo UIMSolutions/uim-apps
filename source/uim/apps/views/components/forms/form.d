@@ -37,6 +37,17 @@ class DAPPForm : DAPPViewComponent {
   mixin(APPViewProperty!("DAPPFormBody", "body_"));
   mixin(APPViewProperty!("DAPPFormFooter", "footer"));
 
+  DETBBase _database; 
+  O database(this O)(DETBBase aDatabase) { 
+    _database = aDatabase; 
+    return cast(O)this; }
+
+  DETBBase database() {
+    if (_database) { return _database; } // has his own database
+    if (this.view && this.view.database) { return this.view.database; } // owner class has database
+    return null; // no database found
+  }
+
 /*   override DAPPViewComponent copy() {
     return
       (cast(DAPPForm)copy)
@@ -61,6 +72,7 @@ class DAPPForm : DAPPViewComponent {
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPForm~":DAPPForm("~this.name~")::beforeH5");
     super.beforeH5(options);
+    if (hasError || "redirect" in options) { return; }
 
     foreach(viewComponent; components) {
       if (auto formComponent = cast(DAPPFormComponent)viewComponent) {
@@ -70,19 +82,28 @@ class DAPPForm : DAPPViewComponent {
       }
     }
 
-    if (header) {
+    if (this.header) {
       debug writeln("Has header (%s)".format(header.name));
-      header["title"] = headerTitle; 
+      this.header
+        .crudMode(this.crudMode)
+        .rootPath(this.rootPath)
+        .title(headerTitle);
     }
 
-    if (body_) { 
+    if (this.body_) { 
       debug writeln("Has body_ (%s)".format(body_.name));
-      body_["title"] = bodyTitle; 
+      this.body_
+        .crudMode(this.crudMode)
+        .rootPath(this.rootPath)
+        .title(bodyTitle);
     }
     
-    if (footer) {
+    if (this.footer) {
       debug writeln("Has footer (%s)".format(footer.name));
-      footer["title"] = footerTitle;
+      this.footer
+        .crudMode(this.crudMode)
+        .rootPath(this.rootPath)
+        .title(footerTitle);
     }
   }
 

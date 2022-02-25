@@ -14,7 +14,7 @@ class DAPPEntityFormBody : DAPPFormBody, IAPPWithEntity {
     .id("formbody_%s".format(uniform(1, 1_000)))
     .crudMode(CRUDModes.Create)
     .fields(["name", "display", "description"])
-    .formGroupHandler(APPFormGroupHandler);   
+    .formGroupHandler(APPFormGroupHandler(this.form));   
   }
 
   mixin(OProperty!("string[]", "fields"));
@@ -32,10 +32,17 @@ class DAPPEntityFormBody : DAPPFormBody, IAPPWithEntity {
     DH5Obj[] results;
 
     debug writeln(entity ? "Has entity: "~entity.name : "No entity");
+    debug writeln(form ? "Has form " : "No form");
+
     if (formGroupHandler) {
       debug writeln("Found formGroupHandler:",formGroupHandler.name);
 
-      formGroupHandler.entity(entity);
+      formGroupHandler
+        .form(this.form)
+        .crudMode(this.crudMode)
+        .entity(entity);
+      debug writeln("CrudMode:", this.crudMode);
+
       foreach(field; this.fields) {     
         debug writeln("formGroup:", field);
 
@@ -64,7 +71,6 @@ class DAPPEntityFormBody : DAPPFormBody, IAPPWithEntity {
 
     if (auto fGroups = formGroups(options)) {
       debug writeln("Found formgroups");
-      debug writeln(fGroups);
       col(fGroups);
     }
 
@@ -77,6 +83,7 @@ class DAPPEntityFormBody : DAPPFormBody, IAPPWithEntity {
     debugMethodCall(moduleName!DAPPEntityFormBody~"::DAPPEntityFormBody:toH5");    
     super.toH5(options);
     
+    debug writeln(form ? "Has form " : "No form");
     debug writeln(entity ? "Has entity" : "no entity :-(");
     return [
       BS5CardBody(id,

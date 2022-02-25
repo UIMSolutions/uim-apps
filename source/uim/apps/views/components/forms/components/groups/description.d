@@ -11,7 +11,7 @@ class DAPPDescriptionFormGroup : DAPPTextAreaFormGroup {
      
     this
     .id("entity_description")
-    .formName("entity_description")
+    .inputName("entity_description")
     .fieldName("description")
     .label("Beschreibung")
     .placeholder("Beschreibung eingeben"); 

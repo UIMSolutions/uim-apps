@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.groups.date;
 @safe:
 import uim.apps;
 
-class DAPPDateFormGroup : DAPPFormGroup {
+class DAPPDateFormGroup : DAPPEntityFormGroup {
   mixin(APPFormComponentThis!("APPDateFormGroup", true));
 
   override DH5Obj h5Input(STRINGAA options = null) {

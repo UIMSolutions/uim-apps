@@ -2,6 +2,19 @@ module uim.apps.views.components.forms.crud.update;
 
 @safe:
 import uim.apps;
+
+class DAPPUpdateEntityForm : DAPPEntityCRUDForm {
+  mixin(APPFormThis!("APPUpdateEntityForm"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+      .crudMode(CRUDModes.Update);
+  }
+}
+mixin(APPFormCalls!("APPUpdateEntityForm"));
+
 /* 
 auto editheader(T:DOOPEntity)(string path, T entity, DAPPPanes panes, STRINGAA reqParameters) {
   return 

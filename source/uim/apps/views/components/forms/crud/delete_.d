@@ -3,6 +3,17 @@ module uim.apps.views.components.forms.crud.delete_;
 @safe:
 import uim.apps;
 
+class DAPPDeleteEntityForm : DAPPEntityCRUDForm {
+  mixin(APPFormThis!("APPDeleteEntityForm"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+      .crudMode(CRUDModes.Delete);
+  }
+}
+mixin(APPFormCalls!("APPDeleteEntityForm"));
 
 /* auto deleteheader(string path, DOOPEntity entity, DAPPPanes panes, STRINGAA reqParameters) {  
   return 

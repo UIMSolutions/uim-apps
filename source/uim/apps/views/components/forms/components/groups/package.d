@@ -4,6 +4,7 @@ module uim.apps.views.components.forms.components.groups;
 import uim.apps;
 
 // Main
+public import uim.apps.views.components.forms.components.groups.entity;
 public import uim.apps.views.components.forms.components.groups.group;
 public import uim.apps.views.components.forms.components.groups.handler;
 

@@ -19,7 +19,7 @@ class DAPPEntitiesListView : DAPPEntitiesView {
     this
     .form(APPEntitiesListForm)
     .header(
-      APPPageHeader.actions(["refresh", "create"])); 
+      APPPageHeader(this).actions(["refresh", "create"])); 
   }
 
   override void _afterSetEntities() {

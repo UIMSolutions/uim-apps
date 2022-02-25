@@ -5,10 +5,6 @@ import uim.apps;
 
 // Main
 public import uim.apps.views.components.forms.form;
-public import uim.apps.views.components.forms.create;
-public import uim.apps.views.components.forms.read;
-public import uim.apps.views.components.forms.update;
-public import uim.apps.views.components.forms.delete_;
 
 // Packages
 public import uim.apps.views.components.forms.components;
@@ -46,8 +42,7 @@ template APPFormCalls(string name, bool withEntity = false, bool withEntities = 
 auto `~name~`() { return new D`~name~`(); }
 auto `~name~`(DAPPView myView) { return new D`~name~`(myView); }
 auto `~name~`(string myName) { return new D`~name~`(myName); }
-auto `~name~`(DAPPView myView, string myName) { return new D`~name~`(myView, myName); }`
-~
+auto `~name~`(DAPPView myView, string myName) { return new D`~name~`(myView, myName); }`~
 (withEntity ? `
 auto `~name~`(DOOPEntity myEntity) { return new D`~name~`(myEntity); }
 auto `~name~`(DAPPView myView, DOOPEntity myEntity) { return new D`~name~`(myView, myEntity); }

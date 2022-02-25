@@ -40,6 +40,17 @@ class DAPPView : DAPPViewObject, IAPPEventDispatcher {
   mixin(APPViewProperty!("DAPPViewComponent", "mainComponent")); 
   mixin(APPViewProperty!("DAPPViewComponent", "rightComponent")); 
 
+  DETBBase _database; 
+  O database(this O)(DETBBase aDatabase) { 
+    _database = aDatabase; 
+    return cast(O)this; }
+
+  DETBBase database() {
+    if (_database) { return _database; } // has his own database
+    if (this.controller && this.controller.database) { return this.controller.database; } // owner class has database
+    return null; // no database found
+  }
+
     protected DAPPLayout _layout;
     O layout(this O)(DAPPLayout newLayout) { 
         debugMethodCall(moduleName!DAPPView~":DAPPView::layout"); 

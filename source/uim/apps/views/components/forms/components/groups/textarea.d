@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.groups.textarea;
 @safe:
 import uim.apps;
 
-class DAPPTextAreaFormGroup : DAPPFormGroup {
+class DAPPTextAreaFormGroup : DAPPEntityFormGroup {
   mixin(APPFormComponentThis!("APPTextAreaFormGroup", true));
 
   override void initialize() {
@@ -21,7 +21,7 @@ class DAPPTextAreaFormGroup : DAPPFormGroup {
     super.toH5(options);
     if (hasError) { return null; }
     
-    auto input = BS5InputTextarea(id, ["rows":rows, "name":formName, "autocomplete":autocomplete, "placeholder":placeholder], entity ? entity[fieldName] : "");
+    auto input = BS5InputTextarea(id, ["rows":rows, "name":inputName, "autocomplete":autocomplete, "placeholder":placeholder], entity ? entity[fieldName] : "");
     if (readonly) input.attribute("readonly","readonly");
     if (crudMode == CRUDModes.Read || crudMode == CRUDModes.Delete) input.attribute("readonly","readonly");
 
