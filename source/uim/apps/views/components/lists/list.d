@@ -20,7 +20,6 @@ class DAPPListViewComponent : DAPPViewComponent {
     super.initialize;
 
     this
-      .header([BS5CardTitle("Last commits")].toH5)
       .content([
         BS5ListGroup(["list-group-flush", "list-group-hoverable"])
           .item(
@@ -37,6 +36,9 @@ class DAPPListViewComponent : DAPPViewComponent {
                 H5A(["list-group-item-actions"], ["href":"#"], tablerIcon("star")))))].toH5);
   }
 
+  mixin(OProperty!("string", "title"));
+  mixin(OProperty!("string", "info"));
+
   override DH5Obj[] toH5(STRINGAA options = null) { 
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return null; }
@@ -49,6 +51,7 @@ class DAPPListViewComponent : DAPPViewComponent {
     }
 
     this
+      .header([BS5CardTitle(title)].toH5)
       .content([listGroup].toH5);
     
     auto card = BS5Card;

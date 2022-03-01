@@ -6,8 +6,6 @@ import uim.apps;
 class DAPPEntityCrudPageController : DAPPEntityPageController {
   mixin(APPPageControllerThis!("APPEntityCrudPageController"));
 
-  mixin(OProperty!("string", "entityName"));
-
   override void beforeResponse(STRINGAA reqParameters) {
     debug writeln(moduleName!DAPPEntityCrudPageController~":DAPPEntityCrudPageController::beforeResponse");
     super.beforeResponse(reqParameters);   

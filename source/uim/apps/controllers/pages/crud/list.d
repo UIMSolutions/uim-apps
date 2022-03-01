@@ -9,8 +9,6 @@ import uim.apps;
 class DAPPListPage : DAPPEntitiesPageController {
   mixin(APPPageControllerThis!("APPListPage"));
 
-  mixin(OProperty!("string", "entityName"));
-  
   override void initialize() {
     super.initialize(); 
 

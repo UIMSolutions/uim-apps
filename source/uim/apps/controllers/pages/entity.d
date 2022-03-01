@@ -6,7 +6,29 @@ import uim.apps;
 class DAPPEntityPageController : DAPPPageController, IAPPWithEntity {
   mixin(APPControllerThis!("APPEntityPageController"));
 
-  mixin(OProperty!("DOOPEntity", "entity"));
+  protected DOOPEntity _entity;
+  DOOPEntity entity() { 
+    return _entity; 
+  }
+  O entity(this O)(DOOPEntity newEntity) { 
+    _entity = newEntity;
+
+    if (auto entityView = cast(DAPPEntityView)this.view) {
+      entityView.entity(this.entity);
+    }
+    
+    return cast(O)this; 
+  }
+
+  mixin(OProperty!("string", "entityName"));
+
+  override void beforeResponse(STRINGAA options = null) {
+    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController("~this.name~")::beforeResponse");
+    super.beforeResponse(options);
+    if (hasError || "redirect" in options) { return; }
+    
+    this.entityName = options.get("entityName", null);
+  }
 }
 mixin(APPControllerCalls!("APPEntityPageController"));
 

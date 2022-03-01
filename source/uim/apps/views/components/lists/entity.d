@@ -26,15 +26,11 @@ class DAPPListEntityComponent : DAPPListItemComponent, IAPPWithEntity {
 
     return [
       BS5Row(["align-items-center"],
+        BS5Col(["col"], 
+          H5A(["href":link], H5H3(this.entity.display))),
         BS5Col(["col-auto"], 
-          H5Span(["badge bg-red"])),
-        BS5Col(["col-auto"], 
-          H5A(["href":link], H5H3(this.entity.name))),
-        BS5Col(["col", "text-truncate"],
-          H5A(["text-body d-block"], ["href":link], this.entity["mainTitle"]), 
-          H5Small(["d-block", "text-muted", "text-truncate", "mt-n1"], this.entity["subTitle"]),
-        BS5Col(["col-auto"], 
-          H5A(["list-group-item-actions show"], ["href":link], this.icon))))].toH5;
+          H5A(["list-group-item-actions show"], ["href":link], this.icon)))
+    ].toH5;
   }
 }
 mixin(APPViewComponentCalls!("APPListEntityComponent"));
