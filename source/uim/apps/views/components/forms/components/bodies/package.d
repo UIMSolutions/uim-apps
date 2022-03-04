@@ -9,7 +9,9 @@ public import uim.apps.views.components.forms.components.bodies.body_;
 // Modules
 public import uim.apps.views.components.forms.components.bodies.entity;
 public import uim.apps.views.components.forms.components.bodies.entities;
+public import uim.apps.views.components.forms.components.bodies.cards;
 public import uim.apps.views.components.forms.components.bodies.list;
+public import uim.apps.views.components.forms.components.bodies.table;
 
 // Tests
 public import uim.apps.views.components.forms.components.bodies.tests;

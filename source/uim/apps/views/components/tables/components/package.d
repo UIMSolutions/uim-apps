@@ -10,3 +10,4 @@ public import uim.apps.views.components.tables.components.component;
 public import uim.apps.views.components.tables.components.bodies;
 public import uim.apps.views.components.tables.components.footers;
 public import uim.apps.views.components.tables.components.headers;
+public import uim.apps.views.components.tables.components.rows;

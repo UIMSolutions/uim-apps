@@ -17,7 +17,8 @@ class DAPPEntitiesListView : DAPPEntitiesView {
     super.initialize;
 
     this
-    .form(APPEntitiesListForm)
+    .form(
+      APPEntitiesListForm(this))
     .header(
       APPPageHeader(this).actions(["refresh", "create"])); 
   }

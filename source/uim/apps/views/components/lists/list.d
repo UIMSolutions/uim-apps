@@ -3,7 +3,7 @@ module uim.apps.views.components.lists.list;
 @safe:
 import uim.apps;
 
-class DAPPListViewComponent : DAPPViewComponent {
+class DAPPListViewComponent : DAPPViewComponent, IAPPWithEntities {
   mixin(APPViewComponentThis!("APPListViewComponent"));
 
   mixin(OProperty!("DOOPEntity[]", "entities"));
@@ -12,7 +12,7 @@ class DAPPListViewComponent : DAPPViewComponent {
 
   mixin(OProperty!("DH5Obj[]", "header"));
   mixin(OProperty!("DH5Obj[]", "content"));
-  mixin(OProperty!("DH5Obj[]", "footer"));
+  mixin(OProperty!("DH5Obj[]", "footer"));  
 
   mixin(OProperty!("DAPPListEntityComponent", "itemTemplate"));
 
