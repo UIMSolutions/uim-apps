@@ -56,3 +56,25 @@ void `~rootName~`Delete(HTTPServerRequest req, HTTPServerResponse res) {
   `~controllerGroupName~`DeletePageController(`~appName~`).request(req, res);
 }`;
 }
+
+template ActionCalls(string rootName, string className, string appName) {
+  const char[] ActionCalls = `
+void `~rootName~`CreateAction(HTTPServerRequest req, HTTPServerResponse res) {
+  debugMethodCall(moduleName!`~rootName~`CreateAction~":`~rootName~`CreateAction");
+
+  `~className~`CreateAction(`~appName~`).request(req, res);
+}
+
+void `~rootName~`UpdateAction(HTTPServerRequest req, HTTPServerResponse res) {
+  debugMethodCall(moduleName!`~rootName~`UpdateAction~":`~rootName~`UpdateAction");
+
+  `~className~`UpdateAction(`~appName~`).request(req, res);
+}
+
+void `~rootName~`DeleteAction(HTTPServerRequest req, HTTPServerResponse res) {
+  debugMethodCall(moduleName!`~rootName~`DeleteAction~":`~rootName~`DeleteAction");
+
+ `~className~`DeleteAction(`~appName~`).request(req, res);
+}
+`;
+}
