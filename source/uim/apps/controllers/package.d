@@ -22,8 +22,8 @@ public import uim.apps.controllers.middlewareoptions;
 public import uim.apps.controllers.security;
 public import uim.apps.controllers.registry;
 
-template APPControllerThis(string name, bool withEntity = false, bool withEntities = false) {
-  const char[] APPControllerThis = `
+string appControllerThis(string name, bool withEntity = false, bool withEntities = false) {
+  return `
 this() { super(); this.name("`~name~`"); }
 this(DAPPApplication myApplication) { this().app(myApplication); }
 `~
@@ -42,8 +42,12 @@ this(DAPPApplication myApplication, string myName, DOOPEntity[] myEntities) { th
 ` : ``);
 }
 
-template APPControllerCalls(string name, bool withEntity = false, bool withEntities = false) {
-  const char[] APPControllerCalls = `
+template APPControllerThis(string name, bool withEntity = false, bool withEntities = false) {
+  const char[] APPControllerThis = appControllerThis(name, withEntity, withEntities);
+}
+
+string appControllerCalls(string name, bool withEntity = false, bool withEntities = false) {
+  return `
 auto `~name~`() { return new D`~name~`; }
 auto `~name~`(DAPPApplication myApplication) { return new D`~name~`(myApplication); }
 `~
@@ -60,6 +64,10 @@ auto `~name~`(DAPPApplication myApplication, DOOPEntity[] myEntities) { return n
 auto `~name~`(string myName, DOOPEntity[] myEntities) { return new D`~name~`(myName, myEntities); }
 auto `~name~`(DAPPApplication myApplication, string myName, DOOPEntity[] myEntities) { return new D`~name~`(myApplication, myName, myEntities); }
 ` : ``);
+}
+
+template APPControllerCalls(string name, bool withEntity = false, bool withEntities = false) {
+  const char[] APPControllerCalls = appControllerCalls(name, withEntity, withEntities);
 }
 
 void testController(DAPPController controller) {

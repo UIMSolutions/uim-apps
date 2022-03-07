@@ -273,3 +273,13 @@ O `~name~`(this O)(string newValue) {
   return cast(O)this; 
 }`;
 }
+
+template RouterFunction(string functionName, string controllerName, string appName, string content = "") {
+  const char[] RouterFunction = `
+void `~functionName~`(HTTPServerRequest req, HTTPServerResponse res) {
+	debugMethodCall("uimProjectsApi::request(req, res)");
+  `~content~`
+  `~controllerName~`(`~appName~`).request(req, res);
+}
+`;
+}
