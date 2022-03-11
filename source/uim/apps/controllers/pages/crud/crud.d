@@ -13,7 +13,7 @@ class DAPPEntityCrudPageController : DAPPEntityPageController {
     
     auto appSession = getAppSession(reqParameters);
 
-    auto collection = database[appSession.site.name, collectionName]; 
+    auto collection = database[appSession.site, collectionName]; 
     if (!collection) {
       reqParameters["redirect"] = "/";
       return; }

@@ -23,7 +23,7 @@ class DAPPCreateActionController : DAPPActionController {
     auto appSession = getAppSession(options);
     auto site = appSession.site;
 
-    auto collection = database[site.name, pool];
+    auto collection = database[site, pool];
     if (!collection) {
       options["redirect"] = pgPath~"/view"; 
       return; }

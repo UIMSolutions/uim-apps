@@ -48,7 +48,7 @@ class DAPPEntityReadController : DAPPEntityCrudPageController {
 
     auto selector = options.toEntitySelect;
     debug writeln(moduleName!DAPPEntityReadController~":DAPPEntityReadController::beforeResponse - Selecting entity with ", selector);
-    this.entity(database[appSession.site.name, collectionName].findOne(options.toEntitySelect));
+    this.entity(database[appSession.site, collectionName].findOne(options.toEntitySelect));
     if (!entity) {
       // TODO Errorhandling required
       return;

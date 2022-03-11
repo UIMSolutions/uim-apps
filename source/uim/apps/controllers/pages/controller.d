@@ -9,6 +9,11 @@ import uim.apps;
 class DAPPPageController : DAPPController {
   mixin(APPPageControllerThis!("APPPageController"));
 
+  mixin(OProperty!("DAPPSession", "appSession"));
+  mixin(OProperty!("DETBCollection", "collection"));
+  mixin(OProperty!("DOOPEntity", "site"));
+  mixin(OProperty!("DETBTenant", "tenant"));
+
   // Initialization (= hook method)
   override void initialize() {
     debugMethodCall(moduleName!DAPPPageController~"::DAPPPageController("~this.name~"):initialize");   
@@ -120,6 +125,9 @@ version(test_uim_apps) {
     if (hasError || "redirect" in options) { return; }
     
     this.links.add(["rel":"canonical", "href": this.canonical]);
+    
+    this.appSession = getAppSession(options);
+    if (appSession) { this.site(appSession.site); }
   }
   version(test_uim_apps) {
     unittest {

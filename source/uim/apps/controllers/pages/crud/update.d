@@ -37,7 +37,7 @@ class DAPPEntityUpdateController : DAPPEntityCrudPageController {
 
     auto appSession = getAppSession(options);
 
-    this.entity(database[appSession.site.name, collectionName].findOne(options.toEntitySelect));
+    this.entity(database[appSession.site, collectionName].findOne(options.toEntitySelect));
     if (!entity) {
       // TODO Errorhandling
       return;

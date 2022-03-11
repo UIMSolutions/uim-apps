@@ -3,12 +3,12 @@ module uim.apps.controllers.actions.login2;
 @safe:
 import uim.apps;
 
-class DAPPLogin2ActionController : DAPPActionController {
-  mixin(APPControllerThis!("DAPPLoginActionController"));
+class DAPPLogin2ActionController : DAPPSystemActionController {
+  mixin(APPControllerThis!("DAPPLogin2ActionController"));
 
   override void initialize() {
     super.initialize; 
-    this.name = "APPLogin2ActionController";
+
     this
       .checks([
         APPCheckAppSessionHasLogin, // AppSession checks
@@ -18,26 +18,18 @@ class DAPPLogin2ActionController : DAPPActionController {
   }
   
   override void beforeResponse(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPLogin2ActionController~":DAPPLogin2ActionController::beforeResponse");
+    debug writeln(moduleName!DAPPLogin2ActionController~":DAPPLogin2ActionController("~this.name~")::beforeResponse");
     super.beforeResponse(options);    
     if (hasError || "redirect" in options) { return; }
 
-    auto appSession = getAppSession(options);
-
-    auto tenant = database["systems"];
-
-    auto account = tenant["system_accounts"].findOne(["name":appSession.login["accountName"]]);
-    if (!account) {
-      this.error("database_account_missing");
-      return;
-    }
+    debug writeln("X3");
+    auto account = this.accounts.findOne(["name":appSession.login["accountName"]]);
+    if (!account) { this.error("database_account_missing"); return; }
     appSession.account = account;
 
-    auto password = tenant["system_passwords"].findOne(["accountId": account.id.toString]);
-    if (!account) {
-      this.error("database_password_missing");
-      return;
-    }
+    debug writeln("X4");
+    auto password = this.passwords.findOne(["accountId": account.id.toString]);
+    if (!password) { this.error("database_password_missing"); return; }
 
     options["redirect"] = "/"; 
     debug writeln(getAppSession(options).debugInfo); }

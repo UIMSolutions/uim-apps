@@ -22,10 +22,16 @@ class DAPPActionController : DAPPController {
     if (appSession) { this.site(appSession.site); }
     
     this.tenant(ETBNullTenant).collection(ETBNullCollection); // Clear
+      debug writeln("this.database"); 
     if (this.database) {
-      debug writeln("Found database"); 
+      debug writeln("Found database -this.database"); 
 
-      this.tenant(database[site.name]);
+      debug writeln("this.site");
+      if (this.site) {
+        this.tenant(database[site]);
+      }
+
+      debug writeln("this.tenant");
       if (this.tenant) {
         this.collection(this.tenant[this.collectionName]);
       }

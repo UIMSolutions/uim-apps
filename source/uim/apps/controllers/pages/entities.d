@@ -6,19 +6,7 @@ import uim.apps;
 class DAPPEntitiesPageController : DAPPPageController, IAPPWithEntities {
   mixin(APPControllerThis!("APPEntitiesPageController"));
 
-  protected DOOPEntity[] _entities;
-  DOOPEntity[] entities() { 
-    return _entities; 
-  }
-  O entities(this O)(DOOPEntity[] newEntities) { 
-    _entities = newEntities;
-
-    if (auto entitiesView = cast(DAPPEntitiesView)this.view) {
-      entitiesView.entities(this.entities);
-    }
-    
-    return cast(O)this; 
-  }
+  mixin(OProperty!("DOOPEntity[]", "entities"));
   mixin(OProperty!("string", "entityName"));
   mixin(OProperty!("string", "sortBy"));
   mixin(OProperty!("string", "sortOrder"));

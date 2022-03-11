@@ -118,3 +118,19 @@ void testPageController(DAPPPageController controller) {
 	assert(controller.view(APPView).view.name == "APPView", "Found error"); 
 	assert(controller.view(APPView).view["name"] == "APPView", "Found error"); 
 }
+
+auto appCreatePageController(string category, string className, string rootController, string collectionName, string addInitialize = "", string addBeforeResponse = "") {
+  return `
+    class D`~category~className~`CreatePageController : D`~category~`CreatePageController {
+      `~appPageControllerThis(category~className~`CreatePageController`, true)~`
+
+    override void initialize() {
+      super.initialize;
+
+      this.view(
+        `~category~className~`CreateView(this));
+      `~addInitialize~`
+      }
+    }`~
+    appPageControllerCalls(category~className~`CreatePageController`, true);
+}

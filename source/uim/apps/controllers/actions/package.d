@@ -9,6 +9,7 @@ public import uim.apps.controllers.actions.interface_;
 public import uim.apps.controllers.actions.login;
 public import uim.apps.controllers.actions.login2;
 public import uim.apps.controllers.actions.setsite;
+public import uim.apps.controllers.actions.system;
 
 template EnityActions(string entityName, string rootPath, string collectionName, string classCategory) {
   const char[] EnityActions = `

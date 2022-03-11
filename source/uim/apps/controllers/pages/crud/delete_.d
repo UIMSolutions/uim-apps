@@ -71,7 +71,7 @@ window.addEventListener('load', (event) => {
       options["redirect"] = "/";
       return; }
 
-    this.entity(database[appSession.site.name, collectionName].findOne(options.toEntitySelect));
+    this.entity(database[appSession.site, collectionName].findOne(options.toEntitySelect));
     if (!entity) {
       // TODO Errorhandling
       return;

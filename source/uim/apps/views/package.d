@@ -28,8 +28,8 @@ public import uim.apps.views.sites;
 
 enum ViewModes { HTML, JS, XML }
 
-template APPViewThis(string name, bool withEntity = false, bool withEntities = false) {
-  const char[] APPViewThis = `
+string appViewThis(string name, bool withEntity = false, bool withEntities = false) {
+  return `
 this() { super(); this.name("`~name~`"); }
 this(DAPPPageController myController) { this().controller(myController); }
 this(string myName) { this().name(myName); }
@@ -46,8 +46,12 @@ this(DAPPPageController myController, DOOPEntity[] myEntities) { this(myControll
 ;
 }
 
-template APPViewCalls(string classShortName, bool withEntity = false, bool withEntities = false) {
-  const char[] APPViewCalls = `
+template APPViewThis(string name, bool withEntity = false, bool withEntities = false) {
+  const char[] APPViewThis = appViewThis(name, withEntity, withEntities);
+}
+
+string appViewCalls(string classShortName, bool withEntity = false, bool withEntities = false) {
+  return `
 auto `~classShortName~`() { return new D`~classShortName~`; }
 auto `~classShortName~`(DAPPPageController myController) { return new D`~classShortName~`(myController); }
 auto `~classShortName~`(string myName) { return new D`~classShortName~`(myName); }
@@ -60,6 +64,10 @@ auto `~classShortName~`(DAPPPageController myController, DOOPEntity myEntity) { 
 auto `~classShortName~`(DOOPEntity[] myEntities) { return new D`~classShortName~`(myEntities); }
 auto `~classShortName~`(DAPPPageController myController, DOOPEntity[] myEntities) { return new D`~classShortName~`(myController, myEntities); }
 ` : ``);
+}
+
+template APPViewCalls(string classShortName, bool withEntity = false, bool withEntities = false) {
+  const char[] APPViewCalls = appViewCalls(classShortName, withEntity, withEntities);
 }
 
 void testView(DAPPView view) {
@@ -80,4 +88,31 @@ void testView(DAPPView view) {
 	view.name("testName2");
 	assert(view.name("testName2").name == "testName2");	
 	assert(view.name("testName2")["name"] == "testName2");	
+}
+
+string appActionView(string category, string className, string action, string initialize = "", string beforeH5 = "") {
+  string viewName = category~className~action~"View";
+
+  return `
+class D`~viewName~` : DAPPEntity`~action~`View {
+  `~appViewThis(viewName, true)~`
+
+  override void initialize() {
+    debugMethodCall(moduleName!D`~viewName~`~"::D`~viewName~`("~this.name~"):initialize");   
+    super.initialize;
+    `~initialize~`
+  }
+
+  override void beforeH5(STRINGAA options = null) {
+    debugMethodCall(moduleName!D`~viewName~`~"::D`~viewName~`:beforeH5");
+    super.beforeH5(options);
+    if (hasError || "redirect" in options) { return; }	
+    `~beforeH5~`
+  }
+}
+`~appViewCalls(viewName, true);
+}
+
+template APPActionView(string category, string className, string action, string initialize = "", string beforeH5 = "") {
+  const char[] APPActionView = appActionView(category, className, action, initialize, beforeH5);
 }
