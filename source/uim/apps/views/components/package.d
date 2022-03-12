@@ -9,6 +9,10 @@ public import uim.apps.views.components.null_;
 
 // Packages
 public import uim.apps.views.components.accordions;
+public import uim.apps.views.components.alerts;
+public import uim.apps.views.components.avatars;
+public import uim.apps.views.components.badges;
+public import uim.apps.views.components.breadcrumbs;
 public import uim.apps.views.components.buttons;
 public import uim.apps.views.components.cards;
 public import uim.apps.views.components.entities;
@@ -24,6 +28,7 @@ public import uim.apps.views.components.modals;
 public import uim.apps.views.components.panes;
 public import uim.apps.views.components.search;
 public import uim.apps.views.components.tables;
+public import uim.apps.views.components.tabs;
 
 DH5Obj viewEntities(uint initValue = 10) {
   return H5Div(["text-muted"], 

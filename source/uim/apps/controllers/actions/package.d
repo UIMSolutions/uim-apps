@@ -5,6 +5,8 @@ import uim.apps;
 
 public import uim.apps.controllers.actions.action;
 public import uim.apps.controllers.actions.create;
+public import uim.apps.controllers.actions.entity;
+public import uim.apps.controllers.actions.entities;
 public import uim.apps.controllers.actions.interface_;
 public import uim.apps.controllers.actions.login;
 public import uim.apps.controllers.actions.login2;

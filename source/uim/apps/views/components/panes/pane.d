@@ -20,7 +20,7 @@ class DAPPPaneViewComponent : DAPPViewComponent {
     }
 
     DH5Obj _col;
-    override DH5Obj[] toH5(STRINGAA options = null) { // hook
+    override DH5Obj[] toH5(STRINGAA options = null) { 
         super.toH5(options);
         if (hasError) { return null; }
    
@@ -29,7 +29,7 @@ class DAPPPaneViewComponent : DAPPViewComponent {
         inner(options);
 
         return [
-            BS5CardBody(
+            BS5Card.body_(
             H5Div(["card-title"], this.title),
             BS5Row(_col))].toH5;
     }

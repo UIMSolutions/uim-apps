@@ -8,9 +8,12 @@ public import uim.apps.views.components.panes.entities;
 
 public import uim.apps.views.components.panes.general;
 public import uim.apps.views.components.panes.history;
+public import uim.apps.views.components.panes.packages;
 public import uim.apps.views.components.panes.pane;
+public import uim.apps.views.components.panes.packages;
 public import uim.apps.views.components.panes.versions;
 public import uim.apps.views.components.panes.specific;
+
 
 /* 
 auto tabpane(T:DOOPEntity)(T entity, STRINGAA Parameters) {

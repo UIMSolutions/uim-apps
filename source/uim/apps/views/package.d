@@ -43,7 +43,7 @@ this(DAPPPageController myController, DOOPEntity myEntity) { this(myController).
 this(DOOPEntity[] myEntities) { this().entities(myEntities); }
 this(DAPPPageController myController, DOOPEntity[] myEntities) { this(myController).entities(myEntities); }
 ` : ``);
-;
+
 }
 
 template APPViewThis(string name, bool withEntity = false, bool withEntities = false) {

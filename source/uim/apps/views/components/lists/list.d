@@ -50,9 +50,10 @@ class DAPPListViewComponent : DAPPViewComponent, IAPPWithEntities {
       listGroup.item(itemTemplate.entity(entity).toH5(options));
     }
 
-    this
-      .header([BS5CardTitle(title)].toH5)
-      .content([listGroup].toH5);
+    if (title) this
+      .header([BS5CardTitle(title)].toH5);
+
+      this.content([listGroup].toH5);
     
     auto card = BS5Card;
     if (this.header) card.header(this.header);
