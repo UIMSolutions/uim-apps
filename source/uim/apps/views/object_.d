@@ -7,8 +7,26 @@ class DAPPViewObject : DAPPObject {
   this() { super(); }
 
   // view components
-  mixin(OProperty!("DAPPViewObject[string]", "components")); 
-  bool hasComponent(string key) {
+  mixin(OProperty!("DAPPViewObject[]", "components"));
+  O addComponent(this O)(DAPPViewObject newComponent) {
+    components ~= newComponent;
+    return cast(O)this;
+  }
+  O addComponent(this O)(string id, DAPPViewObject newComponent) {
+    components ~= newComponent.id(id);
+    return cast(O)this;
+  }
+  bool hasComponent(string anId) {
+    return component(anId) !is null;
+  }
+  DAPPViewObject component(string anId) {
+    foreach(c; components) {
+      if (c.id == anId) return c;
+    }
+    return null;
+  }
+
+/*   bool hasComponent(string key) {
     return (this.component(key) !is null);
   }
   DAPPViewObject component(string key) {
@@ -17,7 +35,7 @@ class DAPPViewObject : DAPPObject {
   O component(this O)(string key, DAPPViewObject newComponent) {
     components[key] = newComponent;
     return cast(O)this;
-  } 
+  }  */
 }
 
 /* template APPViewProperty(string dataType, string name) {
