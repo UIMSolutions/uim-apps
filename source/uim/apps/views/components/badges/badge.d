@@ -3,7 +3,7 @@ module uim.apps.views.components.badges.badge;
 @safe:
 import uim.apps;
 
-class DAPPBadgeViewComponent : DAPPViewComponent {
-  mixin(APPViewComponentThis!("APPBadgeViewComponent"));
+class DAPPBadgeViewComponent : DViewComponent {
+  mixin(ViewComponentThis!("APPBadgeViewComponent"));
 }
-mixin(APPViewComponentCalls!("APPBadgeViewComponent"));
+mixin(ViewComponentCalls!("APPBadgeViewComponent"));

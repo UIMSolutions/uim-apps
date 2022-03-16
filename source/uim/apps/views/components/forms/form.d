@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.form;
 @safe:
 import uim.apps;
 
-class DAPPForm : DAPPViewComponent {
+class DAPPForm : DViewComponent {
   mixin(APPFormThis!("APPForm"));
 
   override void initialize() {
@@ -11,11 +11,10 @@ class DAPPForm : DAPPViewComponent {
     super.initialize;
     writeln("In ", __MODULE__, "/", __LINE__);
  
-
     this
       .crudMode(CRUDModes.Read)
       .header(APPFormHeader)
-      .body_(APPFormBody)
+      .content(APPFormContent)
       .method("post");
   }
 
@@ -30,12 +29,12 @@ class DAPPForm : DAPPViewComponent {
   mixin(APPParameter!("entityName"));
   mixin(APPParameter!("entitiesName"));
   mixin(APPParameter!("headerTitle"));
-  mixin(APPParameter!("bodyTitle"));
+  mixin(APPParameter!("contentTitle"));
   mixin(APPParameter!("footerTitle"));
 
-  mixin(APPViewProperty!("DAPPFormHeader", "header"));
-  mixin(APPViewProperty!("DAPPFormBody", "body_"));
-  mixin(APPViewProperty!("DAPPFormFooter", "footer"));
+/*   mixin(APPViewProperty!("DAPPFormHeader", "header"));
+  mixin(APPViewProperty!("DAPPFormContent", "content"));
+  mixin(APPViewProperty!("DFormFooter", "footer")); */
 
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 
@@ -48,12 +47,12 @@ class DAPPForm : DAPPViewComponent {
     return null; // no database found
   }
 
-/*   override DAPPViewComponent copy() {
+/*   override DViewComponent copy() {
     return
       (cast(DAPPForm)copy)
         .crudMode(this.crudMode)
         .header(this.header)
-        .body_(this.body_)
+        .content(this.content)
         .footer(this.footer)
         .rootPath(this.rootPath)
         .defaults(this.defaults)
@@ -65,7 +64,7 @@ class DAPPForm : DAPPViewComponent {
         .entityName(this.entityName)
         .entitiesName(this.entitiesName)
         .headerTitle(this.headerTitle)
-        .bodyTitle(this.bodyTitle)
+        .contentTitle(this.contentTitle)
         .footerTitle(this.footerTitle);
   }  */
 
@@ -82,25 +81,22 @@ class DAPPForm : DAPPViewComponent {
       }
     }
 
-    if (this.header) {
-      debug writeln("Has header (%s)".format(header.name));
-      this.header
+    if (auto formHeader = cast(DAPPFormHeader)this.header) {
+      formHeader
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
         .title(headerTitle);
     }
 
-    if (this.body_) { 
-      debug writeln("Has body_ (%s)".format(body_.name));
-      this.body_
+    if (auto formContent = cast(DAPPFormContent)this.content) { 
+      formContent
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
-        .title(bodyTitle);
+        .title(contentTitle);
     }
     
-    if (this.footer) {
-      debug writeln("Has footer (%s)".format(footer.name));
-      this.footer
+    if (auto formFooter = cast(DFormFooter)this.footer) {
+      formFooter
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
         .title(footerTitle);
@@ -115,7 +111,7 @@ class DAPPForm : DAPPViewComponent {
     _col(
       H5Form("entityForm", ["card"], ["method":method, "action":action], 
         (header ? header.toH5(options) : null)~
-        (body_ ? body_.toH5(options) : null)~
+        (content ? content.toH5(options) : null)~
         (footer ? footer.toH5(options) : null)
       ));
     

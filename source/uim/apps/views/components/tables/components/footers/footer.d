@@ -4,6 +4,6 @@ module uim.apps.views.components.tables.components.footers.footer;
 import uim.apps;
 
 class DAPPTableFooter : DAPPTableComponent {
-  mixin(APPViewComponentThis!("APPTableFooter"));
+  mixin(ViewComponentThis!("APPTableFooter"));
 }
-mixin(APPViewComponentCalls!("APPTableFooter"));
+mixin(ViewComponentCalls!("APPTableFooter"));

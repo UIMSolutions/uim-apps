@@ -3,11 +3,11 @@ module uim.apps.views.components.cards.card;
 @safe:
 import uim.apps;
 
-class DAPPCardViewComponent : DAPPViewComponent {
-  mixin(APPViewComponentThis!("APPCardViewComponent"));
+class DAPPCardViewComponent : DViewComponent {
+  mixin(ViewComponentThis!("APPCardViewComponent"));
 
   override void initialize() {
     super.initialize;
   }
 }
-mixin(APPViewComponentCalls!("APPCardViewComponent"));
+mixin(ViewComponentCalls!("APPCardViewComponent"));

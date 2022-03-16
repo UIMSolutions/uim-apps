@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.groups.checkbox;
 @safe:
 import uim.apps;
 
-class DAPPCheckboxFormGroup : DAPPEntityFormGroup {
+class DAPPCheckboxFormGroup : DEntityFormGroup {
   mixin(APPFormComponentThis!("APPCheckboxFormGroup", true));
 
   override void initialize() {

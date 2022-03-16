@@ -10,7 +10,7 @@ class DAPPEntityCRUDView : DAPPEntityView {
   mixin(OProperty!("bool", "readonly"));
 
   mixin(APPParameter!("rootPath"));
-  mixin(APPViewProperty!("DAPPEntityForm", "form"));
+  mixin(APPViewProperty!("DEntityForm", "form"));
 
   override void initialize() {
     debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):initialize");   
@@ -26,10 +26,10 @@ class DAPPEntityCRUDView : DAPPEntityView {
     debug writeln("In ", __MODULE__, "/", __LINE__);
     this
       .form(
-        APPEntityForm(this))
+        EntityForm(this))
       .form
         .header(
-          APPEntityFormHeader(this.form).actions([["edit", "version", "delete"], ["print", "export"]]));
+          EntityFormHeader(this.form).actions([["edit", "version", "delete"], ["print", "export"]]));
     
     debug writeln("In ", __MODULE__, "/", __LINE__);
     this      
@@ -42,7 +42,7 @@ class DAPPEntityCRUDView : DAPPEntityView {
     super.beforeH5(options);
     debug writeln(entity ? "Has entity" : "no entity");
 
-    if (auto entityForm = cast(DAPPEntityForm)this.form) {
+    if (auto entityForm = cast(DEntityForm)this.form) {
       debug writeln("Found entityForm");
       entityForm.entity(this.entity);
     } else debug writeln("No entityForm"); 

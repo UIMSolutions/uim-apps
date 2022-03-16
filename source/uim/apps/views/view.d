@@ -33,12 +33,12 @@ class DAPPView : DAPPViewObject, IAPPEventDispatcher {
   mixin(OProperty!("string[]", "mainClasses")); 
   mixin(OProperty!("string[]", "rightClasses")); 
     
-  mixin(APPViewProperty!("DAPPViewComponent", "messages")); 
+  mixin(APPViewProperty!("DViewComponent", "messages")); 
   mixin(APPViewProperty!("DAPPPageHeader", "header")); 
   mixin(APPViewProperty!("DAPPPageFooter", "footer")); 
-  mixin(APPViewProperty!("DAPPViewComponent", "leftComponent")); 
-  mixin(APPViewProperty!("DAPPViewComponent", "mainComponent")); 
-  mixin(APPViewProperty!("DAPPViewComponent", "rightComponent")); 
+  mixin(APPViewProperty!("DViewComponent", "leftComponent")); 
+  mixin(APPViewProperty!("DViewComponent", "mainComponent")); 
+  mixin(APPViewProperty!("DViewComponent", "rightComponent")); 
 
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 

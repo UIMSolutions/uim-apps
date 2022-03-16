@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.components.component;
 @safe:
 import uim.apps;
 
-class DAPPFormComponent : DAPPViewComponent {
-  mixin(APPViewComponentThis!("APPFormComponent"));
+class DAPPFormComponent : DViewComponent {
+  mixin(ViewComponentThis!("APPFormComponent"));
 
   override void initialize() {
     debugMethodCall(moduleName!DAPPFormComponent~"::DAPPFormComponent("~this.name~"):initialize");   
@@ -20,7 +20,7 @@ class DAPPFormComponent : DAPPViewComponent {
   mixin(APPParameter!("rootPath"));
   mixin(APPParameter!("title"));  
 }
-mixin(APPViewComponentCalls!("APPFormComponent"));
+mixin(ViewComponentCalls!("APPFormComponent"));
 
 version(test_uim_apps) {
   unittest {

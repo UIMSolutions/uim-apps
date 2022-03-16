@@ -3,15 +3,24 @@ module uim.apps.views.components.forms.components.footers.entity;
 @safe:
 import uim.apps;
 
-class DAPPEntityFormFooter : DAPPFormFooter, IAPPWithEntity {
-  mixin(APPFormComponentThis!("APPEntityFormFooter", true));
+class DEntityFormFooter : DFormFooter, IAPPWithEntity {
+  mixin(APPFormComponentThis!("EntityFormFooter", true));
 
-  mixin(OProperty!("DOOPEntity", "entity"));
+  protected DOOPEntity _entity;
+  DOOPEntity entity() { return _entity; }
+  bool hasEntity() {
+    return (this.entity !is null); 
+  }
 
-  override void initialize() {
-    debugMethodCall(moduleName!DAPPEntityFormFooter~"::DAPPEntityFormFooter("~this.name~"):initialize");   
-    super.initialize;
+  O entity(this O)(DOOPEntity newEntity) { 
+    _entity = newEntity;
+
+    if (auto entityContent = cast(DEntityFormContent)this.content) {
+      entityContent.entity(this.entity); 
+    }
+
+    return cast(O)this;
   }
 }
-mixin(APPFormComponentCalls!("APPEntityFormFooter", true));
+mixin(APPFormComponentCalls!("EntityFormFooter", true));
 

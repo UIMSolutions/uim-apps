@@ -3,7 +3,7 @@ module uim.apps.views.components.search;
 @safe:
 import uim.apps;
 
-class DAPPSearchInList : DAPPViewComponent {
+class DAPPSearchInList : DViewComponent {
   this() { super(); }
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook

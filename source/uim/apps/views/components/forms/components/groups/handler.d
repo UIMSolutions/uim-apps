@@ -47,7 +47,7 @@ class DAPPFormGroupHandler : DAPPFormComponent, IAPPWithEntity {
       if (auto formGroup = this.formGroups.get(field.toLower, null)) { // field name not case sensitive !
         debug writeln("Found formGroup for field:", field);
         formGroup.crudMode(this.crudMode).form(form);
-        if (auto entityFormGroup = cast(DAPPEntityFormGroup)formGroup) {
+        if (auto entityFormGroup = cast(DEntityFormGroup)formGroup) {
           return entityFormGroup.entity(entity).toH5(options);
         }
         return formGroup.toH5(options);

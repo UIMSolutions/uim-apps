@@ -3,15 +3,15 @@ module uim.apps.views.components.forms.components.footers.footer;
 @safe:
 import uim.apps;
 
-class DAPPFormFooter : DAPPFormComponent {
-  mixin(APPFormComponentThis!("APPFormFooter"));
+class DFormFooter : DAPPFormComponent {
+  mixin(APPFormComponentThis!("FormFooter"));
 
   override void initialize() {
-    debugMethodCall(moduleName!DAPPFormFooter~"::DAPPFormFooter("~this.name~"):initialize");   
+    debugMethodCall(moduleName!DFormFooter~"::DFormFooter("~this.name~"):initialize");   
     super.initialize;
 
     debug writeln("In ", __MODULE__, "/", __LINE__);
   }
 }
-mixin(APPFormComponentCalls!("APPFormFooter"));
+mixin(APPFormComponentCalls!("FormFooter"));
 

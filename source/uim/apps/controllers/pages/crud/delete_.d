@@ -83,7 +83,7 @@ window.addEventListener('load', (event) => {
 
     if (this.entity) { 
       if (auto entityHeader = cast(DAPPEntityPageHeader)pageHeader) entityHeader.entity(entity);
-      if (auto entityForm = cast(DAPPEntityForm)form) entityForm.entity(entity); 
+      if (auto entityForm = cast(DEntityForm)form) entityForm.entity(entity); 
     }
   }
 version(test_uim_apps) {

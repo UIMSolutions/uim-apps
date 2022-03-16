@@ -8,8 +8,8 @@ module uim.apps.views.pages.components.headers.header;
 @safe:
 import uim.apps;
 
-class DAPPPageHeader : DAPPViewComponent {
-  mixin(APPViewComponentThis!("APPPageHeader"));
+class DAPPPageHeader : DViewComponent {
+  mixin(ViewComponentThis!("APPPageHeader"));
 
   mixin(APPParameter!("rootPath"));
   mixin(APPParameter!("preTitle"));
@@ -70,7 +70,7 @@ class DAPPPageHeader : DAPPViewComponent {
       ].toH5;
   }
 }
-mixin(APPViewComponentCalls!("APPPageHeader"));
+mixin(ViewComponentCalls!("APPPageHeader"));
 auto APPPageHeader(string rootPath) { return APPPageHeader.rootPath(rootPath); }
 auto APPPageHeader(string rootPath, string preTitle) { return APPPageHeader.rootPath(rootPath).preTitle(preTitle); }
 auto APPPageHeader(string rootPath, string preTitle, string title) { return APPPageHeader.rootPath(rootPath).preTitle(preTitle).title(title); }

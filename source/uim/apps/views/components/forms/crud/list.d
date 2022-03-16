@@ -4,14 +4,14 @@ module uim.apps.views.components.forms.crud.list;
 import uim.apps;
 
 class DAPPEntitiesListForm : DAPPEntitiesForm {
-  mixin(APPViewComponentThis!("APPEntitiesListForm", false, true));
+  mixin(ViewComponentThis!("APPEntitiesListForm", false, true));
 
   override void initialize() {
     super.initialize;
 
     this
     .header(APPFormHeader(this).mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["print", "export"]]))
-    .body_(APPEntitiesFormBody(this));
+    .content(EntityFormContent(this));
 
     /*       .form
         .header(APPEntitiesheader(this.form).rootPath("/cms/blogs").mainTitle("Blogs").subTitle("Blogs anzeigen").actions([["print", "export"]]))
@@ -27,14 +27,14 @@ class DAPPEntitiesListForm : DAPPEntitiesForm {
     _col(
       H5Form("entityForm", ["card"], ["method":method, "action":action], 
         (this.header ? this.header.toH5(options) : null)~
-        (this.body_ ? this.body_.toH5(options) : null)~
+        (this.content ? this.content.toH5(options) : null)~
         (this.footer ? this.footer.toH5(options) : null) 
       ));
     
     return [_col].toH5;
   }  
 }
-mixin(APPViewComponentCalls!("APPEntitiesListForm", false, true));
+mixin(ViewComponentCalls!("APPEntitiesListForm", false, true));
 
 version(test_uim_apps) {
   unittest {

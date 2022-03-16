@@ -4,8 +4,8 @@ module uim.apps.views.components.tables.components.bodies.entities;
 import uim.apps;
 
 class DAPPEntitiesTableBody : DAPPTableBody, IAPPWithEntities {
-  mixin(APPViewComponentThis!("APPEntitiesTableBody"));
+  mixin(ViewComponentThis!("APPEntitiesTableBody"));
 
   mixin(OProperty!("DOOPEntity[]", "entities"));
 }
-mixin(APPViewComponentCalls!("APPEntitiesTableBody"));
+mixin(ViewComponentCalls!("APPEntitiesTableBody"));

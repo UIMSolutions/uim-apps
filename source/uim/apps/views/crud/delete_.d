@@ -14,11 +14,11 @@ class DAPPEntityDeleteView : DAPPEntityCRUDView {
       .header(
         APPPageHeader(this).actions(["refresh", "list", "create"]))
       .form(
-        APPEntityForm(this)
+        EntityForm(this)
           .crudMode(CRUDModes.Delete))
       .form
         .header(
-          APPEntityFormHeader(this.form)
+          EntityFormHeader(this.form)
             .actions([["cancel2root", "finalDelete"], ["view", "version", "edit"], ["print", "export"]]));
   }
 }

@@ -4,7 +4,7 @@ module uim.apps.views.components.tables.versions;
 import uim.apps;
 
 /* class DAPPTableVersions : DAPPEntitiesTableHeader {
-  mixin(APPViewComponentThis!("APPTableVersions"));
+  mixin(ViewComponentThis!("APPTableVersions"));
 
   mixin(OProperty!("DOOPEntity[]", "versions"));
   O versions(this O)(Json[] jsons) {
@@ -54,5 +54,5 @@ import uim.apps;
     _body = H5Tbody(rows);
   }
 }
-mixin(APPViewComponentCalls!("APPTableVersions"));
+mixin(ViewComponentCalls!("APPTableVersions"));
    */

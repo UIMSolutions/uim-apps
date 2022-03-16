@@ -3,7 +3,7 @@ module uim.apps.views.components.tables.listheader;
 @safe:
 import uim.apps;
 
-class DAPPListTableHeader : DAPPViewComponent {
+class DAPPListTableHeader : DViewComponent {
   this() { super(); }
   this(DAPPView myView) { this(); this.view(myView); }
 

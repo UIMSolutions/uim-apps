@@ -6,6 +6,9 @@ import uim.apps;
 // Main
 public import uim.apps.views.components.component;
 public import uim.apps.views.components.null_;
+public import uim.apps.views.components.static_;
+public import uim.apps.views.components.entity;
+public import uim.apps.views.components.entities;
 
 // Packages
 public import uim.apps.views.components.accordions;
@@ -25,9 +28,9 @@ public import uim.apps.views.components.icons;
 public import uim.apps.views.components.lists;
 public import uim.apps.views.components.navbars;
 public import uim.apps.views.components.modals;
-public import uim.apps.views.components.panes;
 public import uim.apps.views.components.search;
 public import uim.apps.views.components.tables;
+public import uim.apps.views.components.tabpanes;
 public import uim.apps.views.components.tabs;
 
 DH5Obj viewEntities(uint initValue = 10) {
@@ -39,8 +42,8 @@ DH5Obj viewEntities(uint initValue = 10) {
     H5Div("Einträge"));
 }
 
-template APPViewComponentThis(string classShortName, bool withEntity = false, bool withEntities = false) {
-  const char[] APPViewComponentThis = `
+template ViewComponentThis(string classShortName, bool withEntity = false, bool withEntities = false) {
+  const char[] ViewComponentThis = `
 this() { super(); this.name = "`~classShortName~`"; }
 this(DAPPView myView) { this().view(myView); }`~
 (withEntity ? `
@@ -54,8 +57,8 @@ this(DAPPView myView, DOOPEntity[] myEntities) { this(myView).entities(myEntitie
 
 }
 
-template APPViewComponentCalls(string classShortName, bool withEntity = false, bool withEntities = false) {
-  const char[] APPViewComponentCalls = `
+template ViewComponentCalls(string classShortName, bool withEntity = false, bool withEntities = false) {
+  const char[] ViewComponentCalls = `
 auto `~classShortName~`() { return new D`~classShortName~`; }
 auto `~classShortName~`(DAPPView myView) { return new D`~classShortName~`(myView); }`~
 (withEntity ? `

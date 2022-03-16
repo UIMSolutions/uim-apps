@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.groups.text;
 @safe:
 import uim.apps;
 
-class DAPPTextFormGroup : DAPPEntityFormGroup {
+class DAPPTextFormGroup : DEntityFormGroup {
   mixin(APPFormComponentThis!("APPTextFormGroup", true));
 
   override DH5Obj h5Input(STRINGAA options = null) {

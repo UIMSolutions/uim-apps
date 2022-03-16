@@ -3,8 +3,8 @@ module uim.apps.views.components.footers;
 @safe:
 import uim.apps;
 
-class DAPPPageFooter : DAPPViewComponent {
-  mixin(APPViewComponentThis!("APPPageFooter"));
+class DAPPPageFooter : DViewComponent {
+  mixin(ViewComponentThis!("APPPageFooter"));
 
   override void initialize() {
     super.initialize; 
@@ -35,4 +35,4 @@ class DAPPPageFooter : DAPPViewComponent {
         ))].toH5;
   }
 }
-mixin(APPViewComponentCalls!("APPPageFooter"));
+mixin(ViewComponentCalls!("APPPageFooter"));

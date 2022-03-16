@@ -3,7 +3,7 @@ module uim.apps.views.components.alerts.alert;
 @safe:
 import uim.apps;
 
-class DAPPAlertViewComponent : DAPPViewComponent {
-  mixin(APPViewComponentThis!("APPAlertViewComponent"));
+class DAPPAlertViewComponent : DViewComponent {
+  mixin(ViewComponentThis!("APPAlertViewComponent"));
 }
-mixin(APPViewComponentCalls!("APPAlertViewComponent"));
+mixin(ViewComponentCalls!("APPAlertViewComponent"));

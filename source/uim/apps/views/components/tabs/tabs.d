@@ -3,8 +3,8 @@ module uim.apps.views.components.tabs.tabs;
 @safe:
 import uim.apps;
 
-class DAPPTabsViewComponent : DAPPViewComponent {
-  mixin(APPViewComponentThis!("APPTabsViewComponent"));
+class DAPPTabsViewComponent : DViewComponent {
+  mixin(ViewComponentThis!("APPTabsViewComponent"));
 
   mixin(OProperty!("DAPPTabViewComponent[]", "tabs"));
 
@@ -23,4 +23,4 @@ class DAPPTabsViewComponent : DAPPViewComponent {
       BS5Card(tabNav).body_(tabContent)].toH5;
   }
 }
-mixin(APPViewComponentCalls!("APPTabsViewComponent"));
+mixin(ViewComponentCalls!("APPTabsViewComponent"));

@@ -4,7 +4,7 @@ module uim.apps.views.components.tables.components.footers.entities;
 import uim.apps;
 
 class DAPPEntitiesTableFooter : DAPPTableFooter, IAPPWithEntities {
-  mixin(APPViewComponentThis!("APPEntitiesTableFooter"));
+  mixin(ViewComponentThis!("APPEntitiesTableFooter"));
 
   mixin(OProperty!("size_t", "pageNo"));
   mixin(OProperty!("size_t", "visibleEntities"));
@@ -44,4 +44,4 @@ class DAPPEntitiesTableFooter : DAPPTableFooter, IAPPWithEntities {
                 "Next"~tablerIcon("chevrons-right"))))].toH5;
     } 
 }
-mixin(APPViewComponentCalls!("APPEntitiesTableFooter"));
+mixin(ViewComponentCalls!("APPEntitiesTableFooter"));

@@ -3,7 +3,7 @@ module uim.apps.views.components.navbars.navigation;
 @safe:
 import uim.apps;
 
-class DAPPNavigation : DAPPViewComponent {
+class DAPPNavigation : DViewComponent {
   this() { super(); 
     this
     .firstNavbar(APPFirstNavbar)

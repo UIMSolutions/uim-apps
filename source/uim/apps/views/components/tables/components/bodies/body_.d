@@ -4,7 +4,7 @@ module uim.apps.views.components.tables.components.bodies.body_;
 import uim.apps;
 
 class DAPPTableBody : DAPPTableComponent {
-  mixin(APPViewComponentThis!("APPTableBody"));
+  mixin(ViewComponentThis!("APPTableBody"));
 }
-mixin(APPViewComponentCalls!("APPTableBody"));
+mixin(ViewComponentCalls!("APPTableBody"));
 

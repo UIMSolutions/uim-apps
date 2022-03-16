@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.groups.switch_;
 @safe:
 import uim.apps;
 
-class DAPPSwitchFormGroup : DAPPEntityFormGroup {
+class DAPPSwitchFormGroup : DEntityFormGroup {
   mixin(APPFormComponentThis!("APPSwitchFormGroup", true));
 
   override void initialize() {

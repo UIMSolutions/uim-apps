@@ -45,7 +45,7 @@ class DAPPEntityCreateController : DAPPEntityCrudPageController {
     this.entity(collection.toEntity(Json(null)));
     if (this.entity) { 
       if (auto entityHeader = cast(DAPPEntityPageHeader)pageHeader) entityHeader.entity(entity);
-      if (auto entityForm = cast(DAPPEntityForm)form) entityForm.entity(entity); 
+      if (auto entityForm = cast(DEntityForm)form) entityForm.entity(entity); 
       
       auto poolId = uniform(1, 1_000_000_000);
       entityPool[poolId] = entity;

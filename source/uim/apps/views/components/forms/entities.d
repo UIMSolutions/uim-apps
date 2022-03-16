@@ -6,40 +6,29 @@ import uim.apps;
 class DAPPEntitiesForm : DAPPForm, IAPPWithEntities {
   mixin(APPFormThis!("APPEntitiesForm"));
 
-protected DOOPEntity[] _entities;
-  bool hasEntities() {
-    return (_entities.length > 0);
-  }  
-  DOOPEntity[] entities() {
-    return _entities;
-  }  
-  O entities(this O)(DOOPEntity[] newEntities) {
-    _entities = newEntities;
+  mixin(OProperty!("DOOPEntity[]", "entities"));
+
+  override DH5Obj[] toH5(STRINGAA options = null) { 
+    super.beforeH5(options);
+    if (hasError || "redirect" in options) { return null; }
 
     debug writeln("Found entities: %s".format(entities.length));
     foreach(formComponent; this.components) { 
-      if (auto entitiesComponent = cast(DAPPEntitiesViewComponent)formComponent) {
+      if (auto entitiesComponent = cast(DEntitiesViewComponent)formComponent) {
         entitiesComponent.entities(this.entities); 
       }
     } 
-    if (auto entitiesHeader = cast(DAPPEntitiesFormHeader)this.header) {
-      debug writeln("Found entitiesHeader: "~entitiesHeader.name);
+/*     if (auto entitiesHeader = cast(DEntitiesFormHeader)this.header) {
       entitiesHeader.entities(this.entities); 
     }
-    if (auto entitiesBody = cast(DAPPEntitiesFormBody)this.body_) {
-      debug writeln("Found entitiesBody: "~entitiesBody.name);
-      entitiesBody.entities(this.entities); 
+    if (auto entitiesContent = cast(DEntitiesFormContent)this.content) {
+      entitiesContent.entities(this.entities); 
     }
-    if (auto entitiesFooter = cast(DAPPEntitiesFormFooter)this.footer) {
-      debug writeln("Found entitiesFooter: "~entitiesFooter.name);
+    if (auto entitiesFooter = cast(DEntitiesFormFooter)this.footer) {
       entitiesFooter.entities(this.entities); 
-    }
+    } */
 
-    _afterSetEntities;
-
-    return cast(O)this;
-  }
-  void _afterSetEntities() {
+    return null;
   }
 }
 mixin(APPFormCalls!("APPEntitiesForm"));

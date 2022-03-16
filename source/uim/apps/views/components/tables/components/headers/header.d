@@ -4,7 +4,7 @@ module uim.apps.views.components.tables.components.headers.header;
 import uim.apps;
 
 class DAPPTableHeader : DAPPTableComponent {
-  mixin(APPViewComponentThis!("APPTableHeader"));
+  mixin(ViewComponentThis!("APPTableHeader"));
 
   mixin(OProperty!("STRINGAA[]", "cols"));
 
@@ -27,4 +27,4 @@ class DAPPTableHeader : DAPPTableComponent {
     return [H5Thead.row(ths)].toH5;
   }
 }
-mixin(APPViewComponentCalls!("APPTableHeader"));
+mixin(ViewComponentCalls!("APPTableHeader"));

@@ -4,8 +4,8 @@ module uim.apps.views.components.breadcrumbs.entities;
 import uim.apps;
 
 class DAPPEntitiesBreadcrumbViewComponent : DAPPBreadcrumbViewComponent, IAPPWithEntities {
-  mixin(APPViewComponentThis!("APPEntitiesBreadcrumbViewComponent"));
+  mixin(ViewComponentThis!("APPEntitiesBreadcrumbViewComponent"));
 
   mixin(OProperty!("DOOPEntity[]", "entities"));
 }
-mixin(APPViewComponentCalls!("APPEntitiesBreadcrumbViewComponent"));
+mixin(ViewComponentCalls!("APPEntitiesBreadcrumbViewComponent"));

@@ -3,7 +3,7 @@ module uim.apps.views.components.breadcrumbs.breadcrumb;
 @safe:
 import uim.apps;
 
-class DAPPBreadcrumbViewComponent : DAPPViewComponent {
-  mixin(APPViewComponentThis!("APPBreadcrumbViewComponent"));
+class DAPPBreadcrumbViewComponent : DViewComponent {
+  mixin(ViewComponentThis!("APPBreadcrumbViewComponent"));
 }
-mixin(APPViewComponentCalls!("APPBreadcrumbViewComponent"));
+mixin(ViewComponentCalls!("APPBreadcrumbViewComponent"));

@@ -4,7 +4,7 @@ module uim.apps.views.components.accordions.themes;
 import uim.apps;
 
 class DAPPAccordionThemes : DAPPAccordion {
-  mixin(APPViewComponentThis!("APPAccordionThemes"));
+  mixin(ViewComponentThis!("APPAccordionThemes"));
 
   override void initialize() {
     super.initialize;
@@ -12,4 +12,4 @@ class DAPPAccordionThemes : DAPPAccordion {
     this.id("accordion-themes"); 
   }
 }
-mixin(APPViewComponentCalls!("APPAccordionThemes"));
+mixin(ViewComponentCalls!("APPAccordionThemes"));

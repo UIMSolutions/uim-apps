@@ -3,13 +3,13 @@ module uim.apps.views.components.forms.components.headers.entities;
 @safe:
 import uim.apps;
 
-class DAPPEntitiesFormHeader : DAPPFormHeader, IAPPWithEntities {
-  mixin(APPFormComponentThis!("APPEntitiesFormHeader", false, true));
+class DEntitiesFormHeader : DAPPFormHeader, IAPPWithEntities {
+  mixin(APPFormComponentThis!("EntitiesFormHeader", false, true));
 
   mixin(OProperty!("DOOPEntity[]", "entities"));
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntitiesFormHeader~"DAPPEntitiesFormHeader::toHbeforeH55");
+    debugMethodCall(moduleName!DEntitiesFormHeader~"DEntitiesFormHeader::toHbeforeH55");
     super.beforeH5(options);
     if (hasError) { return; }
 
@@ -18,15 +18,15 @@ class DAPPEntitiesFormHeader : DAPPFormHeader, IAPPWithEntities {
     }
   } 
 }
-mixin(APPFormComponentCalls!("APPEntitiesFormHeader", false, true));
+mixin(APPFormComponentCalls!("EntitiesFormHeader", false, true));
 
 version(test_uim_apps) {
   unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
     
-    assert(new DAPPEntitiesFormHeader);
-    assert(APPEntitiesFormHeader);
-    assert(new DAPPEntitiesFormHeader(APPForm));
-    assert(APPEntitiesFormHeader(APPForm));
+    assert(new DEntitiesFormHeader);
+    assert(EntitiesFormHeader);
+    assert(new DEntitiesFormHeader(APPForm));
+    assert(EntitiesFormHeader(APPForm));
   }
 }

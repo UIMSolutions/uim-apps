@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.components.groups.entity;
 @safe:
 import uim.apps;
 
-class DAPPEntityFormGroup : DAPPFormGroup, IAPPWithEntity {
-  mixin(APPFormComponentThis!("APPEntityFormGroup", true));
+class DEntityFormGroup : DAPPFormGroup, IAPPWithEntity {
+  mixin(APPFormComponentThis!("EntityFormGroup", true));
 
   mixin(OProperty!("DOOPEntity", "entity"));
 
@@ -18,7 +18,7 @@ class DAPPEntityFormGroup : DAPPFormGroup, IAPPWithEntity {
     }
 
     if (this.form) { // Owner class
-      if (auto entityForm = cast(DAPPEntityForm)this.form) {
+      if (auto entityForm = cast(DEntityForm)this.form) {
         this.entity = entityForm.entity;
       }
     }
@@ -29,13 +29,13 @@ class DAPPEntityFormGroup : DAPPFormGroup, IAPPWithEntity {
       // 
       }}
 }
-mixin(APPFormComponentCalls!("APPEntityFormGroup", true));
+mixin(APPFormComponentCalls!("EntityFormGroup", true));
 
 version(test_uim_apps) {
   unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
     
-    assert(new APPEntityFormGroup);
-    assert(APPEntityFormGroup);
+    assert(new EntityFormGroup);
+    assert(EntityFormGroup);
   }
 }

@@ -16,13 +16,13 @@ class DAPPEntityCreateView : DAPPEntityCRUDView {
       .header( // set page header
         APPPageHeader(this).actions(["refresh", "list"]))
       .form( // Set form 
-        APPEntityForm(this)
+        EntityForm(this)
         .crudMode(CRUDModes.Create)) 
       .form // Set form components
         .header(
-          APPEntityFormHeader(this.form).actions([["cancel", "save"], ["print", "export"]]))
-        .body_(
-          APPEntityFormBody(this.form)
+          EntityFormHeader(this.form).actions([["cancel", "save"], ["print", "export"]]))
+        .content(
+          EntityFormContent(this.form)
           .fields(["name", "display", "description"]) 
       );
   }

@@ -4,8 +4,28 @@ module uim.apps.views.components.badges.entity;
 import uim.apps;
 
 class DAPPEntityBadgeViewComponent : DAPPBadgeViewComponent, IAPPWithEntity {
-  mixin(APPViewComponentThis!("APPEntityBadgeViewComponent"));
+  mixin(ViewComponentThis!("APPEntityBadgeViewComponent"));
 
-  mixin(OProperty!("DOOPEntity", "entity"));
+  protected DOOPEntity _entity;
+  DOOPEntity entity() { return _entity; }
+  bool hasEntity() {
+    return (this.entity !is null); 
+  }
+
+  O entity(this O)(DOOPEntity newEntity) {
+    _entity = newEntity;
+
+    if (auto entityHeader = cast(IAPPWithEntity)this.header) {
+        entityHeader.entity(this.entity); 
+    }
+    if (auto entityContent = cast(IAPPWithEntity)this.content) {
+      entityContent.entity(this.entity); 
+    }
+    if (auto entityFooter = cast(IAPPWithEntity)this.footer) {
+      entityFooter.entity(this.entity); 
+    } 
+
+    return cast(O)this;
+  }
 }
-mixin(APPViewComponentCalls!("APPEntityBadgeViewComponent"));
+mixin(ViewComponentCalls!("APPEntityBadgeViewComponent"));

@@ -3,8 +3,8 @@ module uim.apps.views.components.cards.cards;
 @safe:
 import uim.apps;
 
-class DAPPCardsViewComponent : DAPPViewComponent {
-  mixin(APPViewComponentThis!("APPCardsViewComponent"));
+class DAPPCardsViewComponent : DViewComponent {
+  mixin(ViewComponentThis!("APPCardsViewComponent"));
 
   mixin(OProperty!("DH5Obj[]", "cards"));
 
@@ -17,4 +17,4 @@ class DAPPCardsViewComponent : DAPPViewComponent {
       BS5Row(["row-cards"], ["data-masonry":"{&quot;percentPosition&quot;: true }"], this.cards)].toH5;
   }
 }
-mixin(APPViewComponentCalls!("APPCardsViewComponent"));
+mixin(ViewComponentCalls!("APPCardsViewComponent"));

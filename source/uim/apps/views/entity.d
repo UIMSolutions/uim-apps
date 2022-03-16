@@ -24,9 +24,9 @@ class DAPPEntityView : DAPPView, IAPPWithEntity {
       _entity = newEntity;
 
       foreach(viewComponent; this.components) { 
-        if (auto entityViewComponent = cast(DAPPEntityViewComponent)viewComponent) {
+/*         if (auto entityViewComponent = cast(DEntityViewComponent)viewComponent) {
           entityViewComponent.entity(this.entity); 
-        }
+        } */
       }
 
       return cast(O)this;

@@ -4,8 +4,8 @@ module uim.apps.views.components.tables.components.headers.entity;
 import uim.apps;
 
 class DAPPEntityTableHeader : DAPPTableHeader, IAPPWithEntity {
-  mixin(APPViewComponentThis!("APPEntityTableHeader"));
+  mixin(ViewComponentThis!("APPEntityTableHeader"));
 
   mixin(OProperty!("DOOPEntity", "entity"));
 }
-mixin(APPViewComponentCalls!("APPEntityTableHeader"));
+mixin(ViewComponentCalls!("APPEntityTableHeader"));

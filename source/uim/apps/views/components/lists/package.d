@@ -6,7 +6,11 @@ import uim.apps;
 // Main
 public import uim.apps.views.components.lists.list;
 
-// Additional
-public import uim.apps.views.components.lists.item;
-public import uim.apps.views.components.lists.entity;
+// Packages
+public import uim.apps.views.components.lists.items;
+public import uim.apps.views.components.lists.headers;
+public import uim.apps.views.components.lists.footers;
+
+// Modules
 public import uim.apps.views.components.lists.entities;
+

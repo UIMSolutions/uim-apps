@@ -3,19 +3,30 @@ module uim.apps.views.components.component;
 @safe:
 import uim.apps;
 
-class DAPPViewComponent : DAPPViewObject {
-  this() { super(); this.name("APPViewComponent"); }  
+class DViewComponent : DAPPViewObject {
+  this() { super(); this.name("ViewComponent"); }  
   this(DAPPView myView) { this(); this.view(myView); }
   
   mixin(OProperty!("bool", "dynamic")); 
   mixin(OProperty!("bool", "isNull")); 
   mixin(OProperty!("STRINGAA", "style")); 
   mixin(OProperty!("bool", "changed")); 
-  mixin(OProperty!("DAPPViewComponent", "owner")); 
+  mixin(OProperty!("DViewComponent", "owner")); 
   mixin(OProperty!("DAPPView", "view")); 
   mixin(OProperty!("DAPPLayout", "layout")); 
   mixin(APPParameter!("jsCode")); 
   mixin(APPParameter!("debugPrefix")); 
+
+  mixin(OProperty!("bool", "showHeader"));
+  mixin(OProperty!("bool", "showFooter"));
+
+  mixin(OProperty!("string[]", "headerClasses"));
+  mixin(OProperty!("string[]", "contentClasses"));
+  mixin(OProperty!("string[]", "footerClasses"));
+
+  mixin(OProperty!("DViewComponent", "header"));
+  mixin(OProperty!("DViewComponent", "content"));
+  mixin(OProperty!("DViewComponent", "footer"));
 
   override void initialize() {
     super.initialize; 
@@ -25,7 +36,7 @@ class DAPPViewComponent : DAPPViewObject {
     .dynamic(true); 
   }
 /* 
-  DAPPViewComponent copy() {
+  DViewComponent copy() {
     return
       clone
         .debugPrefix(this.debugPrefix) 
@@ -41,7 +52,7 @@ class DAPPViewComponent : DAPPViewObject {
 
   // #region h5 content 
     void beforeH5(STRINGAA options = null) {
-      debugMethodCall(moduleName!DAPPViewComponent~":DAPPViewComponent("~this.name~")::beforeH5");
+      debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::beforeH5");
       // init
       this.clearError; // Delete last error
     }
@@ -52,7 +63,7 @@ version(test_uim_apps) {
     }}
 
   DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPViewComponent~":DAPPViewComponent("~this.name~")::toH5");
+    debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::toH5");
     beforeH5(options);
     DH5Obj[] preh5 = null;
     auto h5 = afterH5(preh5, options);
@@ -66,7 +77,7 @@ version(test_uim_apps) {
     // #endregion h5
 
   DH5Obj[] afterH5(DH5Obj[] h5, STRINGAA options = null) {
-      debugMethodCall(moduleName!DAPPViewComponent~":DAPPViewComponent("~this.name~")::afterH5");
+      debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::afterH5");
       return h5; // No changes 
     }
 version(test_uim_apps) {
@@ -122,4 +133,4 @@ version(test_uim_apps) {
       }}
     // #endregion render 
 }
-mixin(APPViewComponentCalls!("APPViewComponent"));
+mixin(ViewComponentCalls!("ViewComponent"));

@@ -3,14 +3,14 @@ module uim.apps.views.components.tables.table;
 @safe:
 import uim.apps;
 
-class DAPPTableViewComponent : DAPPViewComponent {
-  mixin(APPViewComponentThis!("APPTableViewComponent"));
+class DAPPTableViewComponent : DViewComponent {
+  mixin(ViewComponentThis!("APPTableViewComponent"));
   
   mixin(OProperty!("string", "path"));
 
-  mixin(APPViewProperty!("DAPPViewComponent", "header"));
-  mixin(APPViewProperty!("DAPPViewComponent", "body_"));
-  mixin(APPViewProperty!("DAPPViewComponent", "footer"));
+/*   mixin(APPViewProperty!("DViewComponent", "header"));
+  mixin(APPViewProperty!("DViewComponent", "body_"));
+  mixin(APPViewProperty!("DViewComponent", "footer")); */
 
   override void beforeH5(STRINGAA options = null) { 
     super.beforeH5(options); 
@@ -24,13 +24,13 @@ class DAPPTableViewComponent : DAPPViewComponent {
       H5Div(["table-responsive"], 
         BS5Table(["card-table table-vcenter text-nowrap datatable"], 
           (header ? header.toH5(options) : null)~
-          (body_ ? body_.toH5(options) : null)~
+          (content ? content.toH5(options) : null)~
           (footer ? footer.toH5(options) : null)
         )        
       )].toH5;
   }
 }
-mixin(APPViewComponentCalls!("APPTableViewComponent"));
+mixin(ViewComponentCalls!("APPTableViewComponent"));
 
 
 

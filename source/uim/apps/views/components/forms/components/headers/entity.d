@@ -3,13 +3,13 @@ module uim.apps.views.components.forms.components.headers.entity;
 @safe:
 import uim.apps;
 
-class DAPPEntityFormHeader : DAPPFormHeader, IAPPWithEntity {
-  mixin(APPFormComponentThis!("APPEntityFormHeader"));
+class DEntityFormHeader : DAPPFormHeader, IAPPWithEntity {
+  mixin(APPFormComponentThis!("EntityFormHeader"));
 
   mixin(OProperty!("DOOPEntity", "entity"));
 
   override DH5Obj actionButton(string action, STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntityFormHeader~":DAPPEntityFormHeader::actionButton");
+    debugMethodCall(moduleName!DEntityFormHeader~":DEntityFormHeader::actionButton");
     debug writeln("Action: ", action);
 
     string entityId = entity ? entity.id.toString : null;
@@ -30,7 +30,7 @@ class DAPPEntityFormHeader : DAPPFormHeader, IAPPWithEntity {
   }
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntityFormHeader~":DAPPEntityFormHeader::beforeH5");
+    debugMethodCall(moduleName!DEntityFormHeader~":DEntityFormHeader::beforeH5");
     debug writeln("RootPath -> ", this.rootPath);
     debug writeln("RootPath (options) -> ", options.get("rootPath", null));
     super.beforeH5(options);
@@ -43,7 +43,7 @@ class DAPPEntityFormHeader : DAPPFormHeader, IAPPWithEntity {
   } 
 
   override DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntityFormHeader~":DAPPEntityFormHeader::toH5");
+    debugMethodCall(moduleName!DEntityFormHeader~":DEntityFormHeader::toH5");
     debug writeln("RootPath -> ", this.rootPath);
     debug writeln("RootPath (options) -> ", options.get("rootPath", null));
     super.toH5(options);
@@ -59,15 +59,15 @@ class DAPPEntityFormHeader : DAPPFormHeader, IAPPWithEntity {
           H5Span(["d-none d-sm-inline"], buttons)))].toH5;    
   } 
 }
-mixin(APPFormComponentCalls!("APPEntityFormHeader"));
+mixin(APPFormComponentCalls!("EntityFormHeader"));
 
 version(test_uim_apps) {
   unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
     
-    assert(new DAPPEntityFormHeader);
-    assert(APPEntityFormHeader);
-    assert(new DAPPEntityFormHeader(APPForm));
-    assert(APPEntityFormHeader(APPForm));
+    assert(new DEntityFormHeader);
+    assert(EntityFormHeader);
+    assert(new DEntityFormHeader(APPForm));
+    assert(EntityFormHeader(APPForm));
   }
 }

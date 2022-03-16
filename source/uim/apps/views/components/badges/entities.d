@@ -4,8 +4,8 @@ module uim.apps.views.components.badges.entities;
 import uim.apps;
 
 class DAPPEntitiesBadgeViewComponent : DAPPBadgeViewComponent, IAPPWithEntities {
-  mixin(APPViewComponentThis!("APPEntitiesBadgeViewComponent"));
+  mixin(ViewComponentThis!("APPEntitiesBadgeViewComponent"));
 
   mixin(OProperty!("DOOPEntity[]", "entities"));
 }
-mixin(APPViewComponentCalls!("APPEntitiesBadgeViewComponent"));
+mixin(ViewComponentCalls!("APPEntitiesBadgeViewComponent"));

@@ -14,11 +14,11 @@ class DAPPEntityUpdateView : DAPPEntityCRUDView {
         APPPageHeader(this) 
           .actions(["refresh", "list", "create"]))
       .form(
-        APPEntityForm(this)
+        EntityForm(this)
           .crudMode(CRUDModes.Update))
       .form
         .header(
-          APPEntityFormHeader(this.form)
+          EntityFormHeader(this.form)
             .actions([["cancel2list", "save"], ["edit", "version", "delete"], ["print", "export"]]));
   }
 }

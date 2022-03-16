@@ -3,8 +3,8 @@ module uim.apps.views.components.null_;
 @safe:
 import uim.apps;
 
-class DAPPNullComponent : DAPPViewComponent {
-  mixin(APPViewComponentThis!("APPNullComponent"));
+class DAPPNullComponent : DViewComponent {
+  mixin(ViewComponentThis!("APPNullComponent"));
   
   override void initialize() {
     super.initialize(); 
@@ -31,4 +31,4 @@ version(test_uim_apps) {
       /// TODO
   }}
 }
-mixin(APPViewComponentCalls!("APPNullComponent"));
+mixin(ViewComponentCalls!("APPNullComponent"));

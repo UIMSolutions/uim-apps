@@ -4,8 +4,8 @@ module uim.apps.views.components.avatars.entities;
 import uim.apps;
 
 class DAPPEntitiesAvatarViewComponent : DAPPAvatarViewComponent, IAPPWithEntities {
-  mixin(APPViewComponentThis!("APPEntitiesAvatarViewComponent"));
+  mixin(ViewComponentThis!("APPEntitiesAvatarViewComponent"));
 
   mixin(OProperty!("DOOPEntity[]", "entities"));
 }
-mixin(APPViewComponentCalls!("APPEntitiesAvatarViewComponent"));
+mixin(ViewComponentCalls!("APPEntitiesAvatarViewComponent"));

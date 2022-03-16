@@ -4,7 +4,7 @@ module uim.apps.views.components.tables.components.headers.entities;
 import uim.apps;
 
 class DAPPEntitiesTableHeader : DAPPTableHeader, IAPPWithEntities {
-  mixin(APPViewComponentThis!("APPEntitiesTableHeader"));
+  mixin(ViewComponentThis!("APPEntitiesTableHeader"));
 
   override void initialize() {
     super.initialize;
@@ -41,5 +41,5 @@ class DAPPEntitiesTableHeader : DAPPTableHeader, IAPPWithEntities {
           BS5InputText(["form-control-sm"], ["aria-label":"Search "~mainTitle.toLower]))))].toH5;
   }
 }
-mixin(APPViewComponentCalls!("APPEntitiesTableHeader"));
+mixin(ViewComponentCalls!("APPEntitiesTableHeader"));
 

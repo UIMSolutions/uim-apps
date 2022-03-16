@@ -5,11 +5,9 @@ import uim.apps;
 
 // Main
 public import uim.apps.views.components.forms.components.component;
-public import uim.apps.views.components.forms.components.entity;
-public import uim.apps.views.components.forms.components.entities;
 
 // Packages
-public import uim.apps.views.components.forms.components.bodies;
+public import uim.apps.views.components.forms.components.contents; // the content of a form without header and footer
 public import uim.apps.views.components.forms.components.groups;
 public import uim.apps.views.components.forms.components.headers;
 public import uim.apps.views.components.forms.components.footers;
