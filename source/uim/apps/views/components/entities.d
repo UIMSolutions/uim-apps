@@ -15,14 +15,14 @@ class DEntitiesViewComponent : DViewComponent {
   O entities(this O)(DOOPEntity[] newEntities) {
     _entities = newEntities;
 
-    if (auto entitiesHeader = cast(DEntitiesViewComponent)this.header) {
-      entitiesHeader.entities(this.entities); 
+    if (auto withEntities = cast(DEntitiesViewComponent)this.header) {
+      withEntities.entities(this.entities); 
     }
-    if (auto entitiesContent = cast(DEntitiesViewComponent)this.content) {
-      entitiesContent.entities(this.entities); 
+    if (auto withEntities = cast(DEntitiesViewComponent)this.content) {
+      withEntities.entities(this.entities); 
     }
-    if (auto entitiesFooter = cast(DEntitiesViewComponent)this.footer) {
-      entitiesFooter.entities(this.entities); 
+    if (auto withEntities = cast(DEntitiesViewComponent)this.footer) {
+      withEntities.entities(this.entities); 
     }
 
     return cast(O)this;

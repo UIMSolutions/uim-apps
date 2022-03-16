@@ -51,17 +51,17 @@ class DAPPView : DAPPViewObject, IAPPEventDispatcher {
     return null; // no database found
   }
 
-    protected DAPPLayout _layout;
-    O layout(this O)(DAPPLayout newLayout) { 
-        debugMethodCall(moduleName!DAPPView~":DAPPView::layout"); 
-        _layout = newLayout;
-        return cast(O)this; 
-    }
-    DAPPLayout layout() {
-        if (_layout) return _layout;
-        if (this.controller) { return this.controller.layout; }
-        return null;
-    }
+  protected DAPPLayout _layout;
+  O layout(this O)(DAPPLayout newLayout) { 
+      debugMethodCall(moduleName!DAPPView~":DAPPView::layout"); 
+      _layout = newLayout;
+      return cast(O)this; 
+  }
+  DAPPLayout layout() {
+      if (_layout) return _layout;
+      if (this.controller) { return this.controller.layout; }
+      return null;
+  }
 
     // Containers
     mixin(OProperty!("DAPPLinkContainer", "links"));

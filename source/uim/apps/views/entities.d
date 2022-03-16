@@ -7,26 +7,23 @@ class DAPPEntitiesView : DAPPView, IAPPWithEntities {
   mixin(APPViewThis!("APPEntitiesView", false, true));
 
   protected DOOPEntity[] _entities;
+  DOOPEntity[] entities() { return _entities; }
   bool hasEntities() {
-    return (_entities.length > 0);
-  }  
-  DOOPEntity[] entities() {
-    return _entities;
-  }  
-  O entities(this O)(DOOPEntity[] newEntities) {
+    return (this.entities !is null); 
+  }
+
+  void entities(DOOPEntity[] newEntities) {
     _entities = newEntities;
 
-    foreach(viewComponent; this.components) { 
-      if (auto entitiesViewComponent = cast(DEntitiesViewComponent)viewComponent) {
-        entitiesViewComponent.entities(this.entities); 
-      }
-    } 
-
-    _afterSetEntities;
-
-    return cast(O)this;
-  }
-  void _afterSetEntities() {
+    if (auto withEntities = cast(IAPPWithEntities)this.leftComponent) {
+      withEntities.entities(this.entities); 
+    }
+    if (auto withEntities = cast(IAPPWithEntities)this.mainComponent) {
+      withEntities.entities(this.entities); 
+    }
+    if (auto withEntities = cast(IAPPWithEntities)this.rightComponent) {
+      withEntities.entities(this.entities); 
+    }
   }
 }
 mixin(APPViewCalls!("APPEntitiesView"));

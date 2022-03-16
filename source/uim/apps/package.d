@@ -286,7 +286,8 @@ void `~functionName~`(HTTPServerRequest req, HTTPServerResponse res) {
 
 interface IAPPWithEntities {  
   @property DOOPEntity[] entities();
-  @property O entities(this O)(DOOPEntity[] myEntities);
+  // @property O entities(this O)(DOOPEntity[] myEntities);
+  @property void entities(DOOPEntity[] myEntities);
 }
 
 interface IAPPWithEntity {  

@@ -17,20 +17,18 @@ class DAPPEntitiesTabpane : DTabpane, IAPPWithEntities {
     return (this.entities !is null); 
   }
 
-  O entities(this O)(DOOPEntity[] newEntities) {
+  void entities(DOOPEntity[] newEntities) {
     _entities = newEntities;
 
-/*     if (auto entitiesHeader = cast(IAPPWithEntities)this.header) {
-      entitiesHeader.entities(this.entities); 
+    if (auto withEntities = cast(IAPPWithEntities)this.header) {
+      withEntities.entities(this.entities); 
     }
-    if (auto entitiesContent = cast(IAPPWithEntities)this.content) {
-      entitiesContent.entities(this.entities); 
+    if (auto withEntities = cast(IAPPWithEntities)this.content) {
+      withEntities.entities(this.entities); 
     }
-    if (auto entitiesFooter = cast(IAPPWithEntities)this.footer) {
-      entitiesFooter.entities(this.entities); 
-    } */
-
-    return cast(O)this;
+    if (auto withEntities = cast(IAPPWithEntities)this.footer) {
+      withEntities.entities(this.entities); 
+    }
   }
 
   override void initialize() {

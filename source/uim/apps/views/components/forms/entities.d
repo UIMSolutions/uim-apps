@@ -6,7 +6,25 @@ import uim.apps;
 class DAPPEntitiesForm : DAPPForm, IAPPWithEntities {
   mixin(APPFormThis!("APPEntitiesForm"));
 
-  mixin(OProperty!("DOOPEntity[]", "entities"));
+  protected DOOPEntity[] _entities;
+  DOOPEntity[] entities() { return _entities; }
+  bool hasEntities() {
+    return (this.entities !is null); 
+  }
+
+  void entities(DOOPEntity[] newEntities) {
+    _entities = newEntities;
+
+    if (auto withEntities = cast(IAPPWithEntities)this.header) {
+      withEntities.entities(this.entities); 
+    }
+    if (auto withEntities = cast(IAPPWithEntities)this.content) {
+      withEntities.entities(this.entities); 
+    }
+    if (auto withEntities = cast(IAPPWithEntities)this.footer) {
+      withEntities.entities(this.entities); 
+    }
+  }
 
   override DH5Obj[] toH5(STRINGAA options = null) { 
     super.beforeH5(options);
@@ -14,19 +32,20 @@ class DAPPEntitiesForm : DAPPForm, IAPPWithEntities {
 
     debug writeln("Found entities: %s".format(entities.length));
     foreach(formComponent; this.components) { 
-      if (auto entitiesComponent = cast(DEntitiesViewComponent)formComponent) {
-        entitiesComponent.entities(this.entities); 
+      if (auto withEntities = cast(IAPPWithEntities)formComponent) {
+        withEntities.entities(this.entities); 
       }
     } 
-/*     if (auto entitiesHeader = cast(DEntitiesFormHeader)this.header) {
-      entitiesHeader.entities(this.entities); 
+
+    if (auto withEntities = cast(IAPPWithEntities)this.header) {
+      withEntities.entities(this.entities); 
     }
-    if (auto entitiesContent = cast(DEntitiesFormContent)this.content) {
-      entitiesContent.entities(this.entities); 
+    if (auto withEntities = cast(IAPPWithEntities)this.content) {
+      withEntities.entities(this.entities); 
     }
-    if (auto entitiesFooter = cast(DEntitiesFormFooter)this.footer) {
-      entitiesFooter.entities(this.entities); 
-    } */
+    if (auto withEntities = cast(IAPPWithEntities)this.footer) {
+      withEntities.entities(this.entities); 
+    }
 
     return null;
   }

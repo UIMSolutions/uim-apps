@@ -23,13 +23,13 @@ class DAPPEntitiesListView : DAPPEntitiesView {
         APPPageHeader(this).actions(["refresh", "create"])); 
   }
 
-  override void _afterSetEntities() {
+/*   override void _afterSetEntities() {
     super._afterSetEntities;
 
     if (auto entitiesForm = cast(DAPPEntitiesForm)this.form) {
       entitiesForm.entities(this.entities);
     }
-  }
+  } */
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView("~this.name~"):toH5");    

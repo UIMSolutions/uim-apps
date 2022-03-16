@@ -12,17 +12,18 @@ class DEntitiesFormFooter : DFormFooter, IAPPWithEntities {
     return (this.entities !is null); 
   }
 
-  O entities(this O)(DOOPEntity[] newEntities) { 
+  void entities(DOOPEntity[] newEntities) {
     _entities = newEntities;
 
-    if (auto entitiesContent = cast(DEntitiesViewComponent)this.content) {
-      entitiesContent.entities(this.entities); 
+    if (auto withEntities = cast(IAPPWithEntities)this.header) {
+      withEntities.entities(this.entities); 
     }
-    else if (auto entitiesContent = cast(DEntitiesFormContent)this.content) {
-      entitiesContent.entities(this.entities); 
+    if (auto withEntities = cast(IAPPWithEntities)this.content) {
+      withEntities.entities(this.entities); 
     }
-
-    return cast(O)this;
+    if (auto withEntities = cast(IAPPWithEntities)this.footer) {
+      withEntities.entities(this.entities); 
+    }
   }
 }
 mixin(APPFormComponentCalls!("EntitiesFormFooter", false, true));
