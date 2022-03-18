@@ -5,6 +5,7 @@ import uim.apps;
 
 // Main
 public import uim.apps.views.components.component;
+public import uim.apps.views.components.components;
 public import uim.apps.views.components.null_;
 public import uim.apps.views.components.static_;
 public import uim.apps.views.components.entity;

@@ -7,19 +7,19 @@ class DAPPViewObject : DAPPObject {
   this() { super(); }
 
   // view components
-  mixin(OProperty!("DAPPViewObject[]", "components"));
+  mixin(OProperty!("DViewComponents", "components"));
   O addComponent(this O)(DAPPViewObject newComponent) {
     components ~= newComponent;
     return cast(O)this;
   }
-  O addComponent(this O)(string id, DAPPViewObject newComponent) {
+  O addComponent(this O)(string id, DViewComponent newComponent) {
     components ~= newComponent.id(id);
     return cast(O)this;
   }
   bool hasComponent(string anId) {
     return component(anId) !is null;
   }
-  DAPPViewObject component(string anId) {
+  DViewComponent component(string anId) {
     foreach(c; components) {
       if (c.id == anId) return c;
     }

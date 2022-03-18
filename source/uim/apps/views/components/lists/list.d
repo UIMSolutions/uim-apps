@@ -11,6 +11,11 @@ class DAPPListViewComponent : DViewComponent {
 
   mixin(OProperty!("DListItem", "itemTemplate"));
 
+  mixin(OProperty!("string[]", "headerClasses"));
+  mixin(OProperty!("string[]", "contentClasses"));
+  mixin(OProperty!("string[]", "footerClasses"));
+
+
   override DH5Obj[] toH5(STRINGAA options = null) { 
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return null; }

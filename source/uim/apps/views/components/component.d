@@ -20,9 +20,8 @@ class DViewComponent : DAPPViewObject {
   mixin(OProperty!("bool", "showHeader"));
   mixin(OProperty!("bool", "showFooter"));
 
-  mixin(OProperty!("string[]", "headerClasses"));
-  mixin(OProperty!("string[]", "contentClasses"));
-  mixin(OProperty!("string[]", "footerClasses"));
+  mixin(OProperty!("string[]", "classes"));
+  mixin(OProperty!("string[string]", "attributes"));
 
   mixin(OProperty!("DViewComponent", "header"));
   mixin(OProperty!("DViewComponent", "content"));
@@ -33,7 +32,13 @@ class DViewComponent : DAPPViewObject {
 
     this
     .changed(true)
-    .dynamic(true); 
+    .dynamic(true)
+    .components(ViewComponents)
+    .components.add(
+      APPNullComponent.id("header"),
+      APPNullComponent.id("content"),
+      APPNullComponent.id("footer")
+    );
   }
 /* 
   DViewComponent copy() {

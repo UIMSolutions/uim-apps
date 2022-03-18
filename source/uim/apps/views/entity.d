@@ -23,7 +23,7 @@ class DAPPEntityView : DAPPView, IAPPWithEntity {
     O entity(this O)(DOOPEntity newEntity) {
       _entity = newEntity;
 
-      foreach(viewComponent; this.components) { 
+      foreach(viewComponent; this.components.all) { 
 /*         if (auto entityViewComponent = cast(DEntityViewComponent)viewComponent) {
           entityViewComponent.entity(this.entity); 
         } */
