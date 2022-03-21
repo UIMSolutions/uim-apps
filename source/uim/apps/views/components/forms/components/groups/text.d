@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.components.groups.text;
 @safe:
 import uim.apps;
 
-class DAPPTextFormGroup : DEntityFormGroup {
-  mixin(APPFormComponentThis!("APPTextFormGroup", true));
+class DAPPTextFormGroup : DFormGroup {
+  mixin(FormComponentThis!("APPTextFormGroup", true));
 
   override DH5Obj h5Input(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPTextFormGroup~":DAPPTextFormGroup::h5Input");
@@ -52,7 +52,7 @@ class DAPPTextFormGroup : DEntityFormGroup {
       // 
       }}
 }
-mixin(APPFormComponentCalls!("APPTextFormGroup", true));
+mixin(FormComponentCalls!("APPTextFormGroup", true));
 
 version(test_uim_apps) {
   unittest {

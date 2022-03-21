@@ -81,7 +81,7 @@ version(test_uim_apps) {
     return cast(O)this; }
   auto pageHeader() { return _pageHeader; }
   
-  mixin(OProperty!("DAPPForm", "form"));
+  mixin(OProperty!("DForm", "form"));
 
 	/// layout for page
 	DAPPLayout _layout;

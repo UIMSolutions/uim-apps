@@ -3,11 +3,8 @@ module uim.apps.views.components.lists.items.entity;
 @safe:
 import uim.apps;
 
-class DEntityListItem : DListItem, IAPPWithEntity {
+class DEntityListItem : DListItem {
   mixin(ViewComponentThis!("EntityListItem"));
-
-  mixin(OProperty!("DOOPEntity", "entity"));
-  O opCall(this O)(DOOPEntity newEntity) { this.entity(newEntity); }
 
   mixin(OProperty!("string", "icon"));
 

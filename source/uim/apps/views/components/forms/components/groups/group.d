@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.components.groups.group;
 @safe:
 import uim.apps;
 
-class DAPPFormGroup : DAPPFormComponent {
-  mixin(APPFormComponentThis!("APPFormGroup"));
+class DFormGroup : DFormComponent {
+  mixin(FormComponentThis!("FormGroup"));
 
   // id of label element
   mixin(OProperty!("string", "labelId")); 
@@ -71,13 +71,13 @@ class DAPPFormGroup : DAPPFormComponent {
       ];
   }
 }
-mixin(APPFormComponentCalls!("APPFormGroup"));
+mixin(FormComponentCalls!("FormGroup"));
 
 version(test_uim_apps) {
   unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
     
-    assert(new DAPPFormGroup);
-    assert(APPFormGroup);
+    assert(new DFormGroup);
+    assert(FormGroup);
   }
 }

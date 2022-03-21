@@ -10,8 +10,6 @@ public import uim.apps.views.components.tables.table;
 public import uim.apps.views.components.tables.components;
 
 // Modules
-public import uim.apps.views.components.tables.entities;
-public import uim.apps.views.components.tables.entity;
 public import uim.apps.views.components.tables.filter;
 public import uim.apps.views.components.tables.history;
 public import uim.apps.views.components.tables.listheader;

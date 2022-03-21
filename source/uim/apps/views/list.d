@@ -3,7 +3,7 @@ module uim.apps.views.list;
 @safe:
 import uim.apps;
 
-class DAPPListView : DAPPEntitiesView {
+class DAPPListView : DAPPView {
   mixin(APPViewThis!("APPListView"));
 
   mixin(OProperty!("string", "rootPath"));

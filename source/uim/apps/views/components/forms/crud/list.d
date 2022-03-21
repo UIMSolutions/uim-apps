@@ -9,9 +9,8 @@ class DAPPEntitiesListForm : DAPPEntitiesForm {
   override void initialize() {
     super.initialize;
 
-    this
-    .header(APPFormHeader(this).mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["print", "export"]]))
-    .content(EntityFormContent(this));
+    this.components["header"] = FormHeader(this).mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["print", "export"]]);
+    this.components["content"] = EntityFormContent(this);
 
     /*       .form
         .header(APPEntitiesheader(this.form).rootPath("/cms/blogs").mainTitle("Blogs").subTitle("Blogs anzeigen").actions([["print", "export"]]))
@@ -26,9 +25,9 @@ class DAPPEntitiesListForm : DAPPEntitiesForm {
     DBS5Col _col = BS5Col(["col-12"]);
     _col(
       H5Form("entityForm", ["card"], ["method":method, "action":action], 
-        (this.header ? this.header.toH5(options) : null)~
-        (this.content ? this.content.toH5(options) : null)~
-        (this.footer ? this.footer.toH5(options) : null) 
+        this.components["header"].toH5(options)~
+        this.components["content"].toH5(options)~
+        this.components["footer"].toH5(options) 
       ));
     
     return [_col].toH5;

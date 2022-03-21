@@ -9,6 +9,7 @@ class DViewComponent : DAPPViewObject {
   
   mixin(OProperty!("bool", "dynamic")); 
   mixin(OProperty!("bool", "isNull")); 
+  mixin(OProperty!("bool", "notNull")); 
   mixin(OProperty!("STRINGAA", "style")); 
   mixin(OProperty!("bool", "changed")); 
   mixin(OProperty!("DViewComponent", "owner")); 
@@ -23,21 +24,17 @@ class DViewComponent : DAPPViewObject {
   mixin(OProperty!("string[]", "classes"));
   mixin(OProperty!("string[string]", "attributes"));
 
-  mixin(OProperty!("DViewComponent", "header"));
-  mixin(OProperty!("DViewComponent", "content"));
-  mixin(OProperty!("DViewComponent", "footer"));
-
   override void initialize() {
     super.initialize; 
 
     this
     .changed(true)
     .dynamic(true)
-    .components(ViewComponents)
+    .notNull(true)
     .components.add(
-      APPNullComponent.id("header"),
-      APPNullComponent.id("content"),
-      APPNullComponent.id("footer")
+      NullComponent.id("header"),
+      NullComponent.id("content"),
+      NullComponent.id("footer")
     );
   }
 /* 

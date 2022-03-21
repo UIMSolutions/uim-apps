@@ -3,7 +3,7 @@ module uim.apps.views.components.entitiesx.entity;
 @safe:
 import uim.apps;
 
-/* class DEntityViewComponent : DViewComponent, IAPPWithEntity {
+/* class DEntityViewComponent : DViewComponent {
   mixin(ViewComponentThis!("EntityViewComponent", true));
 
   mixin(OProperty!("DOOPEntity", "entity"));

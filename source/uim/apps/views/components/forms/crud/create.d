@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.crud.create;
 import uim.apps;
 
 class DAPPCreateEntityForm : DAPPEntityCRUDForm {
-  mixin(APPFormThis!("APPCreateEntityForm"));
+  mixin(FormThis!("APPCreateEntityForm"));
 
   override void initialize() {
     super.initialize;
@@ -13,7 +13,7 @@ class DAPPCreateEntityForm : DAPPEntityCRUDForm {
       .crudMode(CRUDModes.Create);
   }
 }
-mixin(APPFormCalls!("APPCreateEntityForm"));
+mixin(FormCalls!("APPCreateEntityForm"));
 
 /* 
 auto createPageHeader(string path, string mainTitle, string subTitle) {

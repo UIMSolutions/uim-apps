@@ -12,19 +12,12 @@ class DAPPEntityCreateView : DAPPEntityCRUDView {
 
     debug writeln("In ", __MODULE__, "/", __LINE__); 
 
-    this
-      .header( // set page header
-        APPPageHeader(this).actions(["refresh", "list"]))
-      .form( // Set form 
-        EntityForm(this)
-        .crudMode(CRUDModes.Create)) 
-      .form // Set form components
-        .header(
-          EntityFormHeader(this.form).actions([["cancel", "save"], ["print", "export"]]))
-        .content(
-          EntityFormContent(this.form)
-          .fields(["name", "display", "description"]) 
-      );
+    this.components["header"] = APPPageHeader(this).actions(["refresh", "list"]);
+
+    auto form = EntityForm(this).crudMode(CRUDModes.Create);
+    this.components["form"] = form;
+    form.components["header"] = EntityFormHeader(form).actions([["cancel", "save"], ["print", "export"]]);
+    form.components["content"] = EntityFormContent(form).fields(["name", "display", "description"]);
   }
 }
 mixin(APPViewCalls!("APPEntityCreateView"));

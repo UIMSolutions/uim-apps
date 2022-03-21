@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.groups.tests;
 @safe:
 public import uim.apps;
 
-bool test_formGroup(DAPPFormGroup aFormGroup) {
+bool test_formGroup(DFormGroup aFormGroup) {
 
   
 

@@ -3,11 +3,11 @@ module uim.apps.views.components.forms.components.contents.content;
 @safe:
 import uim.apps;
 
-class DAPPFormContent : DAPPFormComponent {
-  mixin(APPFormComponentThis!("APPFormContent"));
+class DFormContent : DFormComponent {
+  mixin(FormComponentThis!("FormContent"));
 
   override void initialize() {
-    debugMethodCall(moduleName!DAPPFormContent~"::DAPPFormContent("~this.name~"):initialize");   
+    debugMethodCall(moduleName!DFormContent~"::DFormContent("~this.name~"):initialize");   
     super.initialize;
 
     debug writeln("In ", __MODULE__, "/", __LINE__);
@@ -21,18 +21,18 @@ class DAPPFormContent : DAPPFormComponent {
       BS5Row();
   }
 }
-mixin(APPFormComponentCalls!("APPFormContent"));
+mixin(FormComponentCalls!("FormContent"));
 
 version(test_uim_apps) {
   unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
-    assert(new DAPPFormContent);
-    assert(APPFormContent);
-    assert(APPFormContent.name == "APPFormContent");
-    assert(new DAPPFormContent(APPForm));
-    assert(APPFormContent(APPForm));
-    assert(APPFormContent(APPForm).name == "APPFormContent");
-    assert(APPFormContent(APPForm).form.name == "APPForm");
+    assert(new DFormContent);
+    assert(FormContent);
+    assert(FormContent.name == "FormContent");
+    assert(new DFormContent(Form));
+    assert(FormContent(Form));
+    assert(FormContent(Form).name == "FormContent");
+    assert(FormContent(Form).form.name == "Form");
   }
 }

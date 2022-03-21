@@ -8,6 +8,7 @@ class DAPPCreatePageHeader : DAPPEntityPageHeader {
   
   override void initialize() {
     super.initialize;
+    
     this
       .actions(["list", "create"]); 
   }

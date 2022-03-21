@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.login2;
 @safe:
 import uim.apps;
 
-class DAPPLogin2Form : DAPPForm {
-  mixin(APPFormThis!("APPLogin2Form"));
+class DAPPLogin2Form : DForm {
+  mixin(FormThis!("APPLogin2Form"));
 
   override void initialize() {
     super.initialize;
@@ -40,7 +40,7 @@ class DAPPLogin2Form : DAPPForm {
     return results;
   }
 }
-mixin(APPFormCalls!("APPLogin2Form"));
+mixin(FormCalls!("APPLogin2Form"));
 
 version(test_uim_apps) {
   unittest {

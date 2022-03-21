@@ -21,9 +21,9 @@ class DTabpane : DViewComponent {
         if (hasError || "redirect" in options) { return null; }
    
         auto card = BS5Card;
-        if (showHeader) card.header(this.header ? this.header.toH5 : null);
-        card(this.content ? this.content.toH5 : null);
-        if (showFooter) card.footer(this.footer ? this.footer.toH5 : null);
+        if (showHeader) card.header(this.components["header"].toH5(options));
+        card(this.components["content"].toH5(options));
+        if (showFooter) card.footer(this.components["footer"].toH5(options));
 
         return [card].toH5;
     }

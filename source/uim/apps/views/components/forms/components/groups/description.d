@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.components.groups.description;
 import uim.apps;
 
 class DAPPDescriptionFormGroup : DAPPTextAreaFormGroup {
-  mixin(APPFormComponentThis!("APPDescriptionFormGroup", true));
+  mixin(FormComponentThis!("APPDescriptionFormGroup", true));
 
   override void initialize() {
     super.initialize;
@@ -17,7 +17,7 @@ class DAPPDescriptionFormGroup : DAPPTextAreaFormGroup {
     .placeholder("Beschreibung eingeben"); 
   }
 }
-mixin(APPFormComponentCalls!("APPDescriptionFormGroup", true));
+mixin(FormComponentCalls!("APPDescriptionFormGroup", true));
 
 version(test_uim_apps) {
   unittest {

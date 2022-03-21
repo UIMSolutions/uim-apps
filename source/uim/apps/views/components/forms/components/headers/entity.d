@@ -3,10 +3,8 @@ module uim.apps.views.components.forms.components.headers.entity;
 @safe:
 import uim.apps;
 
-class DEntityFormHeader : DAPPFormHeader, IAPPWithEntity {
-  mixin(APPFormComponentThis!("EntityFormHeader"));
-
-  mixin(OProperty!("DOOPEntity", "entity"));
+class DEntityFormHeader : DFormHeader {
+  mixin(FormComponentThis!("EntityFormHeader"));
 
   override DH5Obj actionButton(string action, STRINGAA options = null) {
     debugMethodCall(moduleName!DEntityFormHeader~":DEntityFormHeader::actionButton");
@@ -59,7 +57,7 @@ class DEntityFormHeader : DAPPFormHeader, IAPPWithEntity {
           H5Span(["d-none d-sm-inline"], buttons)))].toH5;    
   } 
 }
-mixin(APPFormComponentCalls!("EntityFormHeader"));
+mixin(FormComponentCalls!("EntityFormHeader"));
 
 version(test_uim_apps) {
   unittest {
@@ -67,7 +65,7 @@ version(test_uim_apps) {
     
     assert(new DEntityFormHeader);
     assert(EntityFormHeader);
-    assert(new DEntityFormHeader(APPForm));
-    assert(EntityFormHeader(APPForm));
+    assert(new DEntityFormHeader(Form));
+    assert(EntityFormHeader(Form));
   }
 }

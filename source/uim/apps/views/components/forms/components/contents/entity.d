@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.components.contents.entity;
 @safe:
 import uim.apps;
 
-class DEntityFormContent : DAPPFormContent, IAPPWithEntity {
-  mixin(APPFormComponentThis!("EntityFormContent", true));
+class DEntityFormContent : DFormContent {
+  mixin(FormComponentThis!("EntityFormContent", true));
 
   override void initialize() {
     debugMethodCall(moduleName!DEntityFormContent~"::DEntityFormContent("~this.name~"):initialize");   
@@ -14,7 +14,7 @@ class DEntityFormContent : DAPPFormContent, IAPPWithEntity {
     .id("FormContent_%s".format(uniform(1, 1_000)))
     .crudMode(CRUDModes.Create)
     .fields(["name", "display", "description"])
-    .formGroupHandler(APPFormGroupHandler(this.form));   
+    .formGroupHandler(FormGroupHandler(this.form));   
   }
 
   mixin(OProperty!("string[]", "fields"));
@@ -25,26 +25,7 @@ class DEntityFormContent : DAPPFormContent, IAPPWithEntity {
   
   mixin(OProperty!("DAPPPanes", "panes"));
 
-  protected DOOPEntity _entity;
-  DOOPEntity entity() { return _entity; }
-  bool hasEntity() {
-    return (this.entity !is null); 
-  }
-
-  O entity(this O)(DOOPEntity newEntity) { 
-    _entity = newEntity;
-
-/*     if (auto entityContent = cast(DEntityFormContent)this.content) {
-      entityContent.entity(this.entity); 
-    }
-    else if (auto entityContent = cast(DEntityViewComponent)this.content) {
-      entityContent.entity(this.entity); 
-    } */
-
-    return cast(O)this;
-  }
-
-  mixin(OProperty!("DAPPFormGroupHandler", "formGroupHandler"));
+  mixin(OProperty!("DFormGroupHandler", "formGroupHandler"));
 
   DH5Obj[] formGroups(STRINGAA options = null) {
     debugMethodCall(moduleName!DEntityFormContent~"::DEntityFormContent:formGroups");    
@@ -109,7 +90,7 @@ class DEntityFormContent : DAPPFormContent, IAPPWithEntity {
     )].toH5; 
   }
 }
-mixin(APPFormComponentCalls!("EntityFormContent", true));
+mixin(FormComponentCalls!("EntityFormContent", true));
 
 version(test_uim_apps) {
   unittest {
@@ -117,7 +98,7 @@ version(test_uim_apps) {
     
     assert(new DEntityFormContent);
     assert(EntityFormContent);
-    assert(new DEntityFormContent(APPForm));
-    assert(EntityFormContent(APPForm));
+    assert(new DEntityFormContent(Form));
+    assert(EntityFormContent(Form));
   }
 }

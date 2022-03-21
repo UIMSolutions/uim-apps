@@ -23,42 +23,42 @@ public import uim.apps.views.components.forms.components.groups.textarea;
 public import uim.apps.views.components.forms.components.groups.tests;
 
 // Mixins
-template APPFormGroupThis(string name, bool withEntity = false, bool withEntities = false) {
-  const char[] APPFormGroupThis = `
+template FormGroupThis(string name, bool withEntity = false, bool withEntities = false) {
+  const char[] FormGroupThis = `
 this() { super(); }
-this(DAPPForm myForm) { this().form(myForm); };
+this(DForm myForm) { this().form(myForm); };
 `~
 (withEntity ? `
 this(DOOPEntity myEntity) { this().entity(myEntity); }
-this(DAPPForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
+this(DForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
 this(string myName, DOOPEntity myEntity) { this(myName).entity(myEntity); }
-this(DAPPForm myForm, string myName, DOOPEntity myEntity) { this(myForm, myName).entity(myEntity); }
+this(DForm myForm, string myName, DOOPEntity myEntity) { this(myForm, myName).entity(myEntity); }
 ` : ``)
 ~
 (withEntities ? `
 this(DOOPEntity[] myEntities) { this().entities(myEntities); }
-this(DAPPForm myForm, DOOPEntity[] myEntities) { this(myForm).entities(myEntities); }
+this(DForm myForm, DOOPEntity[] myEntities) { this(myForm).entities(myEntities); }
 this(string myName, DOOPEntity[] myEntities) { this(myName).entities(myEntities); }
-this(DAPPForm myForm, string myName, DOOPEntity[] myEntities) { this(myForm, myName).entities(myEntities); }
+this(DForm myForm, string myName, DOOPEntity[] myEntities) { this(myForm, myName).entities(myEntities); }
 ` : ``);
 }
 
-template APPFormGroupCalls(string name, bool withEntity = false, bool withEntities = false) {
-  const char[] APPFormGroupCalls = `
+template FormGroupCalls(string name, bool withEntity = false, bool withEntities = false) {
+  const char[] FormGroupCalls = `
 auto `~name~`() { return new D`~name~`; }
-auto `~name~`(DAPPForm myForm) { return new D`~name~`(myForm); };
+auto `~name~`(DForm myForm) { return new D`~name~`(myForm); };
 `~
 (withEntity ? `
 this(DOOPEntity myEntity) { this().entity(myEntity); }
-this(DAPPForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
+this(DForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
 this(string myName, DOOPEntity myEntity) { this(myName).entity(myEntity); }
-this(DAPPForm myForm, string myName, DOOPEntity myEntity) { this(myForm, myName).entity(myEntity); }
+this(DForm myForm, string myName, DOOPEntity myEntity) { this(myForm, myName).entity(myEntity); }
 ` : ``)
 ~
 (withEntities ? `
 this(DOOPEntity[] myEntities) { this().entities(myEntities); }
-this(DAPPForm myForm, DOOPEntity[] myEntities) { this(myForm).entities(myEntities); }
+this(DForm myForm, DOOPEntity[] myEntities) { this(myForm).entities(myEntities); }
 this(string myName, DOOPEntity[] myEntities) { this(myName).entities(myEntities); }
-this(DAPPForm myForm, string myName, DOOPEntity[] myEntities) { this(myForm, myName).entities(myEntities); }
+this(DForm myForm, string myName, DOOPEntity[] myEntities) { this(myForm, myName).entities(myEntities); }
 ` : ``);
 }

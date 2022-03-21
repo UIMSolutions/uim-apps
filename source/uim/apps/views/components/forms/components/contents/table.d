@@ -4,16 +4,16 @@ module uim.apps.views.components.forms.components.contents.table;
 import uim.apps;
 
 class DAPPTableFormContent : DEntitiesFormContent {
-  mixin(APPFormComponentThis!("APPTableFormContent"));
+  mixin(FormComponentThis!("APPTableFormContent"));
 
-  mixin(OProperty!("DEntityViewComponent", "row"));
+  mixin(OProperty!("DViewComponent", "row"));
 
   override void initialize() {
     debugMethodCall(moduleName!DAPPTableFormContent~"::DAPPTableFormContent("~this.name~"):initialize");   
     super.initialize;
   }
 }
-mixin(APPFormComponentCalls!("APPTableFormContent"));
+mixin(FormComponentCalls!("APPTableFormContent"));
 
 version(test_uim_apps) {
   unittest {
@@ -21,7 +21,7 @@ version(test_uim_apps) {
     
     assert(new DAPPTableFormContent);
     assert(APPTableFormContent);
-    assert(new DAPPTableFormContent(APPForm));
-    assert(APPTableFormContent(APPForm));
+    assert(new DAPPTableFormContent(Form));
+    assert(APPTableFormContent(Form));
   }
 }

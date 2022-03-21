@@ -3,19 +3,20 @@ module uim.apps.views.components.forms.form;
 @safe:
 import uim.apps;
 
-class DAPPForm : DViewComponent {
-  mixin(APPFormThis!("APPForm"));
+class DForm : DViewComponent {
+  mixin(FormThis!("Form"));
 
   override void initialize() {
-    debugMethodCall(moduleName!DAPPForm~"::DAPPForm("~this.name~"):initialize");   
+    debugMethodCall(moduleName!DForm~"::DForm("~this.name~"):initialize");   
     super.initialize;
     writeln("In ", __MODULE__, "/", __LINE__);
  
     this
       .crudMode(CRUDModes.Read)
-      .header(APPFormHeader)
-      .content(APPFormContent)
       .method("post");
+
+    this.components["header"] = FormHeader(this);
+    this.components["content"] = FormContent(this);
   }
 
   mixin(OProperty!("string[string]", "defaults"));
@@ -32,9 +33,9 @@ class DAPPForm : DViewComponent {
   mixin(APPParameter!("contentTitle"));
   mixin(APPParameter!("footerTitle"));
 
-/*   mixin(APPViewProperty!("DAPPFormHeader", "header"));
-  mixin(APPViewProperty!("DAPPFormContent", "content"));
-  mixin(APPViewProperty!("DFormFooter", "footer")); */
+  auto formHeader(){return cast(DFormHeader)this.components["header"]; }
+  auto formContent(){ return cast(DFormContent)this.components["content"]; }
+  auto formFooter(){ return cast(DFormFooter)this.components["footer"]; }
 
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 
@@ -49,7 +50,7 @@ class DAPPForm : DViewComponent {
 
 /*   override DViewComponent copy() {
     return
-      (cast(DAPPForm)copy)
+      (cast(DForm)copy)
         .crudMode(this.crudMode)
         .header(this.header)
         .content(this.content)
@@ -69,33 +70,33 @@ class DAPPForm : DViewComponent {
   }  */
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPForm~":DAPPForm("~this.name~")::beforeH5");
+    debugMethodCall(moduleName!DForm~":DForm("~this.name~")::beforeH5");
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
 
-    foreach(viewComponent; components) {
-      if (auto formComponent = cast(DAPPFormComponent)viewComponent) {
+    foreach(viewComponent; components.all) {
+      if (auto formComponent = cast(DFormComponent)viewComponent) {
         formComponent
           .crudMode(this.crudMode)
           .rootPath(this.rootPath);
       }
     }
 
-    if (auto formHeader = cast(DAPPFormHeader)this.header) {
+    if (auto formHeader = cast(DFormHeader)this.components["header"]) {
       formHeader
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
         .title(headerTitle);
     }
 
-    if (auto formContent = cast(DAPPFormContent)this.content) { 
+    if (auto formContent = cast(DFormContent)this.components["content"]) { 
       formContent
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
         .title(contentTitle);
     }
     
-    if (auto formFooter = cast(DFormFooter)this.footer) {
+    if (auto formFooter = cast(DFormFooter)this.components["footer"]) {
       formFooter
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
@@ -104,18 +105,18 @@ class DAPPForm : DViewComponent {
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPForm~":DAPPForm("~this.name~")::toH5");
+    debugMethodCall(moduleName!DForm~":DForm("~this.name~")::toH5");
     super.toH5(options);
     
     DBS5Col _col = BS5Col(["col-12"]);
     _col(
       H5Form("entityForm", ["card"], ["method":method, "action":action], 
-        (header ? header.toH5(options) : null)~
-        (content ? content.toH5(options) : null)~
-        (footer ? footer.toH5(options) : null)
+        this.components["header"].toH5(options)~
+        this.components["content"].toH5(options)~
+        this.components["footer"].toH5(options)
       ));
     
     return [_col].toH5;
   }  
 }
-mixin(APPFormCalls!("APPForm"));
+mixin(FormCalls!("Form"));

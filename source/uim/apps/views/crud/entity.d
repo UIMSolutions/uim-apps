@@ -3,14 +3,14 @@ module uim.apps.views.crud.entity;
 @safe:
 import uim.apps;
 
-class DAPPEntityCRUDView : DAPPEntityView {
+class DAPPEntityCRUDView : DAPPView {
   mixin(APPViewThis!("APPEntityCRUDView"));
 
   mixin(OProperty!("CRUDModes", "crudMode"));
   mixin(OProperty!("bool", "readonly"));
 
   mixin(APPParameter!("rootPath"));
-  mixin(APPViewProperty!("DEntityForm", "form"));
+  mixin(APPViewProperty!("DForm", "form"));
 
   override void initialize() {
     debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):initialize");   
@@ -19,28 +19,23 @@ class DAPPEntityCRUDView : DAPPEntityView {
     debug writeln("In ", __MODULE__, "/", __LINE__);
   
     this
-      .crudMode(CRUDModes.Read)
+      .crudMode(
+        CRUDModes.Read)
       .header(
-        APPPageHeader(this).actions(["refresh", "list", "create"])); 
-
-    debug writeln("In ", __MODULE__, "/", __LINE__);
-    this
+        APPPageHeader(this).actions(["refresh", "list", "create"]))
       .form(
-        EntityForm(this))
-      .form
-        .header(
-          EntityFormHeader(this.form).actions([["edit", "version", "delete"], ["print", "export"]]));
-    
-    debug writeln("In ", __MODULE__, "/", __LINE__);
-    this      
-      .form
-        .crudMode(CRUDModes.Read);
+        EntityForm(this).crudMode(CRUDModes.Read));
+
+    if (auto form = this.form) {
+      form.components["header"] = EntityFormHeader(this.form).actions([["edit", "version", "delete"], ["print", "export"]]);    
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):beforeH5");    
     super.beforeH5(options);
     debug writeln(entity ? "Has entity" : "no entity");
+    if (hasError || "redirect" in options) { return; }
 
     if (auto entityForm = cast(DEntityForm)this.form) {
       debug writeln("Found entityForm");
@@ -78,7 +73,7 @@ class DAPPEntityCRUDView : DAPPEntityView {
     return [
       H5Div(["container-xl"],
         (this.header ? this.header.toH5(options) : null)~ 
-        (messages ? BS5Row("messages", ["mb-2"]) : null)~
+        (this.components["messages"].notNull ? BS5Row("messages", ["mb-2"], this.components["messages"].toH5(options)) : null)~
         BS5Row(["row-deck row-cards mb-2"], form.toH5(options))~
         BS5Row(["row-deck row-cards mb-2"], panes)~
         (this.footer ? this.footer.toH5(options) : null)

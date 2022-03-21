@@ -17,8 +17,8 @@ public import uim.apps.views.components.forms.login;
 public import uim.apps.views.components.forms.login2;
 
 
-template APPFormThis(string name, bool withEntity = false, bool withEntities = false) {
-  const char[] APPFormThis = `
+template FormThis(string name, bool withEntity = false, bool withEntities = false) {
+  const char[] FormThis = `
 this() { super(); this.name("`~name~`"); initialize; }
 this(DAPPView myView) { this().view(myView); }
 this(string myName) { this().name(myName); }
@@ -37,8 +37,8 @@ this(DAPPView myView, string myName, DOOPEntity[] myEntities) { this(myView, myN
 ` : ``);
 }
 
-template APPFormCalls(string name, bool withEntity = false, bool withEntities = false) {
-  const char[] APPFormCalls = `
+template FormCalls(string name, bool withEntity = false, bool withEntities = false) {
+  const char[] FormCalls = `
 auto `~name~`() { return new D`~name~`(); }
 auto `~name~`(DAPPView myView) { return new D`~name~`(myView); }
 auto `~name~`(string myName) { return new D`~name~`(myName); }

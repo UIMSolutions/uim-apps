@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.components.groups.switch_;
 @safe:
 import uim.apps;
 
-class DAPPSwitchFormGroup : DEntityFormGroup {
-  mixin(APPFormComponentThis!("APPSwitchFormGroup", true));
+class DAPPSwitchFormGroup : DFormGroup {
+  mixin(FormComponentThis!("APPSwitchFormGroup", true));
 
   override void initialize() {
     super.initialize;
@@ -41,4 +41,4 @@ class DAPPSwitchFormGroup : DEntityFormGroup {
           h5Input(options), H5Span(["form-check-label"], label))));
   }
 }
-mixin(APPFormComponentCalls!("APPSwitchFormGroup", true));
+mixin(FormComponentCalls!("APPSwitchFormGroup", true));

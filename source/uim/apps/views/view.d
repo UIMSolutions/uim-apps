@@ -10,7 +10,7 @@ import uim.apps;
 
 class DAPPView : DAPPViewObject, IAPPEventDispatcher {
   mixin(APPViewThis!("APPView"));
-    
+
   // Initialization (= hook method)
   override void initialize() {
     debugMethodCall(moduleName!DAPPView~"::DAPPView("~this.name~"):initialize");   
@@ -23,22 +23,53 @@ class DAPPView : DAPPViewObject, IAPPEventDispatcher {
       .scripts(APPScriptContainer) 
       .styles(APPStyleContainer)
       .leftClasses(["d-none", "d-md-block", "col-12", "col-sm-6", "col-md-4", "col-lg-3", "col-xl-2"])
-      .mainClasses(["col-12", "col-md-8", "col-lg-6", "col-xl-8"]) 
-      .rightClasses(["d-none", "d-lg-block", "col-12", "col-sm-6", "col-md-4", "col-lg-3", "col-xl-2"]);
+      .middleClasses(["col-12", "col-md-8", "col-lg-6", "col-xl-8"]) 
+      .rightClasses(["d-none", "d-lg-block", "col-12", "col-sm-6", "col-md-4", "col-lg-3", "col-xl-2"])
+      .components.add(
+        NullComponent.id("messages"),
+        NullComponent.id("header"),
+        NullComponent.id("left"),
+        NullComponent.id("main"),
+        NullComponent.id("right"),
+        NullComponent.id("footer")
+      );
   }
 
   mixin(OProperty!("DAPPPageController", "controller")); 
   mixin(OProperty!("IAPPEventManager", "eventManager")); 
   mixin(OProperty!("string[]", "leftClasses")); 
-  mixin(OProperty!("string[]", "mainClasses")); 
+  mixin(OProperty!("string[]", "middleClasses")); 
   mixin(OProperty!("string[]", "rightClasses")); 
     
-  mixin(APPViewProperty!("DViewComponent", "messages")); 
-  mixin(APPViewProperty!("DAPPPageHeader", "header")); 
-  mixin(APPViewProperty!("DAPPPageFooter", "footer")); 
-  mixin(APPViewProperty!("DViewComponent", "leftComponent")); 
-  mixin(APPViewProperty!("DViewComponent", "mainComponent")); 
-  mixin(APPViewProperty!("DViewComponent", "rightComponent")); 
+  DAPPPageHeader header() { 
+    return cast(DAPPPageHeader)this.components["header"]; }
+  O header(this O)(DAPPPageHeader newHeader) { 
+    this.components["header"] = newHeader; 
+    return cast(O)this; }
+
+  DAPPPageFooter footer() { 
+    return cast(DAPPPageFooter)this.components["footer"]; }
+  O footer(this O)(DAPPPageFooter newFooter) { 
+    this.components["footer"] = newFooter; 
+    return cast(O)this; }
+
+  DViewComponent left() { 
+    return cast(DViewComponent)this.components["left"]; }
+  O footer(this O)(DViewComponent newComponent) { 
+    this.components["left"] = newComponent; 
+    return cast(O)this; }
+
+  DViewComponent middle() { 
+    return cast(DViewComponent)this.components["middle"]; }
+  O middle(this O)(DViewComponent newComponent) { 
+    this.components["middle"] = newComponent; 
+    return cast(O)this; }
+
+  DViewComponent right() { 
+    return cast(DViewComponent)this.components["right"]; }
+  O right(this O)(DViewComponent newComponent) { 
+    this.components["right"] = newComponent; 
+    return cast(O)this; }
 
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 
@@ -87,17 +118,24 @@ version(test_uim_apps) {
     debugMethodCall(moduleName!DAPPView~":DAPPView::toH5"); 
     beforeH5(options);
 
+    auto container = BS5Container.fluid();
+    if (this.components["messages"].notNull) {
+      container
+        .row("messages", ["section"], this.components["messages"].toH5(options));
+    }
+
     return [
       H5Main(["content"], ["style":"margin-bottom:200px"],
         (this.header ? this.header.toH5(options) : null)~
         BS5Row(["mt-2 row-cards"], 
-          BS5Container.fluid()
-          .row("messages", ["section"], this.messages ? this.messages.toH5(options) : null)
+          container
           .row(["section"], 
-              BS5Col(this.leftClasses, this.leftComponent ? this.leftComponent.toH5(options) : null),
-              BS5Col(this.mainClasses, this.mainComponent ? this.mainComponent.toH5(options) : null),
-              BS5Col(this.rightClasses, this.rightComponent ? this.rightComponent.toH5(options) : null)))
-        (this.footer ? this.footer.toH5(options) : null))].toH5;
+            BS5Col(this.leftClasses, this.left ? this.left.toH5(options) : null),
+            BS5Col(this.middleClasses, this.middle ? this.middle.toH5(options) : null),
+            BS5Col(this.rightClasses, this.right ? this.right.toH5(options) : null)))~
+        (this.footer ? this.footer.toH5(options) : null)
+      )
+    ].toH5;
 
 /* H5Div(["wrapper"], 
         head~

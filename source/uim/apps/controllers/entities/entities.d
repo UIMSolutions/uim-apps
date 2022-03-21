@@ -3,7 +3,7 @@ module uim.apps.controllers.entities.entities;
 @safe:
 import uim.apps;
 
-class DAPPEntitiesController : DAPPController, IAPPWithEntities {
+class DAPPEntitiesController : DAPPController {
   mixin(APPControllerThis!("APPEntitiesController"));
 
   protected DOOPEntity[] _entities;

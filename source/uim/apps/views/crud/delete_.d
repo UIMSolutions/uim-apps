@@ -12,14 +12,11 @@ class DAPPEntityDeleteView : DAPPEntityCRUDView {
     this
       .crudMode(CRUDModes.Delete)
       .header(
-        APPPageHeader(this).actions(["refresh", "list", "create"]))
-      .form(
-        EntityForm(this)
-          .crudMode(CRUDModes.Delete))
-      .form
-        .header(
-          EntityFormHeader(this.form)
-            .actions([["cancel2root", "finalDelete"], ["view", "version", "edit"], ["print", "export"]]));
+        APPPageHeader(this).actions(["refresh", "list", "create"]));
+
+    auto form = EntityForm(this).crudMode(CRUDModes.Delete);
+    this.components["form"] = form;
+    form.components["header"] = EntityFormHeader(form).actions([["cancel2root", "finalDelete"], ["view", "version", "edit"], ["print", "export"]]);
   }
 }
 mixin(APPViewCalls!("APPEntityDeleteView"));

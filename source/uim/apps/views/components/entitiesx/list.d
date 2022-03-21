@@ -3,7 +3,7 @@ module uim.apps.views.components.entitiesx.list;
 @safe:
 import uim.apps;
 
-/* class DAPPEntitiesListViewComponent : DEntitiesViewComponent {
+/* class DAPPEntitiesListViewComponent : DViewComponent {
   mixin(ViewComponentThis!("APPEntitiesListViewComponent", false, true));
 
   mixin(OProperty!("DAPPListViewComponent", "listComponent"));
@@ -16,13 +16,13 @@ import uim.apps;
   }
   
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPForm~":DAPPForm("~this.name~")::beforeH5");
+    debugMethodCall(moduleName!DForm~":DForm("~this.name~")::beforeH5");
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPForm~":DAPPForm("~this.name~")::toH5");
+    debugMethodCall(moduleName!DForm~":DForm("~this.name~")::toH5");
     super.toH5(options);
     if (hasError || "redirect" in options) { return null; }
 

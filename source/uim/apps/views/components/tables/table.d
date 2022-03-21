@@ -8,14 +8,6 @@ class DAPPTableViewComponent : DViewComponent {
   
   mixin(OProperty!("string", "path"));
 
-/*   mixin(APPViewProperty!("DViewComponent", "header"));
-  mixin(APPViewProperty!("DViewComponent", "body_"));
-  mixin(APPViewProperty!("DViewComponent", "footer")); */
-
-  override void beforeH5(STRINGAA options = null) { 
-    super.beforeH5(options); 
-  }
-
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
     super.toH5(options);
     if (hasError || "redirect" in options) { return null; } 
@@ -23,9 +15,9 @@ class DAPPTableViewComponent : DViewComponent {
     return [
       H5Div(["table-responsive"], 
         BS5Table(["card-table table-vcenter text-nowrap datatable"], 
-          (header ? header.toH5(options) : null)~
-          (content ? content.toH5(options) : null)~
-          (footer ? footer.toH5(options) : null)
+          this.components["header"].toH5(options)~
+          this.components["content"].toH5(options)~
+          this.components["footer"].toH5(options)
         )        
       )].toH5;
   }

@@ -3,13 +3,11 @@ module uim.apps.views.components.forms.components.groups.handler;
 @safe:
 import uim.apps;
 
-class DAPPFormGroupHandler : DAPPFormComponent, IAPPWithEntity {
-  mixin(APPFormComponentThis!("APPFormGroupHandler", true));
+class DFormGroupHandler : DFormComponent {
+  mixin(FormComponentThis!("FormGroupHandler", true));
 
-  mixin(OProperty!("DOOPEntity", "entity"));
-
-  mixin(OProperty!("DAPPFormGroup[string]", "formGroups"));
-  O addFormGroups(this O)(DAPPFormGroup[string] newFormGroups) {
+  mixin(OProperty!("DFormGroup[string]", "formGroups"));
+  O addFormGroups(this O)(DFormGroup[string] newFormGroups) {
     newFormGroups.byKey.each!(key => formGroups[key] = newFormGroups[key]);
     return cast(O)this;
   }
@@ -19,8 +17,8 @@ class DAPPFormGroupHandler : DAPPFormComponent, IAPPWithEntity {
 
     this
       .formGroups([
-        "name": APPFormGroupName, 
-        "display": APPFormGroupDisplay, 
+        "name": FormGroupName, 
+        "display": FormGroupDisplay, 
         "description": APPDescriptionFormGroup]);
   } 
 
@@ -33,7 +31,7 @@ class DAPPFormGroupHandler : DAPPFormComponent, IAPPWithEntity {
   }
 
   DH5Obj[] group(string field, bool readonly, STRINGAA options = null) {
-    debug writeln(moduleName!DAPPFormGroupHandler, ":DAPPFormGroupHandler::group");
+    debug writeln(moduleName!DFormGroupHandler, ":DFormGroupHandler::group");
     debug writeln("CrudMode:", this.crudMode);
 
     foreach(key, formGroup; formGroups) {
@@ -47,7 +45,7 @@ class DAPPFormGroupHandler : DAPPFormComponent, IAPPWithEntity {
       if (auto formGroup = this.formGroups.get(field.toLower, null)) { // field name not case sensitive !
         debug writeln("Found formGroup for field:", field);
         formGroup.crudMode(this.crudMode).form(form);
-        if (auto entityFormGroup = cast(DEntityFormGroup)formGroup) {
+        if (auto entityFormGroup = cast(DFormGroup)formGroup) {
           return entityFormGroup.entity(entity).toH5(options);
         }
         return formGroup.toH5(options);
@@ -55,4 +53,4 @@ class DAPPFormGroupHandler : DAPPFormComponent, IAPPWithEntity {
     return null;
   }
 }  
-mixin(APPFormComponentCalls!("APPFormGroupHandler", true));
+mixin(FormComponentCalls!("FormGroupHandler", true));

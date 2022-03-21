@@ -3,7 +3,7 @@ module uim.apps.controllers.pages.entity;
 @safe:
 import uim.apps;
 
-class DAPPEntityPageController : DAPPPageController, IAPPWithEntity {
+class DAPPEntityPageController : DAPPPageController {
   mixin(APPControllerThis!("APPEntityPageController"));
 
   protected DOOPEntity _entity;
@@ -13,7 +13,7 @@ class DAPPEntityPageController : DAPPPageController, IAPPWithEntity {
   O entity(this O)(DOOPEntity newEntity) { 
     _entity = newEntity;
 
-    if (auto entityView = cast(DAPPEntityView)this.view) {
+    if (auto entityView = cast(DAPPView)this.view) {
       entityView.entity(this.entity);
     }
     

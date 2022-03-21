@@ -3,7 +3,7 @@ module uim.apps.controllers.actions.entity;
 @safe:
 import uim.apps;
 
-class DAPPEntityActionController : DAPPActionController, IAPPWithEntity {
+class DAPPEntityActionController : DAPPActionController {
   mixin(APPControllerThis!("APPEntityActionController"));
 
   mixin(OProperty!("DOOPEntity", "entity"));

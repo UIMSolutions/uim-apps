@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.login;
 @safe:
 import uim.apps;
 
-class DAPPLoginForm : DAPPForm {
-  mixin(APPFormThis!("APPLoginForm"));
+class DAPPLoginForm : DForm {
+  mixin(FormThis!("APPLoginForm"));
 
   mixin(OProperty!("bool", "showLostAccount"));
 
@@ -44,7 +44,7 @@ class DAPPLoginForm : DAPPForm {
     return results;
   }
 }
-mixin(APPFormCalls!("APPLoginForm"));
+mixin(FormCalls!("APPLoginForm"));
 
 version(test_uim_apps) {
   unittest {

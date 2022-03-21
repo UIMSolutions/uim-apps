@@ -3,10 +3,8 @@ module uim.apps.views.pages.components.headers.entities.entity;
 @safe:
 import uim.apps;
 
-class DAPPEntityPageHeader : DAPPPageHeader, IAPPWithEntity {
+class DAPPEntityPageHeader : DAPPPageHeader {
   mixin(APPPageHeaderThis!("APPEntityPageHeader", Yes.WithEntity));
-
-  mixin(OProperty!("DOOPEntity", "entity"));
 
   override DH5Obj actionButton(string action, STRINGAA options = null) {
     auto id = entity ? entity.id.toString : UUID().toString;      

@@ -4,9 +4,9 @@ module uim.apps.views.components.forms.components.contents.cards;
 import uim.apps;
 
 class DAPPCardsFormContent : DEntitiesFormContent {
-  mixin(APPFormComponentThis!("APPCardsFormContent"));
+  mixin(FormComponentThis!("APPCardsFormContent"));
 
-  mixin(OProperty!("DEntityViewComponent", "card"));
+  mixin(OProperty!("DViewComponent", "card"));
 
   override void initialize() {
     debugMethodCall(moduleName!DAPPCardsFormContent~"::DAPPCardsFormContent("~this.name~"):initialize");   
@@ -26,7 +26,7 @@ class DAPPCardsFormContent : DEntitiesFormContent {
     ].toH5;
   } 
 }
-mixin(APPFormComponentCalls!("APPCardsFormContent"));
+mixin(FormComponentCalls!("APPCardsFormContent"));
 
 version(test_uim_apps) {
   unittest {
@@ -34,7 +34,7 @@ version(test_uim_apps) {
     
     assert(new DAPPCardsFormContent);
     assert(APPCardsFormContent);
-    assert(new DAPPCardsFormContent(APPForm));
-    assert(APPCardsFormContent(APPForm));
+    assert(new DAPPCardsFormContent(Form));
+    assert(APPCardsFormContent(Form));
   }
 }

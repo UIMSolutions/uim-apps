@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.components.contents.entities;
 @safe:
 import uim.apps;
 
-class DEntitiesFormContent : DAPPFormContent, IAPPWithEntities {
-  mixin(APPFormComponentThis!("EntitiesFormContent"));
+class DEntitiesFormContent : DFormContent {
+  mixin(FormComponentThis!("EntitiesFormContent"));
 
   override void initialize() {
     debugMethodCall(moduleName!DEntitiesFormContent~"::DEntitiesFormContent("~this.name~"):initialize");   
@@ -19,26 +19,6 @@ class DEntitiesFormContent : DAPPFormContent, IAPPWithEntities {
   mixin(OProperty!("DViewComponent", "tableHeader"));
   mixin(OProperty!("DViewComponent", "tableFilter"));
   
-  protected DOOPEntity[] _entities;
-  DOOPEntity[] entities() { return _entities; }
-  bool hasEntities() {
-    return (this.entities !is null); 
-  }
-
-  void entities(DOOPEntity[] newEntities) {
-    _entities = newEntities;
-
-    if (auto withEntities = cast(IAPPWithEntities)this.header) {
-      withEntities.entities(this.entities); 
-    }
-    if (auto withEntities = cast(IAPPWithEntities)this.content) {
-      withEntities.entities(this.entities); 
-    }
-    if (auto withEntities = cast(IAPPWithEntities)this.footer) {
-      withEntities.entities(this.entities); 
-    }
-  }
-
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DEntitiesFormContent~"DEntitiesFormContent::beforeH5");
     super.beforeH5(options);
@@ -122,7 +102,7 @@ class DEntitiesFormContent : DAPPFormContent, IAPPWithEntities {
       ].toH5;
   } 
 }
-mixin(APPFormComponentCalls!("EntitiesFormContent"));
+mixin(FormComponentCalls!("EntitiesFormContent"));
 
 version(test_uim_apps) {
   unittest {
@@ -130,7 +110,7 @@ version(test_uim_apps) {
     
     assert(new DEntitiesFormContent);
     assert(EntitiesFormContent);
-    assert(new DEntitiesFormContent(APPForm));
-    assert(EntitiesFormContent(APPForm));
+    assert(new DEntitiesFormContent(Form));
+    assert(EntitiesFormContent(Form));
   }
 }

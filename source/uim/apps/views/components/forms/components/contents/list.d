@@ -4,9 +4,9 @@ module uim.apps.views.components.forms.components.contents.list;
 import uim.apps;
 
 class DAPPListFormContent : DEntitiesFormContent {
-  mixin(APPFormComponentThis!("APPListFormContent"));
+  mixin(FormComponentThis!("APPListFormContent"));
 
-  mixin(OProperty!("DEntityViewComponent", "listItem"));
+  mixin(OProperty!("DViewComponent", "listItem"));
 
   override void initialize() {
     debugMethodCall(moduleName!DAPPListFormContent~"::DAPPListFormContent("~this.name~"):initialize");   
@@ -26,7 +26,7 @@ class DAPPListFormContent : DEntitiesFormContent {
     ].toH5;
   } 
 }
-mixin(APPFormComponentCalls!("APPListFormContent"));
+mixin(FormComponentCalls!("APPListFormContent"));
 
 version(test_uim_apps) {
   unittest {
@@ -34,7 +34,7 @@ version(test_uim_apps) {
     
     assert(new DAPPListFormContent);
     assert(APPListFormContent);
-    assert(new DAPPListFormContent(APPForm));
-    assert(APPListFormContent(APPForm));
+    assert(new DAPPListFormContent(Form));
+    assert(APPListFormContent(Form));
   }
 }

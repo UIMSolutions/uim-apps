@@ -9,9 +9,7 @@ class DAPPEntityCRUDForm : DEntityForm {
   override void initialize() {
     super.initialize;
 
-    this
-      .content(
-        EntityFormContent(this));
+    this.components["content"] = EntityFormContent(this);
   }
 }
 mixin(ViewComponentCalls!("APPEntityCRUDForm", true));

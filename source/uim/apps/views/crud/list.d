@@ -3,33 +3,20 @@ module uim.apps.views.crud.list;
 @safe:
 import uim.apps;
 
-class DAPPEntitiesListView : DAPPEntitiesView {
+class DAPPEntitiesListView : DAPPView {
   mixin(APPViewThis!("APPEntitiesListView", false, true));
 
   mixin(OProperty!("CRUDModes", "crudMode"));
   mixin(APPParameter!("rootPath"));
   mixin(OProperty!("bool", "readonly"));
   
-  mixin(OProperty!("DAPPEntitiesForm", "form"));
-
   override void initialize() {
     debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView("~this.name~"):in");    
     super.initialize;
 
-    this
-      .form(
-        APPEntitiesListForm(this))
-      .header(
-        APPPageHeader(this).actions(["refresh", "create"])); 
+    this.components["header"] = APPPageHeader(this).actions(["refresh", "create"]);
+    this.components["form"] = APPEntitiesListForm(this);
   }
-
-/*   override void _afterSetEntities() {
-    super._afterSetEntities;
-
-    if (auto entitiesForm = cast(DAPPEntitiesForm)this.form) {
-      entitiesForm.entities(this.entities);
-    }
-  } */
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView("~this.name~"):toH5");    
@@ -38,10 +25,10 @@ class DAPPEntitiesListView : DAPPEntitiesView {
 
     return [
       H5Div(["container-xl"],
-        (this.header ? this.header.toH5(options) : null)~ 
-        (this.messages ? BS5Row("messages", ["mb-2"]) : null)~
-        BS5Row(["row-deck row-cards mb-2"], this.form ? form.toH5(options) : null)~
-        (this.footer ? this.footer.toH5(options) : null)
+        this.components["header"].toH5(options)~ 
+        BS5Row("messages", ["mb-2"], this.components["messages"].toH5(options))~
+        BS5Row(["row-deck row-cards mb-2"], this.components["form"].toH5(options))~
+        this.components["footer"].toH5(options)
       )].toH5;             
   }
 }

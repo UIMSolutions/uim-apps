@@ -3,14 +3,15 @@ module uim.apps.views.components.null_;
 @safe:
 import uim.apps;
 
-class DAPPNullComponent : DViewComponent {
-  mixin(ViewComponentThis!("APPNullComponent"));
+class DNullComponent : DViewComponent {
+  mixin(ViewComponentThis!("NullComponent"));
   
   override void initialize() {
     super.initialize(); 
 
     this
-    .isNull(true); 
+    .isNull(true) 
+    .notNull(false); 
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -31,4 +32,4 @@ version(test_uim_apps) {
       /// TODO
   }}
 }
-mixin(ViewComponentCalls!("APPNullComponent"));
+mixin(ViewComponentCalls!("NullComponent"));

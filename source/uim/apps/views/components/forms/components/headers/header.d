@@ -3,11 +3,11 @@ module uim.apps.views.components.forms.components.headers.header;
 @safe:
 import uim.apps;
 
-class DAPPFormHeader : DAPPFormComponent {
-  mixin(APPFormComponentThis!("APPFormHeader"));
+class DFormHeader : DFormComponent {
+  mixin(FormComponentThis!("FormHeader"));
 
   override void initialize() {
-    debugMethodCall(moduleName!DAPPFormHeader~"::DAPPFormHeader("~this.name~"):initialize");   
+    debugMethodCall(moduleName!DFormHeader~"::DFormHeader("~this.name~"):initialize");   
     super.initialize;
     debug writeln("In ", __MODULE__, "/", __LINE__);
 
@@ -26,7 +26,7 @@ class DAPPFormHeader : DAPPFormComponent {
   } */
 
   DH5Obj actionButton(string action, STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPFormHeader~":DAPPFormHeader::actionButton");
+    debugMethodCall(moduleName!DFormHeader~":DFormHeader::actionButton");
 
     switch(action) {
       case "refresh": return buttonLinkRefresh(rootPath); 
@@ -38,7 +38,7 @@ class DAPPFormHeader : DAPPFormComponent {
   }
 
   DH5Obj[] actionButtons(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPFormHeader~":DAPPFormHeader::actionButtons");
+    debugMethodCall(moduleName!DFormHeader~":DFormHeader::actionButtons");
     debug writeln ("Actions: ", this.actions);
 
     DH5Obj[] results;
@@ -53,7 +53,7 @@ class DAPPFormHeader : DAPPFormComponent {
   }
 
   DH5Obj h5CardHeader(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPFormHeader~":DAPPFormHeader::h5CardHeader");
+    debugMethodCall(moduleName!DFormHeader~":DFormHeader::h5CardHeader");
 
     return BS5CardHeader(id,
       H5H4(["card-title me-auto"], title),
@@ -62,7 +62,7 @@ class DAPPFormHeader : DAPPFormComponent {
   }
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPFormHeader~":DAPPFormHeader::beforeH5");
+    debugMethodCall(moduleName!DFormHeader~":DFormHeader::beforeH5");
     super.beforeH5(options);
 
     if (form) {
@@ -75,20 +75,20 @@ class DAPPFormHeader : DAPPFormComponent {
   } 
 
   override DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPFormHeader~":DAPPFormHeader::toH5");
+    debugMethodCall(moduleName!DFormHeader~":DFormHeader::toH5");
     super.toH5(options);
     if (hasError) { return null; }
 
     return [h5CardHeader(options)];
   }
 }
-mixin(APPFormComponentCalls!("APPFormHeader"));
+mixin(FormComponentCalls!("FormHeader"));
 
 version(test_uim_apps) {
   unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
     
-    assert(new DAPPFormHeader);
-    assert(APPFormHeader);
+    assert(new DFormHeader);
+    assert(FormHeader);
   }
 }

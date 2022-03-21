@@ -3,31 +3,11 @@ module uim.apps.views.components.tables.components.footers.entities;
 @safe:
 import uim.apps;
 
-class DAPPEntitiesTableFooter : DAPPTableFooter, IAPPWithEntities {
+class DAPPEntitiesTableFooter : DAPPTableFooter {
   mixin(ViewComponentThis!("APPEntitiesTableFooter"));
 
   mixin(OProperty!("size_t", "pageNo"));
   mixin(OProperty!("size_t", "visibleEntities"));
-  
-  protected DOOPEntity[] _entities;
-  DOOPEntity[] entities() { return _entities; }
-  bool hasEntities() {
-    return (this.entities !is null); 
-  }
-
-  void entities(DOOPEntity[] newEntities) {
-    _entities = newEntities;
-
-    if (auto withEntities = cast(IAPPWithEntities)this.header) {
-      withEntities.entities(this.entities); 
-    }
-    if (auto withEntities = cast(IAPPWithEntities)this.content) {
-      withEntities.entities(this.entities); 
-    }
-    if (auto withEntities = cast(IAPPWithEntities)this.footer) {
-      withEntities.entities(this.entities); 
-    }
-  }
 
   override void initialize() {
     super.initialize;

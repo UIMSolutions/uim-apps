@@ -3,33 +3,33 @@ module uim.apps.views.components.forms.components.component;
 @safe:
 import uim.apps;
 
-class DAPPFormComponent : DViewComponent {
-  mixin(ViewComponentThis!("APPFormComponent"));
+class DFormComponent : DViewComponent {
+  mixin(ViewComponentThis!("FormComponent"));
 
   override void initialize() {
-    debugMethodCall(moduleName!DAPPFormComponent~"::DAPPFormComponent("~this.name~"):initialize");   
+    debugMethodCall(moduleName!DFormComponent~"::DFormComponent("~this.name~"):initialize");   
     super.initialize;
 
     debug writeln("In ", __MODULE__, "/", __LINE__);
   }
 
   mixin(OProperty!("CRUDModes", "crudMode"));
-  mixin(OProperty!("DAPPForm", "form"));
+  mixin(OProperty!("DForm", "form"));
   mixin(OProperty!("bool", "readonly")); 
 
   mixin(APPParameter!("rootPath"));
   mixin(APPParameter!("title"));  
 }
-mixin(ViewComponentCalls!("APPFormComponent"));
+mixin(ViewComponentCalls!("FormComponent"));
 
 version(test_uim_apps) {
   unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
   
-    assert(new DAPPFormComponent);
-    assert(APPFormComponent);
-    assert(APPFormComponent.name == "APPFormComponent");
-    assert(APPFormComponent.name("test").name == "test");
-    assert(APPFormComponent.rootPath("test2").rootPath == "test2");
-    assert(APPFormComponent.title("test3").title == "test3");
+    assert(new DFormComponent);
+    assert(FormComponent);
+    assert(FormComponent.name == "FormComponent");
+    assert(FormComponent.name("test").name == "test");
+    assert(FormComponent.rootPath("test2").rootPath == "test2");
+    assert(FormComponent.title("test3").title == "test3");
 }}
