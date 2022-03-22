@@ -9,12 +9,16 @@ class DAPPEntityUpdateView : DAPPEntityCRUDView {
   override void initialize() {
     super.initialize;
 
-    this.components["header"] = APPPageHeader(this).actions(["refresh", "list", "create"]);
-
-    auto form = EntityForm(this).crudMode(CRUDModes.Update);
-    this.components["form"] = form;
-    form["header"] = EntityFormHeader(this.form)
-      .actions([["cancel2list", "save"], ["edit", "version", "delete"], ["print", "export"]]);
+    this
+      .header(
+        APPPageHeader(this)
+          .actions(["refresh", "list", "create"]))
+      .form(
+        Form(this)
+          .crudMode(CRUDModes.Update)
+          .header(
+            FormHeader
+              .actions([["cancel2list", "save"], ["edit", "version", "delete"], ["print", "export"]])));
   }
 }
 mixin(APPViewCalls!("APPEntityUpdateView"));

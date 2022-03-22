@@ -14,9 +14,9 @@ class DAPPEntityDeleteView : DAPPEntityCRUDView {
       .header(
         APPPageHeader(this).actions(["refresh", "list", "create"]));
 
-    auto form = EntityForm(this).crudMode(CRUDModes.Delete);
+    auto form = Form(this).crudMode(CRUDModes.Delete);
     this.components["form"] = form;
-    form.components["header"] = EntityFormHeader(form).actions([["cancel2root", "finalDelete"], ["view", "version", "edit"], ["print", "export"]]);
+    form.components["header"] = FormHeader(form).actions([["cancel2root", "finalDelete"], ["view", "version", "edit"], ["print", "export"]]);
   }
 }
 mixin(APPViewCalls!("APPEntityDeleteView"));

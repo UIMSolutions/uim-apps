@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.crud.update;
 @safe:
 import uim.apps;
 
-class DAPPUpdateEntityForm : DAPPEntityCRUDForm {
-  mixin(FormThis!("APPUpdateEntityForm"));
+class DAPPUpdateForm : DAPPEntityCRUDForm {
+  mixin(FormThis!("APPUpdateForm"));
 
   override void initialize() {
     super.initialize;
@@ -13,7 +13,7 @@ class DAPPUpdateEntityForm : DAPPEntityCRUDForm {
       .crudMode(CRUDModes.Update);
   }
 }
-mixin(FormCalls!("APPUpdateEntityForm"));
+mixin(FormCalls!("APPUpdateForm"));
 
 /* 
 auto editheader(T:DOOPEntity)(string path, T entity, DAPPPanes panes, STRINGAA reqParameters) {
@@ -35,12 +35,12 @@ auto editbody_(T:DOOPEntity)(string path, T entity, DAPPPanes panes, STRINGAA re
     BS5CardBody(
       BS5Row.col(["col-12"], 
         BS5InputHidden(["name":"entity_id"]).value(entity.id)~
-        entityFormGroups_Edit(entity)          
+        FormGroups_Edit(entity)          
       ));        
 
 }
 
-DH5Obj[] entityFormGroups_Edit(DOOPEntity entity, string[] fields = ["name", "display", "description"]) {
+DH5Obj[] FormGroups_Edit(DOOPEntity entity, string[] fields = ["name", "display", "description"]) {
   DH5Obj[] results;
 
   foreach(field; fields) {

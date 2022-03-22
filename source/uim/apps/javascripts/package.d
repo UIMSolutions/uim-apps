@@ -88,7 +88,7 @@ auto jsEditEntity() {
         "alerts += checkEntityDisplay(entity_display);"~
         "messages.innerHTML=alerts;", 
         // Sending Form Data to server
-        jsConst("formData", "new FormData(entityForm)")~
+        jsConst("formData", "new FormData(Form)")~
         jsFetch("myApi+'/edit'", ["method": "'POST'", "body": "formData", "sessionId":"sessionId"], [
           "response => response.json()",  
           "result => "~jsBlock(
@@ -110,7 +110,7 @@ auto jsCreateEntity() {
       "entity_name.classList.remove('is-invalid');"~
       "entity_display.classList.remove('is-valid');"~
       "entity_display.classList.remove('is-invalid');"~
-      jsElementById(["entityForm"])~
+      jsElementById(["Form"])~
       // Check mandatory fields
       jsIfElse(jsOr("entity_name.value.length===0", "entity_display.value.length===0"), 
         //  Name or Display missing
@@ -118,7 +118,7 @@ auto jsCreateEntity() {
         "alerts += checkEntityDisplay(entity_display);"~
         "messages.innerHTML=alerts;", 
         // Sending Form Data to server 
-        jsConst("formData", "new FormData(entityForm)")~
+        jsConst("formData", "new FormData(Form)")~
         jsFetch("myApi+'/create'", ["method": "'POST'", "sessionId":"sessionId", "body": "formData"], [
           "response => response.json()",
           "result => "~jsBlock(
@@ -139,8 +139,8 @@ auto jsDeleteEntity() {
   return 
     jsFunc("deleteEntity", [],  
       "messages.innerHTML = '';"~
-      jsElementById(["entityForm"])~
-      jsConst("formData", "new FormData(entityForm)")~
+      jsElementById(["Form"])~
+      jsConst("formData", "new FormData(Form)")~
       jsFetch("myApi+'/delete'", ["method": "'POST'", "sessionId":"sessionId", "body": "formData"], [
         "response => response.json()",  
         "result => "~jsBlock(
@@ -157,7 +157,7 @@ auto jsViewEntity() {
   return
   jsFunc("viewEntity", ["formId"], 
       "messages.innerHTML = '';"~
-      jsConst("formData", "new FormData(entityForm)")~
+      jsConst("formData", "new FormData(Form)")~
       jsFetch("myApi+'/view'", ["method": "'POST'", "sessionId":"sessionId", "body": "formData"], [
         "response => response.json()",  
         "result => "~jsBlock(

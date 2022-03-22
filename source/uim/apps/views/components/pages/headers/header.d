@@ -1,10 +1,10 @@
-module uim.apps.views.components.footers;
+module uim.apps.views.components.pages.headers.header;
 
 @safe:
 import uim.apps;
 
-class DAPPPageFooter : DViewComponent {
-  mixin(ViewComponentThis!("APPPageFooter"));
+class DPageHeader : DViewComponent {
+  mixin(ViewComponentThis!("PageHeader"));
 
   override void initialize() {
     super.initialize; 
@@ -18,7 +18,7 @@ class DAPPPageFooter : DViewComponent {
   mixin(OProperty!("string", "inner"));
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
-    debugMethodCall(moduleName!DAPPPageFooter~":DAPPPageFooter("~this.name~")::toH5");
+    debugMethodCall(moduleName!DPageHeader~":DPageHeader("~this.name~")::toH5");
     super.toH5(options);
     if (hasError || "redirect" in options) { return null; }    
     
@@ -35,4 +35,4 @@ class DAPPPageFooter : DViewComponent {
         ))].toH5;
   }
 }
-mixin(ViewComponentCalls!("APPPageFooter"));
+mixin(ViewComponentCalls!("PageHeader"));

@@ -11,8 +11,6 @@ public import uim.apps.views.components.forms.components;
 public import uim.apps.views.components.forms.crud;
 
 // Modules
-public import uim.apps.views.components.forms.entity;
-public import uim.apps.views.components.forms.entities;
 public import uim.apps.views.components.forms.login;
 public import uim.apps.views.components.forms.login2;
 

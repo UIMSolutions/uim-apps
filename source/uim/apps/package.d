@@ -263,15 +263,18 @@ static this() {
 } */
 
 
-template APPParameter(string name) {
+template APPParameter(string name, string afterSet = null) {
   const char[] APPParameter = `
 string `~name~`() { 
   return parameter("`~name~`"); 
 } 
 O `~name~`(this O)(string newValue) { 
   this.parameter("`~name~`", newValue);
+  _afterSet`~name.capitalize~`;
   return cast(O)this; 
-}`;
+}
+void _afterSet`~name.capitalize~`() { `~afterSet~` } // hook
+`;
 }
 
 template RouterFunction(string functionName, string controllerName, string appName, string content = "") {

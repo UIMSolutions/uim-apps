@@ -8,9 +8,9 @@ module uim.apps.views.pages.components.footers;
 @safe:
 import uim.apps;
 
-class DAPPPageFooter : DViewComponent {
-  mixin(ViewComponentThis!("APPPageFooter"));
+class DPageFooter : DViewComponent {
+  mixin(ViewComponentThis!("PageFooter"));
 }
-mixin(ViewComponentCalls!("APPPageFooter"));
+mixin(ViewComponentCalls!("PageFooter"));
  
 

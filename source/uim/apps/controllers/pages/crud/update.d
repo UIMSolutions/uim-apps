@@ -47,15 +47,14 @@ class DAPPEntityUpdateController : DAPPEntityCrudPageController {
     entityPool[poolId] = entity;
     options["entityPool"] = to!string(poolId);
   
-    if (this.entity) { 
-      if (auto entityHeader = cast(DAPPEntityPageHeader)pageHeader) entityHeader.entity(entity);
-      if (auto entityForm = cast(DEntityForm)form) entityForm.entity(entity); 
+    if (this.view) { 
+      view.entity(this.entity); 
     }
 
     if (viewMode == ViewModes.JS) {
       options["script"] = options.get("script", "")~
 `window.addEventListener('load', (event) => {
-  document.getElementById("entityForm").addEventListener("submit", event => {
+  document.getElementById("Form").addEventListener("submit", event => {
     event.preventDefault();
     editEntity();
   })

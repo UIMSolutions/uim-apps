@@ -13,10 +13,11 @@ class DForm : DViewComponent {
  
     this
       .crudMode(CRUDModes.Read)
-      .method("post");
-
-    this.components["header"] = FormHeader(this);
-    this.components["content"] = FormContent(this);
+      .method("post")
+      .header(
+        FormHeader(this))
+      .content(
+        FormContent(this));
   }
 
   mixin(OProperty!("string[string]", "defaults"));
@@ -33,9 +34,9 @@ class DForm : DViewComponent {
   mixin(APPParameter!("contentTitle"));
   mixin(APPParameter!("footerTitle"));
 
-  auto formHeader(){return cast(DFormHeader)this.components["header"]; }
-  auto formContent(){ return cast(DFormContent)this.components["content"]; }
-  auto formFooter(){ return cast(DFormFooter)this.components["footer"]; }
+  mixin(OComponent!("header"));
+  mixin(OComponent!("content"));
+  mixin(OComponent!("footer"));
 
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 
@@ -82,22 +83,22 @@ class DForm : DViewComponent {
       }
     }
 
-    if (auto formHeader = cast(DFormHeader)this.components["header"]) {
-      formHeader
+    if (auto frmHeader = cast(DFormHeader)this.header) {
+      frmHeader
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
         .title(headerTitle);
     }
 
-    if (auto formContent = cast(DFormContent)this.components["content"]) { 
-      formContent
+    if (auto frmContent = cast(DFormContent)this.components["content"]) { 
+      frmContent
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
         .title(contentTitle);
     }
     
-    if (auto formFooter = cast(DFormFooter)this.components["footer"]) {
-      formFooter
+    if (auto frmFooter = cast(DFormFooter)this.components["footer"]) {
+      frmFooter
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
         .title(footerTitle);
@@ -110,10 +111,10 @@ class DForm : DViewComponent {
     
     DBS5Col _col = BS5Col(["col-12"]);
     _col(
-      H5Form("entityForm", ["card"], ["method":method, "action":action], 
-        this.components["header"].toH5(options)~
-        this.components["content"].toH5(options)~
-        this.components["footer"].toH5(options)
+      H5Form("Form", ["card"], ["method":method, "action":action], 
+        this.header.toH5(options)~
+        this.content.toH5(options)~
+        this.footer.toH5(options)
       ));
     
     return [_col].toH5;

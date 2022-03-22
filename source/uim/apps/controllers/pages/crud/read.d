@@ -58,9 +58,8 @@ class DAPPEntityReadController : DAPPEntityCrudPageController {
     entityPool[poolId] = entity;
     options["entityPool"] = to!string(poolId);
   
-    if (this.entity) { 
-      if (auto entityHeader = cast(DAPPEntityPageHeader)pageHeader) entityHeader.entity(entity);
-      if (auto entityForm = cast(DEntityForm)form) entityForm.entity(entity); 
+    if (this.view) { 
+      this.view.entity(this.entity); 
     }
   }
 version(test_uim_apps) {

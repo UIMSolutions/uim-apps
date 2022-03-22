@@ -18,7 +18,7 @@ class DViewComponents {
   auto get(string anId) {
     foreach(component; _components) {
       if (component && component.id == anId) return component; }
-    return null;
+    return NullComponent;
   }
   ref auto opIndex(string anId) {
     return get(anId);
@@ -39,7 +39,7 @@ class DViewComponents {
   O add(this O)(string anId, DViewComponent newComponent) {
     foreach(index, component; _components) {
       if (component && component.id == anId) {
-        _components[index] = null; 
+        _components[index] = NullComponent; 
         return cast(O)this;     
       }
     }
@@ -110,7 +110,7 @@ protected DOOPEntity _entity;
 
   O remove(this O)(string anId) {
     foreach(index, component; _components) {
-      if (component.id == anId) _component[index] = null;      
+      if (component.id == anId) _component[index] = NullComponent;      
     }
     return cast(O)this;
   }

@@ -20,11 +20,11 @@ public import uim.apps.views.components.cards;
 
 public import uim.apps.views.components.filter;
 public import uim.apps.views.components.forms;
-public import uim.apps.views.components.footers;
 public import uim.apps.views.components.icons;
 public import uim.apps.views.components.lists;
 public import uim.apps.views.components.navbars;
 public import uim.apps.views.components.modals;
+public import uim.apps.views.components.pages;
 public import uim.apps.views.components.search;
 public import uim.apps.views.components.tables;
 public import uim.apps.views.components.tabpanes;
@@ -66,4 +66,31 @@ auto `~classShortName~`(DAPPView myView, DOOPEntity myEntity) { return new D`~cl
 auto `~classShortName~`(DOOPEntity[] myEntities) { return new D`~classShortName~`(myEntities); }
 auto `~classShortName~`(DAPPView myView, DOOPEntity[] myEntities) { return new D`~classShortName~`(myView, myEntities); }
 ` : ``);
+}
+
+template OComponent(string id) {
+  const char[] OComponent = `
+    DViewComponent `~id~`() { return this.components["`~id~`"]; }
+    O `~id~`(this O)(DViewComponent newComponent) { 
+      this.components["`~id~`"] = newComponent; 
+      return cast(O)this; }
+  `;
+}
+
+template OComponent(string id, string name) {
+  const char[] OComponent = `
+    DViewComponent `~name~`() { return this.components["`~id~`"]; }
+    O `~name~`(this O)(DViewComponent newComponent) { 
+      this.components["`~id~`"] = newComponent; 
+      return cast(O)this; }
+  `;
+}
+
+template OComponent(string id, string name, string type) {
+  const char[] OComponent = `
+    `~type~` `~name~`() { return cast(`~type~`)this.components["`~id~`"]; }
+    O `~name~`(this O)(`~type~` newComponent) { 
+      this.components["`~id~`"] = newComponent; 
+      return cast(O)this; }
+  `;
 }

@@ -9,10 +9,17 @@ class DAPPEntityReadView : DAPPEntityCRUDView {
   override void initialize() {
     super.initialize;
 
-    this.components["header"] = APPPageHeader(this).actions(["refresh", "list", "create"]);
+    this
+      .header(
+        APPPageHeader(this)
+          .actions(["refresh", "list", "create"]));
 
-    auto form = this.components["form"];
-    form.components["header"] = EntityFormHeader(this.form).actions([["edit", "version", "delete"], ["print", "export"]]);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .header(
+          FormHeader
+            .actions([["edit", "version", "delete"], ["print", "export"]]));
+    }
   }
 }
 mixin(APPViewCalls!("APPEntityReadView"));

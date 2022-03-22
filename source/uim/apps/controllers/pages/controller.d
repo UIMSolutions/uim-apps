@@ -74,13 +74,6 @@ version(test_uim_apps) {
   DAPPRequestReader requestReader;
   DAPPSessionReader sessionReader;
 
-  DAPPPageHeader _pageHeader;
-  O pageHeader(this O)(DAPPPageHeader newPageHeader) { 
-    _pageHeader = newPageHeader; 
-    // _pageHeader.page(this);
-    return cast(O)this; }
-  auto pageHeader() { return _pageHeader; }
-  
   mixin(OProperty!("DForm", "form"));
 
 	/// layout for page

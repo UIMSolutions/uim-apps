@@ -36,7 +36,7 @@ window.addEventListener('load', (event) => {
   editorSummary.disabled(true);
   editorText.disabled(true);
     setThemes('`~"(session ? session.id.toString : \"\")"~`', '`~"entity.theme.toString"~`');
-    document.getElementById("entityForm").addEventListener("submit", event => {
+    document.getElementById("Form").addEventListener("submit", event => {
       event.preventDefault();
       deleteEntity();
     })
@@ -81,10 +81,9 @@ window.addEventListener('load', (event) => {
     entityPool[poolId] = entity;
     options["entityPool"] = to!string(poolId);
 
-    if (this.entity) { 
-      if (auto entityHeader = cast(DAPPEntityPageHeader)pageHeader) entityHeader.entity(entity);
-      if (auto entityForm = cast(DEntityForm)form) entityForm.entity(entity); 
-    }
+    if (this.view) { 
+      view.entity(this.entity);
+    }   
   }
 version(test_uim_apps) {
   unittest {

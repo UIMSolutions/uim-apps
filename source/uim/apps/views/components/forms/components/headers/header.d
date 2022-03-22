@@ -28,11 +28,23 @@ class DFormHeader : DFormComponent {
   DH5Obj actionButton(string action, STRINGAA options = null) {
     debugMethodCall(moduleName!DFormHeader~":DFormHeader::actionButton");
 
+    auto entityId = options.get("entityId", null);
+
     switch(action) {
       case "refresh": return buttonLinkRefresh(rootPath); 
       case "list": return buttonLinkList(rootPath); 
       case "cancel2root": return buttonLinkCancel(rootPath); 
       case "save": return submitSave();       
+      case "create": return buttonLinkCreate(rootPath); 
+      case "read": 
+      case "view": return buttonLinkView(rootPath, entityId); 
+      case "edit":  
+      case "update": return buttonLinkEdit(rootPath, entityId); 
+      case "delete": return buttonLinkDelete(rootPath, entityId); 
+      case "finalDelete": return submitDelete(); 
+      case "version": return buttonLinkVersion(rootPath, entityId); 
+      case "print": return buttonLinkPrint(rootPath, entityId); 
+      case "export": return buttonLinkExport(rootPath, entityId); 
       default: return null;       
     }
   }
@@ -66,8 +78,11 @@ class DFormHeader : DFormComponent {
     super.beforeH5(options);
 
     if (form) {
-      this.crudMode(form.crudMode);
-      this.rootPath(form.rootPath);
+      this
+        .crudMode(form.crudMode)
+        .rootPath(form.rootPath)
+        .entity(form.entity)
+        .entities(form.entities);
     }
     if (!rootPath && "rootPath" in options) {
       this.rootPath(options["rootPath"]);
@@ -78,9 +93,17 @@ class DFormHeader : DFormComponent {
     debugMethodCall(moduleName!DFormHeader~":DFormHeader::toH5");
     super.toH5(options);
     if (hasError) { return null; }
+    
+    DH5Obj[] buttons = actionButtons(options);    
+    string entityId = this.entity ? this.entity.id.toString : null;
 
-    return [h5CardHeader(options)];
-  }
+    return  
+      [
+        BS5CardHeader(id,
+        H5H4(["card-title me-auto"], "ID: "~entityId),
+        H5Div(["btn-list"], 
+          H5Span(["d-none d-sm-inline"], buttons)))].toH5;    
+  } 
 }
 mixin(FormComponentCalls!("FormHeader"));
 

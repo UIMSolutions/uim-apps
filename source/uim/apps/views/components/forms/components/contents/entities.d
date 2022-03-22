@@ -11,13 +11,12 @@ class DEntitiesFormContent : DFormContent {
     super.initialize;
     debug writeln("In ", __MODULE__, "/", __LINE__);
 
-    this
-    .tableHeader(APPEntitiesTableHeader)
-    .tableFilter(APPEntitiesTableFilter); 
+    this.components["header"] = APPEntitiesTableHeader;
+    this.tableFilter(APPEntitiesTableFilter); 
   }
 
-  mixin(OProperty!("DViewComponent", "tableHeader"));
-  mixin(OProperty!("DViewComponent", "tableFilter"));
+  mixin(OComponent!("tableHeader", "tableHeader"));
+  mixin(OComponent!("tableFilter", "tableFilter"));
   
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DEntitiesFormContent~"DEntitiesFormContent::beforeH5");

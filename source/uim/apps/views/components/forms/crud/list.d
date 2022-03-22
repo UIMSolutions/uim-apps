@@ -3,15 +3,19 @@ module uim.apps.views.components.forms.crud.list;
 @safe:
 import uim.apps;
 
-class DAPPEntitiesListForm : DAPPEntitiesForm {
+class DAPPEntitiesListForm : DForm {
   mixin(ViewComponentThis!("APPEntitiesListForm", false, true));
 
   override void initialize() {
     super.initialize;
 
-    this.components["header"] = FormHeader(this).mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["print", "export"]]);
-    this.components["content"] = EntityFormContent(this);
-
+    this
+      .header(
+        FormHeader(this) //.mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["print", "export"]])
+      )
+      .content(
+        FormContent(this)      
+      );
     /*       .form
         .header(APPEntitiesheader(this.form).rootPath("/cms/blogs").mainTitle("Blogs").subTitle("Blogs anzeigen").actions([["print", "export"]]))
         .body_(APPListbody_(this.form).rootPath("/cms/blogs"));
@@ -24,10 +28,10 @@ class DAPPEntitiesListForm : DAPPEntitiesForm {
     
     DBS5Col _col = BS5Col(["col-12"]);
     _col(
-      H5Form("entityForm", ["card"], ["method":method, "action":action], 
-        this.components["header"].toH5(options)~
-        this.components["content"].toH5(options)~
-        this.components["footer"].toH5(options) 
+      H5Form("Form", ["card"], ["method":method, "action":action], 
+        this.header.toH5(options)~
+        this.content.toH5(options)~
+        this.footer.toH5(options) 
       ));
     
     return [_col].toH5;

@@ -7,7 +7,7 @@ class DEntityFormContent : DFormContent {
   mixin(FormComponentThis!("EntityFormContent", true));
 
   override void initialize() {
-    debugMethodCall(moduleName!DEntityFormContent~"::DEntityFormContent("~this.name~"):initialize");   
+    debugMethodCall(moduleName!DFormContent~"::DFormContent("~this.name~"):initialize");   
     super.initialize;
 
     this
@@ -28,7 +28,7 @@ class DEntityFormContent : DFormContent {
   mixin(OProperty!("DFormGroupHandler", "formGroupHandler"));
 
   DH5Obj[] formGroups(STRINGAA options = null) {
-    debugMethodCall(moduleName!DEntityFormContent~"::DEntityFormContent:formGroups");    
+    debugMethodCall(moduleName!DFormContent~"::DFormContent:formGroups");    
     DH5Obj[] results;
 
     debug writeln(entity ? "Has entity: "~entity.name : "No entity");
@@ -58,7 +58,7 @@ class DEntityFormContent : DFormContent {
   }  
 
   override DH5Obj bodyContent(STRINGAA options = null) {
-    debugMethodCall(moduleName!DEntityFormContent~"::DEntityFormContent:bodyContent");    
+    debugMethodCall(moduleName!DFormContent~"::DFormContent:bodyContent");    
     DH5Obj row = super.bodyContent(options);
     
     auto col = BS5Col(["col-12"], 
@@ -80,7 +80,7 @@ class DEntityFormContent : DFormContent {
   } 
 
   override DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DEntityFormContent~"::DEntityFormContent:toH5");    
+    debugMethodCall(moduleName!DFormContent~"::DFormContent:toH5");    
     super.toH5(options);
     if (hasError || "redirect" in options) { return null; }
 
@@ -96,9 +96,9 @@ version(test_uim_apps) {
   unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
     
-    assert(new DEntityFormContent);
-    assert(EntityFormContent);
-    assert(new DEntityFormContent(Form));
-    assert(EntityFormContent(Form));
+    assert(new DFormContent);
+    assert(FormContent);
+    assert(new DFormContent(Form));
+    assert(FormContent(Form));
   }
 }

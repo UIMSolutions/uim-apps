@@ -9,46 +9,48 @@ class DAPPEntityCRUDView : DAPPView {
   mixin(OProperty!("CRUDModes", "crudMode"));
   mixin(OProperty!("bool", "readonly"));
 
-  mixin(APPParameter!("rootPath"));
-  mixin(APPViewProperty!("DForm", "form"));
+  mixin(APPParameter!("rootPath", `
+  foreach(component; this.components.all) {
+    if (auto frm = cast(DForm)component) {
+      frm.rootPath(this.rootPath);
+    }
+  }
+  `));
+
+  mixin(OComponent!("form"));
 
   override void initialize() {
     debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):initialize");   
     super.initialize;
 
-    debug writeln("In ", __MODULE__, "/", __LINE__);
-  
     this
       .crudMode(
         CRUDModes.Read)
       .header(
-        APPPageHeader(this).actions(["refresh", "list", "create"]))
+        APPPageHeader(this)
+          .actions(["refresh", "list", "create"]))
       .form(
-        EntityForm(this).crudMode(CRUDModes.Read));
-
-    if (auto form = this.form) {
-      form.components["header"] = EntityFormHeader(this.form).actions([["edit", "version", "delete"], ["print", "export"]]);    
-    }
+        Form(this)
+          .crudMode(CRUDModes.Read)
+          .header(
+            FormHeader
+              .actions([["edit", "version", "delete"], ["print", "export"]])));    
   }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):beforeH5");    
     super.beforeH5(options);
-    debug writeln(entity ? "Has entity" : "no entity");
     if (hasError || "redirect" in options) { return; }
 
-    if (auto entityForm = cast(DEntityForm)this.form) {
-      debug writeln("Found entityForm");
-      entityForm.entity(this.entity);
-    } else debug writeln("No entityForm"); 
+    if (auto frm = cast(DForm)this.form) {
+      frm.entity(this.entity);
+    } 
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):toH5");    
     super.toH5(options);
     if (hasError || "redirect" in options) { return null; }
-
-    debug writeln(entity ? "Has entity" : "no entity");
 
     auto panes = 
       BS5Card(

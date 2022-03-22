@@ -7,17 +7,21 @@ class DAPPEntityCreateView : DAPPEntityCRUDView {
   mixin(APPViewThis!("APPEntityCreateView"));
 
   override void initialize() {
-    debugMethodCall(moduleName!DAPPEntityCreateView~"::DAPPEntityCreateView:initialize");   
     super.initialize;
 
     debug writeln("In ", __MODULE__, "/", __LINE__); 
 
-    this.components["header"] = APPPageHeader(this).actions(["refresh", "list"]);
+    this
+      .header(
+        APPPageHeader(this).actions(["refresh", "list"]));
 
-    auto form = EntityForm(this).crudMode(CRUDModes.Create);
-    this.components["form"] = form;
-    form.components["header"] = EntityFormHeader(form).actions([["cancel", "save"], ["print", "export"]]);
-    form.components["content"] = EntityFormContent(form).fields(["name", "display", "description"]);
+    auto form = Form(this).crudMode(CRUDModes.Create);
+    this.form(form);
+    form
+      .header(
+        FormHeader(form).actions([["cancel", "save"], ["print", "export"]]))
+      .content(
+        FormContent(form));//.fields(["name", "display", "description"]));
   }
 }
 mixin(APPViewCalls!("APPEntityCreateView"));

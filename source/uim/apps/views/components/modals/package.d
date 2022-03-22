@@ -2,7 +2,7 @@ module uim.apps.views.components.modals;
 
 import uim.apps;
 
-class DAPPModal {
-
+class DAPPModal : DViewComponent {
+  mixin(ViewComponentThis!("APPModal"));
 }
-auto APPModal() { return new DAPPModal; }
+mixin(ViewComponentCalls!("APPModal"));

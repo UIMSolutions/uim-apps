@@ -60,11 +60,11 @@ class DAPPLayout {
 
     this
     .navigation(APPNavigation.fixedTop(true))
-    .footer(APPPageFooter);
+    .footer(PageFooter);
   }
 
   mixin(OProperty!("DAPPNavigation", "navigation"));
-  mixin(OProperty!("DAPPPageFooter", "footer"));
+  mixin(OProperty!("DPageFooter", "footer"));
   mixin(OProperty!("string", "layoutStyle"));
   mixin(OProperty!("string", "name"));
   mixin(OProperty!("string", "title"));

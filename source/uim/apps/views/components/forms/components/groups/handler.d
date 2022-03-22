@@ -45,8 +45,8 @@ class DFormGroupHandler : DFormComponent {
       if (auto formGroup = this.formGroups.get(field.toLower, null)) { // field name not case sensitive !
         debug writeln("Found formGroup for field:", field);
         formGroup.crudMode(this.crudMode).form(form);
-        if (auto entityFormGroup = cast(DFormGroup)formGroup) {
-          return entityFormGroup.entity(entity).toH5(options);
+        if (auto FormGroup = cast(DFormGroup)formGroup) {
+          return FormGroup.entity(entity).toH5(options);
         }
         return formGroup.toH5(options);
     }}

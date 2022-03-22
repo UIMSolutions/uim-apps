@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.crud.read;
 @safe:
 import uim.apps;
 
-class DAPPReadEntityForm : DAPPEntityCRUDForm {
-  mixin(FormThis!("APPReadEntityForm"));
+class DAPPReadForm : DAPPEntityCRUDForm {
+  mixin(FormThis!("APPReadForm"));
 
   override void initialize() {
     super.initialize;
@@ -13,7 +13,7 @@ class DAPPReadEntityForm : DAPPEntityCRUDForm {
       .crudMode(CRUDModes.Read);
   }
 }
-mixin(FormCalls!("APPReadEntityForm"));
+mixin(FormCalls!("APPReadForm"));
 
 /* 
 auto viewForm(T:DOOPEntity)(string path, T entity, STRINGAA[] panes, STRINGAA reqParameters) {
