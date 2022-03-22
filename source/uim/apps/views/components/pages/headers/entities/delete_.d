@@ -1,10 +1,10 @@
-module uim.apps.views.pages.components.headers.entities.delete_;
+module uim.apps.views.components.pages.headers.entities.delete_;
 
 @safe:
 import uim.apps;
 
 class DAPPDeletePageHeader : DAPPEntityPageHeader {
-  mixin(APPPageHeaderThis!("APPDeletePageHeader", Yes.WithEntity));
+  mixin(ViewComponentThis!("APPDeletePageHeader", Yes.WithEntity));
   
   override void initialize() {
     super.initialize;
@@ -35,9 +35,4 @@ class DAPPDeletePageHeader : DAPPEntityPageHeader {
       )];
   }
 }
-mixin(APPPageHeaderCalls!("APPDeletePageHeader", Yes.WithEntity));
-auto APPDeletePageHeader(string rootPath) { return APPDeletePageHeader.rootPath(rootPath); }
-auto APPDeletePageHeader(string rootPath, string preTitle) { return APPDeletePageHeader.rootPath(rootPath).preTitle(preTitle); }
-auto APPDeletePageHeader(string rootPath, string preTitle, string title) { return APPDeletePageHeader.rootPath(rootPath).preTitle(preTitle).title(title); }
-auto APPDeletePageHeader(string rootPath, string preTitle, string title, string[] actions) { return APPDeletePageHeader.rootPath(rootPath).preTitle(preTitle).title(title).actions(actions); }
-
+mixin(ViewComponentCalls!("APPDeletePageHeader", Yes.WithEntity));

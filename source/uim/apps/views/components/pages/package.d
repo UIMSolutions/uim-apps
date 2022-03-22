@@ -7,3 +7,4 @@ public import uim.apps.views.components.pages.page;
 
 public import uim.apps.views.components.pages.headers;
 public import uim.apps.views.components.pages.footers;
+public import uim.apps.views.components.pages.titles;

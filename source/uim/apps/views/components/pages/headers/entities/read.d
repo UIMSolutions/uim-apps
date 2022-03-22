@@ -1,10 +1,10 @@
-module uim.apps.views.pages.components.headers.entities.read;
+module uim.apps.views.components.pages.headers.entities.read;
 
 @safe:
 import uim.apps;
 
 class DAPPViewPageHeader : DAPPEntityPageHeader {
-  mixin(APPPageHeaderThis!("APPViewPageHeader", Yes.WithEntity));
+  mixin(ViewComponentThis!("APPViewPageHeader", Yes.WithEntity));
   
   override DH5Obj[] toH5(STRINGAA options) {
     // debug writeln(StyledString("DAPPViewPageHeader/toH5").setForeground(AnsiColor.green).setBackground(AnsiColor.lightBlue));
@@ -30,8 +30,4 @@ class DAPPViewPageHeader : DAPPEntityPageHeader {
       )];
   }
 }
-mixin(APPPageHeaderCalls!("APPViewPageHeader", Yes.WithEntity));
-auto APPViewPageHeader(string rootPath) { return APPViewPageHeader.rootPath(rootPath); }
-auto APPViewPageHeader(string rootPath, string preTitle) { return APPViewPageHeader.rootPath(rootPath).preTitle(preTitle); }
-auto APPViewPageHeader(string rootPath, string preTitle, string title) { return APPViewPageHeader.rootPath(rootPath).preTitle(preTitle).title(title); }
-auto APPViewPageHeader(string rootPath, string preTitle, string title, string[] actions) { return APPViewPageHeader.rootPath(rootPath).preTitle(preTitle).title(title).actions(actions); }
+mixin(ViewComponentCalls!("APPViewPageHeader", Yes.WithEntity));

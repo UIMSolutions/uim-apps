@@ -6,33 +6,63 @@ import uim.apps;
 class DPageHeader : DViewComponent {
   mixin(ViewComponentThis!("PageHeader"));
 
-  override void initialize() {
-    super.initialize; 
-    
-    this
-      .inner = `Version 1.0.1 - Copyright 2017-2021 UI-Manufaktur UG (haftungsbeschränkt) - License APP`;
+  mixin(APPParameter!("rootPath"));
+  mixin(APPParameter!("preTitle"));
+  mixin(APPParameter!("title"));
+  mixin(OProperty!("string[]", "actions"));
+  mixin(APPParameter!("mainTitle"));
+  mixin(APPParameter!("subTitle"));
+  mixin(OProperty!("DH5Obj", "breadcrumbs"));
+
+  DH5Obj actionButton(string action, STRINGAA options = null) {
+    switch(action) {
+      case "refresh": return buttonLinkRefresh(rootPath); 
+      case "create": return buttonLinkCreate(rootPath); 
+      case "list": return buttonLinkList(rootPath);  
+      default: return null;
+    }
+  } 
+
+  auto actionButtons(STRINGAA options = null) {
+    return actions.map!(action => actionButton(action, options)).array;
+  } 
+
+  override string render(STRINGAA options = null) {
+    // debug writeln("DAPPCreatePageHeader/toString");
+    auto h5 = toH5(options);
+    return h5 ? h5.map!(a => a.toString).join : "";
   }
-    
-  mixin(OProperty!("string", "backgroundColor"));
-  mixin(OProperty!("string", "backgroundImage"));
-  mixin(OProperty!("string", "inner"));
 
-  override DH5Obj[] toH5(STRINGAA options = null) { // hook
-    debugMethodCall(moduleName!DPageHeader~":DPageHeader("~this.name~")::toH5");
+  // #region h5
+  override void beforeH5(STRINGAA options = null) {
+    super.beforeH5(options);
+
+    if ("rootPath" in options) this.rootPath = options["rootPath"];
+    if ("preTitle" in options) this.preTitle = options["preTitle"];
+    if ("title" in options) this.title = options["title"];
+    if ("actions" in options) this.actions = options["actions"].split(",");
+    if ("mainTitle" in options) this.mainTitle = options["mainTitle"];
+    if ("subTitle" in options) this.subTitle = options["subTitle"];
+    // TODO what to do with following?
+/*     mixin(OProperty!("DH5Obj", "breadcrumbs"));
+    mixin(OProperty!("DOOPEntity", "entity"));
+ */  
+  }
+
+  override DH5Obj[] toH5(STRINGAA options = null) {
     super.toH5(options);
-    if (hasError || "redirect" in options) { return null; }    
-    
-    auto rootPath = options.get("rootPath", "/");
-
-    string style;
-    if (backgroundColor) style ~= "background-color:"~backgroundColor~";";
-    if (backgroundImage) style ~= "background-image:url("~backgroundImage~");"; 
-    
-    return [
-      H5Footer(["py-5 bg-dark mt-2 fixed-bottom"], style ? ["style":style] : null, 
-        BS5Container.fluid()(
-          H5P(["m-0 text-center text-white"], inner)
-        ))].toH5;
+     
+    return
+      [
+        H5Div(id, ["page-header d-print-none mb-3"], 
+        BS5Row(["align-items-center"])
+        .col(["col"], 
+          H5Div(["text-small mb-1"], breadcrumbs),
+          H5H2(["page-title"], title))
+        .col(["col-auto ms-auto d-print-none"], 
+          H5Div(["btn-list"], actionButtons(options))
+        ))
+      ].toH5;
   }
 }
 mixin(ViewComponentCalls!("PageHeader"));

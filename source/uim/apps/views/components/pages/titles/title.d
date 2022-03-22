@@ -3,7 +3,7 @@
 *	License: Licensed under Apache 2 [https://apache.org/licenses/LICENSE-2.0.txt]                                       *
 *	Authors: UI Manufaktur UG Team, Ozan Nurettin Süel (Sicherheitsschmiede)										                         * 
 ***********************************************************************************************************************/
-module uim.apps.views.components.pages.components.titles.title;
+module uim.apps.views.components.pages.titles.title;
 
 @safe:
 import uim.apps;

@@ -1,10 +1,10 @@
-module uim.apps.views.pages.components.headers.entities.update;
+module uim.apps.views.components.pages.headers.entities.update;
 
 @safe:
 import uim.apps;
 
 class DAPPEditPageHeader : DAPPEntityPageHeader {
-  mixin(APPPageHeaderThis!("APPEditPageHeader", Yes.WithEntity));
+  mixin(ViewComponentThis!("APPEditPageHeader", Yes.WithEntity));
   
   override DH5Obj[] toH5(STRINGAA options) {
     // debug writeln("DAPPEditPageHeader/toH5");
@@ -31,9 +31,4 @@ class DAPPEditPageHeader : DAPPEntityPageHeader {
 
   }
 }
-mixin(APPPageHeaderCalls!("APPEditPageHeader", Yes.WithEntity));
-auto APPEditPageHeader(string rootPath) { return APPEditPageHeader.rootPath(rootPath); }
-auto APPEditPageHeader(string rootPath, string preTitle) { return APPEditPageHeader.rootPath(rootPath).preTitle(preTitle); }
-auto APPEditPageHeader(string rootPath, string preTitle, string title) { return APPEditPageHeader.rootPath(rootPath).preTitle(preTitle).title(title); }
-auto APPEditPageHeader(string rootPath, string preTitle, string title, string[] actions) { return APPEditPageHeader.rootPath(rootPath).preTitle(preTitle).title(title).actions(actions); }
-
+mixin(ViewComponentCalls!("APPEditPageHeader", Yes.WithEntity));

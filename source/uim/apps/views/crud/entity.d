@@ -24,8 +24,7 @@ class DAPPEntityCRUDView : DAPPView {
     super.initialize;
 
     this
-      .crudMode(
-        CRUDModes.Read)
+      .crudMode(CRUDModes.Read)
       .header(
         PageHeader(this)
           .actions(["refresh", "list", "create"]))

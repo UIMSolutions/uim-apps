@@ -4,7 +4,7 @@ module uim.apps.views.components.pages.footers.footer;
 import uim.apps;
 
 class DPageFooter : DViewComponent {
-  mixin(ViewComponentThis!("PageFooter"));
+  mixin(ViewComponentThis!("PageFooter", Yes.WithEntity, Yes.WithEntities));
 
   override void initialize() {
     super.initialize; 

@@ -1,4 +1,4 @@
-module uim.apps.views.pages.components.headers.entities.list;
+module uim.apps.views.components.pages.headers.entities.list;
 
 @safe:
 import uim.apps;

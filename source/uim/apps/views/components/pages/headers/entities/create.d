@@ -1,10 +1,10 @@
-module uim.apps.views.pages.components.headers.entities.create;
+module uim.apps.views.components.pages.headers.entities.create;
 
 @safe:
 import uim.apps;
 
 class DAPPCreatePageHeader : DAPPEntityPageHeader {
-  mixin(APPPageHeaderThis!("APPCreatePageHeader", Yes.WithEntity));
+  mixin(ViewComponentThis!("APPCreatePageHeader", Yes.WithEntity));
   
   override void initialize() {
     super.initialize;
@@ -36,8 +36,4 @@ class DAPPCreatePageHeader : DAPPEntityPageHeader {
         )].toH5;
   }
 }
-mixin(APPPageHeaderCalls!("APPCreatePageHeader", Yes.WithEntity));
-auto APPCreatePageHeader(string rootPath) { return APPCreatePageHeader.rootPath(rootPath); }
-auto APPCreatePageHeader(string rootPath, string preTitle) { return APPCreatePageHeader.rootPath(rootPath).preTitle(preTitle); }
-auto APPCreatePageHeader(string rootPath, string preTitle, string title, string[] actions = ["list", "create"]) { return APPCreatePageHeader.rootPath(rootPath).preTitle(preTitle).title(title).actions(actions); }
-
+mixin(ViewComponentCalls!("APPCreatePageHeader", Yes.WithEntity));

@@ -11,7 +11,6 @@ public import uim.apps.views.list;
 // Packages
 public import uim.apps.views.components;
 public import uim.apps.views.crud;
-public import uim.apps.views.pages;
 
 // pageses
 public import uim.apps.views.block;
