@@ -15,7 +15,7 @@ class DAPPEntitiesListView : DAPPView {
     debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView("~this.name~"):in");    
     super.initialize;
 
-    this.components["header"] = APPPageHeader(this).actions(["refresh", "create"]);
+    this.components["header"] = PageHeader(this).actions(["refresh", "create"]);
     this.form = APPEntitiesListForm(this);
   }
 

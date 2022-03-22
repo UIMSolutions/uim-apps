@@ -27,7 +27,7 @@ class DAPPEntityCRUDView : DAPPView {
       .crudMode(
         CRUDModes.Read)
       .header(
-        APPPageHeader(this)
+        PageHeader(this)
           .actions(["refresh", "list", "create"]))
       .form(
         Form(this)
