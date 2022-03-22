@@ -3,7 +3,7 @@ module uim.apps.views.components.pages.headers.entities.read;
 @safe:
 import uim.apps;
 
-class DAPPViewPageHeader : DAPPEntityPageHeader {
+class DAPPViewPageHeader : DPageHeader {
   mixin(ViewComponentThis!("APPViewPageHeader", Yes.WithEntity));
   
   override DH5Obj[] toH5(STRINGAA options) {

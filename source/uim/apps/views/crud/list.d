@@ -15,8 +15,12 @@ class DAPPEntitiesListView : DAPPView {
     debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView("~this.name~"):in");    
     super.initialize;
 
-    this.components["header"] = PageHeader(this).actions(["refresh", "create"]);
-    this.form = APPEntitiesListForm(this);
+    this
+      .header(
+        PageHeader(this)
+          .actions([["refresh", "create"]]))
+      .form(
+        APPEntitiesListForm(this));
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {

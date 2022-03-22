@@ -13,7 +13,7 @@ class DAPPEntityCreateView : DAPPEntityCRUDView {
 
     this
       .header(
-        PageHeader(this).actions(["refresh", "list"]));
+        PageHeader(this).actions([["refresh", "list"]]));
 
     auto form = Form(this).crudMode(CRUDModes.Create);
     this.form(form);

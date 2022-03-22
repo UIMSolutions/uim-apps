@@ -11,8 +11,8 @@ class DAPPEntityReadView : DAPPEntityCRUDView {
 
     this
       .header(
-        APPPageHeader(this)
-          .actions(["refresh", "list", "create"]));
+        PageHeader(this)
+          .actions([["refresh", "list", "create"]]));
 
     if (auto frm = cast(DForm)this.form) {
       frm

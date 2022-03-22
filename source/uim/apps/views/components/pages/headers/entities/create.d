@@ -3,14 +3,14 @@ module uim.apps.views.components.pages.headers.entities.create;
 @safe:
 import uim.apps;
 
-class DAPPCreatePageHeader : DAPPEntityPageHeader {
+class DAPPCreatePageHeader : DPageHeader {
   mixin(ViewComponentThis!("APPCreatePageHeader", Yes.WithEntity));
   
   override void initialize() {
     super.initialize;
     
     this
-      .actions(["list", "create"]); 
+      .actions([["list", "create"]]); 
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {

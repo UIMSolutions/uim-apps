@@ -3,9 +3,6 @@ module uim.apps.views.components.pages.headers.entities;
 @safe:
 import uim.apps;
 
-// Main
-public import uim.apps.views.components.pages.headers.entities.entity;
-
 // Modules
 public import uim.apps.views.components.pages.headers.entities.create;
 public import uim.apps.views.components.pages.headers.entities.delete_;

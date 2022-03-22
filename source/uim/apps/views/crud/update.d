@@ -11,8 +11,8 @@ class DAPPEntityUpdateView : DAPPEntityCRUDView {
 
     this
       .header(
-        APPPageHeader(this)
-          .actions(["refresh", "list", "create"]))
+        PageHeader(this)
+          .actions([["refresh", "list", "create"]]))
       .form(
         Form(this)
           .crudMode(CRUDModes.Update)

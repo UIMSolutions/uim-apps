@@ -94,3 +94,8 @@ template OComponent(string id, string name, string type) {
       return cast(O)this; }
   `;
 }
+
+enum BreadcrumbsStyle = "text-small mb-1"; // Original = "page-pretitle"
+
+Flag!"WithEntity" WithEntity;
+Flag!"WithEntities" WithEntities;

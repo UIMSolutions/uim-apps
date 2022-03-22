@@ -3,12 +3,12 @@ module uim.apps.views.components.pages.headers.entities.delete_;
 @safe:
 import uim.apps;
 
-class DAPPDeletePageHeader : DAPPEntityPageHeader {
+class DAPPDeletePageHeader : DPageHeader {
   mixin(ViewComponentThis!("APPDeletePageHeader", Yes.WithEntity));
   
   override void initialize() {
     super.initialize;
-    this.actions(["list", "create"]); 
+    this.actions([["list", "create"]]); 
   }
   
   override DH5Obj[] toH5(STRINGAA options) {
