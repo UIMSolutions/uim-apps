@@ -70,17 +70,3 @@ class DAPPViewObject : DAPPObject {
   }
 }
 
-/* template APPViewProperty(string dataType, string name) {
-  const char[] APPViewProperty = `
-  `~dataType~` `~name~`() { return cast(`~dataType~`)this.component("`~name~`"); }
-  O `~name~`(this O)(`~dataType~` newComponent) { this.component("`~name~`", newComponent); return cast(O)this; }
-  `;
-} */
-
-template APPViewProperty(string dataType, string name) {
-  const char[] APPViewProperty = `
-  protected `~dataType~` _`~name~`;
-  `~dataType~` `~name~`() { return _`~name~`; }
-  O `~name~`(this O)(`~dataType~` newComponent) { _`~name~` = newComponent; return cast(O)this; }
-  `;
-}

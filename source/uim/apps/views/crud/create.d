@@ -13,15 +13,17 @@ class DAPPEntityCreateView : DAPPEntityCRUDView {
 
     this
       .header(
-        PageHeader(this).actions([["refresh", "list"]]));
-
-    auto form = Form(this).crudMode(CRUDModes.Create);
-    this.form(form);
-    form
-      .header(
-        FormHeader(form).actions([["cancel", "save"], ["print", "export"]]))
-      .content(
-        FormContent(form));//.fields(["name", "display", "description"]));
+        PageHeader(this)
+          .actions([["refresh", "list"]]))
+      .form(
+        Form(this)
+          .crudMode(CRUDModes.Create)
+          .header(
+            FormHeader
+              .actions([["cancel", "save"], ["print", "export"]]))
+          .content(
+            EntityFormContent
+              .fields(["name", "display", "description"])));
   }
 }
 mixin(APPViewCalls!("APPEntityCreateView"));

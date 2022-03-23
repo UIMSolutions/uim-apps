@@ -9,7 +9,7 @@ class DAPPEntitiesListView : DAPPView {
   mixin(OProperty!("CRUDModes", "crudMode"));
   mixin(APPParameter!("rootPath"));
   mixin(OProperty!("bool", "readonly"));
-  mixin(OComponent!("form", "form"));
+  mixin(OViewComponent!("form", "form"));
   
   override void initialize() {
     debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView("~this.name~"):in");    

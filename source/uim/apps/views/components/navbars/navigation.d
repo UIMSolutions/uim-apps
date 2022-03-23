@@ -4,18 +4,23 @@ module uim.apps.views.components.navbars.navigation;
 import uim.apps;
 
 class DAPPNavigation : DViewComponent {
-  this() { super(); 
+  mixin(ViewComponentThis!("APPNavigation"));
+
+  override void initialize() {
+    debugMethodCall(moduleName!DAPPNavigation~"::DAPPNavigation("~this.name~"):initialize");   
+    super.initialize;
+
+    debug writeln("Add First Nav");
     this
-    .firstNavbar(APPFirstNavbar)
-    .secondNavbar(APPSecondNavbar);
+      .firstNavbar(APPFirstNavbar);
+
+    debug writeln("Add Second Nav");
+    this
+      .secondNavbar(APPSecondNavbar);
   }
 
-  this(DAPPView myView) { 
-    this().view(myView);
-  }
-
-  mixin(APPViewProperty!("DAPPFirstNavbar", "firstNavbar"));
-  mixin(APPViewProperty!("DAPPSecondNavbar", "secondNavbar"));
+  mixin(OViewComponent!("firstNavbar"));
+  mixin(OViewComponent!("secondNavbar"));
   mixin(OProperty!("bool", "fixedTop"));
   
   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -26,18 +31,18 @@ class DAPPNavigation : DViewComponent {
     auto rootPath = options.get("rootPath", "/");
     debug writeln(moduleName!DAPPNavigation~":DAPPNavigation::toH5 -> appSessionId = ", options.get("appSessionId", ""));
 
-    auto fNavbar = firstNavbar  ? firstNavbar.toH5(options) 
-                                : null;
+    auto firstNavbarH5 = firstNavbar  ? firstNavbar.toH5(options) 
+                                      : null;
     // debug writeln("firstNavbar -> ", fNavbar);
-    auto sNavbar = secondNavbar ? secondNavbar.brand(["link":rootPath, "title":options.get("appTitle", "")]).toH5(options) 
-                                : null;
+    auto secNavbar = cast(DAPPSecondNavbar)secondNavbar;
+    auto secondNavbarH5 = secNavbar ? secNavbar.brand(["link":rootPath, "title":options.get("appTitle", "")]).toH5(options) 
+                                    : null;
     // debug writeln("secondNavbar -> ", sNavbar);
 
     // debug writeln("return navigation...");
 
-    if (fixedTop) return [H5Div(["sticky-top"], fNavbar~sNavbar)].toH5;
+    if (fixedTop) return [H5Div(["sticky-top"], firstNavbarH5~secondNavbarH5)].toH5;
     return fNavbar~sNavbar;
   }
 }
-auto APPNavigation() { return new DAPPNavigation; }
-auto APPNavigation(DAPPView myView) { return new DAPPNavigation(myView); }
+mixin(ViewComponentCalls!("APPNavigation"));

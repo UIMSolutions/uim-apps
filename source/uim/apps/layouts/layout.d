@@ -6,9 +6,14 @@ import uim.apps;
 enum DataModes { Local, REST }
 
 class DAPPLayout {
-  this() { initialize(); }
+  this() {
+    initialize(); }
 
   void initialize() {
+    debug writeln("Initialize 'APPLAyout'"); 
+ 
+    debug writeln("Default settings");
+
     this
       .name("APPLayout")
       .title("UI Manufaktur")
@@ -19,6 +24,7 @@ class DAPPLayout {
       .scripts(APPScriptContainer)
       .styles(APPStyleContainer); 
 
+    debug writeln("Select Style"); 
     if (layoutStyle == "tabler") {
       this.styles.addLinks(
         "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css",
@@ -33,6 +39,7 @@ class DAPPLayout {
         "/lib/tabler/last/js/tabler.min.js");
     }
     
+    debug writeln("Add meta"); 
     this.metas.add(
       ["charset":"utf-8"],
       ["http-equiv":"X-UA-Compatible", "content":"IE=edge"],
@@ -44,12 +51,14 @@ class DAPPLayout {
       //["rel":"icon", "type":"image/ico", "href":"/img/favicon.ico"],
       );
 
+    debug writeln("Add styles"); 
     this.styles.addLinks(
       "/lib/kothing/last/kothing-editor.min.css",
       "/lib/katex/last/katex.min.css",
       "/css/apps/app.css",
       "/css/apps/cms/main.css");
 
+    debug writeln("Add scripts"); 
     this.scripts.addLinks(
       "/lib/kothing/last/kothing-editor.min.js",
       "/lib/katex/last/katex.min.js",
@@ -58,9 +67,15 @@ class DAPPLayout {
     _bodyAttributes["style"] = "background-color: #ffffff;";
     _bodyClasses = ["d-flex", "flex-column", "h-100"];
 
+    debug writeln("Add navigation"); 
     this
-    .navigation(APPNavigation.fixedTop(true))
-    .footer(PageFooter);
+      .navigation(
+        APPNavigation.fixedTop(true));
+
+    debug writeln("Add footer"); 
+    this    
+      .footer(
+        PageFooter);
   }
 
   mixin(OProperty!("DAPPNavigation", "navigation"));

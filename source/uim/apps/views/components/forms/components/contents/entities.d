@@ -15,8 +15,8 @@ class DEntitiesFormContent : DFormContent {
     this.tableFilter(APPEntitiesTableFilter); 
   }
 
-  mixin(OComponent!("tableHeader", "tableHeader"));
-  mixin(OComponent!("tableFilter", "tableFilter"));
+  mixin(OViewComponent!("tableHeader", "tableHeader"));
+  mixin(OViewComponent!("tableFilter", "tableFilter"));
   
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DEntitiesFormContent~"DEntitiesFormContent::beforeH5");

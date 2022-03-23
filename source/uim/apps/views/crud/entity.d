@@ -17,7 +17,7 @@ class DAPPEntityCRUDView : DAPPView {
   }
   `));
 
-  mixin(OComponent!("form"));
+  mixin(OViewComponent!("form"));
 
   override void initialize() {
     debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):initialize");   

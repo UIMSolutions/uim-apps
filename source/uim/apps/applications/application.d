@@ -5,13 +5,17 @@ import uim.apps;
 
 class DAPPApplication {
   this() { 
-    this.links(APPLinkContainer); 
-    this.metas(APPMetaContainer); 
-    this.scripts(APPScriptContainer); 
-    this.styles(APPStyleContainer); 
+    debug writeln("this()");
+    this
+      .links(APPLinkContainer) 
+      .metas(APPMetaContainer) 
+      .scripts(APPScriptContainer) 
+      .styles(APPStyleContainer); 
   }
 
-  this(DAPPLayout mylayout) { this().layout(mylayout); }
+  this(DAPPLayout mylayout) {
+    debug writeln("this(myLayout)");
+    this().layout(mylayout); }
 
   mixin(OProperty!("UUID", "id"));
   mixin(OProperty!("string", "name"));

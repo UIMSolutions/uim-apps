@@ -44,6 +44,7 @@ public import uim.apps.helpers;
 public import uim.apps.javascripts;
 public import uim.apps.layouts;
 public import uim.apps.middlewares;
+public import uim.apps.mixins;
 public import uim.apps.requests;
 // public import uim.apps.scripts;
 public import uim.apps.tests;
@@ -263,29 +264,9 @@ static this() {
 } */
 
 
-template APPParameter(string name, string afterSet = null) {
-  const char[] APPParameter = `
-string `~name~`() { 
-  return parameter("`~name~`"); 
-} 
-O `~name~`(this O)(string newValue) { 
-  this.parameter("`~name~`", newValue);
-  _afterSet`~name.capitalize~`;
-  return cast(O)this; 
-}
-void _afterSet`~name.capitalize~`() { `~afterSet~` } // hook
-`;
-}
 
-template RouterFunction(string functionName, string controllerName, string appName, string content = "") {
-  const char[] RouterFunction = `
-void `~functionName~`(HTTPServerRequest req, HTTPServerResponse res) {
-	debugMethodCall("uimProjectsApi::request(req, res)");
-  `~content~`
-  `~controllerName~`(`~appName~`).request(req, res);
-}
-`;
-}
+
+
 
 interface IAPPWithEntities {  
   @property DOOPEntity[] entities();

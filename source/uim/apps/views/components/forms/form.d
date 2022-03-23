@@ -34,9 +34,9 @@ class DForm : DViewComponent {
   mixin(APPParameter!("contentTitle"));
   mixin(APPParameter!("footerTitle"));
 
-  mixin(OComponent!("header"));
-  mixin(OComponent!("content"));
-  mixin(OComponent!("footer"));
+  mixin(OViewComponent!("header"));
+  mixin(OViewComponent!("content"));
+  mixin(OViewComponent!("footer"));
 
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 

@@ -88,8 +88,8 @@ auto APPSecondNavbar(DAPPNavbarSlot[] slots) { return APPSecondNavbar.slots(slot
 class DAPPFirstNavbar : DViewComponent {
   mixin(ViewComponentThis!("APPFirstNavbar"));
 
-  mixin(OProperty!("string", "appLogo"));
-  mixin(OProperty!("string", "appTitle"));
+  mixin(APPParameter!("appLogo"));
+  mixin(APPParameter!("appTitle"));
   mixin(OProperty!("bool", "requiresLogin"));
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook

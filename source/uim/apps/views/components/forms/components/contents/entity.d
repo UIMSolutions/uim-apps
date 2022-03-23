@@ -7,7 +7,7 @@ class DEntityFormContent : DFormContent {
   mixin(FormComponentThis!("EntityFormContent", true));
 
   override void initialize() {
-    debugMethodCall(moduleName!DFormContent~"::DFormContent("~this.name~"):initialize");   
+    debugMethodCall(moduleName!DEntityFormContent~"::DEntityFormContent("~this.name~"):initialize");   
     super.initialize;
 
     this
