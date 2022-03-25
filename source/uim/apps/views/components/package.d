@@ -16,8 +16,9 @@ public import uim.apps.views.components.avatars;
 public import uim.apps.views.components.badges;
 public import uim.apps.views.components.breadcrumbs;
 public import uim.apps.views.components.buttons;
+public import uim.apps.views.components.calendars;
 public import uim.apps.views.components.cards;
-
+public import uim.apps.views.components.carousels;
 public import uim.apps.views.components.filter;
 public import uim.apps.views.components.forms;
 public import uim.apps.views.components.icons;

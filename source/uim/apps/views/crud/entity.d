@@ -41,7 +41,9 @@ class DAPPEntityCRUDView : DAPPView {
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
 
+    debug writeln(this.entity ? "Has entity "~this.entity.name : "ENtity missing");
     if (auto frm = cast(DForm)this.form) {
+      debug writeln("Found DForm");
       frm.entity(this.entity);
     } 
   }

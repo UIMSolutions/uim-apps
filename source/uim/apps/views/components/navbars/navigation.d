@@ -42,7 +42,7 @@ class DAPPNavigation : DViewComponent {
     // debug writeln("return navigation...");
 
     if (fixedTop) return [H5Div(["sticky-top"], firstNavbarH5~secondNavbarH5)].toH5;
-    return fNavbar~sNavbar;
+    return firstNavbarH5~secondNavbarH5;
   }
 }
 mixin(ViewComponentCalls!("APPNavigation"));

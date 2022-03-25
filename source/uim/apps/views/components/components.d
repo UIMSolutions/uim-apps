@@ -38,8 +38,8 @@ class DViewComponents {
   }
   O add(this O)(string anId, DViewComponent newComponent) {
     foreach(index, component; _components) {
-      if (component && component.id == anId) {
-        _components[index] = NullComponent; 
+      if (component && component.id == anId) { // exists
+        _components[index] = newComponent.id(anId); 
         return cast(O)this;     
       }
     }
@@ -47,12 +47,22 @@ class DViewComponents {
     return cast(O)this;     
   }
 
-  O set(this O)(string anId, DViewComponent newComponent) {
+  O set(this O)(DViewComponent newComponent) {
+    if (newComponent is null) { return cast(O)this; }     
+
+    set(newComponent.id, newComponent);
+    return cast(O)this;     
+  }
+  O set(this O)(string anId, DViewComponent newComponent) { // difference to add?
+    if (newComponent is null) { return cast(O)this; }     
+
     foreach(index, component; _components) {
       if (component && component.id == anId) {
-        _components[index] = newComponent; 
+        _components[index] = newComponent.id(anId); 
+        return cast(O)this;     
       }
     }
+    _components ~= newComponent.id(anId); 
     return cast(O)this;     
   }
   O opIndexAssign(this O)(DViewComponent newComponent, string anId) {

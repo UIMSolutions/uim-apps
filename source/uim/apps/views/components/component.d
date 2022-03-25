@@ -12,7 +12,7 @@ class DViewComponent : DAPPViewObject {
   mixin(OProperty!("bool", "notNull")); 
   mixin(OProperty!("STRINGAA", "style")); 
   mixin(OProperty!("bool", "changed")); 
-  mixin(OProperty!("DViewComponent", "owner")); 
+  mixin(OViewComponent!("owner")); 
   mixin(OProperty!("DAPPView", "view")); 
   mixin(OProperty!("DAPPLayout", "layout")); 
   mixin(APPParameter!("jsCode")); 
@@ -30,12 +30,15 @@ class DViewComponent : DAPPViewObject {
     this
     .changed(true)
     .dynamic(true)
-    .notNull(true)
+    .notNull(true);
+
+    debug writeln("Adding header-content-footer ("~this.name~")");
+/*     this
     .components.add(
       NullComponent.id("header"),
       NullComponent.id("content"),
       NullComponent.id("footer")
-    );
+    ); */
   }
 /* 
   DViewComponent copy() {
@@ -55,8 +58,11 @@ class DViewComponent : DAPPViewObject {
   // #region h5 content 
     void beforeH5(STRINGAA options = null) {
       debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::beforeH5");
+
       // init
       this.clearError; // Delete last error
+      debug writeln("has Components:", this.components.all.map!(c => c.name).array);
+      debug writeln("Found %s entities".format(this.entities.length));
     }
 version(test_uim_apps) {
   unittest {

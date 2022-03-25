@@ -6,7 +6,7 @@ import uim.apps;
 class DAPPListFormContent : DEntitiesFormContent {
   mixin(FormComponentThis!("APPListFormContent"));
 
-  mixin(OProperty!("DViewComponent", "listItem"));
+  mixin(OViewComponent!("listItem"));
 
   override void initialize() {
     debugMethodCall(moduleName!DAPPListFormContent~"::DAPPListFormContent("~this.name~"):initialize");   

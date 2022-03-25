@@ -6,7 +6,7 @@ import uim.apps;
 class DAPPTableFormContent : DEntitiesFormContent {
   mixin(FormComponentThis!("APPTableFormContent"));
 
-  mixin(OProperty!("DViewComponent", "row"));
+  mixin(OViewComponent!("row"));
 
   override void initialize() {
     debugMethodCall(moduleName!DAPPTableFormContent~"::DAPPTableFormContent("~this.name~"):initialize");   

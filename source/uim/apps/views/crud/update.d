@@ -12,13 +12,14 @@ class DAPPEntityUpdateView : DAPPEntityCRUDView {
     this
       .header(
         PageHeader(this)
-          .actions([["refresh", "list", "create"]]))
-      .form(
-        Form(this)
-          .crudMode(CRUDModes.Update)
-          .header(
-            FormHeader
-              .actions([["cancel2list", "save"], ["edit", "version", "delete"], ["print", "export"]])));
+          .actions([["refresh", "list", "create"]]));
+
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .header(
+          FormHeader
+            .actions([["cancel2list", "save"], ["edit", "version", "delete"], ["print", "export"]]));
+    }
   }
 }
 mixin(APPViewCalls!("APPEntityUpdateView"));
