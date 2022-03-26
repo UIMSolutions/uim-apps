@@ -12,22 +12,33 @@ class DForm : DViewComponent {
     writeln("In ", __MODULE__, "/", __LINE__);
  
     this
-      .crudMode(CRUDModes.Read)
-      .method("post")
       .header(
         FormHeader(this))
       .content(
-        FormContent(this));
+        FormContent(this))
+      .crudMode(CRUDModes.Read)
+      .method("post");
+  
   }
 
   mixin(OProperty!("string[string]", "defaults"));
   mixin(OProperty!("string[]", "fields"));
   mixin(OProperty!("DAPPPanes", "panes"));
   mixin(APPParameter!("action"));
-  mixin(APPParameter!("rootPath"));
+
+  mixin(APPParameter!("rootPath", `
+    foreach(component; this.components.all) {
+      if (auto frmComp = cast(DFormComponent)component) {
+        frmComp.rootPath(this.rootPath); }}`));
+
   mixin(APPParameter!("method"));
   mixin(OProperty!("bool", "readonly"));
-  mixin(OProperty!("CRUDModes", "crudMode"));  
+
+  mixin(OProperty!("CRUDModes", "crudMode", "CRUDModes.Read", true, true, "", `
+    foreach(component; this.components.all) {
+      if (auto frmComp = cast(DFormComponent)component) {
+        frmComp.crudMode(this.crudMode); }} `));
+
   mixin(APPParameter!("entityName"));
   mixin(APPParameter!("entitiesName"));
   mixin(APPParameter!("headerTitle"));

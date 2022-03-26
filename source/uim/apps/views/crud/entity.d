@@ -6,16 +6,20 @@ import uim.apps;
 class DAPPEntityCRUDView : DAPPView {
   mixin(APPViewThis!("APPEntityCRUDView"));
 
-  mixin(OProperty!("CRUDModes", "crudMode"));
-  mixin(OProperty!("bool", "readonly"));
+  mixin(OProperty!("CRUDModes", "crudMode", null, true, true, "", `
+    foreach(component; this.components.all) {
+      if (auto frm = cast(DForm)component) {
+        frm.crudMode(this.crudMode); }} `));
+
+  mixin(OProperty!("bool", "readonly", "CRUDModes.Read", true, true, "", `
+    foreach(component; this.components.all) {
+      if (auto frm = cast(DForm)component) {
+        frm.readonly(this.readonly); }}`));
 
   mixin(APPParameter!("rootPath", `
-  foreach(component; this.components.all) {
-    if (auto frm = cast(DForm)component) {
-      frm.rootPath(this.rootPath);
-    }
-  }
-  `));
+    foreach(component; this.components.all) {
+      if (auto frm = cast(DForm)component) {
+        frm.rootPath(this.rootPath); }}`));
 
   mixin(OViewComponent!("form"));
 
@@ -24,16 +28,17 @@ class DAPPEntityCRUDView : DAPPView {
     super.initialize;
 
     this
-      .crudMode(CRUDModes.Read)
       .header(
         PageHeader(this)
           .actions([["refresh", "list", "create"]]))
       .form(
         Form(this)
-          .crudMode(CRUDModes.Read)
           .header(
             FormHeader
-              .actions([["edit", "version", "delete"], ["print", "export"]])));    
+              .actions([["edit", "version", "delete"], ["print", "export"]]))
+          .content(
+            EntityFormContent))    
+      .crudMode(CRUDModes.Read);
   }
 
   override void beforeH5(STRINGAA options = null) {

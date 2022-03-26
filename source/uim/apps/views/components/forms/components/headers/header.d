@@ -11,10 +11,9 @@ class DFormHeader : DFormComponent {
     super.initialize;
     debug writeln("In ", __MODULE__, "/", __LINE__);
 
-
     this
-    .id("formheader-%s".format(uniform(1,1_000)))
-    .crudMode(CRUDModes.Create); 
+      .id("formheader-%s".format(uniform(1,1_000)))
+      .crudMode(CRUDModes.Read); 
   }
   
   mixin(APPParameter!("mainTitle"));
@@ -28,7 +27,7 @@ class DFormHeader : DFormComponent {
   DH5Obj actionButton(string action, STRINGAA options = null) {
     debugMethodCall(moduleName!DFormHeader~":DFormHeader::actionButton");
 
-    auto entityId = options.get("entityId", null);
+    auto entityId = this.entity ? this.entity["id"] : "-missing-";
 
     switch(action) {
       case "refresh": return buttonLinkRefresh(rootPath); 

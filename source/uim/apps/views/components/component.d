@@ -3,7 +3,7 @@ module uim.apps.views.components.component;
 @safe:
 import uim.apps;
 
-class DViewComponent : DAPPViewObject {
+class DViewComponent : DViewObject {
   this() { super(); this.name("ViewComponent"); }  
   this(DAPPView myView) { this(); this.view(myView); }
   

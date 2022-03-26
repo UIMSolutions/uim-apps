@@ -14,10 +14,9 @@ class DPageHeader : DViewComponent {
   mixin(APPParameter!("subTitle"));
   mixin(OProperty!("DH5Obj", "breadcrumbs"));
   mixin(APPParameter!("breadcrumbsStyle"));
-  
 
   DH5Obj actionButton(string action, STRINGAA options = null) {
-    auto id = entity ? entity.id.toString : UUID().toString;      
+    auto id = this.entity ? this.entity.id.toString : UUID().toString;      
   
     switch(action) {
       case "refresh": return buttonLinkRefresh(rootPath); 

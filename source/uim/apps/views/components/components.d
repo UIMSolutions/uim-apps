@@ -5,6 +5,11 @@ import uim.apps;
 
 class DViewComponents {
   this() { /* this.name("ViewComponents"); */ }    
+  this(DViewObject myParentComponent) { 
+    this().parent(myParentComponent);    
+  }    
+
+  mixin(OProperty!("DViewObject", "parent"));
 
   private DViewComponent[] _components;
 
@@ -130,6 +135,7 @@ protected DOOPEntity _entity;
   }
  }
 auto ViewComponents() { return new DViewComponents; }
+auto ViewComponents(DViewObject myParent) { return new DViewComponents(myParent); }
 
 version(test_uim_apps) {
   unittest {

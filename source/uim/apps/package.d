@@ -41,6 +41,7 @@ public import uim.apps.controllers.validators;
 public import uim.apps.events;
 public import uim.apps.forms;
 public import uim.apps.helpers;
+public import uim.apps.interfaces;
 public import uim.apps.javascripts;
 public import uim.apps.layouts;
 public import uim.apps.middlewares;
@@ -268,13 +269,3 @@ static this() {
 
 
 
-interface IAPPWithEntities {  
-  @property DOOPEntity[] entities();
-  // @property O entities(this O)(DOOPEntity[] myEntities);
-  @property void entities(DOOPEntity[] myEntities);
-}
-
-interface IAPPWithEntity {  
-  @property DOOPEntity entity();
-  @property O entity(this O)(DOOPEntity myEntity);
-}

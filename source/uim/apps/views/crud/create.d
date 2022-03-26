@@ -11,19 +11,18 @@ class DAPPEntityCreateView : DAPPEntityCRUDView {
 
     debug writeln("In ", __MODULE__, "/", __LINE__); 
 
-    this
-      .header(
-        PageHeader(this)
-          .actions([["refresh", "list"]]))
-      .form(
-        Form(this)
-          .crudMode(CRUDModes.Create)
-          .header(
-            FormHeader
-              .actions([["cancel", "save"], ["print", "export"]]))
-          .content(
-            EntityFormContent
-              .fields(["name", "display", "description"])));
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader.actions([["refresh", "list"]]); }
+
+    if (auto frm = cast(DForm)this.form) {
+      if (auto frmHeader = cast(DFormHeader)frm.header) {
+        frmHeader.actions([["cancel", "save"], ["print", "export"]]); }
+
+      if (auto frmContent = cast(DEntityFormContent)frm.content) {
+        frmContent.fields(["name", "display", "description"]); }
+    }
+
+    this.crudMode(CRUDModes.Create);
   }
 }
 mixin(APPViewCalls!("APPEntityCreateView"));

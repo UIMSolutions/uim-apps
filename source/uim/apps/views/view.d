@@ -8,7 +8,7 @@ module uim.apps.views.view;
 @safe:
 import uim.apps;
 
-class DAPPView : DAPPViewObject, IAPPEventDispatcher {
+class DAPPView : DViewObject, IAPPEventDispatcher {
   mixin(APPViewThis!("APPView"));
 
   // Initialization (= hook method)

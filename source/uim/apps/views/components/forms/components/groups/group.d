@@ -52,10 +52,10 @@ class DFormGroup : DFormComponent {
     super.beforeH5(options);
     if (hasError) { return; }
 
-    if (this.form) { // Owner Class
-      this.crudMode(this.form.crudMode);
+    if (entity /* TODO ADD! && entity has fieldName */) {      
+      this.fieldValue = entity[fieldName];
     }
-  }
+ }
   version(test_uim_apps) {
     unittest {
       writeln("--- Test in ", __MODULE__, "/", __LINE__);

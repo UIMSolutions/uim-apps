@@ -3,52 +3,24 @@ module uim.apps.views.object_;
 @safe:
 import uim.apps;
 
-class DAPPViewObject : DAPPObject {
+class DViewObject : DAPPObject {
   this() { super(); }
 
   mixin(OProperty!("DViewComponents", "components"));
 
-  protected DOOPEntity _entity;
-  DOOPEntity entity() { return _entity; }
-  bool hasEntity() {
-    return (this.entity !is null); 
-  }
+  mixin(OProperty!("DOOPEntity", "entity", null, true, true, "", `
+    this.components.entity(this.entity);
+    `));
 
-  O entity(this O)(DOOPEntity newEntity) {
-    _entity = newEntity;
- 
-    this.components.entity(newEntity);
-    _afterSetEntity;
-    return cast(O)this;
-  } 
-  
-  void _afterSetEntity() {} // hook
-
-  protected DOOPEntity[] _entities;
-  DOOPEntity[] entities() { return _entities; }
-  bool hasEntities() {
-    return (this.entities !is null); 
-  }
-
-  O entities(this O)(DOOPEntity[] newEntities...) {
-    this.entities(newEntities);
-    return cast(O)this;
-  }
-
-  O entities(this O)(DOOPEntity[] newEntities) {
-    _entities = newEntities;
-
-    this.components.entities(newEntities);
-    _afterSetEntities;
-    return cast(O)this;
-  }
-  void _afterSetEntities() {}
+  mixin(OProperty!("DOOPEntity[]", "entities", null, true, true, "", `
+    this.components.entities(this.entities);
+   `));
 
   override void initialize() {
     super.initialize;
 
     this
-      .components(ViewComponents);
+      .components(ViewComponents(this));
   }
 
   O addComponent(this O)(DViewComponent newComponent) {
