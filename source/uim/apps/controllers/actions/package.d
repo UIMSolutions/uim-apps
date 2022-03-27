@@ -13,8 +13,8 @@ public import uim.apps.controllers.actions.login2;
 public import uim.apps.controllers.actions.setsite;
 public import uim.apps.controllers.actions.system;
 
-template EnityActions(string entityName, string rootPath, string collectionName, string classCategory) {
-  const char[] EnityActions = `
+template EntityActions(string entityName, string rootPath, string collectionName, string classCategory) {
+  const char[] EntityActions = `
 class D`~entityName~`CreateAction : D`~classCategory~`CreateAction {
   `~appControllerThis(entityName~"CreateAction")~`
 
