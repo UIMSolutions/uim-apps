@@ -18,8 +18,11 @@ class DAPPEntityCRUDView : DAPPView {
 
   mixin(APPParameter!("rootPath", `
     foreach(component; this.components.all) {
+      if (auto pgHeader = cast(DPageHeader)component) {
+        pgHeader.rootPath(this.rootPath); }
       if (auto frm = cast(DForm)component) {
-        frm.rootPath(this.rootPath); }}`));
+        frm.rootPath(this.rootPath); }
+    }`));
 
   mixin(OViewComponent!("form"));
 

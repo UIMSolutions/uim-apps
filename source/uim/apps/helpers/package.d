@@ -20,7 +20,7 @@ template AddRoutes(string router, string rootPath, string rootName) {
 
 `~router~`
   .post("`~rootPath~`/actions/create", &`~rootName~`CreateAction)
-  .post("`~rootPath~`/actions/save", &`~rootName~`UpdateAction)
+  .post("`~rootPath~`/actions/update", &`~rootName~`UpdateAction)
   .post("`~rootPath~`/actions/delete", &`~rootName~`DeleteAction);
 `;
 }
