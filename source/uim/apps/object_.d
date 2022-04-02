@@ -38,7 +38,13 @@ class DAPPObject {
   }
 
   // #region error handling
-    mixin(OProperty!("string", "error"));
+    string _error;
+    string error() { return _error; }
+    O error(this O)(string newError) {
+      debug writeln("New Error:", newError);
+      _error = newError;
+      return cast(O)this;
+    }
 
     bool hasError() { return (this.error.length > 0); } 
     O clearError(this O)() {

@@ -10,7 +10,7 @@ class DAPPCheckAppSessionHasAccount : DAPPCheckAppSessionExists {
     super.initialize;
 
     this
-    .redirectUrl("/error?account_missing");
+      .redirectUrl("/error?account_missing");
   }
 
   override bool execute(STRINGAA options = null) {    
