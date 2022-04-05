@@ -13,6 +13,7 @@ class DViewComponents {
 
   private DViewComponent[] _components;
 
+  size_t length() { return _components.length; }
   auto all() { return _components; }
 
   bool has(string anId) {
@@ -20,6 +21,13 @@ class DViewComponents {
       if (component && component.id == anId) return true; }
     return false;
   }
+
+  size_t pos(string anId) {
+    foreach(index, component; _components) {
+      if (component && component.id == anId) return index; }
+    return -1;
+  }
+
   auto get(string anId) {
     foreach(component; _components) {
       if (component && component.id == anId) return component; }
@@ -33,6 +41,7 @@ class DViewComponents {
     this.add(newComponents);
     return cast(O)this;     
   }
+
   O add(this O)(DViewComponent[] newComponents) {
     foreach(newComponent; newComponents) {
       if (newComponent) {
@@ -41,14 +50,14 @@ class DViewComponents {
     }
     return cast(O)this;     
   }
+
   O add(this O)(string anId, DViewComponent newComponent) {
-    foreach(index, component; _components) {
-      if (component && component.id == anId) { // exists
-        _components[index] = newComponent.id(anId); 
-        return cast(O)this;     
-      }
+    if (has(anId)) {
+      _components[pos(anId)] = newComponent.id(anId); 
     }
-    _components ~= newComponent.id(anId); 
+    else {
+      _components ~= newComponent.id(anId); 
+    }
     return cast(O)this;     
   }
 
@@ -58,18 +67,16 @@ class DViewComponents {
     set(newComponent.id, newComponent);
     return cast(O)this;     
   }
-  O set(this O)(string anId, DViewComponent newComponent) { // difference to add?
+
+  O set(this O)(string anId, DViewComponent newComponent) { 
     if (newComponent is null) { return cast(O)this; }     
 
-    foreach(index, component; _components) {
-      if (component && component.id == anId) {
-        _components[index] = newComponent.id(anId); 
-        return cast(O)this;     
-      }
+    if (has(anId)) {
+      _components[pos(anId)] = newComponent.id(anId); 
     }
-    _components ~= newComponent.id(anId); 
     return cast(O)this;     
   }
+
   O opIndexAssign(this O)(DViewComponent newComponent, string anId) {
     set(anId, newComponent);
     return cast(O)this;
@@ -124,22 +131,29 @@ protected DOOPEntity _entity;
   }
 
   O remove(this O)(string anId) {
-    foreach(index, component; _components) {
-      if (component.id == anId) _component[index] = NullComponent;      
+    if (has(anId)) {
+      _components.remove(pos(anId));
     }
     return cast(O)this;
   }
+
   O clear(this O)() {
     _component[] = null;      
     return cast(O)this;
   }
- }
+
+  DViewComponents dup() {
+    return ViewComponents.add(_components.dup);
+  }
+}
 auto ViewComponents() { return new DViewComponents; }
 auto ViewComponents(DViewObject myParent) { return new DViewComponents(myParent); }
 
 version(test_uim_apps) {
   unittest {
-    auto comonent = ViewComponents;
+    assert(ViewComponents);
+    auto components = ViewComponents;
+    assert(components.length == 0);
     
   }
 }

@@ -20,7 +20,8 @@ class DViewObject : DAPPObject {
     super.initialize;
 
     this
-      .components(ViewComponents(this));
+      .components(
+        ViewComponents(this));
   }
 
   O addComponent(this O)(DViewComponent newComponent) {
