@@ -36,7 +36,7 @@ template OViewComponent(string id) {
   const char[] OViewComponent = `
     DViewComponent `~id~`() { return this.components["`~id~`"]; }
     O `~id~`(this O)(DViewComponent newComponent) { 
-      this.components["`~id~`"] = newComponent; 
+      this.components.add("`~id~`", newComponent); 
       return cast(O)this; }
   `;
 }
@@ -45,7 +45,7 @@ template OViewComponent(string id, string name) {
   const char[] OViewComponent = `
     DViewComponent `~name~`() { return this.components["`~id~`"]; }
     O `~name~`(this O)(DViewComponent newComponent) { 
-      this.components["`~id~`"] = newComponent; 
+      this.components.add("`~id~`", newComponent); 
       return cast(O)this; }
   `;
 }

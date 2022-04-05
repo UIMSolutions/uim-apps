@@ -127,8 +127,8 @@ version(test_uim_apps) {
   }
 
   void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPController~":DAPPController::beforeResponse");
-    this.error(""); // delete existing error message
+    debugMethodCall(moduleName!DAPPController~":DAPPController("~this.name~")::beforeResponse");
+    this.clearError; // delete existing error message
 
     if ("appSessionId" !in options) {      
       options["appSessionId"] = this.request && this.request.session  ? this.request.session.id : null;

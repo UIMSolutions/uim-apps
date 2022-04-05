@@ -124,21 +124,23 @@ class DAPPLayout {
 
 // #region render
 	void beforeRender(STRINGAA options = null) {
-		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::beforeRender");
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::beforeRender");
 	}
 
 	string render(DAPPPageController controller, DAPPView view, STRINGAA options = null) { 
-		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::render(DAPPPageController controller, DAPPView view, STRINGAA options = null)");
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::render(DAPPPageController controller, DAPPView view, STRINGAA options = null)");
     if (view) {
       debug writeln("view is -> ", view.name);
 		  return render(controller, view.toH5(options), options);
+    } 
+    else {
+      debug writeln("view is missing ");
+      return render(controller, "", options);
     }
-    debug writeln("view is missing ");
-    return render(controller, "", options);
 	}
 
 	string render(DAPPPageController controller, DH5Obj[] h5Objs, STRINGAA options = null) { 
-		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::render(DAPPPageController controller, DH5Obj[] h5Objs, STRINGAA options = null)");
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::render(DAPPPageController controller, DH5Obj[] h5Objs, STRINGAA options = null)");
 		if (h5Objs) {
       return render(controller, h5Objs.map!(h5 => h5.toString).join, options);
     }
@@ -146,7 +148,7 @@ class DAPPLayout {
 	}
 
 	string render(DAPPPageController controller, string content, STRINGAA options = null) { 
-		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout::render(DAPPPageController controller, string content, STRINGAA options = null)");
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::render(DAPPPageController controller, string content, STRINGAA options = null)");
 		beforeRender(options);
 
 		// 1. page parameters to options

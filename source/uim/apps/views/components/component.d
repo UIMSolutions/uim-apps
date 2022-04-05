@@ -32,7 +32,6 @@ class DViewComponent : DViewObject {
     .dynamic(true)
     .notNull(true);
 
-    debug writeln("Adding header-content-footer ("~this.name~")");
 /*     this
     .components.add(
       NullComponent.id("header"),
