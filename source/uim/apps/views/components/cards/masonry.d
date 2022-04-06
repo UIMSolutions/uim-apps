@@ -1,15 +1,15 @@
-module uim.apps.views.components.cards.cards;
+module uim.apps.views.components.cards.masonry;
 
 @safe:
 import uim.apps;
 
-class DAPPCardsViewComponent : DViewComponent {
-  mixin(ViewComponentThis!("APPCardsViewComponent"));
+class DAPPMasonaryCardsComponent : DViewComponent {
+  mixin(ViewComponentThis!("APPMasonaryCardsComponent"));
 
   mixin(OProperty!("DH5Obj[]", "cards"));
 
   override DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPCardsViewComponent~":DAPPCardsViewComponent("~this.name~")::toH5");
+    debugMethodCall(moduleName!DAPPMasonaryCardsComponent~":DAPPMasonaryCardsComponent("~this.name~")::toH5");
     super.toH5(options);
     if (hasError || "redirect" in options) { return null; }
 
@@ -17,4 +17,4 @@ class DAPPCardsViewComponent : DViewComponent {
       BS5Row(["row-cards"], ["data-masonry":"{&quot;percentPosition&quot;: true }"], this.cards)].toH5;
   }
 }
-mixin(ViewComponentCalls!("APPCardsViewComponent"));
+mixin(ViewComponentCalls!("APPMasonaryCardsComponent"));

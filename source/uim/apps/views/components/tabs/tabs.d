@@ -9,7 +9,7 @@ class DAPPTabsViewComponent : DViewComponent {
   mixin(OProperty!("DAPPTabViewComponent[]", "tabs"));
 
   override DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPCardsViewComponent~":DAPPCardsViewComponent::toH5");
+    debugMethodCall(moduleName!DAPPTabsViewComponent~":DAPPTabsViewComponent::toH5");
     super.toH5(options);
     if (hasError || "redirect" in options) { return null; }
     
