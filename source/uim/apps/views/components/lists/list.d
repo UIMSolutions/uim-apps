@@ -10,6 +10,9 @@ class DAPPListViewComponent : DViewComponent {
   mixin(SProperty!("DOOPEntity[UUID]", "themesById"));
 
   mixin(OProperty!("DListItem", "itemTemplate"));
+  mixin(OViewComponent!("listContent"));
+  mixin(OViewComponent!("header"));
+  mixin(OViewComponent!("footer"));
 
   mixin(OProperty!("string[]", "headerClasses"));
   mixin(OProperty!("string[]", "contentClasses"));
@@ -17,13 +20,13 @@ class DAPPListViewComponent : DViewComponent {
 
 
   override DH5Obj[] toH5(STRINGAA options = null) { 
-    super.beforeH5(options);
+    super.toH5(options);
     if (hasError || "redirect" in options) { return null; }
 
     auto card = BS5Card;
-    if (showHeader) card.header(["d-block"]~headerClasses, this.components["header"].toH5(options));
-    card.body_(contentClasses, this.components["content"].toH5(options));
-    if (showFooter) card.footer(["d-block"]~footerClasses, this.components["footer"].toH5(options));
+    if (showHeader) card.header(["d-block"]~headerClasses, this.header.toH5(options));
+    card.body_(contentClasses, this.listContent.toH5(options));
+    if (showFooter) card.footer(["d-block"]~footerClasses, this.footer.toH5(options));
 
     return [card].toH5;
   }
