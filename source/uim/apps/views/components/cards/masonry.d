@@ -13,6 +13,8 @@ class DAPPMasonaryCardsComponent : DViewComponent {
     super.toH5(options);
     if (hasError || "redirect" in options) { return null; }
 
+    debug writeln ("Masonary:", 
+      BS5Row(["row-cards"], ["data-masonry":"{&quot;percentPosition&quot;: true }"], this.cards));
     return [
       BS5Row(["row-cards"], ["data-masonry":"{&quot;percentPosition&quot;: true }"], this.cards)].toH5;
   }

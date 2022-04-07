@@ -129,7 +129,7 @@ version(test_uim_apps) {
       }}
 
   override string stringResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::stringResponse");
+    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController("~this.name~")::stringResponse");
     super.stringResponse(options);
     if (hasError) { return null; }
     
