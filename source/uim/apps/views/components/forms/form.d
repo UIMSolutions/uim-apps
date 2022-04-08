@@ -8,10 +8,11 @@ class DForm : DViewComponent {
 
   override void initialize() {
     debugMethodCall(moduleName!DForm~"::DForm("~this.name~"):initialize");   
-    super.initialize;
+    super.initialize;    
     writeln("In ", __MODULE__, "/", __LINE__);
  
     this
+      .id("form_"~to!string(viewComponentCounter))
       .header(
         FormHeader(this))
       .content(
@@ -122,7 +123,7 @@ class DForm : DViewComponent {
     
     DBS5Col _col = BS5Col(["col-12"]);
     _col(
-      H5Form("Form", ["card"], ["method":method, "action":action], 
+      H5Form(this.id, ["card"], ["method":method, "action":action], 
         this.header.toH5(options)~
         this.content.toH5(options)~
         this.footer.toH5(options)

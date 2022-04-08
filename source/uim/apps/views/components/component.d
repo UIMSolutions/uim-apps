@@ -7,6 +7,8 @@ class DViewComponent : DViewObject {
   this() { super(); this.name("ViewComponent"); }  
   this(DAPPView myView) { this(); this.view(myView); }
   
+  static size_t viewComponentCounter = 0;
+
   mixin(OProperty!("bool", "dynamic")); 
   mixin(OProperty!("bool", "isNull")); 
   mixin(OProperty!("bool", "notNull")); 
@@ -27,7 +29,10 @@ class DViewComponent : DViewObject {
   override void initialize() {
     super.initialize; 
 
+    viewComponentCounter++;
+
     this
+    .id(this.name~"_"~to!string(viewComponentCounter))
     .changed(true)
     .dynamic(true)
     .notNull(true);
