@@ -116,9 +116,7 @@ version(test_uim_apps) {
     debugMethodCall(moduleName!DAPPPageController~":DAPPPageController("~this.name~")::beforeResponse");
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
-    
-    this.links.add(["rel":"canonical", "href": this.canonical]);
-    
+        
     this.appSession = getAppSession(options);
     if (appSession) { this.site(appSession.site); }
   }
@@ -130,6 +128,7 @@ version(test_uim_apps) {
 
   override string stringResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPPageController~":DAPPPageController("~this.name~")::stringResponse");
+    this.links.add(["rel":"canonical", "href": this.canonical]);
     super.stringResponse(options);
     if (hasError) { return null; }
     
