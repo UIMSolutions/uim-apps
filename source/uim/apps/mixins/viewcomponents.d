@@ -36,8 +36,12 @@ template OViewComponent(string id) {
   const char[] OViewComponent = `
     DViewComponent `~id~`() { return this.components["`~id~`"]; }
     O `~id~`(this O)(DViewComponent newComponent) { 
-      this.components.set("`~id~`", newComponent); 
+      beforeSet`~id.capitalize~`;
+      this.components.set("`~id~`", newComponent);
+      afterSet`~id.capitalize~`; 
       return cast(O)this; }
+    void beforeSet`~id.capitalize~`() {}
+    void afterSet`~id.capitalize~`() {}
   `;
 }
 
@@ -45,8 +49,12 @@ template OViewComponent(string id, string name) {
   const char[] OViewComponent = `
     DViewComponent `~name~`() { return this.components["`~id~`"]; }
     O `~name~`(this O)(DViewComponent newComponent) { 
+      beforeSet`~name.capitalize~`;
       this.components.set("`~id~`", newComponent); 
+      afterSet`~name.capitalize~`; 
       return cast(O)this; }
+    void beforeSet`~name.capitalize~`() {}
+    void afterSet`~name.capitalize~`() {}
   `;
 }
 
@@ -54,7 +62,11 @@ template OViewComponent(string id, string name, string type) {
   const char[] OViewComponent = `
     `~type~` `~name~`() { return cast(`~type~`)this.components["`~id~`"]; }
     O `~name~`(this O)(`~type~` newComponent) { 
+      beforeSet`~name.capitalize~`;
       this.components.set("`~id~`", newComponent); 
+      afterSet`~name.capitalize~`; 
       return cast(O)this; }
+    void beforeSet`~name.capitalize~`() {}
+    void afterSet`~name.capitalize~`() {}
   `;
 }
