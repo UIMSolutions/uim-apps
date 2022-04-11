@@ -25,12 +25,12 @@ class DViewObject : DAPPObject {
   }
 
   O addComponent(this O)(DViewComponent newComponent) {
-    this.components.add(newComponent);
+    this.components.set(newComponent);
     return cast(O)this;
   }
 
   O addComponent(this O)(string anId, DViewComponent newComponent) {
-    this.components.add(anId, newComponent);
+    this.components.set(anId, newComponent);
     return cast(O)this;
   }
 

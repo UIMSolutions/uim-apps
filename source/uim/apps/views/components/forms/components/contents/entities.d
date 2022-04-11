@@ -11,7 +11,7 @@ class DEntitiesFormContent : DFormContent {
     super.initialize;
     debug writeln("In ", __MODULE__, "/", __LINE__);
 
-    this.components["header"] = APPEntitiesTableHeader;
+    this.components.set("header", APPEntitiesTableHeader);
     this.tableFilter(APPEntitiesTableFilter); 
   }
 
