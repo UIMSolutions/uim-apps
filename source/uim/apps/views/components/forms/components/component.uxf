@@ -1,0 +1,19 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;240&lt;/x&gt;&lt;y&gt;300&lt;/y&gt;&lt;w&gt;190&lt;/w&gt;&lt;h&gt;30&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=&amp;lt;&amp;lt;&amp;lt;&amp;lt;-&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;170;10&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>750</x><y>220</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Stereotype&gt;&gt;
+Package::DViewComponent
+{Some Properties}
+--
+-id: Long
+_-ClassAttribute: Long_
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+--
+Responsibilities
+-- Resp1
+*-- Resp2*</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>300</y><w>200</w><h>60</h></coordinates><panel_attributes>DView
+--
++components: DViewComponents
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>310</y><w>330</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=0..n
+components</panel_attributes><additional_attributes>10;20;310;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>240</x><y>20</y><w>210</w><h>110</h></coordinates><panel_attributes>
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element></diagram>

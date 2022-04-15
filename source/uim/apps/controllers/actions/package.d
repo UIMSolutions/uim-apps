@@ -13,22 +13,25 @@ public import uim.apps.controllers.actions.login2;
 public import uim.apps.controllers.actions.setsite;
 public import uim.apps.controllers.actions.system;
 
-template EntityActions(string entityName, string rootPath, string collectionName, string classCategory) {
-  const char[] EntityActions = `
-class D`~entityName~`CreateAction : D`~classCategory~`CreateAction {
-  `~appControllerThis(entityName~"CreateAction")~`
 
-  override void initialize() {
-    super.initialize;
+string entityCreateAction(string entityName, string rootPath, string collectionName, string classCategory) {
+  return `class D`~entityName~`CreateAction : D`~classCategory~`CreateAction {
+    `~appControllerThis(entityName~"CreateAction")~`
 
-    this
-      .rootPath("`~rootPath~`") 
-      .collectionName("`~collectionName~`");
+    override void initialize() {
+      super.initialize;
+
+      this
+        .rootPath("`~rootPath~`") 
+        .collectionName("`~collectionName~`");
+    }
   }
+  `~appControllerCalls(entityName~"CreateAction");
 }
-`~appControllerCalls(entityName~"CreateAction")~`
 
-class D`~entityName~`UpdateAction : D`~classCategory~`UpdateAction {
+template EntityActions(string entityName, string rootPath, string collectionName, string classCategory) {
+  const char[] EntityActions = entityCreateAction(entityName, rootPath, collectionName, classCategory)~
+  `class D`~entityName~`UpdateAction : D`~classCategory~`UpdateAction {
   `~appControllerThis(entityName~"UpdateAction")~`
 
   override void initialize() {

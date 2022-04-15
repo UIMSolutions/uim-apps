@@ -47,6 +47,7 @@ public import uim.apps.layouts;
 public import uim.apps.middlewares;
 public import uim.apps.mixins;
 public import uim.apps.requests;
+public import uim.apps.routers;
 // public import uim.apps.scripts;
 public import uim.apps.tests;
 public import uim.apps.security;
@@ -58,6 +59,8 @@ public import uim.apps.views.registry;
 public import uim.apps.object_;
 
 public import layouts.tabler;
+
+DAPPApplication server;
 
 enum CRUDModes { Create, Read, Update, Delete }
 
@@ -264,6 +267,69 @@ static this() {
   uimViewRegistry = APPViewRegistry;
 } */
 
+auto editorSummary = `const editorSummary = KothingEditor.create("entity_summary", {
+  display: "block",
+  width: "100%",
+  height: "auto",
+  popupDisplay: "full",
+  katex: katex,
+  toolbarItem: [
+    ["undo", "redo"],
+    ["font", "fontSize", "formatBlock"],
+    ["bold", "underline", "italic", "strike", "subscript", "superscript", "fontColor", "hiliteColor"],
+    ["outdent", "indent", "align", "list", "horizontalRule"],
+    ["link", "table", "image", "audio", "video"],
+    ["lineHeight", "paragraphStyle", "textStyle"],
+    ["showBlocks", "codeView"],
+    ["math"],
+    ["preview", "print", "fullScreen"],
+    ["save", "template"],
+    ["removeFormat"],
+  ],
+  templates: [
+    {
+      name: "Template-1",
+      html: "<p>HTML source1</p>",
+    },
+    {
+      name: "Template-2",
+      html: "<p>HTML source2</p>",
+    },
+  ],
+  charCounter: true,
+});`;
+
+auto editorText = `const editorText = KothingEditor.create("entity_text", {
+  display: "block",
+  width: "100%",
+  height: "auto",
+  popupDisplay: "full",
+  katex: katex,
+  toolbarItem: [
+    ["undo", "redo"],
+    ["font", "fontSize", "formatBlock"],
+    ["bold", "underline", "italic", "strike", "subscript", "superscript", "fontColor", "hiliteColor"],
+    ["outdent", "indent", "align", "list", "horizontalRule"],
+    ["link", "table", "image", "audio", "video"],
+    ["lineHeight", "paragraphStyle", "textStyle"],
+    ["showBlocks", "codeView"],
+    ["math"],
+    ["preview", "print", "fullScreen"],
+    ["save", "template"],
+    ["removeFormat"],
+  ],
+  templates: [
+    {
+      name: "Template-1",
+      html: "<p>HTML source1</p>",
+    },
+    {
+      name: "Template-2",
+      html: "<p>HTML source2</p>",
+    },
+  ],
+  charCounter: true,
+});`;
 
 
 
