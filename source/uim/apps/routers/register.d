@@ -1,4 +1,4 @@
-module uim.apps.pages.register;
+module uim.apps.routers.register;
 
 @safe:
 import uim.apps;
@@ -7,7 +7,7 @@ void uimRegister(HTTPServerRequest req, HTTPServerResponse res) {
   debugMethodCall(moduleName!uimRegister~":uimRegister");
   STRINGAA reqParameters = readRequestParameters(req, null); 
 
-  APPPageController(server).request(req, res);
+  APPPageController(thisServer).request(req, res);
 }
 
 /* static this() {

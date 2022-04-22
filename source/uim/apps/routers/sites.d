@@ -1,4 +1,4 @@
-module source.uim.apps.routers.sites;
+module uim.apps.routers.sites;
 
 @safe:
 import uim.apps;
@@ -6,13 +6,13 @@ import uim.apps;
 void uimSites(HTTPServerRequest req, HTTPServerResponse res) {
   debugMethodCall(moduleName!uimSites~":uimSites");
 
-  APPPageController(server).request(req, res);
+  APPPageController(thisServer).request(req, res);
 }
 
 void uimSiteSelectAction(HTTPServerRequest req, HTTPServerResponse res) {
   debugMethodCall(moduleName!uimSiteSelectAction~":uimSiteSelectAction");
 
-  APPSelectSiteActionController(server).request(req, res);
+  APPSelectSiteActionController(thisServer).request(req, res);
 }
 
 /* 

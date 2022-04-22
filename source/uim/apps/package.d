@@ -60,7 +60,7 @@ public import uim.apps.object_;
 
 public import layouts.tabler;
 
-DAPPApplication server;
+DAPPApplication thisServer;
 
 enum CRUDModes { Create, Read, Update, Delete }
 

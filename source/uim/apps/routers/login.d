@@ -6,11 +6,11 @@ import uim.apps;
 void uimLoginPage(HTTPServerRequest req, HTTPServerResponse res) {
   debugMethodCall(moduleName!uimLoginPage~":uimLoginPage");
 
-  APPLoginPageController(server).request(req, res);
+  APPLoginPageController(thisServer).request(req, res);
 }
 
 void uimLoginAction(HTTPServerRequest req, HTTPServerResponse res) {
   debugMethodCall(moduleName!uimLoginAction~":uimLoginAction");
 
-  APPLoginActionController(server).request(req, res);
+  APPLoginActionController(thisServer).request(req, res);
 }

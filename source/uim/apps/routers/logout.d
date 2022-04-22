@@ -6,5 +6,5 @@ import uim.apps;
 void uimLogout(HTTPServerRequest req, HTTPServerResponse res) {
   debugMethodCall(moduleName!uimLogout~":uimLogout");
 
-  APPLogoutPageController(server).request(req, res);
+  APPLogoutPageController(thisServer).request(req, res);
 }
