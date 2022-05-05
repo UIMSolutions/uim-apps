@@ -1,13 +1,13 @@
-module uim.apps.views.components.forms.components.groups.text;
+module uim.apps.views.components.forms.components.inputs.text;
 
 @safe:
 import uim.apps;
 
-class DAPPTextFormGroup : DFormGroup {
-  mixin(FormComponentThis!("APPTextFormGroup", true));
+class DTextFormInput : DFormInput {
+  mixin(FormComponentThis!("TextFormInput", true));
 
   override DH5Obj h5Input(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPTextFormGroup~":DAPPTextFormGroup::h5Input");
+    debugMethodCall(moduleName!DTextFormInput~":DTextFormInput::h5Input");
     super.h5Input(options);
 
     debug writeln("Entity -> ", entity ? entity.name : "'null'"); 
@@ -24,7 +24,7 @@ class DAPPTextFormGroup : DFormGroup {
   }
 
   override DH5Obj h5FormGroup(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPTextFormGroup~":DAPPTextFormGroup::h5FormGroup");
+    debugMethodCall(moduleName!DTextFormInput~":DTextFormInput::h5FormGroup");
     super.h5FormGroup(options); 
  
     return 
@@ -52,7 +52,7 @@ class DAPPTextFormGroup : DFormGroup {
       // 
       }}
 }
-mixin(FormComponentCalls!("APPTextFormGroup", true));
+mixin(FormComponentCalls!("TextFormInput", true));
 
 version(test_uim_apps) {
   unittest {

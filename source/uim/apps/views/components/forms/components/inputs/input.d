@@ -1,10 +1,10 @@
-module uim.apps.views.components.forms.components.groups.group;
+module uim.apps.views.components.forms.components.inputs.input;
 
 @safe:
 import uim.apps;
 
-class DFormGroup : DFormComponent {
-  mixin(FormComponentThis!("FormGroup"));
+class DFormInput : DFormComponent {
+  mixin(FormComponentThis!("FormInput"));
 
   // id of label element
   mixin(OProperty!("string", "labelId")); 
@@ -25,7 +25,7 @@ class DFormGroup : DFormComponent {
     super.initialize();
 
     this
-      .id("formgroup-%s".format(uniform(1, 1_000)))
+      .id("forminput-%s".format(uniform(1, 1_000)))
       .labelId(id~"-label")
       .inputId(id~"-input")
       .crudMode(CRUDModes.Create)
@@ -71,13 +71,13 @@ class DFormGroup : DFormComponent {
       ];
   }
 }
-mixin(FormComponentCalls!("FormGroup"));
+mixin(FormComponentCalls!("FormInput"));
 
 version(test_uim_apps) {
   unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
     
-    assert(new DFormGroup);
-    assert(FormGroup);
+    assert(new DFormInput);
+    assert(FormInput);
   }
 }

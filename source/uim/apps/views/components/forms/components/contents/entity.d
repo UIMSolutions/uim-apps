@@ -14,7 +14,7 @@ class DEntityFormContent : DFormContent {
     .id("FormContent_%s".format(uniform(1, 1_000)))
     .crudMode(CRUDModes.Create)
     .fields(["name", "display", "description"])
-    .formGroupHandler(FormGroupHandler(this.form));   
+    .inputHandler(FormInputHandler(this.form));   
   }
 
   mixin(OProperty!("string[]", "fields"));
@@ -25,7 +25,7 @@ class DEntityFormContent : DFormContent {
   
   mixin(OProperty!("DAPPPanes", "panes"));
 
-  mixin(OViewComponent!("formGroupHandler"));
+  mixin(OViewComponent!("inputHandler"));
 
   DH5Obj[] formGroups(STRINGAA options = null) {
     debugMethodCall(moduleName!DFormContent~"::DFormContent:formGroups");    
@@ -34,10 +34,10 @@ class DEntityFormContent : DFormContent {
     debug writeln(entity ? "Has entity: "~entity.name : "No entity");
     debug writeln(form ? "Has form " : "No form");
 
-    if (auto frmGroupHandler = cast(DFormGroupHandler)formGroupHandler) {
-      debug writeln("Found formGroupHandler:",formGroupHandler.name);
+    if (auto myInputHandler = cast(DFormInputHandler)inputHandler) {
+      debug writeln("Found inputHandler:",inputHandler.name);
 
-      frmGroupHandler
+      myInputHandler
         .form(this.form)
         .crudMode(this.crudMode)
         .entity(entity);
@@ -49,10 +49,10 @@ class DEntityFormContent : DFormContent {
         debug writeln("formGroup:", field);
 
         final switch(crudMode) {
-          case CRUDModes.Create: results ~= frmGroupHandler.group(field, false, options); break;
-          case CRUDModes.Read:   results ~= frmGroupHandler.group(field, true,  options); break;
-          case CRUDModes.Update: results ~= frmGroupHandler.group(field, false, options); break;
-          case CRUDModes.Delete: results ~= frmGroupHandler.group(field, true,  options); break;
+          case CRUDModes.Create: results ~= myInputHandler.group(field, false, options); break;
+          case CRUDModes.Read:   results ~= myInputHandler.group(field, true,  options); break;
+          case CRUDModes.Update: results ~= myInputHandler.group(field, false, options); break;
+          case CRUDModes.Delete: results ~= myInputHandler.group(field, true,  options); break;
         }
     }} 
 

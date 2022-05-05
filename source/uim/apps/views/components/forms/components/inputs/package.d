@@ -1,30 +1,30 @@
-module uim.apps.views.components.forms.components.groups;
+module uim.apps.views.components.forms.components.inputs;
 
 @safe:
 import uim.apps;
 
 // Main
-public import uim.apps.views.components.forms.components.groups.entity;
-public import uim.apps.views.components.forms.components.groups.group;
-public import uim.apps.views.components.forms.components.groups.handler;
+public import uim.apps.views.components.forms.components.inputs.entity;
+public import uim.apps.views.components.forms.components.inputs.input;
+public import uim.apps.views.components.forms.components.inputs.handler;
 
 // Modules
-public import uim.apps.views.components.forms.components.groups.checkbox;
-public import uim.apps.views.components.forms.components.groups.description;
-public import uim.apps.views.components.forms.components.groups.date;
-public import uim.apps.views.components.forms.components.groups.display;
-public import uim.apps.views.components.forms.components.groups.name;
-public import uim.apps.views.components.forms.components.groups.startenddate;
-public import uim.apps.views.components.forms.components.groups.switch_;
-public import uim.apps.views.components.forms.components.groups.text;
-public import uim.apps.views.components.forms.components.groups.textarea;
+public import uim.apps.views.components.forms.components.inputs.checkbox;
+public import uim.apps.views.components.forms.components.inputs.description;
+public import uim.apps.views.components.forms.components.inputs.date;
+public import uim.apps.views.components.forms.components.inputs.display;
+public import uim.apps.views.components.forms.components.inputs.name;
+public import uim.apps.views.components.forms.components.inputs.startenddate;
+public import uim.apps.views.components.forms.components.inputs.switch_;
+public import uim.apps.views.components.forms.components.inputs.text;
+public import uim.apps.views.components.forms.components.inputs.textarea;
 
 // for tests
-public import uim.apps.views.components.forms.components.groups.tests;
+public import uim.apps.views.components.forms.components.inputs.tests;
 
 // Mixins
-template FormGroupThis(string name, bool withEntity = false, bool withEntities = false) {
-  const char[] FormGroupThis = `
+template FormInputThis(string name, bool withEntity = false, bool withEntities = false) {
+  const char[] FormInputThis = `
 this() { super(); }
 this(DForm myForm) { this().form(myForm); };
 `~
@@ -43,8 +43,8 @@ this(DForm myForm, string myName, DOOPEntity[] myEntities) { this(myForm, myName
 ` : ``);
 }
 
-template FormGroupCalls(string name, bool withEntity = false, bool withEntities = false) {
-  const char[] FormGroupCalls = `
+template FormInputCalls(string name, bool withEntity = false, bool withEntities = false) {
+  const char[] FormInputCalls = `
 auto `~name~`() { return new D`~name~`; }
 auto `~name~`(DForm myForm) { return new D`~name~`(myForm); };
 `~

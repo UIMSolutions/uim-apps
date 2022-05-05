@@ -1,4 +1,4 @@
-module source.uim.apps.views.components.checkboxes;
+module uim.apps.views.components.checkboxes;
 
 @safe:
 import uim.apps;

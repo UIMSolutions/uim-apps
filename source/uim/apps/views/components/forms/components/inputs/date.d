@@ -1,10 +1,10 @@
-module uim.apps.views.components.forms.components.groups.date;
+module uim.apps.views.components.forms.components.inputs.date;
 
 @safe:
 import uim.apps;
 
-class DAPPDateFormGroup : DFormGroup {
-  mixin(FormComponentThis!("APPDateFormGroup", true));
+class DDateFormInput : DFormInput {
+  mixin(FormComponentThis!("DateFormInput", true));
 
   override DH5Obj h5Input(STRINGAA options = null) {
     super.h5Input(options);
@@ -38,4 +38,4 @@ class DAPPDateFormGroup : DFormGroup {
       // 
       }}
 }
-mixin(FormComponentCalls!("APPDateFormGroup", true));
+mixin(FormComponentCalls!("DateFormInput", true));

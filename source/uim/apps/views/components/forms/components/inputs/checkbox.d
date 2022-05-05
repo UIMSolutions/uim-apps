@@ -1,10 +1,10 @@
-module uim.apps.views.components.forms.components.groups.checkbox;
+module uim.apps.views.components.forms.components.inputs.checkbox;
 
 @safe:
 import uim.apps;
 
-class DAPPCheckboxFormGroup : DFormGroup {
-  mixin(FormComponentThis!("APPCheckboxFormGroup", true));
+class DCheckboxFormInput : DFormInput {
+  mixin(FormComponentThis!("CheckboxFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -38,13 +38,13 @@ class DAPPCheckboxFormGroup : DFormGroup {
           h5Input(options), H5Span(["form-check-label"], label))));
   }
 }
-mixin(FormComponentCalls!("APPCheckboxFormGroup"));
+mixin(FormComponentCalls!("CheckboxFormInput"));
 
 version(test_uim_apps) {
   unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
     
-    assert(new DAPPCheckboxFormGroup);
-    assert(APPCheckboxFormGroup);
+    assert(new DCheckboxFormInput);
+    assert(CheckboxFormInput);
   }
 }

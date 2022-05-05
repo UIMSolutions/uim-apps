@@ -1,10 +1,10 @@
-module uim.apps.views.components.forms.components.groups.textarea;
+module uim.apps.views.components.forms.components.inputs.textarea;
 
 @safe:
 import uim.apps;
 
-class DAPPTextAreaFormGroup : DFormGroup {
-  mixin(FormComponentThis!("APPTextAreaFormGroup", true));
+class DTextAreaFormInput : DFormInput {
+  mixin(FormComponentThis!("TextAreaFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -36,7 +36,7 @@ version(test_uim_apps) {
       // 
       }}
 }
-mixin(FormComponentCalls!("APPTextAreaFormGroup", true));
+mixin(FormComponentCalls!("TextAreaFormInput", true));
 
 version(test_uim_apps) {
   unittest {

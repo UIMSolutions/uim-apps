@@ -1,10 +1,10 @@
-module uim.apps.views.components.forms.components.groups.name;
+module uim.apps.views.components.forms.components.inputs.name;
 
 @safe:
 import uim.apps;
 
-class DFormGroupName : DAPPTextFormGroup {
-  mixin(FormComponentThis!("FormGroupName", true));
+class DNameFormInput : DTextFormInput {
+  mixin(FormComponentThis!("NameFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -18,4 +18,4 @@ class DFormGroupName : DAPPTextFormGroup {
       .invalidFeedback("Name ist nicht korrekt");
   }
 }
-mixin(FormComponentCalls!("FormGroupName", true));
+mixin(FormComponentCalls!("NameFormInput", true));

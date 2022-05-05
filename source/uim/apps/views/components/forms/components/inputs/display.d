@@ -1,10 +1,10 @@
-module uim.apps.views.components.forms.components.groups.display;
+module uim.apps.views.components.forms.components.inputs.display;
 
 @safe:
 import uim.apps;
 
-class DFormGroupDisplay : DAPPTextFormGroup {
-  mixin(FormComponentThis!("FormGroupDisplay", true));
+class DDisplayFormInput : DTextFormInput {
+  mixin(FormComponentThis!("DisplayFormInput", true));
 
   override void initialize() {
     super.initialize();
@@ -18,7 +18,7 @@ class DFormGroupDisplay : DAPPTextFormGroup {
     .invalidFeedback("Titel ist nicht korrekt"); 
   }
 }
-mixin(FormComponentCalls!("FormGroupDisplay", true));
+mixin(FormComponentCalls!("DisplayFormInput", true));
 
 version(test_uim_apps) {
   unittest {
