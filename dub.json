@@ -35,7 +35,7 @@
 		"../../LAYOUTS/layout-tabler/source/layouts",
 		"./"
 	],
-	"license": "MIT",
+	"license": "Apache-2.0",
 	"name": "uim-apps",
 	"sourcePaths": [
 		"../uim-core",
