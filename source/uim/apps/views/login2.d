@@ -18,9 +18,9 @@ class DAPPLogin2View : DAPPView {
     DH5Obj[] inners;
 
     inners ~= BS5Row("messages", ["mt-2 mb-2"]);
-    inners ~= H5Div(["text-center mb-4"], 
-          H5A(["href":"."], H5Img(["src":"/img/uim.png", "height":"80", "alt":"UI Manufaktur UG - Erfolgreich im Internet"])));
-    inners ~= APPLogin2Form.toH5(options);
+    inners ~= BS5Row("logo", ["text-center"],  H5A(["href":"https://www.sicherheitsschmiede.de"], 
+      H5Img(["src":"/img/logo.png", "height":"80", "alt":"Sicherheitsschmiede - Sicher im Internet"])));
+    inners ~= BS5Row("form", APPLogin2Form.toH5(options));
 
     results ~= H5Div(["container-tight py-4"], inners);
 

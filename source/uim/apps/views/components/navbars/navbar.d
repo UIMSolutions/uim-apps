@@ -110,13 +110,13 @@ class DAPPFirstNavbar : DViewComponent {
           H5A(["btn btn-outline-info text-blue"], ["href":"/login"], tablerIcon("login")~"Login")); 
 
     return [  
-      H5Header(["navbar navbar-expand-md navbar-light d-print-none"], 
+      H5Header("topnavbar", ["navbar navbar-expand-md navbar-light d-print-none"], 
         H5Div(["container-fluid"], 
           H5Button(["navbar-toggler"], ["type":"button", "data-bs-toggle":"collapse", "data-bs-target":"#navbar-menu"],
             H5Span(["navbar-toggler-icon"])),
           H5H1(["navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3 text-blue"], 
-            H5A(["p-2 ps-5"], 
-              ["href":"/", "style":"background-repeat: no-repeat; background-position: left center;background-size: 60px auto; background-image:url("~this.appLogo~")"], 
+            H5A(["p-3 ps-5"], 
+              ["href":"/", "style":"background-repeat: no-repeat; background-position: left center;background-size: 60px auto; background-image:url(/img/logo.png)"], 
               this.appTitle)),
             userButton
           )               
