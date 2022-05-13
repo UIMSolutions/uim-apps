@@ -72,7 +72,9 @@ class DEntitiesFormContent : DFormContent {
     }
 
     debug writeln("Found entities for table = ", entities.length);
-    DH5Obj[] rows = entities.map!(a => a ? row(a) : null).join; 
+    DH5Obj[] rows = entities
+      .sort!("a.name < b.name")
+      .map!(a => a ? row(a) : null).join; 
 
     auto table = H5Div(["table-responsive"],
       BS5Table(["card-table table-vcenter text-nowrap datatable table table-hover"])
@@ -93,7 +95,7 @@ class DEntitiesFormContent : DFormContent {
         )
       (table)
       .footer(["d-flex align-items-center"], 
-        H5P("availableEntites",["m-0 text-muted"], "Anzeige <span>1</span> bis <span>8</span> von <span>18</span> Einträgen"),
+        H5P("availableEntites",["m-0 text-muted"], "Anzeige <span>1</span> bis <span>8</span> von <span>"~to!string(entities.length)~"</span> Einträgen"),
         H5Ul("pagesEntites", ["m-0 ms-auto pagination"], linkPrev("prevEntities"))
         .li(["page-item active"], 
           H5A("pageDisplay", ["page-link"], "1"))

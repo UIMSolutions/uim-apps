@@ -9,7 +9,7 @@ class DAPPTabViewComponent : DViewComponent {
   mixin(OProperty!("DH5Obj[]", "cards"));
   mixin(OProperty!("string", "title"));
   mixin(OProperty!("bool", "active"));
-  mixin(OProperty!("DTabpane", "pane"));
+  mixin(OProperty!("DTabPane", "pane"));
 
   DH5Obj tabNav(STRINGAA options) {
     return BS5NavLink((active ? ["active"] : null), ["href":"#"~id, "data-bs-toggle":"tab"], title);

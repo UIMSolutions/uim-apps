@@ -8,7 +8,7 @@ module uim.apps.views.components.tabpanes.entity;
 @safe:
 import uim.apps;
 
-class DAPPEntityTabpane : DTabpane {
+class DAPPEntityTabpane : DTabPane {
   mixin(ViewComponentThis!("APPEntityTabpane"));
 }
 mixin(ViewComponentCalls!("APPEntityTabpane"));

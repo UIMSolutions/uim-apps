@@ -8,7 +8,7 @@ module uim.apps.views.components.tabpanes.entities;
 @safe:
 import uim.apps;
 
-class DAPPEntitiesTabpane : DTabpane {
+class DAPPEntitiesTabpane : DTabPane {
   mixin(ViewComponentThis!("APPEntitiesTabpane"));
 
   override void initialize() {

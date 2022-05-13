@@ -117,10 +117,10 @@ version(test_uim_apps) {
     result["timeCreated"] = to!string(toTimestamp(this.request.timeCreated));
     result["persistent"] = to!string(this.request.persistent);
     
-    foreach(key; this.request.params.byKey) result[key] = this.request.params[key];
-    foreach(key; this.request.headers.byKey) result[key] = this.request.headers[key];
-    foreach(key; this.request.query.byKey) result[key] = this.request.query[key];
-    foreach(key; this.request.form.byKey) result[key] = this.request.form[key];
+    foreach(key; this.request.params.byKey) result[key] = this.request.params.getAll(key).map!(k => to!string(k)).join(",");
+    foreach(key; this.request.headers.byKey) result[key] = this.request.headers.getAll(key).map!(k => to!string(k)).join(",");
+    foreach(key; this.request.query.byKey) result[key] = this.request.query.getAll(key).map!(k => to!string(k)).join(",");
+    foreach(key; this.request.form.byKey) result[key] = this.request.form.getAll(key).map!(k => to!string(k)).join(",");
 
     readSessionId(this.request, result);
     return result;

@@ -7,7 +7,7 @@ class DFormInputHandler : DFormComponent {
   mixin(FormComponentThis!("FormInputHandler", true));
 
   mixin(OProperty!("DFormInput[string]", "formInputs"));
-  O adDFormInputs(this O)(DFormInput[string] newFormInputs) {
+  O addFormInputs(this O)(DFormInput[string] newFormInputs) {
     newFormInputs.byKey.each!(key => formInputs[key] = newFormInputs[key]);
     return cast(O)this;
   }

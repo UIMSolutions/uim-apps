@@ -3,8 +3,8 @@ module uim.apps.views.components.tabpanes.tabpane;
 @safe:
 import uim.apps;
 
-class DTabpane : DViewComponent {
-    mixin(ViewComponentThis!("Tabpane"));
+class DTabPane : DViewComponent {
+    mixin(ViewComponentThis!("TabPane"));
 
         // this.key("tab"~to!string(uniform(0, 1000))).title("Tab");
 
@@ -28,4 +28,4 @@ class DTabpane : DViewComponent {
         return [card].toH5;
     }
 }
-mixin(ViewComponentCalls!("Tabpane"));
+mixin(ViewComponentCalls!("TabPane"));

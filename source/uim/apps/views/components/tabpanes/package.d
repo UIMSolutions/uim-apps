@@ -60,8 +60,8 @@ class DAPPPanes {
     return cast(O)this;}
 
   mixin(OProperty!("string", "path"));
-  mixin(OProperty!("DTabpane[]", "panes"));
-  O panes(this O)(DTabpane[] newPanes...) { 
+  mixin(OProperty!("DTabPane[]", "panes"));
+  O panes(this O)(DTabPane[] newPanes...) { 
     _panes = newPanes;
     return cast(O)this;}
 
