@@ -12,7 +12,7 @@ class DAPPLostAccountView : DAPPView {
   mixin(APPViewThis!("APPLostAccountView"));
 
   override void beforeH5(STRINGAA options = null) { 
-    debug writeln(StyledString(moduleName!DAPPLostAccountView~":DAPPLostAccountView::beforeH5").setForeground(AnsiColor.black).setBackground(AnsiColor.white));
+    debug writeln(moduleName!DAPPLostAccountView~":DAPPLostAccountView::beforeH5");
     super.beforeH5(options);
   }
 
