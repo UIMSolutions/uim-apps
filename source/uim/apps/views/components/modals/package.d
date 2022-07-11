@@ -1,0 +1,1 @@
+module uim.apps.views.components.navbars;

@@ -12,11 +12,10 @@
 		"mir-linux-kernel": "1.0.1",
 		"openssl": "1.1.6+1.0.1g",
 		"packageversion": "0.0.19",
-		"silly": "1.1.1",
 		"stdx-allocator": "2.77.5",
 		"taggedalgebraic": "0.11.22",
 		"unit-threaded": "1.0.15",
-		"vibe-core": "1.22.0",
+		"vibe-core": "1.22.3",
 		"vibe-d": "0.9.4"
 	}
 }
