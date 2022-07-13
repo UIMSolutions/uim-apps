@@ -30,6 +30,7 @@ public import uim.javascript;
 public import uim.entities;
 public import uim.jsonbase;
 public import uim.entitybase;
+public import uim.servers;
 
 // Packages
 public import uim.apps.applications;
@@ -37,7 +38,6 @@ public import uim.apps.consoles;
 public import uim.apps.containers;
 public import uim.apps.controllers;
 public import uim.apps.controllers.validators;
-public import uim.apps.events;
 public import uim.apps.forms;
 public import uim.apps.helpers;
 public import uim.apps.interfaces;

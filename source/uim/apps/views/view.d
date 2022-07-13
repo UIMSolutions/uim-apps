@@ -8,7 +8,7 @@ module uim.apps.views.view;
 @safe:
 import uim.apps;
 
-class DAPPView : DViewObject, IAPPEventDispatcher {
+class DAPPView : DViewObject, IEventDispatcher {
   mixin(APPViewThis!("APPView"));
 
   // Initialization (= hook method)
@@ -28,7 +28,7 @@ class DAPPView : DViewObject, IAPPEventDispatcher {
   }
 
   mixin(OProperty!("DAPPPageController", "controller")); 
-  mixin(OProperty!("IAPPEventManager", "eventManager")); 
+  mixin(OProperty!("IEventManager", "eventManager")); 
   mixin(OProperty!("string[]", "leftClasses")); 
   mixin(OProperty!("string[]", "middleClasses")); 
   mixin(OProperty!("string[]", "rightClasses")); 

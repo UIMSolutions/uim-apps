@@ -32,6 +32,7 @@
 		"../uim-entities",
 		"../uim-jsonbase",
 		"../uim-entitybase",
+		"../uim-servers",
 		"../../LAYOUTS/layout-tabler/source/layouts",
 		"./"
 	],
@@ -48,6 +49,7 @@
 		"../uim-entities",
 		"../uim-jsonbase",
 		"../uim-entitybase",
+		"../uim-servers",
 		"../../LAYOUTS/layout-tabler/source/layouts",
 		"./"
 	],

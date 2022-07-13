@@ -17,7 +17,7 @@ import uim.apps;
  *
  * Forms are conventionally placed in the `App\Form` namespace.
  */
-class DAPPXForm { // : IAPPEventListener, IAPPEventDispatcher, IAPPValidatorAware
+class DAPPXForm { // : IEventListener, IEventDispatcher, IAPPValidatorAware
     // Name of default validation set.
     enum DEFAULT_VALIDATOR = "default";
 
@@ -27,7 +27,7 @@ class DAPPXForm { // : IAPPEventListener, IAPPEventDispatcher, IAPPValidatorAwar
     // The name of the event dispatched when a validator has been built.
     enum BUILD_VALIDATOR_EVENT = "Form.buildValidator";
 
-    this(DAPPEventManager newEventManager = null) {
+    this(DEventManager newEventManager = null) {
         if (newEventManager) this.eventManager(newEventManager);
         // $this->getEventManager()->on($this);
 
@@ -40,7 +40,7 @@ class DAPPXForm { // : IAPPEventListener, IAPPEventDispatcher, IAPPValidatorAwar
         }
  */    }
 
-    mixin(OProperty!("DAPPEventManager", "eventManager"));
+    mixin(OProperty!("DEventManager", "eventManager"));
 
     // Schema class.
     protected string _schemaClass; //  = Schema::class;
@@ -59,7 +59,7 @@ class DAPPXForm { // : IAPPEventListener, IAPPEventDispatcher, IAPPValidatorAwar
      *
      * @return array<string, mixed>
      */
-    DAPPEvent[string] implementedEvents() {
+    DEvent[string] implementedEvents() {
 /*         if (method_exists($this, "buildValidator")) {
             return [
                 self::BUILD_VALIDATOR_EVENT => "buildValidator",

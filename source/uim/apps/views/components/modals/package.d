@@ -1,1 +1,1 @@
-module uim.apps.views.components.navbars;
+module uim.apps.views.components.modals;
