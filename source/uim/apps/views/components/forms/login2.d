@@ -25,7 +25,7 @@ class DAPPLogin2Form : DForm {
               H5Span(["form-label-description"], 
                 H5A(["href":"/lostpassword"], "Passwort vergessen?"))),
             H5Div(["input-group input-group-flat"], 
-              BS5InputPassword("loginPW", ["name":"loginPW", "placeholder":"Passwort eingeben", "autocomplete":"off"]),
+              UIMPasswordInput.id("loginPW").name("loginPW").placeholder("Passwort eingeben").addAttributes(["autocomplete":"off"]),
               H5Span(["input-group-text"], 
                 H5A(["link-secondary"], 
                   ["href":"#", "title":"", "data-bs-toggle":"tooltip", "data-bs-original-title":"Passwort anzeigen."], 

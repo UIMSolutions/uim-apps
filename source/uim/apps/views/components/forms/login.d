@@ -33,8 +33,8 @@ class DAPPLoginForm : DForm {
           H5Label(["form-label"], H5String("Kennung"),
             (showLostAccount ? H5Span(["form-label-description"], 
               H5A(["href":"/lostaccount"], "Kennung vergessen?")) : null)),
-          BS5InputText("accountName", ["name":"accountName", "placeholder":"Bitte die Kennung eingeben"]),
-          H5Div(["invalid-feedback"], "Bitte eine gültige Kennung eingeben")
+          UIMTextInput.id("accountName").name("accountName").placeholder("Bitte die Kennung eingeben")
+            .invalidText("Bitte eine gültige Kennung eingeben")
         ),
         H5Div(["form-footer"], 
           BS5ButtonSubmit(["btn-primary w-100"], "Zur Passworteingabe")

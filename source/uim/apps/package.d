@@ -31,6 +31,7 @@ public import uim.entities;
 public import uim.jsonbase;
 public import uim.entitybase;
 public import uim.servers;
+public import uim.controls;
 
 // Packages
 public import uim.apps.applications;
