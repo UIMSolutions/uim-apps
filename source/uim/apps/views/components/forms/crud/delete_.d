@@ -54,15 +54,15 @@ mixin(FormCalls!("APPDeleteForm"));
       case "name": return BS5FormGroup(["row", "mb-1"],
         H5Label(["form-label col-2 col-form-label"], "Name"),
         BS5Col(["col"], 
-          UIMTextInput(["name":"entity_name", "readonly":"readonly"]).value(entity.name)));
+          BS5InputText(["name":"entity_name", "readonly":"readonly"]).value(entity.name)));
       case "display": return BS5FormGroup(["row", "mb-1"],
         H5Label(["form-label col-2 col-form-label"], "Titel"),
         BS5Col(["col"], 
-          UIMTextInput(["name":"entity_display", "readonly":"readonly"]).value(entity.display)));
+          BS5InputText(["name":"entity_display", "readonly":"readonly"]).value(entity.display)));
       case "description": return BS5FormGroup(["row", "mb-1"],
         H5Label(["form-label col-2 col-form-label"], "Beschreibung"),
         BS5Col(["col"], 
-          UIMTextInputarea(["rows":"3", "name":"entity_description", "readonly":"readonly"], entity.description)));
+          BS5InputTextarea(["rows":"3", "name":"entity_description", "readonly":"readonly"], entity.description)));
       default: return null; 
     }
   }  */

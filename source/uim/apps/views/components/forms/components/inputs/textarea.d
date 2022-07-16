@@ -21,7 +21,7 @@ class DTextAreaFormInput : DFormInput {
     super.toH5(options);
     if (hasError) { return null; }
     
-    auto input = UIMTextInputarea(id, ["rows":rows, "name":inputName, "autocomplete":autocomplete, "placeholder":placeholder], entity ? entity[fieldName] : "");
+    auto input = BS5InputTextarea(id, ["rows":rows, "name":inputName, "autocomplete":autocomplete, "placeholder":placeholder], entity ? entity[fieldName] : "");
     if (readonly) input.attribute("readonly","readonly");
     if (crudMode == CRUDModes.Read || crudMode == CRUDModes.Delete) input.attribute("readonly","readonly");
 

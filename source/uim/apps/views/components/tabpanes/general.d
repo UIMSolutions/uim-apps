@@ -33,7 +33,7 @@ auto generalPane(T:DOOPEntity)(T entity, STRINGAA options = null) {
                   BS5Col(["col-6"],
                     H5Div(
                       H5Label(["form-label mb-0"], "By"),
-                      UIMTextInput(["name":"entity_createdBy", "readonly":"readonly"]).value(entity.createdBy)
+                      BS5InputText(["name":"entity_createdBy", "readonly":"readonly"]).value(entity.createdBy)
                       ))
                 ),
                 BS5FormGroup(["row", "mb-2"],
@@ -51,7 +51,7 @@ auto generalPane(T:DOOPEntity)(T entity, STRINGAA options = null) {
                   BS5Col(["col-6"],
                     H5Div(
                       H5Label(["form-label mb-0"], "By"),
-                      UIMTextInput(["name":"entity_modifiedBy", "readonly":"readonly"]).value(entity.modifiedBy)
+                      BS5InputText(["name":"entity_modifiedBy", "readonly":"readonly"]).value(entity.modifiedBy)
                       )),
                   ),
                 BS5FormGroup(["row", "mb-2"],
@@ -102,7 +102,7 @@ class DAPPPaneGeneral : DAPPPane {
               BS5Col(["col-6"],
                 H5Div(
                 H5Label(["form-label mb-0"], "By"),
-                UIMTextInput("entity_created_by", ["name":"entity_createdBy", "readonly":"readonly"]).value(entity.createdBy)
+                BS5InputText("entity_created_by", ["name":"entity_createdBy", "readonly":"readonly"]).value(entity.createdBy)
                 )))); 
                 options["scripts"] ~= jsElementById(["entity_created_date", "entity_created_time", "entity_created_by"]);
                 break;
@@ -123,7 +123,7 @@ class DAPPPaneGeneral : DAPPPane {
               BS5Col(["col-6"],
                 H5Div(
                   H5Label(["form-label mb-0"], "By"),
-                  UIMTextInput("entity_modified_by", ["name":"entity_createdBy", "readonly":"readonly"]).value(entity.modifiedBy)
+                  BS5InputText("entity_modified_by", ["name":"entity_createdBy", "readonly":"readonly"]).value(entity.modifiedBy)
                   )))); 
                   options["scripts"] ~= jsElementById(["entity_modified_date", "entity_modified_time", "entity_modified_by"]);
                   break;
@@ -149,7 +149,7 @@ class DAPPPaneGeneral : DAPPPane {
               BS5Col(["col-4"],
                 H5Div(
                   H5Label(["form-label mb-0"], "By"),
-                  UIMTextInput("entity_version_by", ["name":"entity_versionBy", "readonly":"readonly"]).value(entity["versionBy"])
+                  BS5InputText("entity_version_by", ["name":"entity_versionBy", "readonly":"readonly"]).value(entity["versionBy"])
                   )))); 
                   options["scripts"] ~= jsElementById(["entity_version_date", "entity_version_time", "entity_version_major", "entity_version_minor", "entity_version_by"]);
                   break;
@@ -170,7 +170,7 @@ class DAPPPaneGeneral : DAPPPane {
               BS5Col(["col-6"],
                 H5Div(
                   H5Label(["form-label mb-0"], "By"),
-                  UIMTextInput("entity_locked_by", ["name":"entity_createdBy", "readonly":"readonly"]).value(entity["lockedBy"])
+                  BS5InputText("entity_locked_by", ["name":"entity_createdBy", "readonly":"readonly"]).value(entity["lockedBy"])
                   )),
               )); 
               options["scripts"] ~= jsElementById(["entity_locked_date", "entity_locked_time", "entity_locked_by"]);

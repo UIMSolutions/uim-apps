@@ -48,7 +48,7 @@ class DAPPViewSites : DAPPView {
             H5Label(["form-label"], H5String("Kennung"),
               H5Span(["form-label-description"], 
                 H5A(["href":"/lostaccount"], "Kennung vergessen?"))),
-            UIMTextInput("accountName", ["placeholder":"Bitte die Kennung eingeben"]),
+            BS5InputText("accountName", ["placeholder":"Bitte die Kennung eingeben"]),
             H5Div(["invalid-feedback"], "Bitte eine gültige Kennung eingeben")
           ),
           H5Div(["form-footer"], 

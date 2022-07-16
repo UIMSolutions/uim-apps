@@ -33,7 +33,7 @@ import uim.apps;
         H5Tr
           .td(BS5InputDate(["form-control-flush"], ["readonly":"readonly"]).value(entity.versionOn))
           .td(BS5InputNumber(["form-control-flush"], ["readonly":"readonly"]).value(entity.versionNumber))
-          .td(UIMTextInput(["form-control-flush"], ["readonly":"readonly"]).value(entity.versionDescription))
+          .td(BS5InputText(["form-control-flush"], ["readonly":"readonly"]).value(entity.versionDescription))
           .td(H5Div(["btn-list"], buttons));
   }
 

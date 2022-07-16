@@ -37,7 +37,7 @@ class DAPPEntitiesListFooter : DAPPListFooter {
         ("sortBy" in options ? BS5InputHidden(["name":"sortBy", "value":options["sortBy"]]) : null),
         ("sortDir" in options ? BS5InputHidden(["name":"sortDir", "value":options["sortDir"]]) : null),
         H5Div(["input-group"],
-          UIMTextInput(["form-control-sm"], ["name":"filterValue", "placeholder":"Filter value...", "value": options.get("filterValue", null)]),
+          BS5InputText(["form-control-sm"], ["name":"filterValue", "placeholder":"Filter value...", "value": options.get("filterValue", null)]),
           BS5InputSelect(["form-control-sm"], ["name":"filterBy"], selectOptions),
           BS5ButtonSubmit(["btn-sm"], "Filtern")
       ));

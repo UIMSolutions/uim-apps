@@ -68,12 +68,12 @@ auto listEntities(T:DOOPEntity)(string rootPath, string mainTitle, int numberEnt
               H5Div(["text-muted"], 
                 H5String("Show"),
                 H5Div(["mx-2 d-inline-block"],
-                  UIMTextInput(["form-control-sm"], ["value":to!string(numberEntities), "size":"3", "aria-label": mainTitle~" count"])), 
+                  BS5InputText(["form-control-sm"], ["value":to!string(numberEntities), "size":"3", "aria-label": mainTitle~" count"])), 
                 H5String("entries")),
               H5Div(["ms-auto text-muted"], 
                 H5String("Search:"),
                 H5Div(["ms-2 d-inline-block"], 
-                  UIMTextInput(["form-control-sm"], ["aria-label":"Search "~mainTitle.toLower])))
+                  BS5InputText(["form-control-sm"], ["aria-label":"Search "~mainTitle.toLower])))
             )
           )
           (
