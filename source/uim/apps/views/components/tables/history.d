@@ -19,8 +19,8 @@ import uim.apps;
       return
         H5Tr
           .td(BS5InputDate(["form-control-flush"], ["readonly":"readonly"]).value(entity.createdOn))
-          .td(BS5InputText(["form-control-flush"], ["readonly":"readonly"]).value(entity.name))
-          .td(BS5InputText(["form-control-flush"], ["readonly":"readonly"]).value(entity.display))
+          .td(UIMTextInput(["form-control-flush"], ["readonly":"readonly"]).value(entity.name))
+          .td(UIMTextInput(["form-control-flush"], ["readonly":"readonly"]).value(entity.display))
           .td(
              H5Div(["btn-list"], 
               H5Span(["d-none d-sm-inline"],               

@@ -13,7 +13,7 @@ class DAPPSearchInList : DViewComponent {
     return [ 
       H5Div(["ms-auto text-muted"], 
         H5Div(["input-group input-group-sm input-group-flat"], 
-          BS5InputText("inputSearch", ["autocomplete":"off", "placeholder":"Suche in "~options.get("entitiesName", "")]), 
+          UIMTextInput("inputSearch", ["autocomplete":"off", "placeholder":"Suche in "~options.get("entitiesName", "")]), 
           H5Div(["invalid-feedback"], "Der Suchtext ist ungültig. Keine Sonderzeichen verwenden."),
           H5Span(["input-group-text"],
             H5A("btnClearSearch", ["link-secondary"], 
