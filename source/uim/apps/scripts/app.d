@@ -40,7 +40,7 @@ auto app() {
   result ~= 
     jsFunc("redirectPost", ["target", "url", "data"],
       jsLet("formData", "''")~
-      jsForIn("field", "data", "formData += `"~H5Input(["type":"text", "name":"${field}", "value":"${data[field]}"]).toString~"`;")~
+      jsForIn("field", "data", "formData += `"~UIMTextInput.name("${field}").value("${data[field]}").toString~"`;")~
       "target.innerHTML=`<form id=\"postForm\" action=\"${url}\" method=\"post\">${formData}</form>`;"~
       jsElementById(["postForm"])~
       "postForm.submit();");

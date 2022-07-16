@@ -83,17 +83,17 @@ H5Div(["container-xl"],
               BS5Col(["col-2"],                   h
                 BS5InputGroup(
                   BS5Label("first name"),
-                  BS5InputText(["name":"first_name"])),
+                  UIM(["name":"first_name"])),
               BS5Col(["col-2"], 
                 BS5InputGroup(
                   BS5Label("last name"),
-                  BS5InputText(["name":"last_name"]))
+                  UIMTextInput(["name":"last_name"]))
             ),
             BS5Row(["row-space"], 
               BS5Col(["col-2"], 
                 BS5InputGroup(
                   BS5Label("Birthday"),
-                  H5Div(["input-group-icon"], BS5InputText(["name":"birthday"]))),
+                  H5Div(["input-group-icon"], UIMTextInput(["name":"birthday"]))),
               BS5Col["col-2"], 
                 BS5InputGroup(
                 BS5Label("Gender"),

@@ -21,14 +21,14 @@ class DTextAreaFormInput : DFormInput {
     super.toH5(options);
     if (hasError) { return null; }
     
-    auto input = BS5InputTextarea(id, ["rows":rows, "name":inputName, "autocomplete":autocomplete, "placeholder":placeholder], entity ? entity[fieldName] : "");
+    auto input = UIMTextInputarea(id, ["rows":rows, "name":inputName, "autocomplete":autocomplete, "placeholder":placeholder], entity ? entity[fieldName] : "");
     if (readonly) input.attribute("readonly","readonly");
     if (crudMode == CRUDModes.Read || crudMode == CRUDModes.Delete) input.attribute("readonly","readonly");
 
     return [
       BS5FormGroup(["row", "mb-1"],
-      H5Label(["form-label col-2 col-form-label"], label),
-      BS5Col(["col"], input))].toH5;
+        H5Label(["form-label col-2 col-form-label"], label),
+        BS5Col(["col"], input))].toH5;
   }
 version(test_uim_apps) {
   unittest {

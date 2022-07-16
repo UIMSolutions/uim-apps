@@ -359,7 +359,7 @@ BS5NavItem(["active"],
               H5Form(["action":".", "method":"get"], 
                 H5Div(["input-icon"], 
                   H5Span(["input-icon-addon"], tablerIcon("search", ["text-blue"])),
-                  H5Input(["form-control bg-white"], ["type":"text", "placeholder":"Search…", "aria-label":"Search in website"])
+                  UIMTextInput(["bg-white"], ["placeholder":"Search…", "aria-label":"Search in website"])
                 )
               )
 */

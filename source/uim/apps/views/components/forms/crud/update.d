@@ -49,21 +49,21 @@ DH5Obj[] FormGroups_Edit(DOOPEntity entity, string[] fields = ["name", "display"
         results ~= BS5FormGroup(["row", "mb-1"],
           H5Label(["form-label col-2 col-form-label required"], "Name"),
           BS5Col(["col"], 
-            BS5InputText("entity_name", ["name":"entity_name", "placeholder":"Name eingeben"]).value(entity.name),
+            UIMTextInput("entity_name", ["name":"entity_name", "placeholder":"Name eingeben"]).value(entity.name),
             H5Div(["invalid-feedback"], "Name ist nicht korrekt")));
         break;
       case "display": 
         results ~= BS5FormGroup(["row", "mb-1"],
           H5Label(["form-label col-2 col-form-label required"], "Title"),
           BS5Col(["col"], 
-            BS5InputText("entity_display", ["name":"entity_display", "placeholder":"Titel eingeben"]).value(entity.display),
+            UIMTextInput("entity_display", ["name":"entity_display", "placeholder":"Titel eingeben"]).value(entity.display),
             H5Div(["invalid-feedback"], "Titel ist nicht korrekt")));
         break;
       case "description": 
         results ~= BS5FormGroup(["row", "mb-1"],
           H5Label(["form-label col-2 col-form-label"], "Beschreibung"),
           BS5Col(["col"], 
-            BS5InputTextarea("entity_description", ["rows":"3", "name":"entity_description", "placeholder":"Beschreibung eingeben"], entity.description)));
+            UIMTextInputarea("entity_description", ["rows":"3", "name":"entity_description", "placeholder":"Beschreibung eingeben"], entity.description)));
         break;
       default: break;
     }
@@ -98,15 +98,15 @@ class DAPPEditbody_ : DAPPbody_ {
       case "name": return BS5FormGroup(["row", "mb-1"],
         H5Label(["form-label col-2 col-form-label"], "Name"),
         BS5Col(["col"], 
-          BS5InputText(["name":"entity_name", "readonly":"readonly"]).value(entity.name)));
+          UIMTextInput(["name":"entity_name", "readonly":"readonly"]).value(entity.name)));
       case "display": return BS5FormGroup(["row", "mb-1"],
         H5Label(["form-label col-2 col-form-label"], "Titel"),
         BS5Col(["col"], 
-          BS5InputText(["name":"entity_display", "readonly":"readonly"]).value(entity.display)));
+          UIMTextInput(["name":"entity_display", "readonly":"readonly"]).value(entity.display)));
       case "description": return BS5FormGroup(["row", "mb-1"],
         H5Label(["form-label col-2 col-form-label"], "Beschreibung"),
         BS5Col(["col"], 
-          BS5InputTextarea(["rows":"3", "name":"entity_description", "readonly":"readonly"], entity.description)));
+          UIMTextInputarea(["rows":"3", "name":"entity_description", "readonly":"readonly"], entity.description)));
       default: return null; 
     }
   } 

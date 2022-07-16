@@ -75,17 +75,17 @@ DH5Obj[] viewFormGroups(DOOPEntity entity, string[] fields = ["name", "display",
       case "name": results ~= BS5FormGroup(["row", "mb-1"],
         H5Label(["form-label col-2 col-form-label"], "Name"),
         BS5Col(["col"], 
-          BS5InputText(["name":"entity_name", "readonly":"readonly"]).value(entity.name)));
+          UIMTextInput(["name":"entity_name", "readonly":"readonly"]).value(entity.name)));
         break;
       case "display": results ~= BS5FormGroup(["row", "mb-1"],
         H5Label(["form-label col-2 col-form-label"], "Titel"),
         BS5Col(["col"], 
-          BS5InputText(["name":"entity_display", "readonly":"readonly"]).value(entity.display)));
+          UIMTextInput(["name":"entity_display", "readonly":"readonly"]).value(entity.display)));
         break;
       case "description": results ~= BS5FormGroup(["row", "mb-1"],
         H5Label(["form-label col-2 col-form-label"], "Beschreibung"),
         BS5Col(["col"], 
-          BS5InputTextarea(["rows":"3", "name":"entity_description", "readonly":"readonly"], entity.description)));
+          UIMTextInputarea(["rows":"3", "name":"entity_description", "readonly":"readonly"], entity.description)));
         break;
       default: break;
     }
