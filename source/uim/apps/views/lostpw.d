@@ -29,7 +29,7 @@ class DAPPLostPasswordView : DAPPView {
               H5Form(["method":"post", "action": rootPath~"login2action"],
                 BS5FormGroup(["mb-3"], 
                   BS5FormLabel("Password"),
-                  BS5InputPassword(["name":"loginPW", "placeholder":"Bitte das Passwort eingeben"]),
+                  UIMPasswordInput.name("loginPW").placeholder("Bitte das Passwort eingeben"),
                   H5Small(["form-hint"], "Passwort vergessen?")
                 ),
                 H5Div(["form-footer"], 
