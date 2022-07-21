@@ -50,12 +50,12 @@ class DAPPLogoutView : DAPPView {
     inners ~= H5A(["href":"https://www.sicherheitsschmiede-de"], 
       H5Img(["src":"/img/uim.png", "height":"80", "alt":"Sicherheitsschmiede - Sicher im Internet"]));
 
-    inners ~= H5Form("loginForm", ["card", "card-md"], ["method":"post", "autocomplete":"off", "action":"/login_action"], 
+    inners ~= 
+      H5Form("loginForm", ["card", "card-md"], ["method":"post", "autocomplete":"off", "action":"/login_action"], 
         H5Div(["card-body"], 
-        H5H2(["card-title", "text-center", "mb-4"], "Abgemeldet"),
-        H5Div(["mb-3"], "Sie haben sich erfolgreich abgemeldet"),
-        H5Div(["form-footer"])
-      ));
+          H5H2(["card-title", "text-center", "mb-4"], "Abgemeldet"),
+          H5Div(["mb-3"], "Sie haben sich erfolgreich abgemeldet"),
+          H5Div(["form-footer"])));
 
     inners ~= H5Div(["text-center mb-4"], H5Div(["text-center text-muted mt-3"], 
       H5String("Wieder anmelden? "), H5A(["href":"/login", "tabindex":"-1"], "Anmelden")));

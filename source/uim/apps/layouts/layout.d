@@ -348,7 +348,7 @@ H5Header(["navbar navbar-expand-md navbar-light d-print-none fixed-top"],
           H5A(["nav-link px-0"], ["href":"#", "data-bs-toggle":"dropdown", "tabindex":"-1", "aria-label":"Show notifications"], 
             tablerIcon("messages")~`<span class="badge bg-red"></span>`
           ), 
-          BS5DropdownMenu(["dropdown-menu-end dropdown-menu-card"], 
+          BS5DropdownMenu(["  -menu-end dropdown-menu-card"], 
             BS5Card
               .body_("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad amet consectetur exercitationem fugiat in ipsa ipsum, natus odio quidem quod repudiandae sapiente. Amet debitis et magni maxime necessitatibus ullam.")
           )).toString~
