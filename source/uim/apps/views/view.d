@@ -32,6 +32,7 @@ class DAPPView : DViewObject, IEventDispatcher {
   mixin(OProperty!("string[]", "leftClasses")); 
   mixin(OProperty!("string[]", "middleClasses")); 
   mixin(OProperty!("string[]", "rightClasses")); 
+  mixin(OProperty!("STRINGAA", "rightAttributes")); 
     
   mixin(OViewComponent!("header"));
   mixin(OViewComponent!("footer"));
@@ -101,7 +102,7 @@ version(test_uim_apps) {
             .row(["section"], 
               BS5Col(this.leftClasses, this.left ? this.left.toH5(options) : null),
               BS5Col(this.middleClasses, this.middle ? this.middle.toH5(options) : null),
-              BS5Col(this.rightClasses, this.right ? this.right.toH5(options) : null)))~
+              BS5Col(rightClasses, rightAttributes, this.right ? this.right.toH5(options) : null)))~
         (this.footer ? this.footer.toH5(options) : null)
       )
     ].toH5;
