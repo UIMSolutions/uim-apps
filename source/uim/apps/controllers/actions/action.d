@@ -40,11 +40,11 @@ class DAPPActionController : DAPPController {
 }
 mixin(APPControllerCalls!("APPActionController"));
 
-version(test_uim_apps) {
-  unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    testController(new DAPPActionController);
+version(test_uim_apps) { unittest {
+  writeln("--- Test in ", __MODULE__, "/", __LINE__);
+  testController(new DAPPActionController);
 
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    testController(APPActionController);
+  assert(APPActionController.collectionName("testName").collectionName == "testName");
+  assert(APPActionController.rootPath("testPath").rootPath == "testPath");
+  testController();
 }}
