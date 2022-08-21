@@ -38,12 +38,13 @@ class DAPPCreateActionController : DAPPActionController {
 }
 mixin(APPControllerCalls!("APPCreateActionController"));
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
     assert(new DAPPCreateActionController);
-    assert(APPCreateActionController);
+  assert(APPCreateActionController);
+  assert(APPCreateActionController.pool("testPool").pool == "testPool");
+  assert(APPCreateActionController.pgPath("testPath").pgPath == "testPath");
     assert(APPCreateActionController.name == "APPCreateActionController");
   }
 }
