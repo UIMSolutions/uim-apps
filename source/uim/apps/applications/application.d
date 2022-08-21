@@ -53,6 +53,15 @@ class DAPPApplication {
 auto APPApplication() { return new DAPPApplication; }
 auto APPApplication(DAPPLayout myLayout) { return new DAPPApplication(myLayout); }
 
+version(test_uim_apps) { unittest {
+	assert(APPApplication);
+	auro testId = randomUUID;
+	assert(APPApplication.id(testId).id == testId);
+	assert(APPApplication.name("testName").name == "testName");
+	assert(APPApplication.rootPath("testPath").rootPath == "testPath");
+	assert(APPApplication.versionNumber(1).versionNumber == 1);
+
+}}
 /* class DAPPApplication  {
 	this() { super(); }
 
