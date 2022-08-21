@@ -55,16 +55,14 @@ class DAPPController : DAPPControllerObject {
     }
   // #endregion database
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
       /// TODO 
     }}
 
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
       /// TODO 
@@ -74,8 +72,7 @@ version(test_uim_apps) {
     auto json = message(Json.emptyObject, options);
     return json;
   }
-  version(test_uim_apps) {
-    unittest {
+  version(test_uim_apps) { unittest {
       writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
       /// TODO 
@@ -89,8 +86,7 @@ version(test_uim_apps) {
 
     return json;
   }
-  version(test_uim_apps) {
-    unittest {
+version(test_uim_apps) { unittest {
       writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
     /// TODO 
@@ -186,8 +182,7 @@ version(test_uim_apps) {
     afterResponse(options);
     
 		this.response.writeBody(result, this.mimetype); }
-  version(test_uim_apps) {
-    unittest {
+  version(test_uim_apps) { unittest {
       writeln("--- Test in ", __MODULE__, "/", __LINE__);
       
 			/// TODO
@@ -195,8 +190,7 @@ version(test_uim_apps) {
 }
 mixin(APPControllerCalls!("APPController"));
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
     testController(new DAPPController);
 
