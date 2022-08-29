@@ -25,6 +25,7 @@ class DAPPEntityCRUDView : DAPPView {
     }`));
 
   mixin(OViewComponent!("form"));
+  mixin(OProperty!("DUIMTabControl", "entityTab"));
 
   override void initialize() {
     debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):initialize");   
@@ -54,63 +55,40 @@ class DAPPEntityCRUDView : DAPPView {
       debug writeln("Found DForm");
       frm.entity(this.entity);
     } 
+
+    this.entityTab(
+      UIMTab
+        .panes([
+          UIMTabPane
+            .title("Allgemein")
+            .content(
+              H5Div("This is a primary pane")
+            ),
+          UIMTabPane
+            .title("Beschreibungen")
+            .content(
+              H5Div("This is a secondary pane")
+            ),
+          UIMTabPane
+            .title("Versionen")
+            .content(
+              H5Div("This is a third pane")
+            )                        
+        ])
+    );
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):toH5");    
     super.toH5(options);
     if (hasError || "redirect" in options) { return null; }
-
-    auto entityTab = UIMTab
-      .panes(
-        [
-          UIMTabPane
-            // .id("tabs-primary-%s".format(exampleNo))
-            .title("Allgemein")
-            .content(
-              H5Div("This is a primary pane")
-            ),
-          UIMTabPane
-            // .id("tabs-primary-%s".format(exampleNo))
-            .title("Beschreibungen")
-            .content(
-              H5Div("This is a primary pane")
-            ),
-          UIMTabPane
-            // .id("tabs-primary-%s".format(exampleNo))
-            .title("Versionen")
-            .content(
-              H5Div("This is a primary pane")
-            )                        
-        ]
-      );
     
-    auto panes = 
-      BS5Card(
-        H5Ul(["nav nav-tabs"], ["data-bs-toggle":"tabs"],
-          H5Li(["nav-item"], 
-            H5A(["nav-link active"], ["href":"#tabs-general", "data-bs-toggle":"tab"], "Allgemein")),
-          H5Li(["nav-item"], 
-            H5A(["nav-link"], ["href":"#tabs-versions", "data-bs-toggle":"tab"], "Versionen")),
-          H5Li(["nav-item dropdown"], 
-            H5A(["nav-link dropdown-toggle"], ["data-bs-toggle":"dropdown", "role":"button", "aria-haspopup":"true", "aria-expanded":"false"], "Mehr..."),
-            H5Div("dropdown-menu", ["style":""], 
-              H5A(["dropdown-item"], ["href":"#"], "Berechtigungen")))))
-        .body_(
-          H5Div(["tab-content"], 
-            H5Div("tabs-general", ["tab-pane active show"],
-              H5Div(
-                "Cursus turpis vestibulum, dui in pharetra vulputate id sed non turpis ultricies fringilla at sed facilisis lacus pellentesque purus nibh")),
-            H5Div("tabs-versions", ["tab-pane"],
-              H5Div(
-                "that the coronavirus infects cells in the pancreas that make insulin, a hormone that lowers blood sugar levels by signaling cells to take in sugar and burn it"))));
-
     return [
       H5Div(["container-xl"],
         (this.header ? this.header.toH5(options) : null)~ 
         (this.components["messages"].notNull ? BS5Row("messages", ["mb-2"], this.components["messages"].toH5(options)) : null)~
         BS5Row(["row-deck row-cards mb-2"], form.toH5(options))~
-        BS5Row(["row-deck row-cards mb-2"], entityTab)~
+        BS5Row(["row-deck row-cards mb-2"], H5Div(["col-12"], entityTab))~
         (this.footer ? this.footer.toH5(options) : null)
       )].toH5;             
   }
