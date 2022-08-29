@@ -78,8 +78,7 @@ class DAPPView : DViewObject, IEventDispatcher {
       // init
       _error = null; // Delete last error
     }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO
     }}
@@ -118,8 +117,7 @@ version(test_uim_apps) {
  */      
 
     }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
       // TODO test
       }} 
@@ -132,8 +130,7 @@ version(test_uim_apps) {
     void beforeRender(STRINGAA options = null) {
       debugMethodCall(moduleName!DAPPView~":DAPPView::beforeRender"); 
     }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add Test
         }}
@@ -147,8 +144,7 @@ version(test_uim_apps) {
 
       return renderedContent; 
     }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add Test
         }}
@@ -176,8 +172,7 @@ version(test_uim_apps) {
       if (hasError) { return null; }
 
       return finalRender; }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
         /// TODO
       }}

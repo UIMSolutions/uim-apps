@@ -10,8 +10,7 @@ class DAPPEntityActionController : DAPPActionController {
 }
 mixin(APPControllerCalls!("APPEntityActionController"));
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
     testController(new DAPPEntityActionController);
 

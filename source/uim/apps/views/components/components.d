@@ -103,8 +103,7 @@ protected DOOPEntity _entity;
 auto ViewComponents() { return new DViewComponents; }
 auto ViewComponents(DViewObject myParent) { return new DViewComponents(myParent); }
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     assert(ViewComponents);
     auto components = ViewComponents;
     assert(components.length == 0);

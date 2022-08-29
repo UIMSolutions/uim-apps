@@ -61,6 +61,30 @@ class DAPPEntityCRUDView : DAPPView {
     super.toH5(options);
     if (hasError || "redirect" in options) { return null; }
 
+    auto entityTab = UIMTab
+      .panes(
+        [
+          UIMTabPane
+            // .id("tabs-primary-%s".format(exampleNo))
+            .title("Allgemein")
+            .content(
+              H5Div("This is a primary pane")
+            ),
+          UIMTabPane
+            // .id("tabs-primary-%s".format(exampleNo))
+            .title("Beschreibungen")
+            .content(
+              H5Div("This is a primary pane")
+            ),
+          UIMTabPane
+            // .id("tabs-primary-%s".format(exampleNo))
+            .title("Versionen")
+            .content(
+              H5Div("This is a primary pane")
+            )                        
+        ]
+      );
+    
     auto panes = 
       BS5Card(
         H5Ul(["nav nav-tabs"], ["data-bs-toggle":"tabs"],
@@ -86,15 +110,14 @@ class DAPPEntityCRUDView : DAPPView {
         (this.header ? this.header.toH5(options) : null)~ 
         (this.components["messages"].notNull ? BS5Row("messages", ["mb-2"], this.components["messages"].toH5(options)) : null)~
         BS5Row(["row-deck row-cards mb-2"], form.toH5(options))~
-        BS5Row(["row-deck row-cards mb-2"], panes)~
+        BS5Row(["row-deck row-cards mb-2"], entityTab)~
         (this.footer ? this.footer.toH5(options) : null)
       )].toH5;             
   }
 }
 mixin(APPViewCalls!("APPEntityCRUDView"));
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testView(new DAPPEntityCRUDView); 
 

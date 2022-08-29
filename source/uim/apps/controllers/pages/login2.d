@@ -33,8 +33,7 @@ class DAPPLogin2PageController : DAPPPageController {
 }
 mixin(APPPageControllerCalls!("APPLogin2PageController"));
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(new DAPPLogin2PageController); 
 

@@ -9,8 +9,7 @@ auto logout() {
   ";
 }
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
     
     auto f = File("../../PUBLIC/js/apps/logout.js", "w"); // open for writing

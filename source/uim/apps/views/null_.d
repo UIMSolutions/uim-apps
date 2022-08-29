@@ -17,8 +17,7 @@ class DAPPNullView : DAPPView {
   override string render(STRINGAA options = null) {
     return null;
   }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
 			// TODO
@@ -26,8 +25,7 @@ version(test_uim_apps) {
 }
 mixin(APPViewCalls!("APPNullView"));
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
     assert(APPNullView.name == "APPNullView");

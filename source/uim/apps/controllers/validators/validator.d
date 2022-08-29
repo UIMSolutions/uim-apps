@@ -32,16 +32,14 @@ class DAPPValidator : DAPPController {
     
     return result; }
   }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
       /// TODO 
     }}
     
 mixin(APPControllerCalls!("APPValidator"));
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
       /// TODO 

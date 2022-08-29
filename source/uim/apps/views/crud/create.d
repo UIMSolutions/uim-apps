@@ -27,8 +27,7 @@ class DAPPEntityCreateView : DAPPEntityCRUDView {
 }
 mixin(APPViewCalls!("APPEntityCreateView"));
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testView(new DAPPEntityCreateView); 
 

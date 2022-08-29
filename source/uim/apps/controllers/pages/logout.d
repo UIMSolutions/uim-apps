@@ -20,8 +20,7 @@ class DAPPLogoutPageController : DAPPPageController {
 }
 mixin(APPPageControllerCalls!("APPLogoutPageController"));
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(new DAPPLogoutPageController); 
 

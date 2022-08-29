@@ -20,8 +20,7 @@ class DAPPUserProfilePageController : DAPPPageController {
 }
 mixin(APPPageControllerCalls!("APPUserProfilePageController"));
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(new DAPPUserProfilePageController); 
 

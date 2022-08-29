@@ -30,16 +30,14 @@ class DTextAreaFormInput : DFormInput {
         H5Label(["form-label col-2 col-form-label"], label),
         BS5Col(["col"], input))].toH5;
   }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
       // 
       }}
 }
 mixin(FormComponentCalls!("TextAreaFormInput", true));
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
     
   }}

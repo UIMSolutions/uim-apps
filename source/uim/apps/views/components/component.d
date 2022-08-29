@@ -68,8 +68,7 @@ class DViewComponent : DViewObject {
       debug writeln("has Components:", this.components.all.map!(c => c.name).array);
       debug writeln("Found %s entities".format(this.entities.length));
     }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO
     }}
@@ -81,8 +80,7 @@ version(test_uim_apps) {
     auto h5 = afterH5(preh5, options);
     return h5;        
   }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
       // TODO test
       }} 
@@ -92,8 +90,7 @@ version(test_uim_apps) {
       debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::afterH5");
       return h5; // No changes 
     }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO
     }}
@@ -104,8 +101,7 @@ version(test_uim_apps) {
     void beforeRender(STRINGAA options = null) {
       debugMethodCall(debugPrefix~"beforeRender"); 
     }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add Test
         }}
@@ -114,8 +110,7 @@ version(test_uim_apps) {
       debugMethodCall(debugPrefix~"afterRender"); 
       return content; // No changes
     }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
         // TODO Add Test
         }}
@@ -138,8 +133,7 @@ version(test_uim_apps) {
       if (hasError) { return null; }
 
       return result; }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
         /// TODO
       }}

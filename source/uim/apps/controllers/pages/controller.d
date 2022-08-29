@@ -53,16 +53,14 @@ class DAPPPageController : DAPPController {
   mixin(APPParameter!("pgPath")); 
   mixin(APPParameter!("title")); 
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
 /* 		assert(H5AppPage.title("aTitle").title == "aTitle");	
 		assert(H5AppPage.title("aTitle").title("otherTitle").title == "otherTitle"); */
 	}}
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 	
 /* 			assert(H5App.lang("aLanguage").lang == "aLanguage");	
@@ -87,8 +85,7 @@ version(test_uim_apps) {
     if (this.app) return this.app.layout; 
     return null; 
   }
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
 		/// TODO		
@@ -272,8 +269,7 @@ version(test_uim_apps) {
 }
 mixin(APPPageControllerCalls!("APPPageController"));
 
-version(test_uim_apps) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(new DAPPPageController); 
 
