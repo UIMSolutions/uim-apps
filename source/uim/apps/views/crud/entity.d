@@ -35,6 +35,26 @@ class DAPPEntityCRUDView : DAPPView {
       .header(
         PageHeader(this)
           .actions([["refresh", "list", "create"]]))
+      .entityTab(
+        UIMTab
+          .panes([
+            UIMTabPane
+              .title("Allgemein")
+              .content(
+                H5Div("This is a primary pane")
+              ),
+            UIMTabPane
+              .title("Beschreibungen")
+              .content(
+                H5Div("This is a secondary pane")
+              ),
+            UIMTabPane
+              .title("Versionen")
+              .content(
+                H5Div("This is a third pane")
+              )                        
+          ])
+      )
       .form(
         Form(this)
           .header(
@@ -55,27 +75,6 @@ class DAPPEntityCRUDView : DAPPView {
       debug writeln("Found DForm");
       frm.entity(this.entity);
     } 
-
-    this.entityTab(
-      UIMTab
-        .panes([
-          UIMTabPane
-            .title("Allgemein")
-            .content(
-              H5Div("This is a primary pane")
-            ),
-          UIMTabPane
-            .title("Beschreibungen")
-            .content(
-              H5Div("This is a secondary pane")
-            ),
-          UIMTabPane
-            .title("Versionen")
-            .content(
-              H5Div("This is a third pane")
-            )                        
-        ])
-    );
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {

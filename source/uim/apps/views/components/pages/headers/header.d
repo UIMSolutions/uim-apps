@@ -6,13 +6,20 @@ import uim.apps;
 class DPageHeader : DViewComponent {
   mixin(ViewComponentThis!("PageHeader"));
 
+  override void initialize() {
+    super.initialize;
+
+    this
+      .breadcrumbs(UIMBreadcrumb);  
+  }
+
   mixin(APPParameter!("rootPath"));
   mixin(APPParameter!("preTitle"));
   mixin(APPParameter!("title"));
   mixin(OProperty!("string[][]", "actions"));
   mixin(APPParameter!("mainTitle"));
   mixin(APPParameter!("subTitle"));
-  mixin(OProperty!("DH5Obj", "breadcrumbs"));
+  mixin(OProperty!("DUIMBreadcrumbControl", "breadcrumbs"));
   mixin(APPParameter!("breadcrumbsStyle"));
 
   DH5Obj actionButton(string action, STRINGAA options = null) {
