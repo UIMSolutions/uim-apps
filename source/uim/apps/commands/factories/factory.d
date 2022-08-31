@@ -1,9 +1,9 @@
-module uim.apps.commands.factory;
+module uim.apps.commands.factories.factory;
 
 @safe:
 import uim.apps;
 
-class DCommandFactory {
+class DCommandFactory : ICommandFactory{
     this() { initialize; }
 
     void initialize() {       

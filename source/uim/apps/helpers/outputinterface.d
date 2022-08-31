@@ -1,3 +1,3 @@
 module uim.apps.helpers.outputinterface;
 
-interface IAPPOutput {}
+interface IHelperOutput {}
