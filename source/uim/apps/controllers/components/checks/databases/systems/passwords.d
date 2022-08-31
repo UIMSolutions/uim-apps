@@ -4,7 +4,7 @@ module uim.apps.controllers.components.checks.databases.systems.passwords;
 import uim.apps;
 
 class DAPPCheckDatabaseHasPasswords : DAPPCheckDatabaseHasSystems {
-  mixin(APPControllerComponentThis!("APPCheckDatabaseHasPasswords"));
+  mixin(ControllerComponentThis!("APPCheckDatabaseHasPasswords"));
 
   override void initialize() {
     super.initialize;
@@ -25,7 +25,7 @@ class DAPPCheckDatabaseHasPasswords : DAPPCheckDatabaseHasSystems {
     return true;
   }
 }
-mixin(APPControllerComponentCalls!("APPCheckDatabaseHasPasswords"));
+mixin(ControllerComponentCalls!("APPCheckDatabaseHasPasswords"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

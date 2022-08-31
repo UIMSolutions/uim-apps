@@ -4,7 +4,7 @@ module uim.apps.controllers.components.checks.databases.tenant_by_name;
 import uim.apps;
 
 class DAPPCheckDatabaseHasTenant : DAPPCheckDatabaseExists {
-  mixin(APPControllerComponentThis!("APPCheckDatabaseHasTenant"));
+  mixin(ControllerComponentThis!("APPCheckDatabaseHasTenant"));
 
   override void initialize() {
     super.initialize;
@@ -26,4 +26,4 @@ class DAPPCheckDatabaseHasTenant : DAPPCheckDatabaseExists {
     return true;
   }
 }
-mixin(APPControllerComponentCalls!("APPCheckDatabaseHasTenant"));
+mixin(ControllerComponentCalls!("APPCheckDatabaseHasTenant"));

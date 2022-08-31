@@ -4,7 +4,7 @@ module uim.apps.controllers.components.checks.databases.systems.sessions;
 import uim.apps;
 
 class DAPPCheckDatabaseHasSessions : DAPPCheckDatabaseHasSystems {
-  mixin(APPControllerComponentThis!("APPCheckDatabaseHasSessions"));
+  mixin(ControllerComponentThis!("APPCheckDatabaseHasSessions"));
 
   override void initialize() {
     super.initialize;
@@ -30,7 +30,7 @@ class DAPPCheckDatabaseHasSessions : DAPPCheckDatabaseHasSystems {
     return true;
   }
 }
-mixin(APPControllerComponentCalls!("APPCheckDatabaseHasSessions"));
+mixin(ControllerComponentCalls!("APPCheckDatabaseHasSessions"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

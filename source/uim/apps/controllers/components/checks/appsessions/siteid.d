@@ -4,7 +4,7 @@ module uim.apps.controllers.components.checks.appsessions.siteid;
 import uim.apps;
 
 class DAPPCheckAppSessionHasSiteId : DAPPCheckAppSessionHasSession {
-  mixin(APPControllerComponentThis!("APPCheckAppSessionHasSiteId"));
+  mixin(ControllerComponentThis!("APPCheckAppSessionHasSiteId"));
 
   override void initialize() {
     super.initialize;
@@ -26,4 +26,4 @@ class DAPPCheckAppSessionHasSiteId : DAPPCheckAppSessionHasSession {
     return true;
   }
 }
-mixin(APPControllerComponentCalls!("APPCheckAppSessionHasSiteId"));
+mixin(ControllerComponentCalls!("APPCheckAppSessionHasSiteId"));

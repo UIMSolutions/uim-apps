@@ -4,7 +4,7 @@ module uim.apps.controllers.components.checks.databases.collection_by_name;
 import uim.apps;
 
 class DAPPCheckDatabaseHasCollection : DAPPCheckDatabaseExists {
-  mixin(APPControllerComponentThis!("APPCheckDatabaseHasCollection"));
+  mixin(ControllerComponentThis!("APPCheckDatabaseHasCollection"));
 
   override void initialize() {
     super.initialize;
@@ -27,4 +27,4 @@ class DAPPCheckDatabaseHasCollection : DAPPCheckDatabaseExists {
     return true;
   }
 }
-mixin(APPControllerComponentCalls!("APPCheckDatabaseHasCollection"));
+mixin(ControllerComponentCalls!("APPCheckDatabaseHasCollection"));

@@ -4,7 +4,7 @@ module uim.apps.controllers.components.checks.appsessions.account;
 import uim.apps;
 
 class DAPPCheckAppSessionHasAccount : DAPPCheckAppSessionExists {
-  mixin(APPControllerComponentThis!("APPCheckAppSessionHasAccount"));
+  mixin(ControllerComponentThis!("APPCheckAppSessionHasAccount"));
 
   override void initialize() {
     super.initialize;
@@ -26,4 +26,4 @@ class DAPPCheckAppSessionHasAccount : DAPPCheckAppSessionExists {
     return true;
   }
 }
-mixin(APPControllerComponentCalls!("APPCheckAppSessionHasAccount"));
+mixin(ControllerComponentCalls!("APPCheckAppSessionHasAccount"));
