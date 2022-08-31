@@ -3,10 +3,10 @@ module uim.apps.commands.command;
 @safe:
 import uim.apps;
 
-class DBaseCommand {
-  this() { initialize; }
+class DBaseCommand : ICommand {
+  mixin(OProperty!("string", "name"));
 
-  void initialize() {}
+  int run(STRINGAA arguments) { return 0; }
 }
 auto BaseCommand() { return new DBaseCommand; }
 
