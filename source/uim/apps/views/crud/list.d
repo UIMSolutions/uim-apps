@@ -12,7 +12,7 @@ class DAPPEntitiesListView : DAPPView {
   mixin(OViewComponent!("form", "form"));
   
   override void initialize() {
-    debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView("~this.name~"):in");    
+    debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView("~this.name~"):initialize");    
     super.initialize;
 
     this

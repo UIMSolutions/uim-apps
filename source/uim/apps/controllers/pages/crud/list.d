@@ -25,10 +25,11 @@ class DAPPListPage : DAPPEntitiesPageController {
         .th()
         .th(filterName)
         .th(filterDisplay))
-    .scripts.addLinks(
-      "/js/apps/entities/entity.js",  
-      "/js/apps/entities/entities.js", 
-      "/js/apps/entities/list.js");
+    .scripts
+      .addLinks(
+        "/js/apps/entities/entity.js",  
+        "/js/apps/entities/entities.js", 
+        "/js/apps/entities/list.js");
   }
 
   this(string newEntityName) {

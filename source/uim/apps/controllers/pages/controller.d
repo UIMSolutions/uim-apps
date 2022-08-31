@@ -20,17 +20,17 @@ class DAPPPageController : DAPPController {
     super.initialize;
 
     this
-    .language("en") 
-    .mimetype("text/html");
+      .language("en") 
+      .mimetype("text/html");
     
     requestReader = APPRequestReader(this);
     sessionReader = APPSessionReader(this);  
 
     this
-    .links(APPLinkContainer)
-    .metas(APPMetaContainer) 
-    .scripts(APPScriptContainer) 
-    .styles(APPStyleContainer); 
+      .links(APPLinkContainer)
+      .metas(APPMetaContainer) 
+      .scripts(APPScriptContainer) 
+      .styles(APPStyleContainer); 
   }
 
   mixin(OProperty!("Session", "globalSession"));
