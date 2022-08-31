@@ -3,8 +3,8 @@ module uim.apps.controllers.components.checks.check;
 @safe:
 import uim.apps;
 
-class DAPPCheck : DAPPControllerComponent {
-  mixin(APPControllerComponentThis!("APPCheck"));
+class DAPPCheck : DControllerComponent {
+  mixin(ControllerComponentThis!("APPCheck"));
 
   override void initialize() {
     super.initialize;
@@ -33,7 +33,7 @@ class DAPPCheck : DAPPControllerComponent {
     return true;
   }
 }
-mixin(APPControllerComponentCalls!("APPCheck"));
+mixin(ControllerComponentCalls!("APPCheck"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

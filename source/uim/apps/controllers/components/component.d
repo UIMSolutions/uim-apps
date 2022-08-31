@@ -4,7 +4,7 @@ module uim.apps.controllers.components.component;
 import uim.apps;
 
 /**
-* DAPPControllerComponent
+* DControllerComponent
 *
 * Components are packages of logic that are shared between controllers. 
 * This library comes with a set of core components you can use to aid in various common tasks. 
@@ -12,8 +12,8 @@ import uim.apps;
 * you should consider creating your own component to contain the functionality. 
 * Creating components keeps controller code clean and allows you to reuse code between different controllers.
 **/
-class DAPPControllerComponent : DAPPControllerObject {
-  mixin(APPControllerComponentThis!("APPControllerComponent"));
+class DControllerComponent : DAPPControllerObject {
+  mixin(ControllerComponentThis!("ControllerComponent"));
   
   mixin(OProperty!("DAPPController", "controller"));
 
@@ -30,7 +30,7 @@ class DAPPControllerComponent : DAPPControllerObject {
   mixin(OProperty!("Json", "defaultConfig"));
 
   // Component registry class used to lazy load components.
-  DAPPControllerComponentRegistry registry() { return null; }
+  DControllerComponentRegistry registry() { return null; }
 
 
 /* __debugInfo() public
@@ -68,4 +68,4 @@ log() public
 Convenience method to write a message to Log. See Log::write() for more information on writing to logs.
 */ 
 }
-mixin(APPControllerComponentCalls!("APPControllerComponent"));
+mixin(ControllerComponentCalls!("ControllerComponent"));
