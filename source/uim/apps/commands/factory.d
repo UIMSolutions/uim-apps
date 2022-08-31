@@ -14,3 +14,7 @@ class DCommandFactory {
     }
 }
 auto CommandFactory() { return new DCommandFactory; }
+
+version(test_uim_apps) { unittest {
+    assert(CommandFactory);
+}}

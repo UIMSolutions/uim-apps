@@ -118,3 +118,7 @@ class DAPPCommand { // extends SymfonyCommand
       return cast(O)this; }
 
 }
+
+version(test_uim_apps) { unittest {
+  // assert(Command);
+}}
