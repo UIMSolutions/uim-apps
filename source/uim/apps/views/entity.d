@@ -8,6 +8,7 @@ class DEntityView : DAPPView {
   mixin(APPViewThis!("EntityView"));
   
   mixin(OProperty!("DOOPEntity", "entity"));
+  mixin(OProperty!("CRUDModes", "crudMode"));
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DEntityView~":DEntityView("~this.name~")::beforeH5");

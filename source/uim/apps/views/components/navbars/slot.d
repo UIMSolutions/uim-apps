@@ -11,7 +11,6 @@ class DAPPNavbarSlot : DViewComponent {
 
     mixin(OProperty!("bool", "active"));
     mixin(OProperty!("string", "title"));
-    mixin(OProperty!("string", "rootPath"));
     mixin(OProperty!("DBS5DropdownMenu", "menu"));
 
 /*     override string toString() { return toString(null); }

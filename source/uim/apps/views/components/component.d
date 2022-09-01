@@ -4,8 +4,7 @@ module uim.apps.views.components.component;
 import uim.apps;
 
 class DViewComponent : DViewObject {
-  this() { super(); this.name("ViewComponent"); }  
-  this(DAPPView myView) { this(); this.view(myView); }
+  mixin(ViewComponentThis!"ViewComponent");
   
   static size_t viewComponentCounter = 0;
 
@@ -14,8 +13,7 @@ class DViewComponent : DViewObject {
   mixin(OProperty!("bool", "notNull")); 
   mixin(OProperty!("STRINGAA", "style")); 
   mixin(OProperty!("bool", "changed")); 
-  mixin(OViewComponent!("owner")); 
-  mixin(OProperty!("DAPPView", "view")); 
+  mixin(OProperty!("DViewObject", "owner")); 
   mixin(OProperty!("DAPPLayout", "layout")); 
   mixin(APPParameter!("jsCode")); 
   mixin(APPParameter!("debugPrefix")); 
@@ -60,40 +58,29 @@ class DViewComponent : DViewObject {
   } */
 
   // #region h5 content 
-    void beforeH5(STRINGAA options = null) {
+    override void beforeH5(STRINGAA options = null) {
       debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::beforeH5");
-
-      // init
       this.clearError; // Delete last error
+      super.beforeH5(options);
+      // init
       debug writeln("has Components:", this.components.all.map!(c => c.name).array);
       debug writeln("In DViewComponent -> %s components".format(this.components.length));
     }
-version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-        // TODO
-    }}
 
-  DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::toH5");
-    beforeH5(options);
-    DH5Obj[] preh5 = null;
-    auto h5 = afterH5(preh5, options);
-    return h5;        
-  }
-version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-      // TODO test
-      }} 
-    // #endregion h5
+    DH5Obj[] toH5(STRINGAA options = null) {
+      debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::toH5");
+      beforeH5(options);
+      DH5Obj[] preh5 = null;
+      auto h5 = afterH5(preh5, options);
+      return h5;        
+    }
+  // #endregion h5
 
   DH5Obj[] afterH5(DH5Obj[] h5, STRINGAA options = null) {
       debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::afterH5");
       return h5; // No changes 
     }
-version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-        // TODO
-    }}
+
   // #region render
     /// Renders view
     /// Render triggers helper callbacks, which are fired before and after the template are rendered.
@@ -101,19 +88,12 @@ version(test_uim_apps) { unittest {
     void beforeRender(STRINGAA options = null) {
       debugMethodCall(debugPrefix~"beforeRender"); 
     }
-version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-        // TODO Add Test
-        }}
+
 
     string afterRender(string content, STRINGAA options = null) {
       debugMethodCall(debugPrefix~"afterRender"); 
       return content; // No changes
     }
-version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-        // TODO Add Test
-        }}
 
     string renderH5(STRINGAA options = null) {
       auto preRender = toH5(options).map!(a => a.toString).join;
@@ -133,10 +113,11 @@ version(test_uim_apps) { unittest {
       if (hasError) { return null; }
 
       return result; }
-version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-        /// TODO
-      }}
+
     // #endregion render 
 }
 mixin(ViewComponentCalls!("ViewComponent"));
+
+version(test_uim_apps) { unittest {
+  assert(ViewComponent);
+}}

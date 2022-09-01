@@ -41,7 +41,6 @@ class DAPPView : DViewObject, IEventDispatcher {
   mixin(OViewComponent!("right"));
   mixin(OViewComponent!("messages"));
 
-  mixin(APPParameter!("rootPath"));
   
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 
@@ -82,12 +81,12 @@ class DAPPView : DViewObject, IEventDispatcher {
 
 
   // #region h5 content
-    void beforeH5(STRINGAA options = null) {
-      debugMethodCall(moduleName!DAPPView~":DAPPView("~this.name~")::beforeH5");
-      // init
-      _error = null; // Delete last error
-      debug writeln("In DViewComponent -> %s components".formats(this.components.length));
-    }
+  override void beforeH5(STRINGAA options = null) {
+    debugMethodCall(moduleName!DAPPView~":DAPPView("~this.name~")::beforeH5");
+    super.beforeH5(options);
+
+    debug writeln("In DAPPView -> %s components".formats(this.components.length));
+  }
 
   DH5Obj[] toH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPView~":DAPPView("~this.name~")::toH5"); 

@@ -13,7 +13,6 @@ class DPageHeader : DViewComponent {
       .breadcrumbs(UIMBreadcrumb);  
   }
 
-  mixin(APPParameter!("rootPath"));
   mixin(APPParameter!("preTitle"));
   mixin(APPParameter!("title"));
   mixin(OProperty!("string[][]", "actions"));

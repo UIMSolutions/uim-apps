@@ -28,7 +28,7 @@ class DEntityFormContent : DEntityViewComponent {
   mixin(OViewComponent!("inputHandler"));
 
   DH5Obj[] formGroups(STRINGAA options = null) {
-    debugMethodCall(moduleName!DFormContent~"::DFormContent:formGroups");    
+    debugMethodCall(moduleName!DEntityFormContent~"::DEntityFormContent:formGroups");    
     DH5Obj[] results;
 
     debug writeln(entity ? "Has entity: "~entity.name : "No entity");
@@ -60,7 +60,7 @@ class DEntityFormContent : DEntityViewComponent {
   }  
 
   DH5Obj bodyContent(STRINGAA options = null) {
-    debugMethodCall(moduleName!DFormContent~"::DFormContent:bodyContent");    
+    debugMethodCall(moduleName!DEntityFormContent~"::DEntityFormContent:bodyContent");    
     DH5Obj row = BS5Row();
     
     auto col = BS5Col(["col-12"], 

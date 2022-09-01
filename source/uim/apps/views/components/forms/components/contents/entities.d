@@ -17,6 +17,7 @@ class DEntitiesFormContent : DEntitiesViewComponent {
 
   mixin(OViewComponent!("tableHeader", "tableHeader"));
   mixin(OViewComponent!("tableFilter", "tableFilter"));
+  mixin(OProperty!("string", "title"));
   
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DEntitiesFormContent~"DEntitiesFormContent::beforeH5");
@@ -26,11 +27,11 @@ class DEntitiesFormContent : DEntitiesViewComponent {
     debug writeln("in DAPPEntitiesEntitiesForm "~(this.entities ? "Has %s entities".format(this.entities.length) : "No entities"));
 
     debug writeln("Before RootPath = ", this.rootPath);
-    if (form) {
+    /* if (owner) { // ???
       this.crudMode(form.crudMode); 
       this.readonly(form.readonly); 
       this.rootPath(form.rootPath); 
-    }
+    } */
 
     debug writeln(entities ? "Has entities" : "No entities");
     if (auto entitiesForm = cast(IAPPWithEntities)this.form) {

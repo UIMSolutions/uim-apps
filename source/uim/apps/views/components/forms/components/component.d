@@ -17,7 +17,6 @@ class DFormComponent : DViewComponent {
   mixin(OProperty!("DForm", "form"));
   mixin(OProperty!("bool", "readonly")); 
 
-  mixin(APPParameter!("rootPath"));
   mixin(APPParameter!("title"));  
 }
 mixin(ViewComponentCalls!("FormComponent"));

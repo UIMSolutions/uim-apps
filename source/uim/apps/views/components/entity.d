@@ -7,6 +7,7 @@ class DEntityViewComponent : DViewComponent {
   mixin(ViewComponentThis!("EntityViewComponent"));
 
   mixin(OProperty!("DOOPEntity", "entity"));
+  mixin(OProperty!("CRUDModes", "crudMode"));
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DEntityViewComponent~":DEntityViewComponent("~this.name~")::beforeH5");

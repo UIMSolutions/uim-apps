@@ -7,6 +7,7 @@ class DViewObject : DAPPObject {
   this() { super(); }
 
   mixin(OProperty!("DViewComponents", "components"));
+  mixin(APPParameter!("rootPath"));
 
   override void initialize() {
     super.initialize;
@@ -40,5 +41,12 @@ class DViewObject : DAPPObject {
     }
   }
 
+  void beforeH5(STRINGAA options = null) {
+    debugMethodCall(moduleName!DViewObject~":DViewObject("~this.name~")::beforeH5");
+    // init
+    _error = null; // Delete last error
+
+    this.components.all.each!(comp => comp.rootPath(this.rootPath));
+  }
 }
 

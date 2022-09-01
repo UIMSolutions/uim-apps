@@ -5,7 +5,5 @@ import uim.apps;
 
 class DListItem : DViewComponent {
   mixin(ViewComponentThis!("ListItem"));
-
-  mixin(OProperty!("string", "rootPath"));
 }
 mixin(ViewComponentCalls!("ListItem"));

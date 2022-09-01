@@ -6,11 +6,6 @@ import uim.apps;
 class DAPPEntityCRUDView : DEntityView {
   mixin(APPViewThis!("APPEntityCRUDView"));
 
-  mixin(OProperty!("CRUDModes", "crudMode", null, true, true, "", `
-    foreach(component; this.components.all) {
-      if (auto frm = cast(DForm)component) {
-        frm.crudMode(this.crudMode); }} `));
-
   mixin(OProperty!("bool", "readonly", "CRUDModes.Read", true, true, "", `
     foreach(component; this.components.all) {
       if (auto frm = cast(DForm)component) {

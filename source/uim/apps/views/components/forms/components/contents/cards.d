@@ -6,7 +6,7 @@ import uim.apps;
 class DAPPCardsFormContent : DEntitiesViewComponent {
   mixin(ViewComponentThis!("APPCardsFormContent"));
 
-  mixin(OProperty!("DViewComponent", "card"));
+  mixin(OProperty!("DEntityViewComponent", "card"));
 
   override void initialize() {
     debugMethodCall(moduleName!DAPPCardsFormContent~"::DAPPCardsFormContent("~this.name~"):initialize");   

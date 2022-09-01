@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.headers.header;
 @safe:
 import uim.apps;
 
-class DFormHeader : DFormComponent {
+class DFormHeader : DEntityFormContent {
   mixin(ViewComponentThis!("FormHeader"));
 
   override void initialize() {
@@ -76,13 +76,13 @@ class DFormHeader : DFormComponent {
     debugMethodCall(moduleName!DFormHeader~":DFormHeader::beforeH5");
     super.beforeH5(options);
 
-    if (form) {
+    /* if (form) {
       this
         .crudMode(form.crudMode)
         .rootPath(form.rootPath)
         .entity(form.entity)
         .entities(form.entities);
-    }
+    } */
     if (!rootPath && "rootPath" in options) {
       this.rootPath(options["rootPath"]);
     }
@@ -96,8 +96,7 @@ class DFormHeader : DFormComponent {
     DH5Obj[] buttons = actionButtons(options);    
     string entityId = this.entity ? this.entity.id.toString : null;
 
-    return  
-      [
+    return [
         BS5CardHeader(id,
         H5H4(["card-title me-auto"], "ID: "~entityId),
         H5Div(["btn-list"], 

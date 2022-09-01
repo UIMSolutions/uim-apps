@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.inputs.handler;
 @safe:
 import uim.apps;
 
-class DFormInputHandler : DFormComponent {
+class DFormInputHandler : DEntityFormContent {
   mixin(ViewComponentThis!("FormInputHandler", true));
 
   mixin(OProperty!("DFormInput[string]", "formInputs"));

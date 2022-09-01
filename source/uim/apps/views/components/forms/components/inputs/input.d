@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.inputs.input;
 @safe:
 import uim.apps;
 
-class DFormInput : DFormComponent {
+class DFormInput : DEntityFormContent {
   mixin(ViewComponentThis!("FormInput"));
 
   // id of label element
