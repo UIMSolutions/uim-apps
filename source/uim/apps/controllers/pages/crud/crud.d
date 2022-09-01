@@ -19,8 +19,8 @@ class DAPPEntityCrudPageController : DAPPEntityPageController {
       return; }
 
     this.entity(collection.toEntity(Json(null)));
-    if (this.view) { 
-      view.entity(this.entity);
+    if (auto myView = cast(DEntityView)this.view) {
+      myView.entity(this.entity);
       
       auto poolId = uniform(1, 1_000_000_000);
       entityPool[poolId] = entity;

@@ -15,7 +15,7 @@ mixin(ViewComponentCalls!("APPGeneralPaneViewComponent"));
 auto generalPane(T:DOOPEntity)(T entity, STRINGAA options = null) {
     return 
         BS5CardBody(
-            H5Div(["card-title"], parameters.get("title", "General Data")),
+            H5Div(["card-title"], options.get("title", "General Data")),
             BS5Row( 
               BS5Col(["col-12"], 
               BS5FormGroup(["row", "mb-1"],
@@ -74,7 +74,7 @@ class DAPPPaneGeneral : DAPPPane {
     this.key("general").title("General");
     _formgroups = ["created", "modified", "version"];
 
-        // H5Div(["card-title"], parameters.get("title", "General Data")),
+        // H5Div(["card-title"], options.get("title", "General Data")),
   }
   this(DOOPEntity myEntity) { this(); this.entity(myEntity); }    
 

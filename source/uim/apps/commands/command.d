@@ -61,24 +61,24 @@ class DAPPCommand { // extends SymfonyCommand
  */    }
 
     // Run the console command.
-    int run(IAPPInput input_, IAPPOutput output_) {
-/*         $this->output = $this->laravel->make(
+    /* int run(IAPPInput input_, IAPPOutput output_) {
+         $this->output = $this->laravel->make(
             OutputStyle::class, ['input' => $input, 'output' => $output]
         );
 
         return parent::run(
             $this->input = $input, $this->output
-        ); */
+        ); 
         return 0;
-     }
+     }*/
 
     // Execute the console command.
-    int execute(IAPPInput input_, IAPPOutput output_) {
-/*         $method = method_exists($this, 'handle') ? 'handle' : '__invoke';
+    /* int execute(IAPPInput input_, IAPPOutput output_) {
+         $method = method_exists($this, 'handle') ? 'handle' : '__invoke';
 
         return (int) $this->laravel->call([$this, $method]);
- */   return 0; 
-      }
+    return 0; 
+      }*/
 
     /**
      * Resolve the console command instance for the given command.

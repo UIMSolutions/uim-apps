@@ -13,8 +13,8 @@ class DAPPEntityPageController : DAPPPageController {
   O entity(this O)(DOOPEntity newEntity) { 
     _entity = newEntity;
 
-    if (auto entityView = cast(DAPPView)this.view) {
-      entityView.entity(this.entity);
+    if (auto myView = cast(DEntityView)this.view) {
+      myView.entity(this.entity);
     }
     
     return cast(O)this; 

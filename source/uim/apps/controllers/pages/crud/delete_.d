@@ -81,9 +81,9 @@ window.addEventListener('load', (event) => {
     entityPool[poolId] = entity;
     options["entityPool"] = to!string(poolId);
 
-    if (this.view) { 
-      view.entity(this.entity);
-    }   
+    if (auto myView = cast(DEntityView)this.view) {
+      myView.entity(this.entity);
+    }  
   }
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

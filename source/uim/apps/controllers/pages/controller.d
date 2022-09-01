@@ -44,10 +44,7 @@ class DAPPPageController : DAPPController {
   mixin(OProperty!("string[]", "sessionData"));
 
   mixin(APPParameter!("canonical")); 
-  mixin(APPParameter!("collectionName")); 
-  mixin(APPParameter!("entitiesName")); 
   mixin(APPParameter!("jsPath")); 
-	mixin(APPParameter!("language"));
   mixin(APPParameter!("pageTitle"));
   mixin(APPParameter!("pageBreadcrumbs"));
   mixin(APPParameter!("pgPath")); 

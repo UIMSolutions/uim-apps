@@ -5,9 +5,13 @@ import uim.apps;
 
 class DHelper {
   this() { initialize; }
+
+    void initialize() {
+    // 
+  }
 }
 auto Helper() { return new DHelper; }
 
-version(test_uim_apps) { unitest {
+version(test_uim_apps) { unittest {
   assert(Helper);
 }}

@@ -8,8 +8,6 @@ class DAPPActionController : DAPPController {
 
   mixin(OProperty!("DAPPSession", "appSession"));
   mixin(OProperty!("DETBCollection", "collection"));
-  mixin(OProperty!("string", "collectionName"));
-  mixin(OProperty!("string", "rootPath"));
   mixin(OProperty!("DOOPEntity", "site"));
   mixin(OProperty!("DETBTenant", "tenant"));
 

@@ -1,9 +1,9 @@
-module uim.apps.commands.command;
+module uim.apps.commands.base;
 
 @safe:
 import uim.apps;
 
-class DBaseCommand : ICommand {
+class DBaseCommand /* : ICommand */ {
   mixin(OProperty!("string", "name"));
 
   int run(STRINGAA arguments) { return 0; }

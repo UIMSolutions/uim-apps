@@ -3,11 +3,10 @@ module uim.apps.views.crud.list;
 @safe:
 import uim.apps;
 
-class DAPPEntitiesListView : DAPPView {
+class DAPPEntitiesListView : DEntitiesView {
   mixin(APPViewThis!("APPEntitiesListView", false, true));
 
   mixin(OProperty!("CRUDModes", "crudMode"));
-  mixin(APPParameter!("rootPath"));
   mixin(OProperty!("bool", "readonly"));
   mixin(OViewComponent!("form", "form"));
   

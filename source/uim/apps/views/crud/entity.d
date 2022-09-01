@@ -3,7 +3,7 @@ module uim.apps.views.crud.entity;
 @safe:
 import uim.apps;
 
-class DAPPEntityCRUDView : DAPPView {
+class DAPPEntityCRUDView : DEntityView {
   mixin(APPViewThis!("APPEntityCRUDView"));
 
   mixin(OProperty!("CRUDModes", "crudMode", null, true, true, "", `
@@ -15,14 +15,6 @@ class DAPPEntityCRUDView : DAPPView {
     foreach(component; this.components.all) {
       if (auto frm = cast(DForm)component) {
         frm.readonly(this.readonly); }}`));
-
-  mixin(APPParameter!("rootPath", `
-    foreach(component; this.components.all) {
-      if (auto pgHeader = cast(DPageHeader)component) {
-        pgHeader.rootPath(this.rootPath); }
-      if (auto frm = cast(DForm)component) {
-        frm.rootPath(this.rootPath); }
-    }`));
 
   mixin(OViewComponent!("form"));
   mixin(OProperty!("DUIMTabControl", "entityTab"));
@@ -71,9 +63,13 @@ class DAPPEntityCRUDView : DAPPView {
     if (hasError || "redirect" in options) { return; }
 
     debug writeln(this.entity ? "Has entity "~this.entity.name : "ENtity missing");
-    if (auto frm = cast(DForm)this.form) {
+    if (auto myForm = cast(DForm)this.form) {
       debug writeln("Found DForm");
-      frm.entity(this.entity);
+      myForm.entity(this.entity);
+
+      if (auto myFormContent = cast(DEntityFormContent)myForm.content) {
+        myFormContent.entity(this.entity);
+      }
     } 
   }
 

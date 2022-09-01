@@ -46,7 +46,7 @@ import uim.apps;
   }
     /* return 
         BS5CardBody(
-            H5Div(["card-title"], parameters.get("title", "History")),
+            H5Div(["card-title"], options.get("title", "History")),
             BS5Row( 
                 BS5Col(["col-12"], 
                     H5Div(["table-responsive"], 

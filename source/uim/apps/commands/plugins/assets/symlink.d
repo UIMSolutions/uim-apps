@@ -5,9 +5,13 @@ import uim.apps;
 
 class DPluginAssetsSymlinkCommand {
   this() { initialize; }
+
+    void initialize() {
+    // 
+  }
 }
 auto PluginAssetsSymlinkCommand() { return new DPluginAssetsSymlinkCommand; }
 
-version(test_uim_apps) { unitest {
+version(test_uim_apps) { unittest {
   assert(PluginAssetsSymlinkCommand);
 }}

@@ -23,7 +23,7 @@ auto versionsPane(T:DOOPEntity)(T entity, STRINGAA Parameters) {
 
     return 
         BS5CardBody(
-            H5Div(["card-title"], parameters.get("title", "Versions")),
+            H5Div(["card-title"], options.get("title", "Versions")),
             BS5Row( 
               BS5Col(["col-12"], 
             )
@@ -42,7 +42,7 @@ auto versionsPane(string pool, T:DOOPEntity)(T entity, STRINGAA Parameters) {
 
     return 
         BS5CardBody(
-            H5Div(["card-title"], parameters.get("title", "Versions")),
+            H5Div(["card-title"], options.get("title", "Versions")),
             BS5Row( 
               BS5Col(["col-12"], 
             )

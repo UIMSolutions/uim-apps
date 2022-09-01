@@ -40,6 +40,8 @@ class DAPPView : DViewObject, IEventDispatcher {
   mixin(OViewComponent!("middle"));
   mixin(OViewComponent!("right"));
   mixin(OViewComponent!("messages"));
+
+  mixin(APPParameter!("rootPath"));
   
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 
@@ -64,13 +66,20 @@ class DAPPView : DViewObject, IEventDispatcher {
       return null;
   }
 
-    // Containers
-    mixin(OProperty!("DAPPLinkContainer", "links"));
-    mixin(OProperty!("DAPPMetaContainer", "metas"));
-    mixin(OProperty!("DAPPScriptContainer", "scripts"));
-    mixin(OProperty!("DAPPStyleContainer", "styles"));
+  // Containers
+  mixin(OProperty!("DAPPLinkContainer", "links"));
+  mixin(OProperty!("DAPPMetaContainer", "metas"));
+  mixin(OProperty!("DAPPScriptContainer", "scripts"));
+  mixin(OProperty!("DAPPStyleContainer", "styles"));
 
-    mixin(OProperty!("STRINGAA", "bindings"));
+  mixin(OProperty!("STRINGAA", "bindings"));
+
+  override string opIndex(string key) {
+    switch(key) {
+      default: return super.opIndex(key);
+    }
+  }
+
 
   // #region h5 content
     void beforeH5(STRINGAA options = null) {
@@ -78,10 +87,6 @@ class DAPPView : DViewObject, IEventDispatcher {
       // init
       _error = null; // Delete last error
     }
-version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-        // TODO
-    }}
 
   DH5Obj[] toH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPView~":DAPPView("~this.name~")::toH5"); 
@@ -117,10 +122,6 @@ version(test_uim_apps) { unittest {
  */      
 
     }
-version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-      // TODO test
-      }} 
     // #endregion h5
 
   // #region render
@@ -130,10 +131,6 @@ version(test_uim_apps) { unittest {
     void beforeRender(STRINGAA options = null) {
       debugMethodCall(moduleName!DAPPView~":DAPPView::beforeRender"); 
     }
-version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-        // TODO Add Test
-        }}
 
     string afterRender(string renderedContent, STRINGAA options = null) {
       debugMethodCall(moduleName!DAPPView~":DAPPView::afterRender"); 
@@ -144,10 +141,6 @@ version(test_uim_apps) { unittest {
 
       return renderedContent; 
     }
-version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-        // TODO Add Test
-        }}
 
     string render(STRINGAA options = null) {
       debugMethodCall(moduleName!DAPPView~":DAPPView::render"); 
@@ -172,16 +165,11 @@ version(test_uim_apps) { unittest {
       if (hasError) { return null; }
 
       return finalRender; }
-version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-        /// TODO
-      }}
   // #endregion render 
 }
 mixin(APPViewCalls!("APPView"));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testView(new DAPPView); 
 

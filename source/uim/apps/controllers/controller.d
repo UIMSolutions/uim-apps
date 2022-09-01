@@ -16,6 +16,11 @@ class DAPPController : DAPPControllerObject {
   }
   
   mixin(APPParameter!("mimetype")); 
+  mixin(APPParameter!("rootPath")); 
+  mixin(APPParameter!("collectionName"));
+  mixin(APPParameter!("entitiesName")); 
+	mixin(APPParameter!("language"));
+  mixin(APPParameter!("responseResult"));
 
   /// Owning controller
   mixin(OProperty!("DAPPApplication", "app"));
@@ -36,7 +41,6 @@ class DAPPController : DAPPControllerObject {
   void response(HTTPServerResponse newResponse) { _response = newResponse; }
 
   mixin(OProperty!("DOOPEntity", "session"));
-  mixin(OProperty!("string", "responseResult"));
 
   /// Configuration of controller
   mixin(OProperty!("Json", "config"));

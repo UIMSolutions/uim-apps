@@ -47,8 +47,8 @@ class DAPPEntityUpdateController : DAPPEntityCrudPageController {
     entityPool[poolId] = entity;
     options["entityPool"] = to!string(poolId);
   
-    if (this.view) { 
-      view.entity(this.entity); 
+    if (auto myView = cast(DEntityView)this.view) {
+      myView.entity(this.entity);
     }
 
     if (viewMode == ViewModes.JS) {

@@ -5,9 +5,13 @@ import uim.apps;
 
 class DPluginAssetsCopyCommand {
   this() { initialize; }
+
+  void initialize() {
+    // 
+  }
 }
 auto PluginAssetsCopyCommand() { return new DPluginAssetsCopyCommand; }
 
-version(test_uim_apps) { unitest {
+version(test_uim_apps) { unittest {
   assert(PluginAssetsCopyCommand);
 }}

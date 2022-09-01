@@ -7,6 +7,8 @@ import uim.apps;
 public import uim.apps.views.object_;
 public import uim.apps.views.view;
 public import uim.apps.views.list;
+public import uim.apps.views.entity;
+public import uim.apps.views.entities;
 
 // Packages
 public import uim.apps.views.components;

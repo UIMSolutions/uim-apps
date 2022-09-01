@@ -18,7 +18,7 @@ public import uim.apps.views.components.tabpanes.specific;
 /* 
 auto tabpane(T:DOOPEntity)(T entity, STRINGAA Parameters) {
     return BS5CardBody(
-            H5Div(["card-title"], parameters.get("titile", "")),
+            H5Div(["card-title"], options.get("titile", "")),
             BS5Row( 
                 BS5Col(["col-12"])
             )
@@ -33,7 +33,7 @@ class DAPPTabpane : DAPPPane {
     mixin(OProperty!("string", "path"));
     mixin(OProperty!("string[]", "actions"));
 
-    override string toString(STRINGAA parameters) {
+    override string toString(STRINGAA options) {
         return BS5CardBody(
             H5Div(["card-title"], this.title),
             BS5Row( 

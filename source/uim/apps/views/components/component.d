@@ -49,7 +49,7 @@ class DViewComponent : DViewObject {
     return
       clone
         .debugPrefix(this.debugPrefix) 
-        .parameters(this.parameters)
+        .options(this.options)
         .dynamic(this.dynamic)
         .jsCode(this.jsCode)
         .style(this.style)

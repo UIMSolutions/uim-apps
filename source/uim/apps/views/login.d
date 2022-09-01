@@ -10,10 +10,10 @@ import uim.apps;
 
 class DAPPLoginView : DAPPView {
   mixin(APPViewThis!("APPLoginView"));
-
+  
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPLoginView~":DAPPLoginView::beforeH5");
-    auto rootPath = options.get("rootPath", "/");
+    this.rootPath(options.get("rootPath", "/"));
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {

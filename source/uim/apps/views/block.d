@@ -74,12 +74,12 @@ class DAPPViewBlock {
   // #endregion content
 
   // content of a viewBlock
-  DH5Obj[] toH5(STRINGAA parameters) {
+  DH5Obj[] toH5(STRINGAA options) {
     return content; }
 
   // render viewBlockrender
-  string render(STRINGAA parameters) {
-    if (auto h5 = toH5(parameters)) return h5.map!(a => a.toString).join();
+  string render(STRINGAA options) {
+    if (auto h5 = toH5(options)) return h5.map!(a => a.toString).join();
     return ""; }
 }
 auto APPViewBlock() { return new DAPPViewBlock; }

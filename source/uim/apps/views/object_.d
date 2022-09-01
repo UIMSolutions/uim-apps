@@ -8,14 +8,6 @@ class DViewObject : DAPPObject {
 
   mixin(OProperty!("DViewComponents", "components"));
 
-  mixin(OProperty!("DOOPEntity", "entity", null, true, true, "", `
-    this.components.entity(this.entity);
-    `));
-
-  mixin(OProperty!("DOOPEntity[]", "entities", null, true, true, "", `
-    this.components.entities(this.entities);
-   `));
-
   override void initialize() {
     super.initialize;
 
@@ -41,5 +33,12 @@ class DViewObject : DAPPObject {
   override void opIndexAssign(string newValue, string key) {
     this.parameter(key, newValue);
   }
+
+  override string opIndex(string key) {
+    switch(key) {
+      default: return super.opIndex(key);
+    }
+  }
+
 }
 
