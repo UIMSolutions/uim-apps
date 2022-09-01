@@ -8,13 +8,13 @@ class DEntityViewComponent : DViewComponent {
 
   mixin(OProperty!("DOOPEntity", "entity"));
 
-  void beforeH5(STRINGAA options = null) {
+  override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DEntityViewComponent~":DEntityViewComponent("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    debug writeln("In DEntityViewComponent -> %s components".formats(this.components.length));
+    debug writeln("In DEntityViewComponent -> "~(this.entity ? "has entity" : "no entity"));
     this
-      .components
+      .components.all
         .filter!(comp => cast(DEntityViewComponent)comp)
         .each!(comp => (cast(DEntityViewComponent)comp).entity(this.entity));
   }

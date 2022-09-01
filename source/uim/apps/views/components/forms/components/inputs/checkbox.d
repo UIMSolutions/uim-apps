@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.components.inputs.checkbox;
 import uim.apps;
 
 class DCheckboxFormInput : DFormInput {
-  mixin(FormComponentThis!("CheckboxFormInput", true));
+  mixin(ViewComponentThis!("CheckboxFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -38,7 +38,7 @@ class DCheckboxFormInput : DFormInput {
           h5Input(options), H5Span(["form-check-label"], label))));
   }
 }
-mixin(FormComponentCalls!("CheckboxFormInput"));
+mixin(ViewComponentCalls!("CheckboxFormInput"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

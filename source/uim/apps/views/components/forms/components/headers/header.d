@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.components.headers.header;
 import uim.apps;
 
 class DFormHeader : DFormComponent {
-  mixin(FormComponentThis!("FormHeader"));
+  mixin(ViewComponentThis!("FormHeader"));
 
   override void initialize() {
     debugMethodCall(moduleName!DFormHeader~"::DFormHeader("~this.name~"):initialize");   
@@ -104,7 +104,7 @@ class DFormHeader : DFormComponent {
           H5Span(["d-none d-sm-inline"], buttons)))].toH5;    
   } 
 }
-mixin(FormComponentCalls!("FormHeader"));
+mixin(ViewComponentCalls!("FormHeader"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

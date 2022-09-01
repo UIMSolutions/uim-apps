@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.components.inputs.text;
 import uim.apps;
 
 class DTextFormInput : DFormInput {
-  mixin(FormComponentThis!("TextFormInput", true));
+  mixin(ViewComponentThis!("TextFormInput", true));
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
     super.toH5(options);
@@ -26,7 +26,7 @@ class DTextFormInput : DFormInput {
     ].toH5;
   }
 }
-mixin(FormComponentCalls!("TextFormInput", true));
+mixin(ViewComponentCalls!("TextFormInput", true));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

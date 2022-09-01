@@ -66,7 +66,7 @@ class DViewComponent : DViewObject {
       // init
       this.clearError; // Delete last error
       debug writeln("has Components:", this.components.all.map!(c => c.name).array);
-      debug writeln("Found %s entities".format(this.entities.length));
+      debug writeln("In DViewComponent -> %s components".format(this.components.length));
     }
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

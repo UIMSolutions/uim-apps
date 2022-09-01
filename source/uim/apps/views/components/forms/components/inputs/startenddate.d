@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.components.inputs.startenddate;
 import uim.apps;
 
 class DStartEndDateFormInput : DFormInput {
-  mixin(FormComponentThis!("StartEndDateFormInput", true));
+  mixin(ViewComponentThis!("StartEndDateFormInput", true));
 
   DH5Obj h5StartInput(STRINGAA options = null) {
     super.h5Input(options);
@@ -75,4 +75,4 @@ class DStartEndDateFormInput : DFormInput {
       // 
       }}
 }
-mixin(FormComponentCalls!("StartEndDateFormInput", true));
+mixin(ViewComponentCalls!("StartEndDateFormInput", true));

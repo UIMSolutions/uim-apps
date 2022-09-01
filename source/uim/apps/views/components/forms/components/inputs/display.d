@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.components.inputs.display;
 import uim.apps;
 
 class DDisplayFormInput : DTextFormInput {
-  mixin(FormComponentThis!("DisplayFormInput", true));
+  mixin(ViewComponentThis!("DisplayFormInput", true));
 
   override void initialize() {
     super.initialize();
@@ -18,7 +18,7 @@ class DDisplayFormInput : DTextFormInput {
     .invalidFeedback("Titel ist nicht korrekt"); 
   }
 }
-mixin(FormComponentCalls!("DisplayFormInput", true));
+mixin(ViewComponentCalls!("DisplayFormInput", true));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

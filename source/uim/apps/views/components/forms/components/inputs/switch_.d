@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.components.inputs.switch_;
 import uim.apps;
 
 class DSwitchFormInput : DFormInput {
-  mixin(FormComponentThis!("SwitchFormInput", true));
+  mixin(ViewComponentThis!("SwitchFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -41,4 +41,4 @@ class DSwitchFormInput : DFormInput {
           h5Input(options), H5Span(["form-check-label"], label))));
   }
 }
-mixin(FormComponentCalls!("SwitchFormInput", true));
+mixin(ViewComponentCalls!("SwitchFormInput", true));

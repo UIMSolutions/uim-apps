@@ -86,6 +86,7 @@ class DAPPView : DViewObject, IEventDispatcher {
       debugMethodCall(moduleName!DAPPView~":DAPPView("~this.name~")::beforeH5");
       // init
       _error = null; // Delete last error
+      debug writeln("In DViewComponent -> %s components".formats(this.components.length));
     }
 
   DH5Obj[] toH5(STRINGAA options = null) {

@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.components.inputs.input;
 import uim.apps;
 
 class DFormInput : DFormComponent {
-  mixin(FormComponentThis!("FormInput"));
+  mixin(ViewComponentThis!("FormInput"));
 
   // id of label element
   mixin(OProperty!("string", "labelId")); 
@@ -71,7 +71,7 @@ class DFormInput : DFormComponent {
       ];
   }
 }
-mixin(FormComponentCalls!("FormInput"));
+mixin(ViewComponentCalls!("FormInput"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

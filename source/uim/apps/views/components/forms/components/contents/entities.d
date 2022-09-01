@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.components.contents.entities;
 @safe:
 import uim.apps;
 
-class DEntitiesFormContent : DFormContent {
-  mixin(FormComponentThis!("EntitiesFormContent"));
+class DEntitiesFormContent : DEntitiesViewComponent {
+  mixin(ViewComponentThis!("EntitiesFormContent"));
 
   override void initialize() {
     debugMethodCall(moduleName!DEntitiesFormContent~"::DEntitiesFormContent("~this.name~"):initialize");   
@@ -103,7 +103,7 @@ class DEntitiesFormContent : DFormContent {
       ].toH5;
   } 
 }
-mixin(FormComponentCalls!("EntitiesFormContent"));
+mixin(ViewComponentCalls!("EntitiesFormContent"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

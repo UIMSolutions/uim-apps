@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.components.contents.list;
 @safe:
 import uim.apps;
 
-class DAPPListFormContent : DEntitiesFormContent {
-  mixin(FormComponentThis!("APPListFormContent"));
+class DAPPListFormContent : DEntitiesViewComponent {
+  mixin(ViewComponentThis!("APPListFormContent"));
 
   mixin(OViewComponent!("listItem"));
 
@@ -26,7 +26,7 @@ class DAPPListFormContent : DEntitiesFormContent {
     ].toH5;
   } 
 }
-mixin(FormComponentCalls!("APPListFormContent"));
+mixin(ViewComponentCalls!("APPListFormContent"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

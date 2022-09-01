@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.components.contents.entity;
 @safe:
 import uim.apps;
 
-class DEntityFormContent : DFormContent {
-  mixin(FormComponentThis!("EntityFormContent", true));
+class DEntityFormContent : DEntityViewComponent {
+  mixin(ViewComponentThis!("EntityFormContent", true));
 
   override void initialize() {
     debugMethodCall(moduleName!DEntityFormContent~"::DEntityFormContent("~this.name~"):initialize");   
@@ -59,9 +59,9 @@ class DEntityFormContent : DFormContent {
     return results;
   }  
 
-  override DH5Obj bodyContent(STRINGAA options = null) {
+  DH5Obj bodyContent(STRINGAA options = null) {
     debugMethodCall(moduleName!DFormContent~"::DFormContent:bodyContent");    
-    DH5Obj row = super.bodyContent(options);
+    DH5Obj row = BS5Row();
     
     auto col = BS5Col(["col-12"], 
       BS5InputHidden("sessionToken", ["name":"sessionToken"]).value(options.get("sessionToken", null)));
@@ -92,7 +92,7 @@ class DEntityFormContent : DFormContent {
     )].toH5; 
   }
 }
-mixin(FormComponentCalls!("EntityFormContent", true));
+mixin(ViewComponentCalls!("EntityFormContent", true));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

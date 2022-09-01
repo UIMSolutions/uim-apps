@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.components.inputs.name;
 import uim.apps;
 
 class DNameFormInput : DTextFormInput {
-  mixin(FormComponentThis!("NameFormInput", true));
+  mixin(ViewComponentThis!("NameFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -18,4 +18,4 @@ class DNameFormInput : DTextFormInput {
       .invalidFeedback("Name ist nicht korrekt");
   }
 }
-mixin(FormComponentCalls!("NameFormInput", true));
+mixin(ViewComponentCalls!("NameFormInput", true));

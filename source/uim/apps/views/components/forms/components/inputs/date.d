@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.components.inputs.date;
 import uim.apps;
 
 class DDateFormInput : DFormInput {
-  mixin(FormComponentThis!("DateFormInput", true));
+  mixin(ViewComponentThis!("DateFormInput", true));
 
   override DH5Obj h5Input(STRINGAA options = null) {
     super.h5Input(options);
@@ -38,4 +38,4 @@ class DDateFormInput : DFormInput {
       // 
       }}
 }
-mixin(FormComponentCalls!("DateFormInput", true));
+mixin(ViewComponentCalls!("DateFormInput", true));

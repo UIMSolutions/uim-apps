@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.components.footers.footer;
 import uim.apps;
 
 class DFormFooter : DFormComponent {
-  mixin(FormComponentThis!("FormFooter"));
+  mixin(ViewComponentThis!("FormFooter"));
 
   override void initialize() {
     debugMethodCall(moduleName!DFormFooter~"::DFormFooter("~this.name~"):initialize");   
@@ -13,5 +13,5 @@ class DFormFooter : DFormComponent {
     debug writeln("In ", __MODULE__, "/", __LINE__);
   }
 }
-mixin(FormComponentCalls!("FormFooter"));
+mixin(ViewComponentCalls!("FormFooter"));
 

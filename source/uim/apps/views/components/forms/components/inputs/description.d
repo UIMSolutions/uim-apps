@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.components.inputs.description;
 import uim.apps;
 
 class DDescriptionFormInput : DTextAreaFormInput {
-  mixin(FormComponentThis!("DescriptionFormInput", true));
+  mixin(ViewComponentThis!("DescriptionFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -17,7 +17,7 @@ class DDescriptionFormInput : DTextAreaFormInput {
     .placeholder("Beschreibung eingeben"); 
   }
 }
-mixin(FormComponentCalls!("DescriptionFormInput", true));
+mixin(ViewComponentCalls!("DescriptionFormInput", true));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

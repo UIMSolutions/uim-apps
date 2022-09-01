@@ -4,7 +4,7 @@ module uim.apps.views.components.forms.components.inputs.handler;
 import uim.apps;
 
 class DFormInputHandler : DFormComponent {
-  mixin(FormComponentThis!("FormInputHandler", true));
+  mixin(ViewComponentThis!("FormInputHandler", true));
 
   mixin(OProperty!("DFormInput[string]", "formInputs"));
   O addFormInputs(this O)(DFormInput[string] newFormInputs) {
@@ -53,4 +53,4 @@ class DFormInputHandler : DFormComponent {
     return null;
   }
 }  
-mixin(FormComponentCalls!("FormInputHandler", true));
+mixin(ViewComponentCalls!("FormInputHandler", true));

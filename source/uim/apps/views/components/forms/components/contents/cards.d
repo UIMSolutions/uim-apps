@@ -3,8 +3,8 @@ module uim.apps.views.components.forms.components.contents.cards;
 @safe:
 import uim.apps;
 
-class DAPPCardsFormContent : DEntitiesFormContent {
-  mixin(FormComponentThis!("APPCardsFormContent"));
+class DAPPCardsFormContent : DEntitiesViewComponent {
+  mixin(ViewComponentThis!("APPCardsFormContent"));
 
   mixin(OProperty!("DViewComponent", "card"));
 
@@ -26,7 +26,7 @@ class DAPPCardsFormContent : DEntitiesFormContent {
     ].toH5;
   } 
 }
-mixin(FormComponentCalls!("APPCardsFormContent"));
+mixin(ViewComponentCalls!("APPCardsFormContent"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
