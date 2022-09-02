@@ -3,11 +3,13 @@ module uim.apps.views.components.forms.components.inputs.input;
 @safe:
 import uim.apps;
 
-class DFormInput : DEntityFormContent {
+class DFormInput : DEntityViewComponent {
   mixin(ViewComponentThis!("FormInput"));
 
   // id of label element
   mixin(OProperty!("string", "labelId")); 
+
+  mixin(OProperty!("bool", "readonly")); 
 
   // id of input element
   mixin(OProperty!("string", "inputId")); 
@@ -56,11 +58,6 @@ class DFormInput : DEntityFormContent {
       this.fieldValue = entity[fieldName];
     }
  }
-  version(test_uim_apps) {
-    unittest {
-      writeln("--- Test in ", __MODULE__, "/", __LINE__);
-      // 
-      }}
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     super.toH5(options);
@@ -74,9 +71,6 @@ class DFormInput : DEntityFormContent {
 mixin(ViewComponentCalls!("FormInput"));
 
 version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    
-    assert(new DFormInput);
-    assert(FormInput);
-  }
-}
+  assert(new DFormInput);
+  assert(FormInput);
+}}

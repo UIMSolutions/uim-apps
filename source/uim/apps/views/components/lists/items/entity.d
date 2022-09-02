@@ -12,7 +12,8 @@ class DEntityListItem : DListItem {
     super.initialize;
 
     this
-      .icon(tablerIcon("chevron-right"));
+      .icon(
+        tablerIcon("chevron-right"));
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {

@@ -4,7 +4,7 @@ module uim.apps.views.crud.create;
 import uim.apps;
 
 class DAPPEntityCreateView : DAPPEntityCRUDView {
-  mixin(APPViewThis!("APPEntityCreateView"));
+  mixin(ViewThis!("APPEntityCreateView"));
 
   override void initialize() {
     super.initialize;
@@ -25,7 +25,7 @@ class DAPPEntityCreateView : DAPPEntityCRUDView {
     this.crudMode(CRUDModes.Create);
   }
 }
-mixin(APPViewCalls!("APPEntityCreateView"));
+mixin(ViewCalls!("APPEntityCreateView"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);

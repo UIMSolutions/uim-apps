@@ -13,11 +13,15 @@ class DAPPEntitiesList : DAPPListViewComponent {
     debug writeln ("%s Entities in DAPPEntitiesList".format(this.entities.length));
 
     auto listGroup = BS5ListGroup(["list-group-flush", "list-group-hoverable"]);
-    if (auto entityListItem = cast(DEntityListItem)itemTemplate) {
+    if (auto myListItem = cast(DEntityListItem)itemTemplate) {
       foreach(entity; this.entities) {
-        listGroup.item(entityListItem.entity(entity).toH5(options));
+        listGroup.item(myListItem.entity(entity).toH5(options));
     }}
     this.listContent(StaticViewComponent.h5([listGroup].toH5));
   }
 }
 mixin(ViewComponentCalls!("APPEntitiesList"));
+
+version(test_uim_apps) { unittest {
+  assert(APPEntitiesList);
+}}

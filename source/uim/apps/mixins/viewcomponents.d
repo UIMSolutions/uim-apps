@@ -6,14 +6,14 @@ import uim.apps;
 template ViewComponentThis(string classShortName, bool withEntity = false, bool withEntities = false) {
   const char[] ViewComponentThis = `
 this() { super(); this.name = "`~classShortName~`"; }
-this(DViewObject newOwner) { this().owner(newOwner); }`~
+this(DBaseView newOwner) { this().owner(newOwner); }`~
 (withEntity ? `
 this(DOOPEntity newEntity) { this().entity(newEntity); }
-this(DViewObject newOwner, DOOPEntity newEntity) { this(newOwner).entity(newEntity); }
+this(DBaseView newOwner, DOOPEntity newEntity) { this(newOwner).entity(newEntity); }
 ` : ``)~
 (withEntities ? `
 this(DOOPEntity[] newEntities) { this().entities(newEntities); }
-this(DViewObject newOwner, DOOPEntity[] newEntities) { this(newOwner).entities(newEntities); }
+this(DBaseView newOwner, DOOPEntity[] newEntities) { this(newOwner).entities(newEntities); }
 ` : ``);
 
 }
@@ -21,14 +21,14 @@ this(DViewObject newOwner, DOOPEntity[] newEntities) { this(newOwner).entities(n
 template ViewComponentCalls(string classShortName, bool withEntity = false, bool withEntities = false) {
   const char[] ViewComponentCalls = `
 auto `~classShortName~`() { return new D`~classShortName~`; }
-auto `~classShortName~`(DViewObject newOwner) { return new D`~classShortName~`(newOwner); }`~
+auto `~classShortName~`(DBaseView newOwner) { return new D`~classShortName~`(newOwner); }`~
 (withEntity ? `
 auto `~classShortName~`(DOOPEntity myEntity) { return new D`~classShortName~`(myEntity); }
-auto `~classShortName~`(DViewObject newOwner, DOOPEntity myEntity) { return new D`~classShortName~`(newOwner, myEntity); }
+auto `~classShortName~`(DBaseView newOwner, DOOPEntity myEntity) { return new D`~classShortName~`(newOwner, myEntity); }
 ` : ``)~
 (withEntities ? `
 auto `~classShortName~`(DOOPEntity[] newEntities) { return new D`~classShortName~`(newEntities); }
-auto `~classShortName~`(DViewObject newOwner, DOOPEntity[] newEntities) { return new D`~classShortName~`(newOwner, newEntities); }
+auto `~classShortName~`(DBaseView newOwner, DOOPEntity[] newEntities) { return new D`~classShortName~`(newOwner, newEntities); }
 ` : ``);
 }
 

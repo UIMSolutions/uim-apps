@@ -1,9 +1,9 @@
-module uim.apps.views.object_;
+module uim.apps.views.base;
 
 @safe:
 import uim.apps;
 
-class DViewObject : DAPPObject {
+class DBaseView : DAPPObject {
   this() { super(); }
 
   mixin(OProperty!("DViewComponents", "components"));
@@ -42,7 +42,7 @@ class DViewObject : DAPPObject {
   }
 
   void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DViewObject~":DViewObject("~this.name~")::beforeH5");
+    debugMethodCall(moduleName!DBaseView~":DBaseView("~this.name~")::beforeH5");
     // init
     _error = null; // Delete last error
 

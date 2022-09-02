@@ -16,6 +16,8 @@ class DPageFooter : DViewComponent {
   mixin(OProperty!("string", "backgroundColor"));
   mixin(OProperty!("string", "backgroundImage"));
   mixin(OProperty!("string", "inner"));
+  mixin(OProperty!("DOOPEntity",   "entity"));
+  mixin(OProperty!("DOOPEntity[]", "entities"));
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
     debugMethodCall(moduleName!DPageFooter~":DPageFooter("~this.name~")::toH5");

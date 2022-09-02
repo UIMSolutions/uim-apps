@@ -106,9 +106,6 @@ class DFormHeader : DEntityFormContent {
 mixin(ViewComponentCalls!("FormHeader"));
 
 version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    
     assert(new DFormHeader);
     assert(FormHeader);
-  }
-}
+}}

@@ -127,8 +127,8 @@ class DAPPLayout {
 		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::beforeRender");
 	}
 
-	string render(DAPPPageController controller, DAPPView view, STRINGAA options = null) { 
-		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::render(DAPPPageController controller, DAPPView view, STRINGAA options = null)");
+	string render(DAPPPageController controller, DView view, STRINGAA options = null) { 
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::render(DAPPPageController controller, DView view, STRINGAA options = null)");
     if (view) {
       debug writeln("view is -> ", view.name);
 		  return render(controller, view.toH5(options), options);
@@ -240,7 +240,7 @@ version(test_uim_apps) { unittest {
   // #endregion render
 }
 
-/*   override string render(DAPPPageController page, DAPPView view, STRINGAA options = null) {
+/*   override string render(DAPPPageController page, DView view, STRINGAA options = null) {
     super.render(page, view, options);
 
     auto head = ("navigation" in options ? options.get("navigation", "") : navigation.render(options));

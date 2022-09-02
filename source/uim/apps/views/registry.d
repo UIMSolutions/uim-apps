@@ -8,7 +8,7 @@ module uim.apps.views.registry;
 @safe:
 import uim.apps;
 
-class DAPPViewRegistry : DOOPRegistry!DAPPView {
+class DViewRegistry : DOOPRegistry!DView {
   this() { super(); }
 }
-auto APPViewRegistry() { return new DAPPViewRegistry(); }
+auto ViewRegistry() { return new DViewRegistry(); }

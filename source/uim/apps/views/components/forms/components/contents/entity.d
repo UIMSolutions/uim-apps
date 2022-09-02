@@ -14,8 +14,10 @@ class DEntityFormContent : DEntityViewComponent {
     .id("FormContent_%s".format(uniform(1, 1_000)))
     .crudMode(CRUDModes.Create)
     .fields(["name", "display", "description"])
-    .inputHandler(FormInputHandler(this.form));   
+    .inputHandler(FormInputHandler(/* this.form */));   
   }
+
+  mixin(APPParameter!("title"));
 
   mixin(OProperty!("string[]", "fields"));
   O addFields(this O)(string[] newFields) {
@@ -32,13 +34,12 @@ class DEntityFormContent : DEntityViewComponent {
     DH5Obj[] results;
 
     debug writeln(entity ? "Has entity: "~entity.name : "No entity");
-    debug writeln(form ? "Has form " : "No form");
 
     if (auto myInputHandler = cast(DFormInputHandler)inputHandler) {
       debug writeln("Found inputHandler:",inputHandler.name);
 
       myInputHandler
-        .form(this.form)
+        /* .form(this.form) */
         .crudMode(this.crudMode)
         .entity(entity);
 
@@ -82,7 +83,7 @@ class DEntityFormContent : DEntityViewComponent {
   } 
 
   override DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DFormContent~"::DFormContent:toH5");    
+    debugMethodCall(moduleName!DEntityFormContent~"::DEntityFormContent:toH5");    
     super.toH5(options);
     if (hasError || "redirect" in options) { return null; }
 
@@ -97,9 +98,9 @@ mixin(ViewComponentCalls!("EntityFormContent", true));
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
     
-    assert(new DFormContent);
-    assert(FormContent);
-    assert(new DFormContent(Form));
-    assert(FormContent(Form));
+    assert(new DEntityFormContent);
+    assert(EntityFormContent);
+    assert(new DEntityFormContent(Form));
+    assert(EntityFormContent(Form));
   }
 }

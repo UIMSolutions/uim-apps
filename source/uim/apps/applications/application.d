@@ -41,11 +41,11 @@ class DAPPApplication {
     return cast(O)this; 
   }
 
-  mixin(OProperty!("DAPPViewRegistry", "views"));  
-  DAPPView view(string path) {
+  mixin(OProperty!("DViewRegistry", "views"));  
+  DView view(string path) {
     return views ? views[path] : null; 
   }
-  O view(this O)(string path, DAPPView newView) {
+  O view(this O)(string path, DView newView) {
     if (views) controlleviewsrs[path] = newView;
     return cast(O)this; 
   }

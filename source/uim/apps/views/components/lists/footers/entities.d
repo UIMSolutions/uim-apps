@@ -5,6 +5,7 @@ import uim.apps;
 
 class DAPPEntitiesListFooter : DAPPListFooter {
   mixin(ViewComponentThis!("APPEntitiesListFooter"));
+  mixin(OProperty!("DOOPEntity[]", "entities"));
 
   mixin(OProperty!("bool", "showNumber"));
   mixin(OProperty!("bool", "showSorter"));

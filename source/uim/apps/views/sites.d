@@ -3,12 +3,12 @@ module uim.apps.views.sites;
 @safe:
 import uim.apps;
 
-class DAPPViewSites : DAPPView {
+class DViewSites : DView {
   this() { super(); }
   this(DAPPPageController aController) { this().controller(aController); }
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPViewSites~":DAPPViewSites::beforeH5");
+    debugMethodCall(moduleName!DViewSites~":DViewSites::beforeH5");
     super.beforeH5(options);
     if (hasError) { return; }
 
@@ -60,5 +60,5 @@ class DAPPViewSites : DAPPView {
       ))].toH5;       
   }
 }
-auto APPViewSites() { return new DAPPViewSites(); }
-auto APPViewSites(DAPPPageController aController) { return new DAPPViewSites(aController); }
+auto ViewSites() { return new DViewSites(); }
+auto ViewSites(DAPPPageController aController) { return new DViewSites(aController); }

@@ -3,8 +3,8 @@ module uim.apps.views.login2;
 @safe:
 import uim.apps;
 
-class DAPPLogin2View : DAPPView {
-  mixin(APPViewThis!("APPLogin2View"));
+class DAPPLogin2View : DView {
+  mixin(ViewThis!("APPLogin2View"));
 
   override void beforeH5(STRINGAA options = null) { 
     debugMethodCall(moduleName!DAPPLogin2View~":DAPPLogin2View::beforeH5");
@@ -27,4 +27,4 @@ class DAPPLogin2View : DAPPView {
     return results;       
   }
 }
-mixin(APPViewCalls!("APPLogin2View"));
+mixin(ViewCalls!("APPLogin2View"));

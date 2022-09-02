@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.crud.read;
 @safe:
 import uim.apps;
 
-class DAPPReadForm : DAPPEntityCRUDForm {
+class DAPPReadForm : DEntityForm {
   mixin(FormThis!("APPReadForm"));
 
   override void initialize() {

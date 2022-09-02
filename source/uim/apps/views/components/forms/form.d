@@ -16,7 +16,7 @@ class DForm : DViewComponent {
       .header(
         FormHeader(this))
       .content(
-        FormContent(this))
+        EntityFormContent(this))
       .crudMode(CRUDModes.Read)
       .method("post");
   
@@ -97,7 +97,7 @@ class DForm : DViewComponent {
         .title(headerTitle);
     }
 
-    if (auto frmContent = cast(DFormContent)this.components["content"]) { 
+    if (auto frmContent = cast(DEntityFormContent)this.components["content"]) { 
       frmContent
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)

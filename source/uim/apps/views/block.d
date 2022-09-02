@@ -8,7 +8,7 @@ module uim.apps.views.block;
 @safe:
 import uim.apps;
 
-class DAPPViewBlock {
+class DViewBlock {
   this() {}
   this(DH5Obj[] content) { this(); this.content(content); }
 
@@ -26,7 +26,7 @@ class DAPPViewBlock {
   
   // #region blocks
     // An array of blocks indexed by name.
-    mixin(OProperty!("DAPPViewBlock[string]", "blocks"));
+    mixin(OProperty!("DViewBlock[string]", "blocks"));
     
     // Check if a block exists
     bool exists(string name) { // name = Name of the block
@@ -38,16 +38,16 @@ class DAPPViewBlock {
 
     // Add/Set block.
     O set(this O)(string name, DH5Obj[] blockContent) { // name = Name of the block, blockContent = The content for the block
-      _blocks[name] = APPViewBlock(blockContent);
+      _blocks[name] = ViewBlock(blockContent);
       return cast(O)this; }
 
     // Get block.
-    DAPPViewBlock get(string name, DAPPViewBlock defaultValue = null) { // name = Name of the block, defaultValue = Default block
+    DViewBlock get(string name, DViewBlock defaultValue = null) { // name = Name of the block, defaultValue = Default block
         return _blocks.get(name, defaultValue); } // return = The block content or defaultValue if the block does not exist.
 
     // Get block.
-    DAPPViewBlock get(string name, DH5Obj[] content) { // name = Name of the block, defaultValue = Default block
-        return _blocks.get(name, APPViewBlock(content)); } // return = The block content or defaultValue if the block does not exist.
+    DViewBlock get(string name, DH5Obj[] content) { // name = Name of the block, defaultValue = Default block
+        return _blocks.get(name, ViewBlock(content)); } // return = The block content or defaultValue if the block does not exist.
 
     // Remove blocks
     O remove(this O)(string[] names...) { 
@@ -82,5 +82,5 @@ class DAPPViewBlock {
     if (auto h5 = toH5(options)) return h5.map!(a => a.toString).join();
     return ""; }
 }
-auto APPViewBlock() { return new DAPPViewBlock; }
-auto APPViewBlock(DH5Obj[] content) { return new DAPPViewBlock(content); }
+auto ViewBlock() { return new DViewBlock; }
+auto ViewBlock(DH5Obj[] content) { return new DViewBlock(content); }

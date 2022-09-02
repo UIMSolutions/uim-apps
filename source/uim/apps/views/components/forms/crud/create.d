@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.crud.create;
 @safe:
 import uim.apps;
 
-class DAPPCreateForm : DAPPEntityCRUDForm {
+class DAPPCreateForm : DEntityForm {
   mixin(FormThis!("APPCreateForm"));
 
   override void initialize() {

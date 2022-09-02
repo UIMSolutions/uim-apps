@@ -4,8 +4,8 @@ module uim.apps.views.entities;
 import uim.apps;
 
 // View with entities
-class DEntitiesView : DAPPView {
-  mixin(APPViewThis!("EntitiesView"));
+class DEntitiesView : DView {
+  mixin(ViewThis!("EntitiesView"));
   
   mixin(OProperty!("DOOPEntity[]", "entities"));
 
@@ -13,11 +13,11 @@ class DEntitiesView : DAPPView {
     debugMethodCall(moduleName!DEntitiesView~":DEntitiesView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    debug writeln("In DEntitiesView -> %s entities".formats(this.entities.length));
+    debug writeln("In DEntitiesView -> %s entities".format(this.entities.length));
     this
       .components.all
         .filter!(comp => cast(DEntitiesViewComponent)comp)
         .each!(comp => (cast(DEntitiesViewComponent)comp).entities(this.entities));
   }
 }
-mixin(APPViewCalls!("EntitiesView"));
+mixin(ViewCalls!("EntitiesView"));

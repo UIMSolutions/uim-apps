@@ -63,8 +63,8 @@ void testPageController(DAPPPageController controller) {
 	assert(controller.mimetype("testMimetype2").mimetype == "testMimetype2");	
 	assert(controller.mimetype("testMimetype2")["mimetype"] == "testMimetype2");			
 
-	assert(controller.view(APPView).view.name == "APPView", "Found error"); 
-	assert(controller.view(APPView).view["name"] == "APPView", "Found error"); 
+	assert(controller.view(View).view.name == "View", "Found error"); 
+	assert(controller.view(View).view["name"] == "View", "Found error"); 
 }
 
 auto appCreatePageController(string category, string className, string rootController, string collectionName, string addInitialize = "", string addBeforeResponse = "") {

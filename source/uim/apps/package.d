@@ -262,9 +262,9 @@ auto hasAllKey(Json parameters, string[] keys) {
   return true;
 }
 
-/* DAPPViewRegistry uimViewRegistry;
+/* DViewRegistry uimViewRegistry;
 static this() {
-  uimViewRegistry = APPViewRegistry;
+  uimViewRegistry = ViewRegistry;
 } */
 
 auto editorSummary = `const editorSummary = KothingEditor.create("entity_summary", {

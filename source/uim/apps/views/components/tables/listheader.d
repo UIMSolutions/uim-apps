@@ -5,7 +5,7 @@ import uim.apps;
 
 class DAPPListTableHeader : DViewComponent {
   this() { super(); }
-  this(DAPPView myView) { this(); this.view(myView); }
+  this(DView myView) { this(); this.view(myView); }
 
   override DH5Obj[] toH5(STRINGAA options) {
     return [
@@ -22,4 +22,4 @@ class DAPPListTableHeader : DViewComponent {
   }
 }
 auto APPListTableHeader() { return new DAPPListTableHeader; }
-auto APPListTableHeader(DAPPView myView) { return new DAPPListTableHeader(myView); }
+auto APPListTableHeader(DView myView) { return new DAPPListTableHeader(myView); }

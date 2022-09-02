@@ -4,7 +4,7 @@ module uim.apps.views.crud.delete_;
 import uim.apps;
 
 class DAPPEntityDeleteView : DAPPEntityCRUDView {
-  mixin(APPViewThis!("APPEntityDeleteView"));
+  mixin(ViewThis!("APPEntityDeleteView"));
 
   override void initialize() {
     super.initialize;
@@ -22,7 +22,7 @@ class DAPPEntityDeleteView : DAPPEntityCRUDView {
               .actions([["cancel2root", "finalDelete"], ["view", "version", "edit"], ["print", "export"]])));
   }
 }
-mixin(APPViewCalls!("APPEntityDeleteView"));
+mixin(ViewCalls!("APPEntityDeleteView"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);

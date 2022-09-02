@@ -21,8 +21,8 @@ this(DAPPPageController myController, DOOPEntity[] myEntities) { this(myControll
 
 }
 
-template APPViewThis(string name, bool withEntity = false, bool withEntities = false) {
-  const char[] APPViewThis = appViewThis(name, withEntity, withEntities);
+template ViewThis(string name, bool withEntity = false, bool withEntities = false) {
+  const char[] ViewThis = appViewThis(name, withEntity, withEntities);
 }
 
 string appViewCalls(string classShortName, bool withEntity = false, bool withEntities = false) {
@@ -41,11 +41,11 @@ auto `~classShortName~`(DAPPPageController myController, DOOPEntity[] myEntities
 ` : ``);
 }
 
-template APPViewCalls(string classShortName, bool withEntity = false, bool withEntities = false) {
-  const char[] APPViewCalls = appViewCalls(classShortName, withEntity, withEntities);
+template ViewCalls(string classShortName, bool withEntity = false, bool withEntities = false) {
+  const char[] ViewCalls = appViewCalls(classShortName, withEntity, withEntities);
 }
 
-void testView(DAPPView view) {
+void testView(DView view) {
 	assert(view);	
 
 	view["id"] = "testId1";
@@ -65,15 +65,15 @@ void testView(DAPPView view) {
 	assert(view.name("testName2")["name"] == "testName2");	
 }
 
-/* template APPViewProperty(string dataType, string name) {
-  const char[] APPViewProperty = `
+/* template ViewProperty(string dataType, string name) {
+  const char[] ViewProperty = `
   `~dataType~` `~name~`() { return cast(`~dataType~`)this.component("`~name~`"); }
   O `~name~`(this O)(`~dataType~` newComponent) { this.component("`~name~`", newComponent); return cast(O)this; }
   `;
 } */
 
-template APPViewProperty(string dataType, string name) {
-  const char[] APPViewProperty = `
+template ViewProperty(string dataType, string name) {
+  const char[] ViewProperty = `
   protected `~dataType~` _`~name~`;
   `~dataType~` `~name~`() { return _`~name~`; }
   O `~name~`(this O)(`~dataType~` newComponent) { _`~name~` = newComponent; return cast(O)this; }

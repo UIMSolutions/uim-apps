@@ -4,7 +4,7 @@ module uim.apps.views.crud.update;
 import uim.apps;
 
 class DAPPEntityUpdateView : DAPPEntityCRUDView {
-  mixin(APPViewThis!("APPEntityUpdateView"));
+  mixin(ViewThis!("APPEntityUpdateView"));
 
   override void initialize() {
     super.initialize;
@@ -23,7 +23,7 @@ class DAPPEntityUpdateView : DAPPEntityCRUDView {
     this.crudMode(CRUDModes.Update);
   }
 }
-mixin(APPViewCalls!("APPEntityUpdateView"));
+mixin(ViewCalls!("APPEntityUpdateView"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);

@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.crud.update;
 @safe:
 import uim.apps;
 
-class DAPPUpdateForm : DAPPEntityCRUDForm {
+class DAPPUpdateForm : DEntityForm {
   mixin(FormThis!("APPUpdateForm"));
 
   override void initialize() {

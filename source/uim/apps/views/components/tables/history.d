@@ -5,7 +5,7 @@ import uim.apps;
 
 /* class DAPPTableHistory : DAPPEntitiesTableHeader {
   this() { super(); }
-  this(DAPPView myView) { this().view(myView); }
+  this(DView myView) { this().view(myView); }
 
   mixin(OProperty!("DOOPEntity[]", "history"));
   O history(this O)(Json[] jsons) {

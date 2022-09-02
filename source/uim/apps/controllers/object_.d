@@ -3,18 +3,18 @@ module uim.apps.controllers.object_;
 @safe:
 import uim.apps;
 
-class DAPPControllerObject : DAPPObject {
+class DBaseController : DAPPObject {
   this() { super(); }
 
 /*   // controller components
-  mixin(OProperty!("DAPPControllerObject[string]", "components")); 
+  mixin(OProperty!("DBaseController[string]", "components")); 
   bool hasComponent(string key) {
     return (this.component(key) !is null);
   }
-  DAPPControllerObject component(string key) {
+  DBaseController component(string key) {
     return this.components.get(key, null);
   }
-  O component(this O)(string key, DAPPControllerObject newComponent) {
+  O component(this O)(string key, DBaseController newComponent) {
     components[key] = newComponent;
     return cast(O)this;
   } */

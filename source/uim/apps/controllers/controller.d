@@ -3,7 +3,7 @@ module uim.apps.controllers.controller;
 @safe:
 import uim.apps;
 
-class DAPPController : DAPPControllerObject {
+class DAPPController : DBaseController {
   mixin(APPControllerThis!("APPController"));
 
   // Initialization (= hook method)

@@ -11,7 +11,7 @@ class DAPPSitesPage : DAPPPageController {
 
     this
     .title("Anmeldung (Kennung)")
-    .view(APPViewSites(this));
+    .view(ViewSites(this));
 
     this.scripts.addLinks(
       "/js/apps/app.js",   

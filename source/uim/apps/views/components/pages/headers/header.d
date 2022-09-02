@@ -3,7 +3,7 @@ module uim.apps.views.components.pages.headers.header;
 @safe:
 import uim.apps;
 
-class DPageHeader : DViewComponent {
+class DPageHeader : DEntityViewComponent {
   mixin(ViewComponentThis!("PageHeader"));
 
   override void initialize() {

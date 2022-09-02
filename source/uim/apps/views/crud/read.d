@@ -4,9 +4,9 @@ module uim.apps.views.crud.read;
 import uim.apps;
 
 class DAPPEntityReadView : DAPPEntityCRUDView { // Default view
-  mixin(APPViewThis!("APPEntityReadView"));
+  mixin(ViewThis!("APPEntityReadView"));
 }
-mixin(APPViewCalls!("APPEntityReadView"));
+mixin(ViewCalls!("APPEntityReadView"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);

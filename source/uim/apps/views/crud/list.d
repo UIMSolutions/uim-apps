@@ -4,7 +4,7 @@ module uim.apps.views.crud.list;
 import uim.apps;
 
 class DAPPEntitiesListView : DEntitiesView {
-  mixin(APPViewThis!("APPEntitiesListView", false, true));
+  mixin(ViewThis!("APPEntitiesListView", false, true));
 
   mixin(OProperty!("CRUDModes", "crudMode"));
   mixin(OProperty!("bool", "readonly"));
@@ -36,7 +36,7 @@ class DAPPEntitiesListView : DEntitiesView {
       )].toH5;             
   }
 }
-mixin(APPViewCalls!("APPEntitiesListView"));
+mixin(ViewCalls!("APPEntitiesListView"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);

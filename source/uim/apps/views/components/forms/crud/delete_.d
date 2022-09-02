@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.crud.delete_;
 @safe:
 import uim.apps;
 
-class DAPPDeleteForm : DAPPEntityCRUDForm {
+class DAPPDeleteForm : DEntityForm {
   mixin(FormThis!("APPDeleteForm"));
 
   override void initialize() {

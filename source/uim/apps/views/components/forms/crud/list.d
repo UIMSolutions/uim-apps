@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.crud.list;
 @safe:
 import uim.apps;
 
-class DAPPEntitiesListForm : DForm {
+class DAPPEntitiesListForm : DEntitiesForm {
   mixin(ViewComponentThis!("APPEntitiesListForm", false, true));
 
   override void initialize() {
@@ -14,7 +14,7 @@ class DAPPEntitiesListForm : DForm {
         FormHeader(this) //.mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["print", "export"]])
       )
       .content(
-        FormContent(this)      
+        EntitiesFormContent(this)      
       );
     /*       .form
         .header(APPEntitiesheader(this.form).rootPath("/cms/blogs").mainTitle("Blogs").subTitle("Blogs anzeigen").actions([["print", "export"]]))

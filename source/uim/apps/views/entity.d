@@ -4,8 +4,8 @@ module uim.apps.views.entity;
 import uim.apps;
 
 // View with entity
-class DEntityView : DAPPView {
-  mixin(APPViewThis!("EntityView"));
+class DEntityView : DView {
+  mixin(ViewThis!("EntityView"));
   
   mixin(OProperty!("DOOPEntity", "entity"));
   mixin(OProperty!("CRUDModes", "crudMode"));
@@ -21,4 +21,4 @@ class DEntityView : DAPPView {
         .each!(comp => (cast(DEntityViewComponent)comp).entity(this.entity));
   }
 }
-mixin(APPViewCalls!("EntityView"));
+mixin(ViewCalls!("EntityView"));

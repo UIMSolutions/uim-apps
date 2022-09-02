@@ -33,11 +33,11 @@ class DEntitiesFormContent : DEntitiesViewComponent {
       this.rootPath(form.rootPath); 
     } */
 
-    debug writeln(entities ? "Has entities" : "No entities");
+/*     debug writeln(entities ? "Has entities" : "No entities");
     if (auto entitiesForm = cast(IAPPWithEntities)this.form) {
       debug writeln("Found entitiesForm");
       this.entities(entitiesForm.entities);
-    }
+    } */
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {

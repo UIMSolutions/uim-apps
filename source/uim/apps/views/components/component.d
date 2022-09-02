@@ -3,7 +3,7 @@ module uim.apps.views.components.component;
 @safe:
 import uim.apps;
 
-class DViewComponent : DViewObject {
+class DViewComponent : DBaseView {
   mixin(ViewComponentThis!"ViewComponent");
   
   static size_t viewComponentCounter = 0;
@@ -13,7 +13,8 @@ class DViewComponent : DViewObject {
   mixin(OProperty!("bool", "notNull")); 
   mixin(OProperty!("STRINGAA", "style")); 
   mixin(OProperty!("bool", "changed")); 
-  mixin(OProperty!("DViewObject", "owner")); 
+  mixin(OProperty!("DBaseView", "owner")); 
+  mixin(OProperty!("DView", "view")); 
   mixin(OProperty!("DAPPLayout", "layout")); 
   mixin(APPParameter!("jsCode")); 
   mixin(APPParameter!("debugPrefix")); 

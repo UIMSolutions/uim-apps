@@ -4,7 +4,7 @@ module uim.apps.views.crud.entity;
 import uim.apps;
 
 class DAPPEntityCRUDView : DEntityView {
-  mixin(APPViewThis!("APPEntityCRUDView"));
+  mixin(ViewThis!("APPEntityCRUDView"));
 
   mixin(OProperty!("bool", "readonly", "CRUDModes.Read", true, true, "", `
     foreach(component; this.components.all) {
@@ -58,7 +58,7 @@ class DAPPEntityCRUDView : DEntityView {
     if (hasError || "redirect" in options) { return; }
 
     debug writeln(this.entity ? "Has entity "~this.entity.name : "ENtity missing");
-    if (auto myForm = cast(DForm)this.form) {
+    if (auto myForm = cast(DEntityForm)this.form) {
       debug writeln("Found DForm");
       myForm.entity(this.entity);
 
@@ -83,7 +83,7 @@ class DAPPEntityCRUDView : DEntityView {
       )].toH5;             
   }
 }
-mixin(APPViewCalls!("APPEntityCRUDView"));
+mixin(ViewCalls!("APPEntityCRUDView"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);

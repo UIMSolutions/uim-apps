@@ -3,13 +3,13 @@ module uim.apps.views.components.forms.crud.entity;
 @safe:
 import uim.apps;
 
-class DAPPEntityCRUDForm : DForm {
-  mixin(ViewComponentThis!("APPEntityCRUDForm", true));
+class DEntityForm : DForm {
+  mixin(ViewComponentThis!("EntityForm"));
+
+  mixin(OProperty!("DOOPEntity", "entity"));
 
   override void initialize() {
     super.initialize;
-
-    this.components["content"] = FormContent(this);
   }
 }
-mixin(ViewComponentCalls!("APPEntityCRUDForm", true));
+mixin(ViewComponentCalls!("EntityForm"));

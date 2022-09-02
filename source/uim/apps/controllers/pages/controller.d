@@ -37,8 +37,8 @@ class DAPPPageController : DAPPController {
   mixin(OProperty!("string[]", "pageActions"));
   mixin(OProperty!("bool", "hasGlobalSession"));
 
-  mixin(OProperty!("DAPPView", "view"));
-  mixin(OProperty!("DAPPView", "errorView"));
+  mixin(OProperty!("DView", "view"));
+  mixin(OProperty!("DView", "errorView"));
 
   // Required checks for the page flow
   mixin(OProperty!("string[]", "sessionData"));

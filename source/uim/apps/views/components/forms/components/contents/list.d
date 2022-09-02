@@ -6,7 +6,7 @@ import uim.apps;
 class DAPPListFormContent : DEntitiesViewComponent {
   mixin(ViewComponentThis!("APPListFormContent"));
 
-  mixin(OViewComponent!("listItem"));
+  mixin(OProperty!("DEntityViewComponent", "templateListItem"));
 
   override void initialize() {
     debugMethodCall(moduleName!DAPPListFormContent~"::DAPPListFormContent("~this.name~"):initialize");   
@@ -19,7 +19,7 @@ class DAPPListFormContent : DEntitiesViewComponent {
     if (hasError || "redirect" in options) { return null; }
     debug writeln("Found entities for table = ", entities.length);
 
-    DH5Obj[] listItems = entities.map!(entity => entity ? listItem.entity(entity).toH5 : null).join; 
+    DH5Obj[] listItems = this.entities.map!(entity => entity ? templateListItem.entity(entity).toH5 : null).join; 
       
     return [
       BS5ListGroup(["list-group-flush"], listItems)
@@ -35,5 +35,4 @@ version(test_uim_apps) { unittest {
     assert(APPListFormContent);
     assert(new DAPPListFormContent(Form));
     assert(APPListFormContent(Form));
-  }
-}
+}}

@@ -3,7 +3,7 @@ module uim.apps.views.components.lists.list;
 @safe:
 import uim.apps;
 
-class DAPPListViewComponent : DViewComponent {
+class DAPPListViewComponent : DEntitiesViewComponent {
   mixin(ViewComponentThis!("APPListViewComponent"));
 
   mixin(SProperty!("DH5Obj", "noEntities"));

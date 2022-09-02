@@ -9,7 +9,7 @@ import uim.apps;
   mixin(OProperty!("DOOPEntity[]", "entities"));
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPView~":DAPPView::beforeH5");
+    debugMethodCall(moduleName!DView~":DView::beforeH5");
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
 

@@ -16,6 +16,8 @@ class DAPPEntitiesTabpane : DTabPane {
 
     this.components["content"] = APPEntitiesList.itemTemplate(EntityListItem);
   }
+
+  mixin(OProperty!("DOOPEntity[]", "entities"));
 }
 mixin(ViewComponentCalls!("APPEntitiesTabpane"));
 
