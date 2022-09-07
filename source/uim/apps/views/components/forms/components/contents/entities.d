@@ -11,12 +11,13 @@ class DEntitiesFormContent : DEntitiesViewComponent {
     super.initialize;
     debug writeln("In ", __MODULE__, "/", __LINE__);
 
-    this.components.set("header", APPEntitiesTableHeader);
-    this.tableFilter(APPEntitiesTableFilter); 
+    this // Defaults
+      .tableHeader(APPEntitiesTableHeader)
+      .tableFilter(APPEntitiesTableFilter); 
   }
 
-  mixin(OViewComponent!("tableHeader", "tableHeader"));
-  mixin(OViewComponent!("tableFilter", "tableFilter"));
+  mixin(OProperty!("DAPPEntitiesTableHeader", "tableHeader"));
+  mixin(OProperty!("DAPPEntitiesTableFilter", "tableFilter"));
   mixin(OProperty!("string", "title"));
   
   override void beforeH5(STRINGAA options = null) {

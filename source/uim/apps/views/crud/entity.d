@@ -11,7 +11,7 @@ class DAPPEntityCRUDView : DEntityView {
       if (auto frm = cast(DForm)component) {
         frm.readonly(this.readonly); }}`));
 
-  mixin(OViewComponent!("form"));
+  mixin(OProperty!("DViewComponent", "form"));
   mixin(OProperty!("DUIMTabControl", "entityTab"));
 
   override void initialize() {

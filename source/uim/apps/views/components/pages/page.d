@@ -6,8 +6,8 @@ import uim.apps;
 class DPage : DViewComponent {
   mixin(ViewComponentThis!("Page"));
   
-  mixin(OViewComponent!("header", "header"));
-  mixin(OViewComponent!("content", "content"));
-  mixin(OViewComponent!("footer", "footer"));
+  mixin(OProperty!("DViewComponent", "header"));
+  mixin(OProperty!("DViewComponent", "content"));
+  mixin(OProperty!("DViewComponent", "footer"));
 }
 mixin(ViewComponentCalls!("Page"));

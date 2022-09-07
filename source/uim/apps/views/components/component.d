@@ -6,14 +6,11 @@ import uim.apps;
 class DViewComponent : DBaseView {
   mixin(ViewComponentThis!"ViewComponent");
   
-  static size_t viewComponentCounter = 0;
-
   mixin(OProperty!("bool", "dynamic")); 
   mixin(OProperty!("bool", "isNull")); 
   mixin(OProperty!("bool", "notNull")); 
   mixin(OProperty!("STRINGAA", "style")); 
   mixin(OProperty!("bool", "changed")); 
-  mixin(OProperty!("DBaseView", "owner")); 
   mixin(OProperty!("DView", "view")); 
   mixin(OProperty!("DAPPLayout", "layout")); 
   mixin(APPParameter!("jsCode")); 
@@ -28,10 +25,8 @@ class DViewComponent : DBaseView {
   override void initialize() {
     super.initialize; 
 
-    viewComponentCounter++;
-
     this
-    .id(this.name~"_"~to!string(viewComponentCounter))
+    .id(this.name)
     .changed(true)
     .dynamic(true)
     .notNull(true);
@@ -53,7 +48,6 @@ class DViewComponent : DBaseView {
         .jsCode(this.jsCode)
         .style(this.style)
         .changed(this.changed)
-        .owner(this.owner)
         .view(this.view)
         .layout(this.layout); 
   } */
@@ -64,8 +58,6 @@ class DViewComponent : DBaseView {
       this.clearError; // Delete last error
       super.beforeH5(options);
       // init
-      debug writeln("has Components:", this.components.all.map!(c => c.name).array);
-      debug writeln("In DViewComponent -> %s components".format(this.components.length));
     }
 
     DH5Obj[] toH5(STRINGAA options = null) {

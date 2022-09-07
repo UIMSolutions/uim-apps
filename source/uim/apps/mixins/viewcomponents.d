@@ -6,14 +6,14 @@ import uim.apps;
 template ViewComponentThis(string classShortName, bool withEntity = false, bool withEntities = false) {
   const char[] ViewComponentThis = `
 this() { super(); this.name = "`~classShortName~`"; }
-this(DBaseView newOwner) { this().owner(newOwner); }`~
+this(DView newView) { this().view(newView); }`~
 (withEntity ? `
 this(DOOPEntity newEntity) { this().entity(newEntity); }
-this(DBaseView newOwner, DOOPEntity newEntity) { this(newOwner).entity(newEntity); }
+this(DView newView, DOOPEntity newEntity) { this(newView).entity(newEntity); }
 ` : ``)~
 (withEntities ? `
 this(DOOPEntity[] newEntities) { this().entities(newEntities); }
-this(DBaseView newOwner, DOOPEntity[] newEntities) { this(newOwner).entities(newEntities); }
+this(DView newView, DOOPEntity[] newEntities) { this(newView).entities(newEntities); }
 ` : ``);
 
 }
@@ -21,14 +21,14 @@ this(DBaseView newOwner, DOOPEntity[] newEntities) { this(newOwner).entities(new
 template ViewComponentCalls(string classShortName, bool withEntity = false, bool withEntities = false) {
   const char[] ViewComponentCalls = `
 auto `~classShortName~`() { return new D`~classShortName~`; }
-auto `~classShortName~`(DBaseView newOwner) { return new D`~classShortName~`(newOwner); }`~
+auto `~classShortName~`(DView newView) { return new D`~classShortName~`(newView); }`~
 (withEntity ? `
 auto `~classShortName~`(DOOPEntity myEntity) { return new D`~classShortName~`(myEntity); }
-auto `~classShortName~`(DBaseView newOwner, DOOPEntity myEntity) { return new D`~classShortName~`(newOwner, myEntity); }
+auto `~classShortName~`(DView newView, DOOPEntity myEntity) { return new D`~classShortName~`(newView, myEntity); }
 ` : ``)~
 (withEntities ? `
 auto `~classShortName~`(DOOPEntity[] newEntities) { return new D`~classShortName~`(newEntities); }
-auto `~classShortName~`(DBaseView newOwner, DOOPEntity[] newEntities) { return new D`~classShortName~`(newOwner, newEntities); }
+auto `~classShortName~`(DView newView, DOOPEntity[] newEntities) { return new D`~classShortName~`(newView, newEntities); }
 ` : ``);
 }
 

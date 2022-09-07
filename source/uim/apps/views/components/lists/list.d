@@ -10,9 +10,9 @@ class DAPPListViewComponent : DEntitiesViewComponent {
   mixin(SProperty!("DOOPEntity[UUID]", "themesById"));
 
   mixin(OProperty!("DListItem", "itemTemplate"));
-  mixin(OViewComponent!("listContent"));
-  mixin(OViewComponent!("header"));
-  mixin(OViewComponent!("footer"));
+  mixin(OProperty!("DViewComponent", "listContent"));
+  mixin(OProperty!("DViewComponent", "header"));
+  mixin(OProperty!("DViewComponent", "footer"));
 
   mixin(OProperty!("string[]", "headerClasses"));
   mixin(OProperty!("string[]", "contentClasses"));

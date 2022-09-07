@@ -18,6 +18,8 @@ class DView : DBaseView, IEventDispatcher {
 
     this
       .name("View") 
+      .components(
+        ViewComponents(this))
       .links(APPLinkContainer) 
       .metas(APPMetaContainer) 
       .scripts(APPScriptContainer) 
@@ -27,6 +29,7 @@ class DView : DBaseView, IEventDispatcher {
       .rightClasses(["d-none", "d-lg-block", "col-12", "col-sm-6", "col-md-4", "col-lg-3", "col-xl-2"]);
   }
 
+  mixin(OProperty!("DViewComponents", "components"));
   mixin(OProperty!("DAPPPageController", "controller")); 
   mixin(OProperty!("IEventManager", "eventManager")); 
   mixin(OProperty!("string[]", "leftClasses")); 
@@ -79,6 +82,15 @@ class DView : DBaseView, IEventDispatcher {
     }
   }
 
+  O addComponent(this O)(DViewComponent newComponent) {
+    if (newComponent) this.components.set(newComponent.id, newComponent);
+    return cast(O)this;
+  }
+
+  O addComponent(this O)(string anId, DViewComponent newComponent) {
+    if (newComponent) this.components.set(anId, newComponent);
+    return cast(O)this;
+  }
 
   // #region h5 content
   override void beforeH5(STRINGAA options = null) {
@@ -86,6 +98,7 @@ class DView : DBaseView, IEventDispatcher {
     super.beforeH5(options);
 
     debug writeln("In DView -> %s components".format(this.components.length));
+    this.components.all.each!(comp => comp.rootPath(this.rootPath));
   }
 
   DH5Obj[] toH5(STRINGAA options = null) {

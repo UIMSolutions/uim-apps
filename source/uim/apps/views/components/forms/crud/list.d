@@ -11,10 +11,10 @@ class DAPPEntitiesListForm : DEntitiesForm {
 
     this
       .header(
-        FormHeader(this) //.mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["print", "export"]])
+        FormHeader //.mainTitle("Blogs").subTitle("Übersicht Blogs").actions([["print", "export"]])
       )
       .content(
-        EntitiesFormContent(this)      
+        EntitiesFormContent      
       );
     /*       .form
         .header(APPEntitiesheader(this.form).rootPath("/cms/blogs").mainTitle("Blogs").subTitle("Blogs anzeigen").actions([["print", "export"]]))

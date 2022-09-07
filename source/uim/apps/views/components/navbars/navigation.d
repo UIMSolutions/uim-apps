@@ -19,8 +19,8 @@ class DAPPNavigation : DViewComponent {
       .secondNavbar(APPSecondNavbar);
   }
 
-  mixin(OViewComponent!("firstNavbar"));
-  mixin(OViewComponent!("secondNavbar"));
+  mixin(OProperty!("DViewComponent", "firstNavbar"));
+  mixin(OProperty!("DViewComponent", "secondNavbar"));
   mixin(OProperty!("bool", "fixedTop"));
   
   override DH5Obj[] toH5(STRINGAA options = null) {

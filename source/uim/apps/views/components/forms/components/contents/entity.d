@@ -27,7 +27,7 @@ class DEntityFormContent : DEntityViewComponent {
   
   mixin(OProperty!("DAPPPanes", "panes"));
 
-  mixin(OViewComponent!("inputHandler"));
+  mixin(OProperty!("DFormInputHandler", "inputHandler"));
 
   DH5Obj[] formGroups(STRINGAA options = null) {
     debugMethodCall(moduleName!DEntityFormContent~"::DEntityFormContent:formGroups");    

@@ -12,11 +12,9 @@ class DForm : DViewComponent {
     writeln("In ", __MODULE__, "/", __LINE__);
  
     this
-      .id("form_"~to!string(viewComponentCounter))
-      .header(
-        FormHeader(this))
-      .content(
-        EntityFormContent(this))
+      .id(name~"_"~to!string(uniform(0, 100_000)))
+      .header(FormHeader)
+      .content(EntityFormContent)
       .crudMode(CRUDModes.Read)
       .method("post");
   
@@ -41,9 +39,9 @@ class DForm : DViewComponent {
   mixin(APPParameter!("contentTitle"));
   mixin(APPParameter!("footerTitle"));
 
-  mixin(OViewComponent!("header"));
-  mixin(OViewComponent!("content"));
-  mixin(OViewComponent!("footer"));
+  mixin(OProperty!("DViewComponent", "header"));
+  mixin(OProperty!("DViewComponent", "content"));
+  mixin(OProperty!("DViewComponent", "footer"));
 
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 
@@ -82,14 +80,6 @@ class DForm : DViewComponent {
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
 
-    foreach(viewComponent; components.all) {
-      if (auto formComponent = cast(DFormComponent)viewComponent) {
-        formComponent
-          .crudMode(this.crudMode)
-          .rootPath(this.rootPath);
-      }
-    }
-
     if (auto frmHeader = cast(DFormHeader)this.header) {
       frmHeader
         .crudMode(this.crudMode)
@@ -97,14 +87,14 @@ class DForm : DViewComponent {
         .title(headerTitle);
     }
 
-    if (auto frmContent = cast(DEntityFormContent)this.components["content"]) { 
+    if (auto frmContent = cast(DEntityFormContent)this.content) { 
       frmContent
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
         .title(contentTitle);
     }
     
-    if (auto frmFooter = cast(DFormFooter)this.components["footer"]) {
+    if (auto frmFooter = cast(DFormFooter)this.footer) {
       frmFooter
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
