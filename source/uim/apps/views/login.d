@@ -55,3 +55,7 @@ class DAPPLoginView : DView {
   }
 }
 mixin(ViewCalls!("APPLoginView"));
+
+version(test_uim_apps) { unittest {
+  assert(APPLoginView);
+}}

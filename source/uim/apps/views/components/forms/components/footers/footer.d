@@ -15,3 +15,6 @@ class DFormFooter : DFormComponent {
 }
 mixin(ViewComponentCalls!("FormFooter"));
 
+version(test_uim_apps) { unittest {
+  assert(FormFooter);
+}}

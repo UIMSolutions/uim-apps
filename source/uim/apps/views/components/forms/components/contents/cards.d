@@ -29,11 +29,5 @@ class DAPPCardsFormContent : DEntitiesViewComponent {
 mixin(ViewComponentCalls!("APPCardsFormContent"));
 
 version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    
-    assert(new DAPPCardsFormContent);
-    assert(APPCardsFormContent);
-    assert(new DAPPCardsFormContent(Form));
-    assert(APPCardsFormContent(Form));
-  }
-}
+  assert(APPCardsFormContent);
+}}

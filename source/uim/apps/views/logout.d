@@ -66,3 +66,7 @@ class DAPPLogoutView : DView {
   }
 }
 mixin(ViewCalls!("APPLogoutView"));
+
+version(test_uim_apps) { unittest {
+  assert(APPLogoutView);
+}}

@@ -106,6 +106,5 @@ class DFormHeader : DEntityFormContent {
 mixin(ViewComponentCalls!("FormHeader"));
 
 version(test_uim_apps) { unittest {
-    assert(new DFormHeader);
-    assert(FormHeader);
+  assert(FormHeader);
 }}

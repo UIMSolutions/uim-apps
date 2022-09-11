@@ -44,3 +44,7 @@ class DAPPLostAccountView : DView {
   }      
 }
 mixin(ViewCalls!("APPLostAccountView"));
+
+version(test_uim_apps) { unittest {
+  assert(APPLostAccountView);
+}}

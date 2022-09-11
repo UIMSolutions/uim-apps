@@ -11,7 +11,7 @@ class DViewComponent : DBaseView {
   mixin(OProperty!("bool", "notNull")); 
   mixin(OProperty!("STRINGAA", "style")); 
   mixin(OProperty!("bool", "changed")); 
-  mixin(OProperty!("DView", "view")); 
+  mixin(OProperty!("DView", "view")); // Owner of view component
   mixin(OProperty!("DAPPLayout", "layout")); 
   mixin(APPParameter!("jsCode")); 
   mixin(APPParameter!("debugPrefix")); 

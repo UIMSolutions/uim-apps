@@ -29,10 +29,5 @@ class DAPPListFormContent : DEntitiesViewComponent {
 mixin(ViewComponentCalls!("APPListFormContent"));
 
 version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    
-    assert(new DAPPListFormContent);
-    assert(APPListFormContent);
-    assert(new DAPPListFormContent(Form));
-    assert(APPListFormContent(Form));
+  assert(APPListFormContent);
 }}

@@ -10,8 +10,6 @@ class DBaseView : DAPPObject {
 
   override void initialize() {
     super.initialize;
-
-
   }
 
   override void opIndexAssign(string newValue, string key) {

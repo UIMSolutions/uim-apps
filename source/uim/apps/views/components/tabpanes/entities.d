@@ -14,7 +14,7 @@ class DAPPEntitiesTabpane : DTabPane {
   override void initialize() {
     super.initialize;
 
-    this.components["content"] = APPEntitiesList.itemTemplate(EntityListItem);
+    this.content(APPEntitiesList.itemTemplate(EntityListItem));
   }
 
   mixin(OProperty!("DOOPEntity[]", "entities"));

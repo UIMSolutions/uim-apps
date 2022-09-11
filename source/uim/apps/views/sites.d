@@ -62,3 +62,7 @@ class DViewSites : DView {
 }
 auto ViewSites() { return new DViewSites(); }
 auto ViewSites(DAPPPageController aController) { return new DViewSites(aController); }
+
+version(test_uim_apps) { unittest {
+  assert(ViewSites);
+}}

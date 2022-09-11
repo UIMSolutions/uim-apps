@@ -96,11 +96,5 @@ class DEntityFormContent : DEntityViewComponent {
 mixin(ViewComponentCalls!("EntityFormContent", true));
 
 version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    
-    assert(new DEntityFormContent);
-    assert(EntityFormContent);
-    assert(new DEntityFormContent(Form));
-    assert(EntityFormContent(Form));
-  }
-}
+  assert(EntityFormContent);
+}}

@@ -43,3 +43,7 @@ class DAPPLostPasswordView : DView {
 }
 auto APPLostPasswordView() { return new DAPPLostPasswordView(); }
 auto APPLostPasswordView(DAPPPageController aController) { return new DAPPLostPasswordView(aController); }
+
+version(test_uim_apps) { unittest {
+  assert(APPLostPasswordView);
+}}

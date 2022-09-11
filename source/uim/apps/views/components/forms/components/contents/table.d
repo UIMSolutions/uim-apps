@@ -16,11 +16,5 @@ class DAPPTableFormContent : DEntitiesViewComponent {
 mixin(ViewComponentCalls!("APPTableFormContent"));
 
 version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    
-    assert(new DAPPTableFormContent);
-    assert(APPTableFormContent);
-    assert(new DAPPTableFormContent(Form));
-    assert(APPTableFormContent(Form));
-  }
-}
+  assert(APPTableFormContent);
+}}

@@ -21,3 +21,7 @@ class DAPPEntitiesTableFilter : DViewComponent {
   }
 }
 auto APPEntitiesTableFilter() { return new DAPPEntitiesTableFilter; }
+
+version(test_uim_apps) { unittest {
+  assert(APPEntitiesTableFilter);
+}}

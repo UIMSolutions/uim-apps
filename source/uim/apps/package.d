@@ -62,7 +62,7 @@ public import layouts.tabler;
 
 DAPPApplication thisServer;
 
-enum CRUDModes { Create, Read, Update, Delete }
+
 
 size_t appErrorPrefix = 100000; 
 string[size_t] appErrorCodes; 

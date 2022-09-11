@@ -6,7 +6,10 @@ import uim.apps;
 class DAPPTableViewComponent : DViewComponent {
   mixin(ViewComponentThis!("APPTableViewComponent"));
   
-  mixin(OProperty!("string", "path"));
+  mixin(OProperty!("string", "path"));  
+  mixin(OProperty!("DViewComponent", "header"));
+  mixin(OProperty!("DViewComponent", "content"));
+  mixin(OProperty!("DViewComponent", "footer"));
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
     super.toH5(options);
@@ -15,14 +18,16 @@ class DAPPTableViewComponent : DViewComponent {
     return [
       H5Div(["table-responsive"], 
         BS5Table(["card-table table-vcenter text-nowrap datatable"], 
-          this.components["header"].toH5(options)~
-          this.components["content"].toH5(options)~
-          this.components["footer"].toH5(options)
+          this.header.toH5(options)~
+          this.content.toH5(options)~
+          this.footer.toH5(options)
         )        
       )].toH5;
   }
 }
 mixin(ViewComponentCalls!("APPTableViewComponent"));
 
-
+version(test_uim_apps) { unittest {
+  assert(APPTableViewComponent);
+}}
 

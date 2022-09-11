@@ -22,12 +22,5 @@ class DFormComponent : DViewComponent {
 mixin(ViewComponentCalls!("FormComponent"));
 
 version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-  
-    assert(new DFormComponent);
-    assert(FormComponent);
-    assert(FormComponent.name == "FormComponent");
-    assert(FormComponent.name("test").name == "test");
-    assert(FormComponent.rootPath("test2").rootPath == "test2");
-    assert(FormComponent.title("test3").title == "test3");
+  assert(FormComponent);
 }}

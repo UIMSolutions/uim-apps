@@ -28,10 +28,7 @@ class DForm : DViewComponent {
   mixin(APPParameter!("method"));
   mixin(OProperty!("bool", "readonly"));
 
-  mixin(OProperty!("CRUDModes", "crudMode", "CRUDModes.Read", true, true, "", `
-    foreach(component; this.components.all) {
-      if (auto frmComp = cast(DFormComponent)component) {
-        frmComp.crudMode(this.crudMode); }} `));
+  mixin(OProperty!("CRUDModes", "crudMode"));
 
   mixin(APPParameter!("entityName"));
   mixin(APPParameter!("entitiesName"));
@@ -39,9 +36,9 @@ class DForm : DViewComponent {
   mixin(APPParameter!("contentTitle"));
   mixin(APPParameter!("footerTitle"));
 
-  mixin(OProperty!("DViewComponent", "header"));
-  mixin(OProperty!("DViewComponent", "content"));
-  mixin(OProperty!("DViewComponent", "footer"));
+  mixin(OProperty!("DFormHeader", "header"));
+  mixin(OProperty!("DFormContent", "content"));
+  mixin(OProperty!("DFormFooter", "footer"));
 
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 
@@ -54,47 +51,26 @@ class DForm : DViewComponent {
     return null; // no database found
   }
 
-/*   override DViewComponent copy() {
-    return
-      (cast(DForm)copy)
-        .crudMode(this.crudMode)
-        .header(this.header)
-        .content(this.content)
-        .footer(this.footer)
-        .rootPath(this.rootPath)
-        .defaults(this.defaults)
-        .fields(this.fields)
-        .panes(this.panes)
-        .action(this.action)
-        .method(this.method)
-        .readonly(this.readonly)
-        .entityName(this.entityName)
-        .entitiesName(this.entitiesName)
-        .headerTitle(this.headerTitle)
-        .contentTitle(this.contentTitle)
-        .footerTitle(this.footerTitle);
-  }  */
-
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DForm~":DForm("~this.name~")::beforeH5");
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
 
-    if (auto frmHeader = cast(DFormHeader)this.header) {
+    if (this.header) {
       frmHeader
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
         .title(headerTitle);
     }
 
-    if (auto frmContent = cast(DEntityFormContent)this.content) { 
+    if (this.content) { 
       frmContent
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
         .title(contentTitle);
     }
     
-    if (auto frmFooter = cast(DFormFooter)this.footer) {
+    if (this.footer) {
       frmFooter
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
@@ -118,3 +94,13 @@ class DForm : DViewComponent {
   }  
 }
 mixin(FormCalls!("Form"));
+
+version(test_uim_apps) { unittest {
+  assert(Form);
+
+  assert(Form.entityName("Test").entityName == "Test");
+  assert(Form.entitiesName("Test").entitiesName == "Test");
+  assert(Form.headerTitle("Test").headerTitle == "Test");
+  assert(Form.contentTitle("Test").contentTitle == "Test");
+  assert(Form.footerTitle("Test").footerTitle == "Test");
+}}
