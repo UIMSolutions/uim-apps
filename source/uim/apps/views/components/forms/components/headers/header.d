@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.headers.header;
 @safe:
 import uim.apps;
 
-class DFormHeader : DEntityFormContent {
+class DFormHeader : DFormComponent {
   mixin(ViewComponentThis!("FormHeader"));
 
   override void initialize() {
@@ -16,6 +16,7 @@ class DFormHeader : DEntityFormContent {
       .crudMode(CRUDModes.Read); 
   }
   
+  mixin(OProperty!("DOOPEntity", "entity"));
   mixin(APPParameter!("mainTitle"));
   mixin(APPParameter!("subTitle"));
   mixin(OProperty!("string[][]", "actions"));

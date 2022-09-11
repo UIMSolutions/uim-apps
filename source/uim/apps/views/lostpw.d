@@ -22,18 +22,19 @@ class DAPPLostPasswordView : DView {
         // pageTitle("Login"),
         BS5Row(["row-cards"],
           BS5Col(["col-md-6"],
-            BS5Card
-            .header(
-              H5H3(["card-title"], "Lost Passwort"))
-            .body_(
-              H5Form(["method":"post", "action": rootPath~"login2action"],
-                BS5FormGroup(["mb-3"], 
-                  BS5FormLabel("Password"),
-                  UIMPasswordInput.name("loginPW").placeholder("Bitte das Passwort eingeben"),
-                  H5Small(["form-hint"], "Passwort vergessen?")
-                ),
-                H5Div(["form-footer"], 
-                  BS5ButtonSubmit(["btn-primary"], "Anmelden"))
+            UIMCard(
+              UMCardHeader(
+                H5H3(["card-title"], "Lost Passwort")),
+              UIMCardBody(
+                UIMForm.method("post").action(rootPath~"login2action")(
+                  BS5FormGroup(["mb-3"], 
+                    BS5FormLabel("Password"),
+                    UIMPasswordInput.name("loginPW").placeholder("Bitte das Passwort eingeben"),
+                    H5Small(["form-hint"], "Passwort vergessen?")
+                  ),
+                  H5Div(["form-footer"], 
+                    BS5ButtonSubmit(["btn-primary"], "Anmelden"))
+                )
               )
             )
           )     

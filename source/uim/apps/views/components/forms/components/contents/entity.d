@@ -18,6 +18,7 @@ class DEntityFormContent : DEntityViewComponent {
   }
 
   mixin(APPParameter!("title"));
+  mixin(OProperty!("DOOPEntity", "entity"));
 
   mixin(OProperty!("string[]", "fields"));
   O addFields(this O)(string[] newFields) {

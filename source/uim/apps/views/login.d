@@ -39,19 +39,17 @@ class DAPPLoginView : DView {
       )
     );
 
-    DH5Obj[] results;
-    DH5Obj[] inners;
     
-    inners ~= BS5Row("messages", ["mt-2 mb-2"]);
-    inners ~= BS5Row("logo", ["text-center"],  H5A(["href":"https://www.sicherheitsschmiede.de"], 
-      H5Img(["src":"/img/logo.png", "height":"80", "alt":"Sicherheitsschmiede - Sicher im Internet"])));
-    inners ~= BS5Row("form", APPLoginForm().toH5(options));
-    inners ~= BS5Row("additional", H5Div(["text-center mb-4"], H5Div(["text-center text-muted mt-3"], 
-      H5String("Noch kein Konto bei uns? "), H5A(["href":"/register", "tabindex":"-1"], "Registrieren"))));
-
-    results ~= H5Div(["container-tight py-4"], inners);     
-
-    return results;  
+    return [
+      H5Div(["container-tight py-4"],
+        BS5Row("messages", ["mt-2 mb-2"]),
+        BS5Row("logo", ["text-center"],  H5A(["href":"https://www.sicherheitsschmiede.de"], 
+          H5Img(["src":"/img/logo.png", "height":"80", "alt":"Sicherheitsschmiede - Sicher im Internet"]))),
+        BS5Row("form", APPLoginForm.toH5(options)),
+        BS5Row("additional", H5Div(["text-center mb-4"], H5Div(["text-center text-muted mt-3"], 
+          H5String("Noch kein Konto bei uns? "), H5A(["href":"/register", "tabindex":"-1"], "Registrieren"))))
+      )
+    ].toH5;
   }
 }
 mixin(ViewCalls!("APPLoginView"));

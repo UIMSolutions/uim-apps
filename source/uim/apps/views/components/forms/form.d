@@ -56,25 +56,11 @@ class DForm : DViewComponent {
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
 
-    if (this.header) {
-      frmHeader
+    foreach(comp; [this.header, this.content, this.footer]) {
+      comp
         .crudMode(this.crudMode)
         .rootPath(this.rootPath)
         .title(headerTitle);
-    }
-
-    if (this.content) { 
-      frmContent
-        .crudMode(this.crudMode)
-        .rootPath(this.rootPath)
-        .title(contentTitle);
-    }
-    
-    if (this.footer) {
-      frmFooter
-        .crudMode(this.crudMode)
-        .rootPath(this.rootPath)
-        .title(footerTitle);
     }
   }
 

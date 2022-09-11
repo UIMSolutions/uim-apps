@@ -19,6 +19,7 @@ class DEntitiesFormContent : DEntitiesViewComponent {
   mixin(OProperty!("DAPPEntitiesTableHeader", "tableHeader"));
   mixin(OProperty!("DAPPEntitiesTableFilter", "tableFilter"));
   mixin(OProperty!("string", "title"));
+  mixin(OProperty!("DOOPEntity[]", "entities"));
   
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DEntitiesFormContent~"DEntitiesFormContent::beforeH5");
