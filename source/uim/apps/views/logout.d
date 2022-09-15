@@ -45,16 +45,16 @@ class DAPPLogoutView : DView {
 
     return [
       H5Div(["container-tight py-4"], 
-        BS5Row("messages", ["mt-2 mb-2"]);
+        BS5Row("messages", ["mt-2 mb-2"]),
         H5A(["href":"https://www.sicherheitsschmiede.de"], 
-          H5Img(["src":"/img/uim.png", "height":"80", "alt":"Sicherheitsschmiede - Sicher im Internet"]));
+          H5Img(["src":"/img/uim.png", "height":"80", "alt":"Sicherheitsschmiede - Sicher im Internet"])),
         UIMFormCard("loginForm", ["card-md"], ["autocomplete":"off"]).method("post").action("/login_action")( 
           H5Div(["card-body"], 
             H5H2(["card-title", "text-center", "mb-4"], "Abgemeldet"),
             H5Div(["mb-3"], "Sie haben sich erfolgreich abgemeldet"),
-            H5Div(["form-footer"])));
+            H5Div(["form-footer"]))),
         H5Div(["text-center mb-4"], H5Div(["text-center text-muted mt-3"], 
-          H5String("Wieder anmelden? "), H5A(["href":"/login", "tabindex":"-1"], "Anmelden")));
+          H5String("Wieder anmelden? "), H5A(["href":"/login", "tabindex":"-1"], "Anmelden")))
       )
     ].toH5;
   }

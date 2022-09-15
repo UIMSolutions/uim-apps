@@ -6,7 +6,6 @@ import uim.apps;
 // Main
 public import uim.apps.views.base;
 public import uim.apps.views.view;
-public import uim.apps.views.list;
 public import uim.apps.views.entity;
 public import uim.apps.views.entities;
 

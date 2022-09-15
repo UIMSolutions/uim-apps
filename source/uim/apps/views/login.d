@@ -38,7 +38,6 @@ class DAPPLoginView : DView {
         H5A(["btn-close"], ["data-bs-dismiss":"alert", "aria-label":"close"]))
       )
     );
-
     
     return [
       H5Div(["container-tight py-4"],

@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.contents.entity;
 @safe:
 import uim.apps;
 
-class DEntityFormContent : DEntityViewComponent {
+class DEntityFormContent : DFormContent {
   mixin(ViewComponentThis!("EntityFormContent", true));
 
   override void initialize() {
@@ -17,7 +17,6 @@ class DEntityFormContent : DEntityViewComponent {
     .inputHandler(FormInputHandler(/* this.form */));   
   }
 
-  mixin(APPParameter!("title"));
   mixin(OProperty!("DOOPEntity", "entity"));
 
   mixin(OProperty!("string[]", "fields"));

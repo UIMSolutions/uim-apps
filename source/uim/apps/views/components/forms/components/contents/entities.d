@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.components.contents.entities;
 @safe:
 import uim.apps;
 
-class DEntitiesFormContent : DEntitiesViewComponent {
+class DEntitiesFormContent : DFormContent {
   mixin(ViewComponentThis!("EntitiesFormContent"));
 
   override void initialize() {
@@ -18,7 +18,6 @@ class DEntitiesFormContent : DEntitiesViewComponent {
 
   mixin(OProperty!("DAPPEntitiesTableHeader", "tableHeader"));
   mixin(OProperty!("DAPPEntitiesTableFilter", "tableFilter"));
-  mixin(OProperty!("string", "title"));
   mixin(OProperty!("DOOPEntity[]", "entities"));
   
   override void beforeH5(STRINGAA options = null) {

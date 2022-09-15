@@ -9,7 +9,8 @@ class DAPPAccordionThemes : DAPPAccordion {
   override void initialize() {
     super.initialize;
     
-    this.id("accordion-themes"); 
+    this
+      .id("accordion-themes"); 
   }
 }
 mixin(ViewComponentCalls!("APPAccordionThemes"));

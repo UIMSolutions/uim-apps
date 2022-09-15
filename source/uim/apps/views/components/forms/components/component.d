@@ -16,7 +16,6 @@ class DFormComponent : DViewComponent {
   mixin(OProperty!("CRUDModes", "crudMode"));
   mixin(OProperty!("DForm", "form"));
   mixin(OProperty!("bool", "readonly")); 
-
   mixin(APPParameter!("title"));  
 }
 mixin(ViewComponentCalls!("FormComponent"));

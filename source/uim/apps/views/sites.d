@@ -41,20 +41,21 @@ class DViewSites : DView {
         BS5Row("messages", ["mt-2 mb-2"]),
         H5Div(["text-center mb-4"], 
           H5A(["href":"https://ui-manufaktur.com"], H5Img(["src":"/img/uim.png", "height":"80", "alt":"UI Manufaktur UG - Erfolgreich im Internet"]))),
-        H5Form("loginForm", ["card", "card-md"], ["method":"post", "autocomplete":"off"], 
+        UIMFormCard("loginForm", ["card-md"], ["autocomplete":"off"]).method("post")(  
           H5Div(["card-body"], 
-          H5H2(["card-title", "text-center", "mb-4"], "Anmeldung"),
-          H5Div(["mb-3"], 
-            H5Label(["form-label"], H5String("Kennung"),
-              H5Span(["form-label-description"], 
-                H5A(["href":"/lostaccount"], "Kennung vergessen?"))),
-            UIMTextInput("accountName", ["placeholder":"Bitte die Kennung eingeben"]),
-            H5Div(["invalid-feedback"], "Bitte eine gültige Kennung eingeben")
-          ),
-          H5Div(["form-footer"], 
-            BS5ButtonSubmit(["btn-primary w-100"], "Zur Passworteingabe")
+            H5H2(["card-title", "text-center", "mb-4"], "Anmeldung"),
+            H5Div(["mb-3"], 
+              H5Label(["form-label"], H5String("Kennung"),
+                H5Span(["form-label-description"], 
+                  H5A(["href":"/lostaccount"], "Kennung vergessen?"))),
+              UIMTextInput("accountName", ["placeholder":"Bitte die Kennung eingeben"]),
+              H5Div(["invalid-feedback"], "Bitte eine gültige Kennung eingeben")
+            ),
+            H5Div(["form-footer"], 
+              BS5ButtonSubmit(["btn-primary w-100"], "Zur Passworteingabe")
           )
-        )),
+        )
+      ),
       H5Div(["text-center text-muted mt-3"], 
         H5String("Noch kein Konto bei uns? "), H5A(["href":"/register", "tabindex":"-1"], "Registrieren")
       ))].toH5;       

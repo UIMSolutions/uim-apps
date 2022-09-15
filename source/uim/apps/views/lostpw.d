@@ -23,7 +23,7 @@ class DAPPLostPasswordView : DView {
         BS5Row(["row-cards"],
           BS5Col(["col-md-6"],
             UIMCard(
-              UMCardHeader(
+              UIMCardHeader(
                 H5H3(["card-title"], "Lost Passwort")),
               UIMCardBody(
                 UIMForm.method("post").action(rootPath~"login2action")(
