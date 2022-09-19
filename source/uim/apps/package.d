@@ -78,7 +78,7 @@ DOOPEntity[][size_t] entitiesPool;
   return sessions;
 }
  */
-Json toEntitySelect(STRINGAA data) {
+Json toEntitySelect(string[string] data) {
   string eid = data.get("entity_id", data.get("id", ""));
   if (eid.empty) return Json(null);
 
@@ -88,7 +88,7 @@ Json toEntitySelect(STRINGAA data) {
   return result;
 }
 
-auto urlToSelect(STRINGAA data) {
+auto urlToSelect(string[string] data) {
     writeln("DATA -> ", data);
     Json result = Json.emptyObject;
 
@@ -124,7 +124,7 @@ string entityToUrl(DOOPEntity entity) {
     return "id=%s&name=%s&number=%s".format(entity.id, entity.name, entity.versionNumber);
 }
 
-string identityToUrl(STRINGAA data) {
+string identityToUrl(string[string] data) {
     string[] result; 
     if ("id" in data) result ~= "id=%s".format(data["id"]);
 /*     if ("name" in data) result ~= "name=%s".format(data["name"]);
@@ -133,7 +133,7 @@ string identityToUrl(STRINGAA data) {
 }
 
 auto readTranslations(string file) {
-  STRINGAA results;
+  string[string] results;
 
   if (file.exists) {
     logInfo("INFO: Found translation file '"~file~"'");
@@ -228,18 +228,18 @@ auto readOrCreateSession(HTTPServerRequest req, HTTPServerResponse res) {
 }
 
 // internal switch
-void pageRedirect(HTTPServerResponse response, STRINGAA parameters, string path, bool useResponse = false) {
+void pageRedirect(HTTPServerResponse response, string[string] parameters, string path, bool useResponse = false) {
   if (useResponse) response.redirect(path);
   else parameters["redirect"] = path;
 }
 
 // Helper function to add Scriptcode in parameters["script"]
-STRINGAA addToPageScript(STRINGAA parameters, string script) {
+string[string] addToPageScript(string[string] parameters, string script) {
   parameters["script"] = parameters.get("script", "")~script;
   return parameters;
 }
 
-auto getValue(STRINGAA parameters, string[] keys, string defaultValue = "") {
+auto getValue(string[string] parameters, string[] keys, string defaultValue = "") {
   foreach(key; keys) if (key in parameters) return parameters[key];
   return defaultValue;
 }
