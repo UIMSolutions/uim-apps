@@ -114,11 +114,6 @@ version(test_uim_apps) { unittest {
     this.appSession = getAppSession(options);
     if (appSession) { this.site(appSession.site); }
   }
-  version(test_uim_apps) {
-    unittest {
-      writeln("--- Test in ", __MODULE__, "/", __LINE__);
-
-      }}
 
   override string stringResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPPageController~":DAPPPageController("~this.name~")::stringResponse");
