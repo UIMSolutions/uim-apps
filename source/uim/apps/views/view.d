@@ -55,13 +55,13 @@ class DView : DBaseView, IEventDispatcher {
     return null; // no database found
   } */
 
-  protected DAPPLayout _layout;
-  O layout(this O)(DAPPLayout newLayout) { 
+  protected DMVCLayout _layout;
+  O layout(this O)(DMVCLayout newLayout) { 
       debugMethodCall(moduleName!DView~":DView("~this.name~")::layout"); 
       _layout = newLayout;
       return cast(O)this; 
   }
-  DAPPLayout layout() {
+  DMVCLayout layout() {
       if (_layout) return _layout;
       if (this.controller) { return this.controller.layout; }
       return null;

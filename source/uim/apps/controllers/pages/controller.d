@@ -50,30 +50,14 @@ class DAPPPageController : DAPPController {
   mixin(APPParameter!("pgPath")); 
   mixin(APPParameter!("title")); 
 
-version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-
-/* 		assert(H5AppPage.title("aTitle").title == "aTitle");	
-		assert(H5AppPage.title("aTitle").title("otherTitle").title == "otherTitle"); */
-	}}
-
-version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-	
-/* 			assert(H5App.lang("aLanguage").lang == "aLanguage");	
-			assert(H5App.lang("aLanguage").lang("otherLanguage").lang == "otherLanguage");
-			assert(H5App.language("aLanguage").language == "aLanguage");	
-			assert(H5App.language("aLanguage").language("otherLanguage").language == "otherLanguage"); */
-	}}
-
   DAPPRequestReader requestReader;
   DAPPSessionReader sessionReader;
 
   mixin(OProperty!("DForm", "form"));
 
 	/// layout for page
-	DAPPLayout _layout;
-	O layout(this O)(DAPPLayout newlayout) { 
+	DMVCLayout _layout;
+	O layout(this O)(DMVCLayout newlayout) { 
     _layout = newlayout; 
     return cast(O)this; }
 	auto layout() { 
@@ -82,11 +66,6 @@ version(test_uim_apps) { unittest {
     if (this.app) return this.app.layout; 
     return null; 
   }
-version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-
-		/// TODO		
-	}}
 
   O pageActions(this O)(string[] actions...) { this.pageActions(actions); return cast(O)this; }
   O addPageActions(this O)(string[] actions...) { this.addPageActions(actions); return cast(O)this; }
