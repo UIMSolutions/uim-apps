@@ -20,10 +20,10 @@ class DView : DBaseView, IEventDispatcher {
       .name("View") 
       .components(
         ViewComponents(this))
-      .links(APPLinkContainer) 
-      .metas(APPMetaContainer) 
-      .scripts(APPScriptContainer) 
-      .styles(APPStyleContainer)
+      .links(MVCLinkContainer) 
+      .metas(MVCMetaContainer) 
+      .scripts(MVCScriptContainer) 
+      .styles(MVCStyleContainer)
       .leftClasses(["d-none", "d-md-block", "col-12", "col-sm-6", "col-md-4", "col-lg-3", "col-xl-2"])
       .middleClasses(["col-12", "col-md-8", "col-lg-6", "col-xl-8"]) 
       .rightClasses(["d-none", "d-lg-block", "col-12", "col-sm-6", "col-md-4", "col-lg-3", "col-xl-2"]);
@@ -68,10 +68,10 @@ class DView : DBaseView, IEventDispatcher {
   }
 
   // Containers
-  mixin(OProperty!("DAPPLinkContainer", "links"));
-  mixin(OProperty!("DAPPMetaContainer", "metas"));
-  mixin(OProperty!("DAPPScriptContainer", "scripts"));
-  mixin(OProperty!("DAPPStyleContainer", "styles"));
+  mixin(OProperty!("DMVCLinkContainer", "links"));
+  mixin(OProperty!("DMVCMetaContainer", "metas"));
+  mixin(OProperty!("DMVCScriptContainer", "scripts"));
+  mixin(OProperty!("DMVCStyleContainer", "styles"));
 
   mixin(OProperty!("STRINGAA", "bindings"));
 

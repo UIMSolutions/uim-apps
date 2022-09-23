@@ -27,10 +27,10 @@ class DAPPPageController : DAPPController {
     sessionReader = APPSessionReader(this);  
 
     this
-      .links(APPLinkContainer)
-      .metas(APPMetaContainer) 
-      .scripts(APPScriptContainer) 
-      .styles(APPStyleContainer); 
+      .links(MVCLinkContainer)
+      .metas(MVCMetaContainer) 
+      .scripts(MVCScriptContainer) 
+      .styles(MVCStyleContainer); 
   }
 
   mixin(OProperty!("Session", "globalSession"));
@@ -101,10 +101,10 @@ version(test_uim_apps) { unittest {
  */  
 
   // Containers
-  mixin(OProperty!("DAPPLinkContainer", "links"));
-  mixin(OProperty!("DAPPMetaContainer", "metas"));
-  mixin(OProperty!("DAPPScriptContainer", "scripts"));
-  mixin(OProperty!("DAPPStyleContainer", "styles"));
+  mixin(OProperty!("DMVCLinkContainer", "links"));
+  mixin(OProperty!("DMVCMetaContainer", "metas"));
+  mixin(OProperty!("DMVCScriptContainer", "scripts"));
+  mixin(OProperty!("DMVCStyleContainer", "styles"));
 
   override void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPPageController~":DAPPPageController("~this.name~")::beforeResponse");

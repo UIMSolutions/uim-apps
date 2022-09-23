@@ -36,6 +36,7 @@
 		"../uim-entitybase",
 		"../uim-servers",
 		"../uim-controls",
+		"../uim-mvc",
 		"../../LAYOUTS/layout-tabler/source/layouts",
 		"./"
 	],
@@ -54,6 +55,7 @@
 		"../uim-entitybase",
 		"../uim-servers",
 		"../uim-controls",
+		"../uim-mvc",
 		"../../LAYOUTS/layout-tabler/source/layouts",
 		"./"
 	],

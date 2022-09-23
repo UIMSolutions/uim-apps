@@ -32,11 +32,11 @@ public import uim.jsonbase;
 public import uim.entitybase;
 public import uim.servers;
 public import uim.controls;
+public import uim.mvc;
 
 // Packages
 public import uim.apps.applications;
 public import uim.apps.consoles;
-public import uim.apps.containers;
 public import uim.apps.controllers;
 public import uim.apps.controllers.validators;
 public import uim.apps.forms;

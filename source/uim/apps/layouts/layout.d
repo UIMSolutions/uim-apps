@@ -19,10 +19,10 @@ class DAPPLayout {
       .title("UI Manufaktur")
       .bodyAttributes(["style": "background-color: #ffffff;"])
       .layoutStyle("tabler")
-      .links(APPLinkContainer) 
-      .metas(APPMetaContainer) 
-      .scripts(APPScriptContainer)
-      .styles(APPStyleContainer); 
+      .links(MVCLinkContainer) 
+      .metas(MVCMetaContainer) 
+      .scripts(MVCScriptContainer)
+      .styles(MVCStyleContainer); 
 
     debug writeln("Select Style"); 
     if (layoutStyle == "tabler") {
@@ -103,10 +103,10 @@ class DAPPLayout {
   }
 
   // Containers
-  mixin(OProperty!("DAPPLinkContainer", "links"));
-  mixin(OProperty!("DAPPMetaContainer", "metas"));
-  mixin(OProperty!("DAPPScriptContainer", "scripts"));
-  mixin(OProperty!("DAPPStyleContainer", "styles"));
+  mixin(OProperty!("DMVCLinkContainer", "links"));
+  mixin(OProperty!("DMVCMetaContainer", "metas"));
+  mixin(OProperty!("DMVCScriptContainer", "scripts"));
+  mixin(OProperty!("DMVCStyleContainer", "styles"));
 
   string opIndex(string key) {
     switch(key) {
