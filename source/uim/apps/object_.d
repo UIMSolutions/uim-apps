@@ -65,20 +65,11 @@ class DAPPObject {
 auto APPObject() { return new DAPPObject; }
 
 version(test_uim_apps) { unittest {
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    assert(new DAPPObject);
+  assert(new DAPPObject);
 
-    assert(APPObject);
-
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    assert(APPObject.id == "");
-
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    assert(APPObject.id("object").id == "object");
-
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    assert(APPObject.name == "APPObject");
-
-    writeln("--- Test in ", __MODULE__, "/", __LINE__);
-    assert(APPObject.name("object").name == "object");
+  assert(APPObject);
+  assert(APPObject.id == "");
+  assert(APPObject.id("object").id == "object");
+  assert(APPObject.name == "APPObject");
+  assert(APPObject.name("object").name == "object");
 }}

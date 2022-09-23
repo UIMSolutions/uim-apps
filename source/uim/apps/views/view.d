@@ -44,8 +44,7 @@ class DView : DBaseView, IEventDispatcher {
   mixin(OViewComponent!("right"));
   mixin(OViewComponent!("messages"));
 
-  
-  DETBBase _database; 
+/*   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 
     _database = aDatabase; 
     return cast(O)this; }
@@ -54,7 +53,7 @@ class DView : DBaseView, IEventDispatcher {
     if (_database) { return _database; } // has his own database
     if (this.controller && this.controller.database) { return this.controller.database; } // owner class has database
     return null; // no database found
-  }
+  } */
 
   protected DAPPLayout _layout;
   O layout(this O)(DAPPLayout newLayout) { 

@@ -40,7 +40,7 @@ class DForm : DViewComponent {
   mixin(OProperty!("DFormContent", "content"));
   mixin(OProperty!("DFormFooter", "footer"));
 
-  DETBBase _database; 
+/*   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 
     _database = aDatabase; 
     return cast(O)this; }
@@ -49,7 +49,7 @@ class DForm : DViewComponent {
     if (_database) { return _database; } // has his own database
     if (this.view && this.view.database) { return this.view.database; } // owner class has database
     return null; // no database found
-  }
+  } */
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DForm~":DForm("~this.name~")::beforeH5");
