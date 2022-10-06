@@ -3,19 +3,19 @@ module uim.apps.views.crud.entity;
 @safe:
 import uim.apps;
 
-class DAPPEntityCRUDView : DEntityView {
-  mixin(ViewThis!("APPEntityCRUDView"));
+class DAPPEntityCRUDAPPView : DEntityView {
+  mixin(ViewThis!("APPEntityCRUDAPPView"));
 
   mixin(OProperty!("bool", "readonly", "CRUDModes.Read", true, true, "", `
     foreach(component; this.components.all) {
       if (auto frm = cast(DForm)component) {
         frm.readonly(this.readonly); }}`));
 
-  mixin(OProperty!("DViewComponent", "form"));
+  mixin(OProperty!("DAPPViewComponent", "form"));
   mixin(OProperty!("DUIMTabControl", "entityTab"));
 
   override void initialize() {
-    debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):initialize");   
+    debugMethodCall(moduleName!DAPPEntityCRUDAPPView~"::DAPPEntityCRUDAPPView("~this.name~"):initialize");   
     super.initialize;
 
     this
@@ -53,7 +53,7 @@ class DAPPEntityCRUDView : DEntityView {
   }
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):beforeH5");    
+    debugMethodCall(moduleName!DAPPEntityCRUDAPPView~"::DAPPEntityCRUDAPPView("~this.name~"):beforeH5");    
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
 
@@ -69,7 +69,7 @@ class DAPPEntityCRUDView : DEntityView {
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPEntityCRUDView~"::DAPPEntityCRUDView("~this.name~"):toH5");    
+    debugMethodCall(moduleName!DAPPEntityCRUDAPPView~"::DAPPEntityCRUDAPPView("~this.name~"):toH5");    
     super.toH5(options);
     if (hasError || "redirect" in options) { return null; }
     
@@ -83,12 +83,12 @@ class DAPPEntityCRUDView : DEntityView {
       )].toH5;             
   }
 }
-mixin(ViewCalls!("APPEntityCRUDView"));
+mixin(ViewCalls!("APPEntityCRUDAPPView"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testView(new DAPPEntityCRUDView); 
+		testView(new DAPPEntityCRUDAPPView); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testView(APPEntityCRUDView); 
+		testView(APPEntityCRUDAPPView); 
 }}

@@ -3,7 +3,7 @@ module uim.apps.views.login2;
 @safe:
 import uim.apps;
 
-class DAPPLogin2View : DView {
+class DAPPLogin2View : DAPPView {
   mixin(ViewThis!("APPLogin2View"));
 
   override void beforeH5(STRINGAA options = null) { 

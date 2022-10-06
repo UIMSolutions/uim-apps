@@ -3,9 +3,9 @@ module uim.apps.views.components.tables.filter;
 @safe:
 import uim.apps;
 
-class DAPPEntitiesTableFilter : DViewComponent {
+class DAPPEntitiesTableFilter : DAPPViewComponent {
   this() { super(); this.visibleEntities(10); }
-  this(DView myView) { this().view(myView); }
+  this(DAPPView myView) { this().view(myView); }
 
   mixin(OProperty!("size_t", "visibleEntities"));
   

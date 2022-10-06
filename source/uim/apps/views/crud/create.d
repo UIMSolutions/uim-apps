@@ -3,7 +3,7 @@ module uim.apps.views.crud.create;
 @safe:
 import uim.apps;
 
-class DAPPEntityCreateView : DAPPEntityCRUDView {
+class DAPPEntityCreateView : DAPPEntityCRUDAPPView {
   mixin(ViewThis!("APPEntityCreateView"));
 
   override void initialize() {

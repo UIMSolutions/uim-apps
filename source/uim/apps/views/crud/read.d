@@ -3,7 +3,7 @@ module uim.apps.views.crud.read;
 @safe:
 import uim.apps;
 
-class DAPPEntityReadView : DAPPEntityCRUDView { // Default view
+class DAPPEntityReadView : DAPPEntityCRUDAPPView { // Default view
   mixin(ViewThis!("APPEntityReadView"));
 }
 mixin(ViewCalls!("APPEntityReadView"));

@@ -3,7 +3,7 @@ module uim.apps.views.components.entitiesx.table;
 @safe:
 import uim.apps;
 
-/* class DAPPEntitiesTableViewComponent : DViewComponent {
+/* class DAPPEntitiesTableViewComponent : DAPPViewComponent {
   mixin(ViewComponentThis!("APPEntitiesTableViewComponent", false, true));
 
   mixin(OProperty!("DAPPTableViewComponent", "tableComponent"));

@@ -37,8 +37,8 @@ class DAPPPageController : DAPPController {
   mixin(OProperty!("string[]", "pageActions"));
   mixin(OProperty!("bool", "hasGlobalSession"));
 
-  mixin(OProperty!("DView", "view"));
-  mixin(OProperty!("DView", "errorView"));
+  mixin(OProperty!("DAPPView", "view"));
+  mixin(OProperty!("DAPPView", "errorView"));
 
   // Required checks for the page flow
   mixin(OProperty!("string[]", "sessionData"));
@@ -56,8 +56,8 @@ class DAPPPageController : DAPPController {
   mixin(OProperty!("DForm", "form"));
 
 	/// layout for page
-	DMVCLayout _layout;
-	O layout(this O)(DMVCLayout newlayout) { 
+	DAPPLayout _layout;
+	O layout(this O)(DAPPLayout newlayout) { 
     _layout = newlayout; 
     return cast(O)this; }
 	auto layout() { 

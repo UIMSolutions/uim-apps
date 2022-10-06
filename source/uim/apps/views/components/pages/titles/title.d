@@ -8,7 +8,7 @@ module uim.apps.views.components.pages.titles.title;
 @safe:
 import uim.apps;
 
-class DAPPPageTitle : DViewComponent { 
+class DAPPPageTitle : DAPPViewComponent { 
   mixin(ViewComponentThis!("APPPageTitle"));
 
   override DH5Obj[] toH5(STRINGAA options = null) { 

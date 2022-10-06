@@ -3,16 +3,16 @@ module uim.apps.views.components.component;
 @safe:
 import uim.apps;
 
-class DViewComponent : DBaseView {
-  mixin(ViewComponentThis!"ViewComponent");
+class DAPPViewComponent : DAPPBaseView {
+  mixin(ViewComponentThis!"APPViewComponent");
   
   mixin(OProperty!("bool", "dynamic")); 
   mixin(OProperty!("bool", "isNull")); 
   mixin(OProperty!("bool", "notNull")); 
   mixin(OProperty!("STRINGAA", "style")); 
   mixin(OProperty!("bool", "changed")); 
-  mixin(OProperty!("DView", "view")); // Owner of view component
-  mixin(OProperty!("DMVCLayout", "layout")); 
+  mixin(OProperty!("DAPPView", "view")); // Owner of view component
+  mixin(OProperty!("DAPPLayout", "layout")); 
   mixin(APPParameter!("jsCode")); 
   mixin(APPParameter!("debugPrefix")); 
 
@@ -39,7 +39,7 @@ class DViewComponent : DBaseView {
     ); */
   }
 /* 
-  DViewComponent copy() {
+  DAPPViewComponent copy() {
     return
       clone
         .debugPrefix(this.debugPrefix) 
@@ -54,14 +54,14 @@ class DViewComponent : DBaseView {
 
   // #region h5 content 
     override void beforeH5(STRINGAA options = null) {
-      debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::beforeH5");
+      debugMethodCall(moduleName!DAPPViewComponent~":DAPPViewComponent("~this.name~")::beforeH5");
       this.clearError; // Delete last error
       super.beforeH5(options);
       // init
     }
 
     DH5Obj[] toH5(STRINGAA options = null) {
-      debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::toH5");
+      debugMethodCall(moduleName!DAPPViewComponent~":DAPPViewComponent("~this.name~")::toH5");
       beforeH5(options);
       DH5Obj[] preh5 = null;
       auto h5 = afterH5(preh5, options);
@@ -70,7 +70,7 @@ class DViewComponent : DBaseView {
   // #endregion h5
 
   DH5Obj[] afterH5(DH5Obj[] h5, STRINGAA options = null) {
-      debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::afterH5");
+      debugMethodCall(moduleName!DAPPViewComponent~":DAPPViewComponent("~this.name~")::afterH5");
       return h5; // No changes 
     }
 
@@ -109,8 +109,8 @@ class DViewComponent : DBaseView {
 
     // #endregion render 
 }
-mixin(ViewComponentCalls!("ViewComponent"));
+mixin(ViewComponentCalls!("APPViewComponent"));
 
 version(test_uim_apps) { unittest {
-  assert(ViewComponent);
+  assert(APPViewComponent);
 }}

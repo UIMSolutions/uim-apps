@@ -3,7 +3,7 @@ module uim.apps.views.base;
 @safe:
 import uim.apps;
 
-class DBaseView : DAPPObject {
+class DAPPBaseView : DAPPObject {
   this() { super(); }
 
   mixin(APPParameter!("rootPath"));
@@ -23,7 +23,7 @@ class DBaseView : DAPPObject {
   }
 
   void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DBaseView~":DBaseView("~this.name~")::beforeH5");
+    debugMethodCall(moduleName!DAPPBaseView~":DAPPBaseView("~this.name~")::beforeH5");
     // init
     _error = null; // Delete last error
 

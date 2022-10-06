@@ -8,12 +8,12 @@ module uim.apps.views.view;
 @safe:
 import uim.apps;
 
-class DView : DBaseView, IEventDispatcher {
-  mixin(ViewThis!("View"));
+class DAPPView : DAPPBaseView, IEventDispatcher {
+  mixin(ViewThis!("APPView"));
 
   // Initialization (= hook method)
   override void initialize() {
-    debugMethodCall(moduleName!DView~"::DView("~this.name~"):initialize");   
+    debugMethodCall(moduleName!DAPPView~"::DAPPView("~this.name~"):initialize");   
     super.initialize;
 
     this
@@ -29,7 +29,7 @@ class DView : DBaseView, IEventDispatcher {
       .rightClasses(["d-none", "d-lg-block", "col-12", "col-sm-6", "col-md-4", "col-lg-3", "col-xl-2"]);
   }
 
-  mixin(OProperty!("DViewComponents", "components"));
+  mixin(OProperty!("DAPPViewComponents", "components"));
   mixin(OProperty!("DAPPPageController", "controller")); 
   mixin(OProperty!("IEventManager", "eventManager")); 
   mixin(OProperty!("string[]", "leftClasses")); 
@@ -55,13 +55,13 @@ class DView : DBaseView, IEventDispatcher {
     return null; // no database found
   } */
 
-  protected DMVCLayout _layout;
-  O layout(this O)(DMVCLayout newLayout) { 
-      debugMethodCall(moduleName!DView~":DView("~this.name~")::layout"); 
+  protected DAPPLayout _layout;
+  O layout(this O)(DAPPLayout newLayout) { 
+      debugMethodCall(moduleName!DAPPView~":DAPPView("~this.name~")::layout"); 
       _layout = newLayout;
       return cast(O)this; 
   }
-  DMVCLayout layout() {
+  DAPPLayout layout() {
       if (_layout) return _layout;
       if (this.controller) { return this.controller.layout; }
       return null;
@@ -81,27 +81,27 @@ class DView : DBaseView, IEventDispatcher {
     }
   }
 
-  O addComponent(this O)(DViewComponent newComponent) {
+  O addComponent(this O)(DAPPViewComponent newComponent) {
     if (newComponent) this.components.set(newComponent.id, newComponent);
     return cast(O)this;
   }
 
-  O addComponent(this O)(string anId, DViewComponent newComponent) {
+  O addComponent(this O)(string anId, DAPPViewComponent newComponent) {
     if (newComponent) this.components.set(anId, newComponent);
     return cast(O)this;
   }
 
   // #region h5 content
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DView~":DView("~this.name~")::beforeH5");
+    debugMethodCall(moduleName!DAPPView~":DAPPView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    debug writeln("In DView -> %s components".format(this.components.length));
+    debug writeln("In DAPPView -> %s components".format(this.components.length));
     this.components.all.each!(comp => comp.rootPath(this.rootPath));
   }
 
   DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DView~":DView("~this.name~")::toH5"); 
+    debugMethodCall(moduleName!DAPPView~":DAPPView("~this.name~")::toH5"); 
     beforeH5(options);
 
     auto container = BS5Container.fluid();
@@ -141,11 +141,11 @@ class DView : DBaseView, IEventDispatcher {
     /// Render triggers helper callbacks, which are fired before and after the template are rendered.
     /// The helper callbacks are called: `beforeRender`, `afterRender`
     void beforeRender(STRINGAA options = null) {
-      debugMethodCall(moduleName!DView~":DView::beforeRender"); 
+      debugMethodCall(moduleName!DAPPView~":DAPPView::beforeRender"); 
     }
 
     string afterRender(string renderedContent, STRINGAA options = null) {
-      debugMethodCall(moduleName!DView~":DView::afterRender"); 
+      debugMethodCall(moduleName!DAPPView~":DAPPView::afterRender"); 
 
       foreach (key, value; bindings) {
           renderedContent = renderedContent.replace("{{"~key~"}}", value);
@@ -155,7 +155,7 @@ class DView : DBaseView, IEventDispatcher {
     }
 
     string render(STRINGAA options = null) {
-      debugMethodCall(moduleName!DView~":DView::render"); 
+      debugMethodCall(moduleName!DAPPView~":DAPPView::render"); 
 
       beforeRender(options);
       if (hasError) { return null; }
@@ -179,11 +179,11 @@ class DView : DBaseView, IEventDispatcher {
       return finalRender; }
   // #endregion render 
 }
-mixin(ViewCalls!("View"));
+mixin(ViewCalls!("APPView"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testView(new DView); 
+		testView(new DAPPView); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testView(View); 

@@ -3,7 +3,7 @@ module uim.apps.views.components.static_;
 @safe:
 import uim.apps;
 
-class DStaticViewComponent : DViewComponent {
+class DStaticViewComponent : DAPPViewComponent {
   mixin(ViewComponentThis!("StaticViewComponent"));
 
   mixin(OProperty!("DH5Obj[]", "h5"));

@@ -3,7 +3,7 @@ module uim.apps.views.lostpw;
 @safe:
 import uim.apps;
 
-class DAPPLostPasswordView : DView {
+class DAPPLostPasswordView : DAPPView {
   mixin(ViewThis!("APPLostAccountView"));
 
   override void beforeH5(STRINGAA options = null) { 

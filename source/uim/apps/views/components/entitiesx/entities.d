@@ -3,13 +3,13 @@ module uim.apps.views.components.entitiesx.entities;
 @safe:
 import uim.apps;
 
-/* class DEntitiesViewComponent : DViewComponent {
+/* class DEntitiesViewComponent : DAPPViewComponent {
   mixin(ViewComponentThis!("EntitiesViewComponent", false, true));
 
   mixin(OProperty!("DOOPEntity[]", "entities"));
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DView~":DView::beforeH5");
+    debugMethodCall(moduleName!DAPPView~":DAPPView::beforeH5");
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
 

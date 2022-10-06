@@ -3,7 +3,7 @@ module uim.apps.views.components.navbars.navigation;
 @safe:
 import uim.apps;
 
-class DAPPNavigation : DViewComponent {
+class DAPPNavigation : DAPPViewComponent {
   mixin(ViewComponentThis!("APPNavigation"));
 
   override void initialize() {
@@ -19,8 +19,8 @@ class DAPPNavigation : DViewComponent {
       .secondNavbar(APPSecondNavbar);
   }
 
-  mixin(OProperty!("DViewComponent", "firstNavbar"));
-  mixin(OProperty!("DViewComponent", "secondNavbar"));
+  mixin(OProperty!("DAPPViewComponent", "firstNavbar"));
+  mixin(OProperty!("DAPPViewComponent", "secondNavbar"));
   mixin(OProperty!("bool", "fixedTop"));
   
   override DH5Obj[] toH5(STRINGAA options = null) {

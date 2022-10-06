@@ -3,7 +3,7 @@ module uim.apps.views.components.navbars.slot;
 @safe:
 import uim.apps;
 
-class DAPPNavbarSlot : DViewComponent {
+class DAPPNavbarSlot : DAPPViewComponent {
     mixin(ViewComponentThis!("APPNavbarSlot"));
     this(string newId) {
       this.id(newId);

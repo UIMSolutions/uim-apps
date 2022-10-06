@@ -3,7 +3,7 @@ module uim.apps.views.crud.delete_;
 @safe:
 import uim.apps;
 
-class DAPPEntityDeleteView : DAPPEntityCRUDView {
+class DAPPEntityDeleteView : DAPPEntityCRUDAPPView {
   mixin(ViewThis!("APPEntityDeleteView"));
 
   override void initialize() {

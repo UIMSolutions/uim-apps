@@ -14,7 +14,7 @@ class DAPPLoginForm : DForm {
     this.showLostAccount(true);
   }
   
-/*   override DViewComponent copy() {
+/*   override DAPPViewComponent copy() {
     return
       (cast(DAPPLoginForm)copy)
       .showLostAccount(this.showLostAccount);

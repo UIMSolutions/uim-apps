@@ -8,7 +8,7 @@ module uim.apps.views.lostaccount;
 @safe:
 import uim.apps;
 
-class DAPPLostAccountView : DView {
+class DAPPLostAccountView : DAPPView {
   mixin(ViewThis!("APPLostAccountView"));
 
   override void beforeH5(STRINGAA options = null) { 

@@ -3,7 +3,7 @@ module uim.apps.views.components.accordions.accordion;
 @safe:
 import uim.apps;
 
-class DAPPAccordion : DViewComponent {  
+class DAPPAccordion : DAPPViewComponent {  
   mixin(ViewComponentThis!("APPAccordion"));
 
   override void initialize() {

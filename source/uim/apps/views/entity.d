@@ -4,7 +4,7 @@ module uim.apps.views.entity;
 import uim.apps;
 
 // View with entity
-class DEntityView : DView {
+class DEntityView : DAPPView {
   mixin(ViewThis!("EntityView"));
   
   mixin(OProperty!("DOOPEntity", "entity"));

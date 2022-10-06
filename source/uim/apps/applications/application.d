@@ -13,7 +13,7 @@ class DAPPApplication {
       .styles(MVCStyleContainer); 
   }
 
-  this(DMVCLayout mylayout) {
+  this(DAPPLayout mylayout) {
     debug writeln("this(myLayout)");
     this().layout(mylayout); }
 
@@ -22,7 +22,7 @@ class DAPPApplication {
   mixin(OProperty!("string", "rootPath"));
   mixin(OProperty!("size_t", "versionNumber"));
   mixin(OProperty!("DETBBase", "database"));
-  mixin(OProperty!("DMVCLayout", "layout"));
+  mixin(OProperty!("DAPPLayout", "layout"));
   mixin(OProperty!("STRINGAA", "parameters"));
   mixin(OProperty!("Json", "config"));
 
@@ -41,17 +41,17 @@ class DAPPApplication {
     return cast(O)this; 
   }
 
-  mixin(OProperty!("DViewRegistry", "views"));  
-  DView view(string path) {
+  mixin(OProperty!("DAPPViewRegistry", "views"));  
+  DAPPView view(string path) {
     return views ? views[path] : null; 
   }
-  O view(this O)(string path, DView newView) {
+  O view(this O)(string path, DAPPView newView) {
     if (views) controlleviewsrs[path] = newView;
     return cast(O)this; 
   }
 }
 auto APPApplication() { return new DAPPApplication; }
-auto APPApplication(DMVCLayout myLayout) { return new DAPPApplication(myLayout); }
+auto APPApplication(DAPPLayout myLayout) { return new DAPPApplication(myLayout); }
 
 version(test_uim_apps) { unittest {
 	assert(APPApplication);

@@ -3,7 +3,7 @@ module uim.apps.views.components.navbars.navbar;
 @safe:
 import uim.apps;
 
-/* class DAPPFirstNavbar : DViewComponent {
+/* class DAPPFirstNavbar : DAPPViewComponent {
     this() { super(); }
 
     override DH5Obj[] toH5(STRINGAA options = null) {   
@@ -55,7 +55,7 @@ import uim.apps;
 }
 auto APPFirstNavbar() { return new DAPPFirstNavbar; }
 
-class DAPPSecondNavbar : DViewComponent {
+class DAPPSecondNavbar : DAPPViewComponent {
   this() { super(); }
 
   mixin(OProperty!("DAPPNavbarSlot[]", "slots"));
@@ -85,7 +85,7 @@ auto APPSecondNavbar() { return new DAPPSecondNavbar; }
 auto APPSecondNavbar(DAPPNavbarSlot[] slots) { return APPSecondNavbar.slots(slots); }
  */
 
-class DAPPFirstNavbar : DViewComponent {
+class DAPPFirstNavbar : DAPPViewComponent {
   mixin(ViewComponentThis!("APPFirstNavbar"));
 
   mixin(APPParameter!("appLogo"));
@@ -161,7 +161,7 @@ auto userNavitem(STRINGAA options = null) {
     );
 }
 
-class DAPPSecondNavbar : DViewComponent {
+class DAPPSecondNavbar : DAPPViewComponent {
   mixin(ViewComponentThis!("APPSecondNavbar"));
 
   mixin(OProperty!("DAPPNavbarSlot[]", "leftSlots"));

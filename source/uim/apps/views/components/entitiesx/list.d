@@ -3,7 +3,7 @@ module uim.apps.views.components.entitiesx.list;
 @safe:
 import uim.apps;
 
-/* class DAPPEntitiesListViewComponent : DViewComponent {
+/* class DAPPEntitiesListViewComponent : DAPPViewComponent {
   mixin(ViewComponentThis!("APPEntitiesListViewComponent", false, true));
 
   mixin(OProperty!("DAPPListViewComponent", "listComponent"));

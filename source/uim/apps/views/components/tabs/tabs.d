@@ -3,7 +3,7 @@ module uim.apps.views.components.tabs.tabs;
 @safe:
 import uim.apps;
 
-class DAPPTabsViewComponent : DViewComponent {
+class DAPPTabsViewComponent : DAPPViewComponent {
   mixin(ViewComponentThis!("APPTabsViewComponent"));
 
   mixin(OProperty!("DAPPTabViewComponent[]", "tabs"));

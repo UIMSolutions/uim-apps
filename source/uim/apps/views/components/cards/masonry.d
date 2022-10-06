@@ -3,7 +3,7 @@ module uim.apps.views.components.cards.masonry;
 @safe:
 import uim.apps;
 
-class DAPPMasonaryCardsComponent : DViewComponent {
+class DAPPMasonaryCardsComponent : DAPPViewComponent {
   mixin(ViewComponentThis!("APPMasonaryCardsComponent"));
 
   mixin(OProperty!("DH5Obj[]", "cards"));

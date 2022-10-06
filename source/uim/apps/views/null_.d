@@ -3,7 +3,7 @@ module uim.apps.views.null_;
 @safe:
 import uim.apps;
 
-class DAPPNullView : DView {
+class DAPPNullView : DAPPView {
   mixin(ViewThis!("APPNullView"));
 
   override DH5Obj[] toH5(STRINGAA options = null) {

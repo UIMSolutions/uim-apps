@@ -1,11 +1,9 @@
 module uim.apps.layouts.layout;
 
-/* @safe:
+@safe:
 import uim.apps;
 
-enum DataModes { Local, REST }
-
-class DMVCLayout {
+class DAPPLayout {
   this() {
     initialize(); }
 
@@ -15,7 +13,7 @@ class DMVCLayout {
     debug writeln("Default settings");
 
     this
-      .name("MVCLayout")
+      .name("APPLayout")
       .title("UI Manufaktur")
       .bodyAttributes(["style": "background-color: #ffffff;"])
       .layoutStyle("tabler")
@@ -89,7 +87,7 @@ class DMVCLayout {
   mixin(OProperty!("STRINGAA", "bodyAttributes"));
   mixin(OProperty!("string[]", "bodyClasses"));
   mixin(OProperty!("STRINGAA", "parameters"));
-  mixin(OProperty!("DMVCLayout", "layout"));
+  mixin(OProperty!("DAPPLayout", "layout"));
   mixin(OProperty!("Json", "config"));
 
   protected DAPPApplication _app;
@@ -124,11 +122,11 @@ class DMVCLayout {
 
 // #region render
 	void beforeRender(STRINGAA options = null) {
-		debugMethodCall(moduleName!DMVCLayout~":DMVCLayout("~this.name~")::beforeRender");
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::beforeRender");
 	}
 
-	string render(DAPPPageController controller, DView view, STRINGAA options = null) { 
-		debugMethodCall(moduleName!DMVCLayout~":DMVCLayout("~this.name~")::render(DAPPPageController controller, DView view, STRINGAA options = null)");
+	string render(DAPPPageController controller, DAPPView view, STRINGAA options = null) { 
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::render(DAPPPageController controller, DAPPView view, STRINGAA options = null)");
     if (view) {
       debug writeln("view is -> ", view.name);
 		  return render(controller, view.toH5(options), options);
@@ -140,7 +138,7 @@ class DMVCLayout {
 	}
 
 	string render(DAPPPageController controller, DH5Obj[] h5Objs, STRINGAA options = null) { 
-		debugMethodCall(moduleName!DMVCLayout~":DMVCLayout("~this.name~")::render(DAPPPageController controller, DH5Obj[] h5Objs, STRINGAA options = null)");
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::render(DAPPPageController controller, DH5Obj[] h5Objs, STRINGAA options = null)");
 		if (h5Objs) {
       return render(controller, h5Objs.map!(h5 => h5.toString).join, options);
     }
@@ -148,7 +146,7 @@ class DMVCLayout {
 	}
 
 	string render(DAPPPageController controller, string content, STRINGAA options = null) { 
-		debugMethodCall(moduleName!DMVCLayout~":DMVCLayout("~this.name~")::render(DAPPPageController controller, string content, STRINGAA options = null)");
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::render(DAPPPageController controller, string content, STRINGAA options = null)");
 		beforeRender(options);
 
 		// 1. page parameters to options
@@ -239,8 +237,7 @@ version(test_uim_apps) { unittest {
   }
   // #endregion render
 }
- */
-/*   override string render(DAPPPageController page, DView view, STRINGAA options = null) {
+/*   override string render(DAPPPageController page, DAPPView view, STRINGAA options = null) {
     super.render(page, view, options);
 
     auto head = ("navigation" in options ? options.get("navigation", "") : navigation.render(options));

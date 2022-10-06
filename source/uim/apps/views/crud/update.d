@@ -3,7 +3,7 @@ module uim.apps.views.crud.update;
 @safe:
 import uim.apps;
 
-class DAPPEntityUpdateView : DAPPEntityCRUDView {
+class DAPPEntityUpdateView : DAPPEntityCRUDAPPView {
   mixin(ViewThis!("APPEntityUpdateView"));
 
   override void initialize() {

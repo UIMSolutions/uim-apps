@@ -3,13 +3,13 @@ module uim.apps.views.components.tables.table;
 @safe:
 import uim.apps;
 
-class DAPPTableViewComponent : DViewComponent {
+class DAPPTableViewComponent : DAPPViewComponent {
   mixin(ViewComponentThis!("APPTableViewComponent"));
   
   mixin(OProperty!("string", "path"));  
-  mixin(OProperty!("DViewComponent", "header"));
-  mixin(OProperty!("DViewComponent", "content"));
-  mixin(OProperty!("DViewComponent", "footer"));
+  mixin(OProperty!("DAPPViewComponent", "header"));
+  mixin(OProperty!("DAPPViewComponent", "content"));
+  mixin(OProperty!("DAPPViewComponent", "footer"));
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
     super.toH5(options);

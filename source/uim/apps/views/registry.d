@@ -8,8 +8,8 @@ module uim.apps.views.registry;
 @safe:
 import uim.apps;
 
-class DViewRegistry : DRegistry!DView {
+class DAPPViewRegistry : DRegistry!DAPPView {
   this() { super(); }
 }
-auto ViewRegistry() { return new DViewRegistry(); }
+auto ViewRegistry() { return new DAPPViewRegistry(); }
 
