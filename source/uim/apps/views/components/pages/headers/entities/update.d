@@ -19,11 +19,11 @@ class DAPPEditPageHeader : DPageHeader {
         .col(["col-auto ms-auto d-print-none"], 
           H5Div(["btn-list"], 
             H5Span(["d-none d-sm-inline g-2"], 
-                buttonLinkRefresh(rootPath, id, ["me-3"]),
+/*                 buttonLinkRefresh(rootPath, id, ["me-3"]),
                 buttonLinkList(rootPath, ["me-3"]),
                 buttonLinkCreate(rootPath, ["me-1"]),
                 buttonLinkView(rootPath, id, ["me-1"]),
-                buttonLinkDelete(rootPath, id, [""])
+                buttonLinkDelete(rootPath, id, [""]) */
               )                
             )
           )

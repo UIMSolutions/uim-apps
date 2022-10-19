@@ -31,7 +31,7 @@ class DFormHeader : DFormComponent {
     auto entityId = this.entity ? this.entity["id"] : "-missing-";
 
     switch(action) {
-      case "refresh": return buttonLinkRefresh(rootPath); 
+/*       case "refresh": return buttonLinkRefresh(rootPath); 
       case "list": return buttonLinkList(rootPath); 
       case "cancel2root": return buttonLinkCancel(rootPath); 
       case "save": return submitSave();       
@@ -44,7 +44,7 @@ class DFormHeader : DFormComponent {
       case "finalDelete": return submitDelete(); 
       case "version": return buttonLinkVersion(rootPath, entityId); 
       case "print": return buttonLinkPrint(rootPath, entityId); 
-      case "export": return buttonLinkExport(rootPath, entityId); 
+      case "export": return buttonLinkExport(rootPath, entityId);  */
       default: return null;       
     }
   }

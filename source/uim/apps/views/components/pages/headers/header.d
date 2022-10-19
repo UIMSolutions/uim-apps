@@ -25,7 +25,7 @@ class DPageHeader : DEntityViewComponent {
     auto id = this.entity ? this.entity.id.toString : UUID().toString;      
   
     switch(action) {
-      case "refresh": return buttonLinkRefresh(rootPath); 
+/*       case "refresh": return buttonLinkRefresh(rootPath); 
       case "create": return buttonLinkCreate(rootPath); 
       case "list": return buttonLinkList(rootPath);  
       case "read": 
@@ -39,8 +39,8 @@ class DPageHeader : DEntityViewComponent {
       case "unlock":return null; 
       case "print":return null; 
       case "export":return null; 
-      case "import":return null; 
-      default: return null;
+      case "import":return null;*/ 
+      default: return null; 
     }
   } 
 

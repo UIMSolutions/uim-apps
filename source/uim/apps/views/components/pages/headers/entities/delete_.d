@@ -24,11 +24,11 @@ class DAPPDeletePageHeader : DPageHeader {
         .col(["col-auto ms-auto d-print-none"], 
           H5Div(["btn-list"], 
             H5Span(["d-none d-sm-inline g-2"], 
-              buttonLinkRefresh(rootPath, id),
+/*               buttonLinkRefresh(rootPath, id),
               buttonLinkList(rootPath),
               buttonLinkCreate(rootPath),
               buttonLinkView(rootPath, id),
-              buttonLinkEdit(rootPath, id)
+              buttonLinkEdit(rootPath, id) */
             )                
           )
         )
