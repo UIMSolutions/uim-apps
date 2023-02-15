@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.databases.systems.sites;
 @safe:
 import uim.apps;
 
-class DAPPCheckDatabaseHasSites : DAPPCheckDatabaseHasSystems {
+class DControllerCheckDatabaseHasSites : DControllerCheckDatabaseHasSystems {
   mixin(ControllerComponentThis!("APPCheckDatabaseHasSites"));
 
   override void initialize() {
@@ -14,7 +14,7 @@ class DAPPCheckDatabaseHasSites : DAPPCheckDatabaseHasSystems {
   }
   
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckDatabaseHasSites~":DAPPCheckDatabaseHasSites::check");
+    debug writeln(moduleName!DControllerCheckDatabaseHasSites~":DControllerCheckDatabaseHasSites::check");
     if (!super.execute(options)) { return false; }
 
     if (!this.database.hasCollection("systems", "system_sites")) { // collection sites missing 
@@ -29,9 +29,9 @@ mixin(ControllerComponentCalls!("APPCheckDatabaseHasSites"));
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
-    assert(new DAPPCheckDatabaseHasSites);
+    assert(new DControllerCheckDatabaseHasSites);
     assert(APPCheckDatabaseHasSites);
-    assert(new DAPPCheckDatabaseHasSites(APPController));
+    assert(new DControllerCheckDatabaseHasSites(APPController));
     assert(APPCheckDatabaseHasSites(APPController));
   }
 }

@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.databases.tenant_by_name;
 @safe:
 import uim.apps;
 
-class DAPPCheckDatabaseHasTenant : DAPPCheckDatabaseExists {
+class DControllerCheckDatabaseHasTenant : DControllerCheckDatabaseExists {
   mixin(ControllerComponentThis!("APPCheckDatabaseHasTenant"));
 
   override void initialize() {
@@ -16,7 +16,7 @@ class DAPPCheckDatabaseHasTenant : DAPPCheckDatabaseExists {
   mixin(OProperty!("string", "tenantName"));
   
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckDatabaseHasTenant~":DAPPCheckDatabaseHasTenant::check");
+    debug writeln(moduleName!DControllerCheckDatabaseHasTenant~":DControllerCheckDatabaseHasTenant::check");
     if (!super.execute(options)) { return false; }
 
     if (!this.database.hasTenant(tenantName)) {  

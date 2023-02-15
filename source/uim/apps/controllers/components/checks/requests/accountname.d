@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.requests.accountname;
 @safe:
 import uim.apps;
 
-class DAPPCheckRequestHasAccountName : DAPPCheckDatabaseHasAccounts {
+class DControllerCheckRequestHasAccountName : DControllerCheckDatabaseHasAccounts {
   mixin(ControllerComponentThis!("APPCheckRequestHasAccountName"));
 
   override void initialize() {
@@ -31,9 +31,9 @@ mixin(ControllerComponentCalls!("APPCheckRequestHasAccountName"));
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
-    assert(new DAPPCheckRequestHasAccountName);
+    assert(new DControllerCheckRequestHasAccountName);
     assert(APPCheckRequestHasAccountName);
-    assert(new DAPPCheckRequestHasAccountName(APPController));
+    assert(new DControllerCheckRequestHasAccountName(APPController));
     assert(APPCheckRequestHasAccountName(APPController));
   }
 }

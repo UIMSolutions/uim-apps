@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.databases.systems.sessions;
 @safe:
 import uim.apps;
 
-class DAPPCheckDatabaseHasSessions : DAPPCheckDatabaseHasSystems {
+class DControllerCheckDatabaseHasSessions : DControllerCheckDatabaseHasSystems {
   mixin(ControllerComponentThis!("APPCheckDatabaseHasSessions"));
 
   override void initialize() {
@@ -14,7 +14,7 @@ class DAPPCheckDatabaseHasSessions : DAPPCheckDatabaseHasSystems {
   }
   
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckDatabaseHasSessions~":DAPPCheckDatabaseHasSessions::execute");
+    debug writeln(moduleName!DControllerCheckDatabaseHasSessions~":DControllerCheckDatabaseHasSessions::execute");
     if (!super.execute(options)) { return false; }
 
     debug writeln(this.database ? "Database exists" : "Database missing");
@@ -35,9 +35,9 @@ mixin(ControllerComponentCalls!("APPCheckDatabaseHasSessions"));
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
-    assert(new DAPPCheckDatabaseHasSessions);
+    assert(new DControllerCheckDatabaseHasSessions);
     assert(APPCheckDatabaseHasSessions);
-    assert(new DAPPCheckDatabaseHasSessions(APPController));
+    assert(new DControllerCheckDatabaseHasSessions(APPController));
     assert(APPCheckDatabaseHasSessions(APPController));
   }
 }

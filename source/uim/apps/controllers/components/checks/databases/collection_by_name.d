@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.databases.collection_by_name;
 @safe:
 import uim.apps;
 
-class DAPPCheckDatabaseHasCollection : DAPPCheckDatabaseExists {
+class DControllerCheckDatabaseHasCollection : DControllerCheckDatabaseExists {
   mixin(ControllerComponentThis!("APPCheckDatabaseHasCollection"));
 
   override void initialize() {
@@ -17,7 +17,7 @@ class DAPPCheckDatabaseHasCollection : DAPPCheckDatabaseExists {
   mixin(OProperty!("string", "collectionName"));
   
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckDatabaseHasCollection~":DAPPCheckDatabaseHasCollection::check");
+    debug writeln(moduleName!DControllerCheckDatabaseHasCollection~":DControllerCheckDatabaseHasCollection::check");
     if (!super.execute(options)) { return false; }
     
     if (!this.database.hasTenant(tenantName) || !this.database[tenantName].hasCollection(collectionName)) {  

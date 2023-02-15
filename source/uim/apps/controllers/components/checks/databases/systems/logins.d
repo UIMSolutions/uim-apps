@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.databases.systems.logins;
 @safe:
 import uim.apps;
 
-class DAPPCheckDatabaseHasLogins : DAPPCheckDatabaseHasSystems {
+class DControllerCheckDatabaseHasLogins : DControllerCheckDatabaseHasSystems {
   mixin(ControllerComponentThis!("APPCheckDatabaseHasLogins"));
 
   override void initialize() {
@@ -14,7 +14,7 @@ class DAPPCheckDatabaseHasLogins : DAPPCheckDatabaseHasSystems {
   }
   
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckDatabaseHasLogins~":DAPPCheckDatabaseHasLogins::check");
+    debug writeln(moduleName!DControllerCheckDatabaseHasLogins~":DControllerCheckDatabaseHasLogins::check");
     if (!super.execute(options)) { return false; }
 
     if (!this.database.hasCollection("systems", "system_logins")) { // collection logins missing 
@@ -29,9 +29,9 @@ mixin(ControllerComponentCalls!("APPCheckDatabaseHasLogins"));
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
-    assert(new DAPPCheckDatabaseHasLogins);
+    assert(new DControllerCheckDatabaseHasLogins);
     assert(APPCheckDatabaseHasLogins);
-    assert(new DAPPCheckDatabaseHasLogins(APPController));
+    assert(new DControllerCheckDatabaseHasLogins(APPController));
     assert(APPCheckDatabaseHasLogins(APPController));
   }
 }

@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.requests.accountid;
 @safe:
 import uim.apps;
 
-class DAPPCheckRequestHasAccountId : DAPPCheckDatabaseHasAccounts {
+class DControllerCheckRequestHasAccountId : DControllerCheckDatabaseHasAccounts {
   mixin(ControllerComponentThis!("APPCheckAccountIdInSession"));
 
   override void initialize() {

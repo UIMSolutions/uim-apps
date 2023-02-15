@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.databases.systems.passwords;
 @safe:
 import uim.apps;
 
-class DAPPCheckDatabaseHasPasswords : DAPPCheckDatabaseHasSystems {
+class DControllerCheckDatabaseHasPasswords : DControllerCheckDatabaseHasSystems {
   mixin(ControllerComponentThis!("APPCheckDatabaseHasPasswords"));
 
   override void initialize() {
@@ -14,7 +14,7 @@ class DAPPCheckDatabaseHasPasswords : DAPPCheckDatabaseHasSystems {
   }
   
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckDatabaseHasPasswords~":DAPPCheckDatabaseHasPasswords::check");
+    debug writeln(moduleName!DControllerCheckDatabaseHasPasswords~":DControllerCheckDatabaseHasPasswords::check");
     if (!super.execute(options)) { return false; }
 
     if (!this.database.hasCollection("systems", "system_passwords")) { // collection passwords missing 
@@ -30,9 +30,9 @@ mixin(ControllerComponentCalls!("APPCheckDatabaseHasPasswords"));
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
-    assert(new DAPPCheckDatabaseHasPasswords);
+    assert(new DControllerCheckDatabaseHasPasswords);
     assert(APPCheckDatabaseHasPasswords);
-    assert(new DAPPCheckDatabaseHasPasswords(APPController));
+    assert(new DControllerCheckDatabaseHasPasswords(APPController));
     assert(APPCheckDatabaseHasPasswords(APPController));
   }
 }

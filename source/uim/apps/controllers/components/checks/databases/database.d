@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.databases.database;
 @safe:
 import uim.apps;
 
-class DAPPCheckDatabaseExists : DAPPCheck {
+class DControllerCheckDatabaseExists : DControllerCheck {
   mixin(ControllerComponentThis!("APPCheckDatabaseExists"));
 
   override void initialize() {
@@ -19,7 +19,7 @@ class DAPPCheckDatabaseExists : DAPPCheck {
   }
 
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckDatabaseExists~":DAPPCheckDatabaseExists::execute");
+    debug writeln(moduleName!DControllerCheckDatabaseExists~":DControllerCheckDatabaseExists::execute");
     if (!super.execute(options)) { return false; }
 
     if (!this.controller) debug writeln("Controller missing");

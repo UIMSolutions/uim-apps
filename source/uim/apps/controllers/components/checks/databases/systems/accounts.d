@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.databases.systems.accounts;
 @safe:
 import uim.apps;
 
-class DAPPCheckDatabaseHasAccounts : DAPPCheckDatabaseHasSystems {
+class DControllerCheckDatabaseHasAccounts : DControllerCheckDatabaseHasSystems {
   mixin(ControllerComponentThis!("APPCheckDatabaseHasAccounts"));
 
   override void initialize() {
@@ -14,7 +14,7 @@ class DAPPCheckDatabaseHasAccounts : DAPPCheckDatabaseHasSystems {
   }
   
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckDatabaseHasAccounts~":DAPPCheckDatabaseHasAccounts::check");
+    debug writeln(moduleName!DControllerCheckDatabaseHasAccounts~":DControllerCheckDatabaseHasAccounts::check");
     if (!super.execute(options)) { return false; }
 
     if (!this.database.hasCollection("systems", "system_accounts")) { // collection accounts missing 
@@ -29,9 +29,9 @@ mixin(ControllerComponentCalls!("APPCheckDatabaseHasAccounts"));
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
-    assert(new DAPPCheckDatabaseHasAccounts);
+    assert(new DControllerCheckDatabaseHasAccounts);
     assert(APPCheckDatabaseHasAccounts);
-    assert(new DAPPCheckDatabaseHasAccounts(APPController));
+    assert(new DControllerCheckDatabaseHasAccounts(APPController));
     assert(APPCheckDatabaseHasAccounts(APPController));
   }
 }
