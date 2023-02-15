@@ -3,7 +3,7 @@ module uim.apps.controllers.scripts.script;
 @safe:
 import uim.apps;
 
-class DAPPScript : DAPPController {
+class DAPPScript : DController {
   this() { initialize; }
   this(DAPPApplication myApp) { this().app(myApp); }
 

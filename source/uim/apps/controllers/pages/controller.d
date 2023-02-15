@@ -6,7 +6,7 @@ module uim.apps.controllers.pages.controller;
 @safe:
 import uim.apps;
 
-class DAPPPageController : DAPPController {
+class DAPPPageController : DController {
   mixin(APPPageControllerThis!("APPPageController"));
 
   mixin(OProperty!("DAPPSession", "appSession"));
@@ -74,7 +74,7 @@ class DAPPPageController : DAPPController {
   mixin(OProperty!("ViewModes", "viewMode")); // 0 - HTML , 1 - HTML & Javascript, 2 - PWA
   mixin(OProperty!("DataModes", "dataMode")); // 0 - HTML , 1 - HTML & Javascript, 2 - PWA
 
-/*   mixin(OProperty!("DAPPController", "securityController")); 
+/*   mixin(OProperty!("DController", "securityController")); 
   mixin(OProperty!("DAPPSecurityOptions", "securityOptions"));
   O securityOptions(this O)(bool[string] newOptions) { this.securityOptions(APPSecurityOptions(newOptions)); return cast(O)this; }  
  */  

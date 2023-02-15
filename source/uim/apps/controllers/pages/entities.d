@@ -4,7 +4,7 @@ module uim.apps.controllers.pages.entities;
 import uim.apps;
 
 class DAPPEntitiesPageController : DAPPPageController {
-  mixin(APPControllerThis!("APPEntitiesPageController"));
+  mixin(ControllerThis!("APPEntitiesPageController"));
 
   protected DEntity[] _entities;
   DEntity[] entities() { return _entities; }
@@ -38,7 +38,7 @@ class DAPPEntitiesPageController : DAPPPageController {
     this.filterValue = options.get("filterValue", null);
   }
 }
-mixin(APPControllerCalls!("APPEntitiesPageController"));
+mixin(ControllerCalls!("APPEntitiesPageController"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);

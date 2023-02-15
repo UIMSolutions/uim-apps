@@ -3,9 +3,9 @@ module uim.apps.controllers.entities.entity;
 @safe:
 import uim.apps;
 
-class DAPPEntityController : DAPPController {
-  mixin(APPControllerThis!("APPEntityController"));
+class DAPPEntityController : DController {
+  mixin(ControllerThis!("APPEntityController"));
 
   mixin(OProperty!("DEntity", "entity"));
 }
-mixin(APPControllerCalls!("APPEntityController"));
+mixin(ControllerCalls!("APPEntityController"));

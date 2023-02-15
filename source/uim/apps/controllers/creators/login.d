@@ -4,7 +4,7 @@ module uim.apps.controllers.creators.login;
 import uim.apps;
 
 class DAPPCreatorLogin : DAPPCreator {
-  mixin(APPControllerThis!("APPCreatorLogin"));
+  mixin(ControllerThis!("APPCreatorLogin"));
 
   override DEntity create(STRINGAA parameters) {
     auto entity = createEntities["login"](Json.emptyObject)
@@ -23,5 +23,5 @@ class DAPPCreatorLogin : DAPPCreator {
     return result;
   }
 }
-mixin(APPControllerCalls!("APPCreatorLogin"));
+mixin(ControllerCalls!("APPCreatorLogin"));
 

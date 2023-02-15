@@ -3,8 +3,8 @@ module uim.apps.controllers.entities.entities;
 @safe:
 import uim.apps;
 
-class DAPPEntitiesController : DAPPController {
-  mixin(APPControllerThis!("APPEntitiesController"));
+class DAPPEntitiesController : DController {
+  mixin(ControllerThis!("APPEntitiesController"));
 
   protected DEntity[] _entities;
   DEntity[] entities() { return _entities; }
@@ -16,4 +16,4 @@ class DAPPEntitiesController : DAPPController {
     _entities = newEntities;
   }
 }
-mixin(APPControllerCalls!("APPEntitiesController"));
+mixin(ControllerCalls!("APPEntitiesController"));

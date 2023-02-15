@@ -27,7 +27,7 @@ public import uim.apps.controllers.pages.register;
 public import uim.apps.controllers.pages.sites;
 
 // Get page by names
-DAPPPageController pageByName(DAPPController[] controllers, string name) {
+DAPPPageController pageByName(DController[] controllers, string name) {
 	foreach(controller; controllers) {
 		if (auto page = cast(DAPPPageController)controller) { return page; }
 	}

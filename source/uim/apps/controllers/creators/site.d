@@ -4,7 +4,7 @@ module uim.apps.controllers.creators.site;
 import uim.apps;
 
 class DAPPCreatorSite : DAPPCreator {
-  mixin(APPControllerThis!("APPCreatorSite"));
+  mixin(ControllerThis!("APPCreatorSite"));
 
   override DEntity create(STRINGAA options) {
     auto col = database["systems", "system_sites"];
@@ -27,4 +27,4 @@ class DAPPCreatorSite : DAPPCreator {
     return result;
   }
 }
-mixin(APPControllerCalls!("APPCreatorSite"));
+mixin(ControllerCalls!("APPCreatorSite"));
