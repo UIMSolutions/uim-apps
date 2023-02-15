@@ -18,7 +18,7 @@ class DEntitiesFormContent : DFormContent {
 
   mixin(OProperty!("DAPPEntitiesTableHeader", "tableHeader"));
   mixin(OProperty!("DAPPEntitiesTableFilter", "tableFilter"));
-  mixin(OProperty!("DOOPEntity[]", "entities"));
+  mixin(OProperty!("DEntity[]", "entities"));
   
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DEntitiesFormContent~"DEntitiesFormContent::beforeH5");
@@ -47,7 +47,7 @@ class DEntitiesFormContent : DFormContent {
 
     debug writeln("RootPath = ", this.rootPath);
 
-    auto row(DOOPEntity entity) {
+    auto row(DEntity entity) {
       if (!entity) return null;
       
       return [

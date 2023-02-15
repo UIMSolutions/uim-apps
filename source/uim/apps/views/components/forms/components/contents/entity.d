@@ -17,7 +17,7 @@ class DEntityFormContent : DFormContent {
     .inputHandler(FormInputHandler(/* this.form */));   
   }
 
-  mixin(OProperty!("DOOPEntity", "entity"));
+  mixin(OProperty!("DEntity", "entity"));
 
   mixin(OProperty!("string[]", "fields"));
   O addFields(this O)(string[] newFields) {

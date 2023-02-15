@@ -6,7 +6,7 @@ import uim.apps;
 class DEntityViewComponent : DAPPViewComponent {
   mixin(ViewComponentThis!("EntityViewComponent"));
 
-  mixin(OProperty!("DOOPEntity", "entity"));
+  mixin(OProperty!("DEntity", "entity"));
   mixin(OProperty!("CRUDModes", "crudMode"));
 
   override void beforeH5(STRINGAA options = null) {

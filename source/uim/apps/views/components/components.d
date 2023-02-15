@@ -55,31 +55,31 @@ class DAPPViewComponents {
     return cast(O)this;
   }
 
-protected DOOPEntity _entity;
-  DOOPEntity entity() { return _entity; }
+protected DEntity _entity;
+  DEntity entity() { return _entity; }
   bool hasEntity() {
     return (this.entity !is null); 
   }
 
-  O entity(this O)(DOOPEntity newEntity) {
+  O entity(this O)(DEntity newEntity) {
     _entity = newEntity;
  
     _components.each!(comp => comp.entity(newEntity));
     return cast(O)this;
   } 
   
-  protected DOOPEntity[] _entities;
-  DOOPEntity[] entities() { return _entities; }
+  protected DEntity[] _entities;
+  DEntity[] entities() { return _entities; }
   bool hasEntities() {
     return (this.entities !is null); 
   }
 
-  O entities(this O)(DOOPEntity[] newEntities...) {
+  O entities(this O)(DEntity[] newEntities...) {
     this.entities(newEntities);
     return cast(O)this;
   }
 
-  O entities(this O)(DOOPEntity[] newEntities) {
+  O entities(this O)(DEntity[] newEntities) {
     _entities = newEntities;
     _components.each!(comp => comp.entities(_entities));
 

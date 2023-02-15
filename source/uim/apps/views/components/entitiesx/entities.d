@@ -6,7 +6,7 @@ import uim.apps;
 /* class DEntitiesViewComponent : DAPPViewComponent {
   mixin(ViewComponentThis!("EntitiesViewComponent", false, true));
 
-  mixin(OProperty!("DOOPEntity[]", "entities"));
+  mixin(OProperty!("DEntity[]", "entities"));
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DAPPView~":DAPPView::beforeH5");

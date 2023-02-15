@@ -6,7 +6,7 @@ import uim.apps;
 /* class DEntityViewComponent : DAPPViewComponent {
   mixin(ViewComponentThis!("EntityViewComponent", true));
 
-  mixin(OProperty!("DOOPEntity", "entity"));
+  mixin(OProperty!("DEntity", "entity"));
 } 
 mixin(ViewComponentCalls!("EntityViewComponent", true));
 

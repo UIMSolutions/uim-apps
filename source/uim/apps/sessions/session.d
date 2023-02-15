@@ -19,13 +19,13 @@ class DAPPSession {
 
   mixin(OProperty!("DAPPPageController", "page"));
   mixin(OProperty!("long", "lastAccessedOn"));
-  mixin(OProperty!("DOOPEntity", "login"));
-  mixin(OProperty!("DOOPEntity", "session"));
-  mixin(OProperty!("DOOPEntity", "site"));
-  mixin(OProperty!("DOOPEntity", "account"));
-  mixin(OProperty!("DOOPEntity", "user"));
-  mixin(OProperty!("DOOPEntity", "password"));
-  mixin(OProperty!("DOOPEntity", "entity"));
+  mixin(OProperty!("DEntity", "login"));
+  mixin(OProperty!("DEntity", "session"));
+  mixin(OProperty!("DEntity", "site"));
+  mixin(OProperty!("DEntity", "account"));
+  mixin(OProperty!("DEntity", "user"));
+  mixin(OProperty!("DEntity", "password"));
+  mixin(OProperty!("DEntity", "entity"));
 
   bool isValid(string[] checks, STRINGAA reqParameters) {
     foreach (check; checks) {
@@ -86,10 +86,10 @@ auto APPSession(Session httpSession, DAPPPageController page) { return new DAPPS
 
 /*   mixin(OProperty!("DAPPPageController", "page"));
   mixin(OProperty!("long", "lastAccessedOn"));
-  mixin(OProperty!("DOOPEntity", "login"));
-  mixin(OProperty!("DOOPEntity", "session"));
-  mixin(OProperty!("DOOPEntity", "site"));
-  mixin(OProperty!("DOOPEntity", "account"));
-  mixin(OProperty!("DOOPEntity", "user"));
-  mixin(OProperty!("DOOPEntity", "password"));
-  mixin(OProperty!("DOOPEntity", "entity")); */
+  mixin(OProperty!("DEntity", "login"));
+  mixin(OProperty!("DEntity", "session"));
+  mixin(OProperty!("DEntity", "site"));
+  mixin(OProperty!("DEntity", "account"));
+  mixin(OProperty!("DEntity", "user"));
+  mixin(OProperty!("DEntity", "password"));
+  mixin(OProperty!("DEntity", "entity")); */
