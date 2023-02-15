@@ -8,7 +8,7 @@ class DAPPActionController : DAPPController {
 
   mixin(OProperty!("DAPPSession", "appSession"));
   mixin(OProperty!("DETBCollection", "collection"));
-  mixin(OProperty!("DOOPEntity", "site"));
+  mixin(OProperty!("DEntity", "site"));
   mixin(OProperty!("DETBTenant", "tenant"));
 
   override void beforeResponse(STRINGAA options = null) {

@@ -6,7 +6,7 @@ import uim.apps;
 class DAPPCreatorSite : DAPPCreator {
   mixin(APPControllerThis!("APPCreatorSite"));
 
-  override DOOPEntity create(STRINGAA options) {
+  override DEntity create(STRINGAA options) {
     auto col = database["systems", "system_sites"];
 
     return  col.notNull ? col

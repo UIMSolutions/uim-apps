@@ -6,6 +6,6 @@ import uim.apps;
 class DAPPEntityController : DAPPController {
   mixin(APPControllerThis!("APPEntityController"));
 
-  mixin(OProperty!("DOOPEntity", "entity"));
+  mixin(OProperty!("DEntity", "entity"));
 }
 mixin(APPControllerCalls!("APPEntityController"));

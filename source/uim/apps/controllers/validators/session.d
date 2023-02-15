@@ -6,7 +6,7 @@ import uim.apps;
 class DAPPValidatorSession : DAPPValidator {
   mixin(APPControllerThis!("APPValidatorSession"));
   
-  override DOOPEntity validate(STRINGAA reqParameters) {
+  override DEntity validate(STRINGAA reqParameters) {
     // Looking for a sessionId
     string appSessionId = reqParameters.get("appSessionId", "");
     auto appSession = getAppSession(reqParameters);

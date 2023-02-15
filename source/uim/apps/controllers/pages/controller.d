@@ -11,7 +11,7 @@ class DAPPPageController : DAPPController {
 
   mixin(OProperty!("DAPPSession", "appSession"));
   mixin(OProperty!("DETBCollection", "collection"));
-  mixin(OProperty!("DOOPEntity", "site"));
+  mixin(OProperty!("DEntity", "site"));
   mixin(OProperty!("DETBTenant", "tenant"));
 
   // Initialization (= hook method)

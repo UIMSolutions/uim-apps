@@ -6,11 +6,11 @@ import uim.apps;
 class DAPPEntityPageController : DAPPPageController {
   mixin(APPControllerThis!("APPEntityPageController"));
 
-  protected DOOPEntity _entity;
-  DOOPEntity entity() { 
+  protected DEntity _entity;
+  DEntity entity() { 
     return _entity; 
   }
-  O entity(this O)(DOOPEntity newEntity) { 
+  O entity(this O)(DEntity newEntity) { 
     _entity = newEntity;
 
     if (auto myView = cast(DEntityView)this.view) {

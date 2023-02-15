@@ -6,7 +6,7 @@ import uim.apps;
 class DAPPValidatorEntity : DAPPValidator {
   mixin(APPControllerThis!("APPValidatorEntity"));
  
-  override DOOPEntity validate(STRINGAA reqParameters) {
+  override DEntity validate(STRINGAA reqParameters) {
     string appSessionId = reqParameters.get("appSessionId", "");
     auto appSession = getAppSession(reqParameters);
 
