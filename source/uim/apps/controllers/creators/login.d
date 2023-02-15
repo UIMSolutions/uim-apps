@@ -6,7 +6,7 @@ import uim.apps;
 class DAPPCreatorLogin : DAPPCreator {
   mixin(APPControllerThis!("APPCreatorLogin"));
 
-  override DOOPEntity create(STRINGAA parameters) {
+  override DEntity create(STRINGAA parameters) {
     auto entity = createEntities["login"](Json.emptyObject)
       .id(randomUUID)
       .name(parameters.get("login", "login"~to!string(now)));

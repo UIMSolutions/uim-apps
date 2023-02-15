@@ -6,7 +6,7 @@ import uim.apps;
 class DAPPCreator : DAPPController {
   mixin(APPControllerThis!("APPCreator"));
 
-  DOOPEntity create(STRINGAA parameters) {
+  DEntity create(STRINGAA parameters) {
     return null;
   }
 }

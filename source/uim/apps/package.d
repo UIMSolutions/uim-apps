@@ -27,7 +27,6 @@ public import uim.oop;
 public import uim.html;
 public import uim.bootstrap;
 public import uim.javascript;
-public import uim.entities;
 public import uim.jsonbase;
 public import uim.entitybase;
 public import uim.servers;
@@ -44,7 +43,7 @@ public import uim.apps.helpers;
 public import uim.apps.interfaces;
 public import uim.apps.javascripts;
 public import uim.apps.layouts;
-public import uim.apps.middlewares;
+// public import uim.apps.middlewares;
 public import uim.apps.mixins;
 public import uim.apps.requests;
 public import uim.apps.routers;
@@ -68,8 +67,8 @@ size_t appErrorPrefix = 100000;
 string[size_t] appErrorCodes; 
 
 DAPPSession[string] appSessions;
-DOOPEntity[size_t] entityPool;
-DOOPEntity[][size_t] entitiesPool;
+DEntity[size_t] entityPool;
+DEntity[][size_t] entitiesPool;
 
 /* auto setDemoSession(UUID sessionID, string[string][UUID] sessions) {
   if (sessionID !in sessions) sessions[sessionID] = null;
@@ -112,7 +111,7 @@ auto urlToSelect(string[string] data) {
     return result;
 }
 
-auto entityToData(DOOPEntity entity) {
+auto entityToData(DEntity entity) {
     return [
         "id": entity.id.toString,
 /*         "name": entity.name,
@@ -120,7 +119,7 @@ auto entityToData(DOOPEntity entity) {
 }
 
 
-string entityToUrl(DOOPEntity entity) {
+string entityToUrl(DEntity entity) {
     return "id=%s&name=%s&number=%s".format(entity.id, entity.name, entity.versionNumber);
 }
 

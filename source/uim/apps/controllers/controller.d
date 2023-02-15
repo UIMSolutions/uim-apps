@@ -40,7 +40,7 @@ class DAPPController : DBaseController {
   HTTPServerResponse response() { return _response; }
   void response(HTTPServerResponse newResponse) { _response = newResponse; }
 
-  mixin(OProperty!("DOOPEntity", "session"));
+  mixin(OProperty!("DEntity", "session"));
 
   /// Configuration of controller
   mixin(OProperty!("Json", "config"));

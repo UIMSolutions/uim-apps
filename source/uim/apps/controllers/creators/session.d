@@ -6,7 +6,7 @@ import uim.apps;
 class DAPPCreatorSession : DAPPCreator {
   mixin(APPControllerThis!("APPCreatorSession"));
 
-  override DOOPEntity create(STRINGAA options) {
+  override DEntity create(STRINGAA options) {
     auto entity = createEntities["session"](Json.emptyObject)
       .id(randomUUID)
       .name(options.get("session", "session"~to!string(now)));

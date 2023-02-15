@@ -6,5 +6,5 @@ import uim.apps;
 // Main
 public import uim.apps.applications.application;
 
-// MOdules
+// Modules
 public import uim.apps.applications.registry;
