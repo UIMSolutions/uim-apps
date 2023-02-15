@@ -22,16 +22,16 @@ this(DAPPView myView) { this().view(myView); }
 this(string myName) { this().name(myName); }
 this(DAPPView myView, string myName) { this(myView).name(myName); }`~
 (withEntity ? `
-this(DOOPEntity myEntity) { this().entity(myEntity); }
-this(DAPPView myView, DOOPEntity myEntity) { this(myView).entity(myEntity); }
-this(string myName, DOOPEntity myEntity) { this(myName).entity(myEntity); }
-this(DAPPView myView, string myName, DOOPEntity myEntity) { this(myView, myName).entity(myEntity); }
+this(DEntity myEntity) { this().entity(myEntity); }
+this(DAPPView myView, DEntity myEntity) { this(myView).entity(myEntity); }
+this(string myName, DEntity myEntity) { this(myName).entity(myEntity); }
+this(DAPPView myView, string myName, DEntity myEntity) { this(myView, myName).entity(myEntity); }
 ` : ``)~
 (withEntities ? `
-this(DOOPEntity[] myEntities) { this().entities(myEntities); }
-this(DAPPView myView, DOOPEntity[] myEntities) { this(myView).entities(myEntities); }
-this(string myName, DOOPEntity[] myEntities) { this(myName).entities(myEntities); }
-this(DAPPView myView, string myName, DOOPEntity[] myEntities) { this(myView, myName).entities(myEntities); }
+this(DEntity[] myEntities) { this().entities(myEntities); }
+this(DAPPView myView, DEntity[] myEntities) { this(myView).entities(myEntities); }
+this(string myName, DEntity[] myEntities) { this(myName).entities(myEntities); }
+this(DAPPView myView, string myName, DEntity[] myEntities) { this(myView, myName).entities(myEntities); }
 ` : ``);
 }
 
@@ -42,16 +42,16 @@ auto `~name~`(DAPPView myView) { return new D`~name~`(myView); }
 auto `~name~`(string myName) { return new D`~name~`(myName); }
 auto `~name~`(DAPPView myView, string myName) { return new D`~name~`(myView, myName); }`~
 (withEntity ? `
-auto `~name~`(DOOPEntity myEntity) { return new D`~name~`(myEntity); }
-auto `~name~`(DAPPView myView, DOOPEntity myEntity) { return new D`~name~`(myView, myEntity); }
-auto `~name~`(string myName, DOOPEntity myEntity) { return new D`~name~`(myName, myEntity); }
-auto `~name~`(DAPPView myView, string myName, DOOPEntity myEntity) { return new D`~name~`(myView, myName, myEntity); }
+auto `~name~`(DEntity myEntity) { return new D`~name~`(myEntity); }
+auto `~name~`(DAPPView myView, DEntity myEntity) { return new D`~name~`(myView, myEntity); }
+auto `~name~`(string myName, DEntity myEntity) { return new D`~name~`(myName, myEntity); }
+auto `~name~`(DAPPView myView, string myName, DEntity myEntity) { return new D`~name~`(myView, myName, myEntity); }
 ` : ``)~
 (withEntities ? `
-auto `~name~`(DOOPEntity[] myEntities) { return new D`~name~`(myEntities); }
-auto `~name~`(DAPPView myView, DOOPEntity[] myEntities) { return new D`~name~`(myView, myEntities); }
-auto `~name~`(string myName, DOOPEntity[] myEntities) { return new D`~name~`(myName, myEntities); }
-auto `~name~`(DAPPView myView, string myName, DOOPEntity[] myEntities) { return new D`~name~`(myView, myName, myEntities); }
+auto `~name~`(DEntity[] myEntities) { return new D`~name~`(myEntities); }
+auto `~name~`(DAPPView myView, DEntity[] myEntities) { return new D`~name~`(myView, myEntities); }
+auto `~name~`(string myName, DEntity[] myEntities) { return new D`~name~`(myName, myEntities); }
+auto `~name~`(DAPPView myView, string myName, DEntity[] myEntities) { return new D`~name~`(myView, myName, myEntities); }
 ` : ``);
 }
 

@@ -16,7 +16,7 @@ class DAPPReadForm : DEntityForm {
 mixin(FormCalls!("APPReadForm"));
 
 /* 
-auto viewForm(T:DOOPEntity)(string path, T entity, STRINGAA[] panes, STRINGAA reqParameters) {
+auto viewForm(T:DEntity)(string path, T entity, STRINGAA[] panes, STRINGAA reqParameters) {
 
 
     auto createdOn = (cast(DateTime)fromTimestamp(entity.createdOn)).toISOExtString;
@@ -44,7 +44,7 @@ auto viewForm(T:DOOPEntity)(string path, T entity, STRINGAA[] panes, STRINGAA re
       );
 }
 
-auto viewForm(T:DOOPEntity)(string path, T entity, DAPPPanes panes, STRINGAA reqParameters) {
+auto viewForm(T:DEntity)(string path, T entity, DAPPPanes panes, STRINGAA reqParameters) {
 
     return 
     H5Form(["card"], ["action":path~"/create/action", "method":"post"], 
@@ -67,7 +67,7 @@ auto viewForm(T:DOOPEntity)(string path, T entity, DAPPPanes panes, STRINGAA req
       );
 }
 
-DH5Obj[] viewFormGroups(DOOPEntity entity, string[] fields = ["name", "display", "description"]) {
+DH5Obj[] viewFormGroups(DEntity entity, string[] fields = ["name", "display", "description"]) {
   DH5Obj[] results; 
 
   foreach(field; fields) {

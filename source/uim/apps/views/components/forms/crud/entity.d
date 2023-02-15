@@ -6,7 +6,7 @@ import uim.apps;
 class DEntityForm : DForm {
   mixin(ViewComponentThis!("EntityForm"));
 
-  mixin(OProperty!("DOOPEntity", "entity"));
+  mixin(OProperty!("DEntity", "entity"));
 
   override void initialize() {
     super.initialize;

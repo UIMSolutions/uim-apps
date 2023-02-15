@@ -29,17 +29,17 @@ this() { super(); }
 this(DForm myForm) { this().form(myForm); };
 `~
 (withEntity ? `
-this(DOOPEntity myEntity) { this().entity(myEntity); }
-this(DForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
-this(string myName, DOOPEntity myEntity) { this(myName).entity(myEntity); }
-this(DForm myForm, string myName, DOOPEntity myEntity) { this(myForm, myName).entity(myEntity); }
+this(DEntity myEntity) { this().entity(myEntity); }
+this(DForm myForm, DEntity myEntity) { this(myForm).entity(myEntity); }
+this(string myName, DEntity myEntity) { this(myName).entity(myEntity); }
+this(DForm myForm, string myName, DEntity myEntity) { this(myForm, myName).entity(myEntity); }
 ` : ``)
 ~
 (withEntities ? `
-this(DOOPEntity[] myEntities) { this().entities(myEntities); }
-this(DForm myForm, DOOPEntity[] myEntities) { this(myForm).entities(myEntities); }
-this(string myName, DOOPEntity[] myEntities) { this(myName).entities(myEntities); }
-this(DForm myForm, string myName, DOOPEntity[] myEntities) { this(myForm, myName).entities(myEntities); }
+this(DEntity[] myEntities) { this().entities(myEntities); }
+this(DForm myForm, DEntity[] myEntities) { this(myForm).entities(myEntities); }
+this(string myName, DEntity[] myEntities) { this(myName).entities(myEntities); }
+this(DForm myForm, string myName, DEntity[] myEntities) { this(myForm, myName).entities(myEntities); }
 ` : ``);
 }
 
@@ -49,16 +49,16 @@ auto `~name~`() { return new D`~name~`; }
 auto `~name~`(DForm myForm) { return new D`~name~`(myForm); };
 `~
 (withEntity ? `
-this(DOOPEntity myEntity) { this().entity(myEntity); }
-this(DForm myForm, DOOPEntity myEntity) { this(myForm).entity(myEntity); }
-this(string myName, DOOPEntity myEntity) { this(myName).entity(myEntity); }
-this(DForm myForm, string myName, DOOPEntity myEntity) { this(myForm, myName).entity(myEntity); }
+this(DEntity myEntity) { this().entity(myEntity); }
+this(DForm myForm, DEntity myEntity) { this(myForm).entity(myEntity); }
+this(string myName, DEntity myEntity) { this(myName).entity(myEntity); }
+this(DForm myForm, string myName, DEntity myEntity) { this(myForm, myName).entity(myEntity); }
 ` : ``)
 ~
 (withEntities ? `
-this(DOOPEntity[] myEntities) { this().entities(myEntities); }
-this(DForm myForm, DOOPEntity[] myEntities) { this(myForm).entities(myEntities); }
-this(string myName, DOOPEntity[] myEntities) { this(myName).entities(myEntities); }
-this(DForm myForm, string myName, DOOPEntity[] myEntities) { this(myForm, myName).entities(myEntities); }
+this(DEntity[] myEntities) { this().entities(myEntities); }
+this(DForm myForm, DEntity[] myEntities) { this(myForm).entities(myEntities); }
+this(string myName, DEntity[] myEntities) { this(myName).entities(myEntities); }
+this(DForm myForm, string myName, DEntity[] myEntities) { this(myForm, myName).entities(myEntities); }
 ` : ``);
 }

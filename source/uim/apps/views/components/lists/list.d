@@ -7,7 +7,7 @@ class DAPPListViewComponent : DEntitiesViewComponent {
   mixin(ViewComponentThis!("APPListViewComponent"));
 
   mixin(SProperty!("DH5Obj", "noEntities"));
-  mixin(SProperty!("DOOPEntity[UUID]", "themesById"));
+  mixin(SProperty!("DEntity[UUID]", "themesById"));
 
   mixin(OProperty!("DListItem", "itemTemplate"));
   mixin(OProperty!("DAPPViewComponent", "listContent"));

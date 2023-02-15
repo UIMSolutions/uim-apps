@@ -15,7 +15,7 @@ class DAPPDeleteForm : DEntityForm {
 }
 mixin(FormCalls!("APPDeleteForm"));
 
-/* auto deleteheader(string path, DOOPEntity entity, DAPPPanes panes, STRINGAA reqParameters) {  
+/* auto deleteheader(string path, DEntity entity, DAPPPanes panes, STRINGAA reqParameters) {  
   return 
     BS5CardHeader( 
       H5H4(["card-title me-auto"], "ID: "~entity.id.toString),
@@ -33,7 +33,7 @@ mixin(FormCalls!("APPDeleteForm"));
 
   mixin(OProperty!("string", "id"));
   mixin(OProperty!("string", "path"));
-  mixin(OProperty!("DOOPEntity", "entity"));
+  mixin(OProperty!("DEntity", "entity"));
   mixin(OProperty!("DAPPPanes", "panes")); 
   mixin(OProperty!("string[]", "fields")); 
   

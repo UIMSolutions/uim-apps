@@ -16,7 +16,7 @@ class DFormHeader : DFormComponent {
       .crudMode(CRUDModes.Read); 
   }
   
-  mixin(OProperty!("DOOPEntity", "entity"));
+  mixin(OProperty!("DEntity", "entity"));
   mixin(APPParameter!("mainTitle"));
   mixin(APPParameter!("subTitle"));
   mixin(OProperty!("string[][]", "actions"));
