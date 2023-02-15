@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.appsessions.appsession;
 @safe:
 import uim.apps;
 
-class DAPPCheckAppSessionExists : DAPPCheck {
+class DControllerCheckAppSessionExists : DControllerCheck {
   mixin(ControllerComponentThis!("APPCheckAppSessionExists"));
 
   override void initialize() {
@@ -14,7 +14,7 @@ class DAPPCheckAppSessionExists : DAPPCheck {
   }
 
   override bool execute(STRINGAA options = null) {    
-    debug writeln(moduleName!DAPPCheckAppSessionExists~":DAPPCheckAppSessionExists::check");
+    debug writeln(moduleName!DControllerCheckAppSessionExists~":DControllerCheckAppSessionExists::check");
 
     auto appSession = getAppSession(options);
     if (!appSession) { // appsession missing 

@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.appsessions.login;
 @safe:
 import uim.apps;
 
-class DAPPCheckAppSessionHasLogin : DAPPCheckAppSessionExists {
+class DControllerCheckAppSessionHasLogin : DControllerCheckAppSessionExists {
   mixin(ControllerComponentThis!("APPCheckAppSessionHasLogin"));
 
   override void initialize() {
@@ -14,7 +14,7 @@ class DAPPCheckAppSessionHasLogin : DAPPCheckAppSessionExists {
   }
   
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckAppSessionHasLogin~":DAPPCheckAppSessionHasLogin::check");
+    debug writeln(moduleName!DControllerCheckAppSessionHasLogin~":DControllerCheckAppSessionHasLogin::check");
     if (!super.execute(options)) { return false; }
 
     auto login = getAppSession(options).login;
@@ -23,7 +23,7 @@ class DAPPCheckAppSessionHasLogin : DAPPCheckAppSessionExists {
       return false; 
     }
 
-    debug writeln(moduleName!DAPPCheckAppSessionHasLogin~":DAPPCheckAppSessionHasLogin::check -> appSession.login found -> ", login.id);
+    debug writeln(moduleName!DControllerCheckAppSessionHasLogin~":DControllerCheckAppSessionHasLogin::check -> appSession.login found -> ", login.id);
     return true;
   }
 }

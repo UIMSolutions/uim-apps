@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.appsessions.site;
 @safe:
 import uim.apps;
 
-class DAPPCheckAppSessionHasSite : DAPPCheckAppSessionExists {
+class DControllerCheckAppSessionHasSite : DControllerCheckAppSessionExists {
   mixin(ControllerComponentThis!("APPCheckAppSessionHasSite"));
 
   override void initialize() {
@@ -14,7 +14,7 @@ class DAPPCheckAppSessionHasSite : DAPPCheckAppSessionExists {
   }
   
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckAppSessionHasSite~":DAPPCheckAppSessionHasSite::check");
+    debug writeln(moduleName!DControllerCheckAppSessionHasSite~":DControllerCheckAppSessionHasSite::check");
     if (!super.execute(options)) { return false; }
 
     auto site = getAppSession(options).site;
@@ -23,7 +23,7 @@ class DAPPCheckAppSessionHasSite : DAPPCheckAppSessionExists {
       return false; 
     }
 
-    debug writeln(moduleName!DAPPCheckAppSessionHasSite~":DAPPCheckAppSessionHasSite::check -> appSession.site found -> ", site.id);
+    debug writeln(moduleName!DControllerCheckAppSessionHasSite~":DControllerCheckAppSessionHasSite::check -> appSession.site found -> ", site.id);
     return true;
   }
 }

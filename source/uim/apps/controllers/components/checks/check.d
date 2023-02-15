@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.check;
 @safe:
 import uim.apps;
 
-class DAPPCheck : DControllerComponent {
+class DControllerCheck : DControllerComponent {
   mixin(ControllerComponentThis!("APPCheck"));
 
   override void initialize() {
@@ -14,8 +14,8 @@ class DAPPCheck : DControllerComponent {
   }
 
   mixin(OProperty!("string", "redirectUrl"));
-  mixin(OProperty!("DAPPCheck[]", "checks"));
-  O addChecks(this O)(DAPPCheck[] newChecks) {
+  mixin(OProperty!("DControllerCheck[]", "checks"));
+  O addChecks(this O)(DControllerCheck[] newChecks) {
     this.checks(this.checks~newChecks);
     return cast(O)this;
   }
@@ -38,9 +38,9 @@ mixin(ControllerComponentCalls!("APPCheck"));
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
-    assert(new DAPPCheck);
+    assert(new DControllerCheck);
     assert(APPCheck);
-    assert(new DAPPCheck(APPController));
+    assert(new DControllerCheck(APPController));
     assert(APPCheck(APPController));
   }
 }

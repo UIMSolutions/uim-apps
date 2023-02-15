@@ -26,8 +26,8 @@ class DAPPController : DBaseController {
   mixin(OProperty!("DAPPApplication", "app"));
   mixin(OProperty!("DAPPController", "controller"));
 
-  mixin(OProperty!("DAPPCheck[]", "checks"));
-  O addChecks(this O)(DAPPCheck[] newChecks) {
+  mixin(OProperty!("DControllerCheck[]", "checks"));
+  O addChecks(this O)(DControllerCheck[] newChecks) {
     this.checks(this.checks~newChecks);
     return cast(O)this;
   }

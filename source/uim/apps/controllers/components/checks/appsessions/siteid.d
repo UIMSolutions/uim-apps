@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.appsessions.siteid;
 @safe:
 import uim.apps;
 
-class DAPPCheckAppSessionHasSiteId : DAPPCheckAppSessionHasSession {
+class DControllerCheckAppSessionHasSiteId : DControllerCheckAppSessionHasSession {
   mixin(ControllerComponentThis!("APPCheckAppSessionHasSiteId"));
 
   override void initialize() {
@@ -14,7 +14,7 @@ class DAPPCheckAppSessionHasSiteId : DAPPCheckAppSessionHasSession {
   }
   
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckAppSessionHasSiteId~":DAPPCheckAppSessionHasSiteId::check");
+    debug writeln(moduleName!DControllerCheckAppSessionHasSiteId~":DControllerCheckAppSessionHasSiteId::check");
     if (!super.execute(options)) { return false; }
 
     auto session = getAppSession(options).session;
