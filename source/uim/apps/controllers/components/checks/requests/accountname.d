@@ -33,7 +33,7 @@ version(test_uim_apps) { unittest {
 
     assert(new DControllerCheckRequestHasAccountName);
     assert(APPCheckRequestHasAccountName);
-    assert(new DControllerCheckRequestHasAccountName(APPController));
-    assert(APPCheckRequestHasAccountName(APPController));
+    assert(new DControllerCheckRequestHasAccountName(Controller));
+    assert(APPCheckRequestHasAccountName(Controller));
   }
 }

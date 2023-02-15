@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.databases.systems.tenant;
 @safe:
 import uim.apps;
 
-class DAPPCheckDatabaseHasSystems : DAPPCheckDatabaseExists {
+class DControllerCheckDatabaseHasSystems : DControllerCheckDatabaseExists {
   mixin(ControllerComponentThis!("APPCheckDatabaseHasSystems"));
 
   override void initialize() {
@@ -14,7 +14,7 @@ class DAPPCheckDatabaseHasSystems : DAPPCheckDatabaseExists {
   }
   
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckDatabaseHasSystems~":DAPPCheckDatabaseHasSystems::execute");
+    debug writeln(moduleName!DControllerCheckDatabaseHasSystems~":DControllerCheckDatabaseHasSystems::execute");
     if (!super.execute(options)) { return false; }
 
     debug writeln(this.database ? "Database exists" : "Database missing");

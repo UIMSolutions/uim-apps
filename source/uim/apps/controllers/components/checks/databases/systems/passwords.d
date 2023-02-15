@@ -32,7 +32,7 @@ version(test_uim_apps) { unittest {
 
     assert(new DControllerCheckDatabaseHasPasswords);
     assert(APPCheckDatabaseHasPasswords);
-    assert(new DControllerCheckDatabaseHasPasswords(APPController));
-    assert(APPCheckDatabaseHasPasswords(APPController));
+    assert(new DControllerCheckDatabaseHasPasswords(Controller));
+    assert(APPCheckDatabaseHasPasswords(Controller));
   }
 }

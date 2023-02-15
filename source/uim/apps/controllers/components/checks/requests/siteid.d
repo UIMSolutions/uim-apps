@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.requests.siteid;
 @safe:
 import uim.apps;
 
-class DAPPCheckRequestHasSiteId : DAPPCheckDatabaseHasAccounts {
+class DControllerCheckRequestHasSiteId : DControllerCheckDatabaseHasAccounts {
   mixin(ControllerComponentThis!("APPCheckRequestHasSiteId"));
 
   override void initialize() {
@@ -15,7 +15,7 @@ class DAPPCheckRequestHasSiteId : DAPPCheckDatabaseHasAccounts {
   }
 
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckRequestHasSiteId~":DAPPCheckRequestHasSiteId::execute");
+    debug writeln(moduleName!DControllerCheckRequestHasSiteId~":DControllerCheckRequestHasSiteId::execute");
     if (!super.execute(options)) { return false; }
 
     if ("siteId" !in options) { // siteId  missing
@@ -33,9 +33,9 @@ mixin(ControllerComponentCalls!("APPCheckRequestHasSiteId"));
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
-    assert(new DAPPCheckRequestHasSiteId);
+    assert(new DControllerCheckRequestHasSiteId);
     assert(APPCheckRequestHasSiteId);
-    assert(new DAPPCheckRequestHasSiteId(APPController));
-    assert(APPCheckRequestHasSiteId(APPController));
+    assert(new DControllerCheckRequestHasSiteId(Controller));
+    assert(APPCheckRequestHasSiteId(Controller));
   }
 }

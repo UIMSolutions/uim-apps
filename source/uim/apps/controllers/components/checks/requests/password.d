@@ -3,7 +3,7 @@ module uim.apps.controllers.components.checks.requests.password;
 @safe:
 import uim.apps;
 
-class DAPPCheckRequestHasPassword : DAPPCheck {
+class DControllerCheckRequestHasPassword : DControllerCheck {
   mixin(ControllerComponentThis!("APPCheckRequestHasPassword"));
 
   override void initialize() {
@@ -14,7 +14,7 @@ class DAPPCheckRequestHasPassword : DAPPCheck {
   }
 
   override bool execute(STRINGAA options = null) {
-    debug writeln(moduleName!DAPPCheckRequestHasPassword~":DAPPCheckRequestHasPassword::execute");
+    debug writeln(moduleName!DControllerCheckRequestHasPassword~":DControllerCheckRequestHasPassword::execute");
     super.execute(options);
 
     if ("loginPW" !in options) { // loginPW  missing
@@ -32,9 +32,9 @@ mixin(ControllerComponentCalls!("APPCheckRequestHasPassword"));
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
-    assert(new DAPPCheckRequestHasPassword);
+    assert(new DControllerCheckRequestHasPassword);
     assert(APPCheckRequestHasPassword);
-    assert(new DAPPCheckRequestHasPassword(APPController));
-    assert(APPCheckRequestHasPassword(APPController));
+    assert(new DControllerCheckRequestHasPassword(Controller));
+    assert(APPCheckRequestHasPassword(Controller));
   }
 }

@@ -8,7 +8,7 @@ import uim.apps;
 }
  */
 class DAPPCreatorAccount : DAPPCreator {
-  mixin(APPControllerThis!("APPCreatorAccount"));
+  mixin(ControllerThis!("APPCreatorAccount"));
 
   override DEntity create(STRINGAA parameters) {
     auto entity = createEntities["account"](Json.emptyObject)
@@ -27,7 +27,7 @@ class DAPPCreatorAccount : DAPPCreator {
     return result;
   }
 }
-mixin(APPControllerCalls!("APPCreatorSite"));
+mixin(ControllerCalls!("APPCreatorSite"));
 
 
 version(test_uim_apps) { unittest {
