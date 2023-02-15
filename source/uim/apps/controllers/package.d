@@ -42,8 +42,8 @@ this(DAPPApplication myApplication, string myName, DEntity[] myEntities) { this(
 ` : ``);
 }
 
-template APPControllerThis(string name, bool withEntity = false, bool withEntities = false) {
-  const char[] APPControllerThis = appControllerThis(name, withEntity, withEntities);
+template ControllerThis(string name, bool withEntity = false, bool withEntities = false) {
+  const char[] ControllerThis = appControllerThis(name, withEntity, withEntities);
 }
 
 string appControllerCalls(string name, bool withEntity = false, bool withEntities = false) {
@@ -66,11 +66,11 @@ auto `~name~`(DAPPApplication myApplication, string myName, DEntity[] myEntities
 ` : ``);
 }
 
-template APPControllerCalls(string name, bool withEntity = false, bool withEntities = false) {
-  const char[] APPControllerCalls = appControllerCalls(name, withEntity, withEntities);
+template ControllerCalls(string name, bool withEntity = false, bool withEntities = false) {
+  const char[] ControllerCalls = appControllerCalls(name, withEntity, withEntities);
 }
 
-void testController(DAPPController controller) {
+void testController(DController controller) {
 	assert(controller);	
 
 	controller["id"] = "testId1";

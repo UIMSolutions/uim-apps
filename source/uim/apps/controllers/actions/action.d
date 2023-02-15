@@ -3,8 +3,8 @@ module uim.apps.controllers.actions.action;
 @safe:
 import uim.apps;
 
-class DAPPActionController : DAPPController {
-  mixin(APPControllerThis!("APPActionController"));
+class DAPPActionController : DController {
+  mixin(ControllerThis!("APPActionController"));
 
   mixin(OProperty!("DAPPSession", "appSession"));
   mixin(OProperty!("DETBCollection", "collection"));
@@ -36,7 +36,7 @@ class DAPPActionController : DAPPController {
     }  
   }
 }
-mixin(APPControllerCalls!("APPActionController"));
+mixin(ControllerCalls!("APPActionController"));
 
 version(test_uim_apps) { unittest {
   writeln("--- Test in ", __MODULE__, "/", __LINE__);

@@ -20,8 +20,8 @@ class DBaseController : DAPPObject {
   } */
 }
 
-template APPControllerProperty(string dataType, string name) {
-  const char[] APPControllerProperty = `
+template ControllerProperty(string dataType, string name) {
+  const char[] ControllerProperty = `
   `~dataType~` `~name~`() { return cast(`~dataType~`)this.component("`~name~`"); }
   O `~name~`(this O)(`~dataType~` newComponent) { this.component("`~name~`", newComponent); return cast(O)this; }
   `;

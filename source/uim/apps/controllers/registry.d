@@ -3,7 +3,7 @@ module uim.apps.controllers.registry;
 @safe:
 import uim.apps;
 
-class DAPPControllerRegistry : DRegistry!DAPPController {
+class DControllerRegistry : DRegistry!DController {
     this() {}  
 }
-auto APPControllerRegistry() { return new DAPPControllerRegistry; }
+auto ControllerRegistry() { return new DControllerRegistry; }

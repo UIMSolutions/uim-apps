@@ -4,7 +4,7 @@ module uim.apps.controllers.actions.entities;
 import uim.apps;
 
 class DAPPEntitiesActionController : DAPPActionController {
-  mixin(APPControllerThis!("APPEntitiesActionController"));
+  mixin(ControllerThis!("APPEntitiesActionController"));
 
   protected DEntity[] _entities;
   DEntity[] entities() { return _entities; }
@@ -16,7 +16,7 @@ class DAPPEntitiesActionController : DAPPActionController {
     _entities = newEntities;
   }
 }
-mixin(APPControllerCalls!("APPEntitiesActionController"));
+mixin(ControllerCalls!("APPEntitiesActionController"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

@@ -32,11 +32,11 @@ class DAPPApplication {
   mixin(OProperty!("DMVCScriptContainer", "scripts"));
   mixin(OProperty!("DMVCStyleContainer", "styles"));
 
-  mixin(OProperty!("DAPPControllerRegistry", "controllers"));  
-  DAPPController controller(string path) {
+  mixin(OProperty!("DControllerRegistry", "controllers"));  
+  DController controller(string path) {
     return controllers ? controllers[path] : null; 
   }
-  O controller(this O)(string path, DAPPController newController) {
+  O controller(this O)(string path, DController newController) {
     if (controllers) controllers[path] = newController;
     return cast(O)this; 
   }
@@ -71,7 +71,7 @@ version(test_uim_apps) { unittest {
   mixin(OProperty!("DAPPSecurityOptions", "securityOptions"));
   O securityOptions(this O)(bool[string] newOptions) { this.securityOptions(APPSecurityOptions(newOptions)); return cast(O)this; }  
 
-  override void afterInsertObj(DAPPController appObject) {
+  override void afterInsertObj(DController appObject) {
     super.afterInsertObj(appObject);
 
     if (auto page = cast(DAPPPage)appObject) {

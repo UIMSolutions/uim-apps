@@ -3,8 +3,8 @@ module uim.apps.controllers.security;
 @safe:
 import uim.apps;
 
-class DAPPSecurityController : DAPPController {
-  mixin(APPControllerThis!("APPSecurityController"));
+class DAPPSecurityController : DController {
+  mixin(ControllerThis!("APPSecurityController"));
 
   override Json message(STRINGAA options) {
     // debug writeln("In DAPPSecurityController");
@@ -56,7 +56,7 @@ class DAPPSecurityController : DAPPController {
   override Json message(Json json, STRINGAA options) {
     return super.message(json, options); }
 } 
-mixin(APPControllerCalls!("APPSecurityController"));
+mixin(ControllerCalls!("APPSecurityController"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

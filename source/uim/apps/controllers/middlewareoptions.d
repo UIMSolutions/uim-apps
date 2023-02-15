@@ -3,7 +3,7 @@ module uim.apps.controllers.middlewareoptions;
 @safe:
 import uim.apps;
 
-class DAPPControllerMiddlewareOptions {
+class DControllerMiddlewareOptions {
     // The middleware options.
     protected STRINGAA _options;
 
