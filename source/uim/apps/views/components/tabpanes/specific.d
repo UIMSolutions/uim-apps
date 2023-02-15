@@ -14,7 +14,7 @@ mixin(ViewComponentCalls!("APPSpecificPaneViewComponent"));
 
 /* lass DAPPPaneSpecific : DAPPPane {
   this() { super(); this.title("Specific"); }
-  this(DOOPEntity myEntity) { this(); this.entity(myEntity); }    
+  this(DEntity myEntity) { this(); this.entity(myEntity); }    
   
   override void inner(STRINGAA options = null) {    
     _col = BS5Col(["col-12"], 
