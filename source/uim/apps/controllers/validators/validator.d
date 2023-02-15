@@ -7,7 +7,7 @@ class DAPPValidator : DAPPController {
   mixin(APPControllerThis!("APPValidator"));
 
   /// Main function of Controller
-  DOOPEntity validate(STRINGAA parameters) {
+  DEntity validate(STRINGAA parameters) {
     return null; }
   version(test_uim_apps) {
     unittest {

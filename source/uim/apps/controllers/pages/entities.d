@@ -6,13 +6,13 @@ import uim.apps;
 class DAPPEntitiesPageController : DAPPPageController {
   mixin(APPControllerThis!("APPEntitiesPageController"));
 
-  protected DOOPEntity[] _entities;
-  DOOPEntity[] entities() { return _entities; }
+  protected DEntity[] _entities;
+  DEntity[] entities() { return _entities; }
   bool hasEntities() {
     return (this.entities !is null); 
   }
 
-  void entities(DOOPEntity[] newEntities) {
+  void entities(DEntity[] newEntities) {
     _entities = newEntities;
   }
   

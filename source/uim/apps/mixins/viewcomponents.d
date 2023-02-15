@@ -8,12 +8,12 @@ template ViewComponentThis(string classShortName, bool withEntity = false, bool 
 this() { super(); this.name = "`~classShortName~`"; }
 this(DAPPView newView) { this().view(newView); }`~
 (withEntity ? `
-this(DOOPEntity newEntity) { this().entity(newEntity); }
-this(DAPPView newView, DOOPEntity newEntity) { this(newView).entity(newEntity); }
+this(DEntity newEntity) { this().entity(newEntity); }
+this(DAPPView newView, DEntity newEntity) { this(newView).entity(newEntity); }
 ` : ``)~
 (withEntities ? `
-this(DOOPEntity[] newEntities) { this().entities(newEntities); }
-this(DAPPView newView, DOOPEntity[] newEntities) { this(newView).entities(newEntities); }
+this(DEntity[] newEntities) { this().entities(newEntities); }
+this(DAPPView newView, DEntity[] newEntities) { this(newView).entities(newEntities); }
 ` : ``);
 
 }
@@ -23,12 +23,12 @@ template ViewComponentCalls(string classShortName, bool withEntity = false, bool
 auto `~classShortName~`() { return new D`~classShortName~`; }
 auto `~classShortName~`(DAPPView newView) { return new D`~classShortName~`(newView); }`~
 (withEntity ? `
-auto `~classShortName~`(DOOPEntity myEntity) { return new D`~classShortName~`(myEntity); }
-auto `~classShortName~`(DAPPView newView, DOOPEntity myEntity) { return new D`~classShortName~`(newView, myEntity); }
+auto `~classShortName~`(DEntity myEntity) { return new D`~classShortName~`(myEntity); }
+auto `~classShortName~`(DAPPView newView, DEntity myEntity) { return new D`~classShortName~`(newView, myEntity); }
 ` : ``)~
 (withEntities ? `
-auto `~classShortName~`(DOOPEntity[] newEntities) { return new D`~classShortName~`(newEntities); }
-auto `~classShortName~`(DAPPView newView, DOOPEntity[] newEntities) { return new D`~classShortName~`(newView, newEntities); }
+auto `~classShortName~`(DEntity[] newEntities) { return new D`~classShortName~`(newEntities); }
+auto `~classShortName~`(DAPPView newView, DEntity[] newEntities) { return new D`~classShortName~`(newView, newEntities); }
 ` : ``);
 }
 

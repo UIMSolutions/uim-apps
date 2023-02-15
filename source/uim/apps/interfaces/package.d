@@ -4,12 +4,12 @@ module uim.apps.interfaces;
 import uim.apps;
 
 interface IAPPWithEntities {  
-  @property DOOPEntity[] entities();
-  // @property O entities(this O)(DOOPEntity[] myEntities);
-  @property void entities(DOOPEntity[] myEntities);
+  @property DEntity[] entities();
+  // @property O entities(this O)(DEntity[] myEntities);
+  @property void entities(DEntity[] myEntities);
 }
 
 interface IAPPWithEntity {  
-  @property DOOPEntity entity();
-  @property O entity(this O)(DOOPEntity myEntity);
+  @property DEntity entity();
+  @property O entity(this O)(DEntity myEntity);
 }

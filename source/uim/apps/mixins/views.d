@@ -11,12 +11,12 @@ this(string myName) { this().name(myName); }
 this(DAPPPageController myController, string myName) { this(myController).name(myName); }
 `~
 (withEntity ? `
-this(DOOPEntity myEntity) { this().entity(myEntity); }
-this(DAPPPageController myController, DOOPEntity myEntity) { this(myController).entity(myEntity); }
+this(DEntity myEntity) { this().entity(myEntity); }
+this(DAPPPageController myController, DEntity myEntity) { this(myController).entity(myEntity); }
 ` : ``)~
 (withEntities ? `
-this(DOOPEntity[] myEntities) { this().entities(myEntities); }
-this(DAPPPageController myController, DOOPEntity[] myEntities) { this(myController).entities(myEntities); }
+this(DEntity[] myEntities) { this().entities(myEntities); }
+this(DAPPPageController myController, DEntity[] myEntities) { this(myController).entities(myEntities); }
 ` : ``);
 
 }
@@ -32,12 +32,12 @@ auto `~classShortName~`(DAPPPageController myController) { return new D`~classSh
 auto `~classShortName~`(string myName) { return new D`~classShortName~`(myName); }
 auto `~classShortName~`(DAPPPageController myController, string myName) { return new D`~classShortName~`(myController, myName); }`~
 (withEntity ? `
-auto `~classShortName~`(DOOPEntity myEntity) { return new D`~classShortName~`(myEntity); }
-auto `~classShortName~`(DAPPPageController myController, DOOPEntity myEntity) { return new D`~classShortName~`(myController, myEntity); }
+auto `~classShortName~`(DEntity myEntity) { return new D`~classShortName~`(myEntity); }
+auto `~classShortName~`(DAPPPageController myController, DEntity myEntity) { return new D`~classShortName~`(myController, myEntity); }
 ` : ``)~
 (withEntities ? `
-auto `~classShortName~`(DOOPEntity[] myEntities) { return new D`~classShortName~`(myEntities); }
-auto `~classShortName~`(DAPPPageController myController, DOOPEntity[] myEntities) { return new D`~classShortName~`(myController, myEntities); }
+auto `~classShortName~`(DEntity[] myEntities) { return new D`~classShortName~`(myEntities); }
+auto `~classShortName~`(DAPPPageController myController, DEntity[] myEntities) { return new D`~classShortName~`(myController, myEntities); }
 ` : ``);
 }
 

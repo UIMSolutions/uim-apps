@@ -31,8 +31,8 @@ static this() {
       debug writeln("server.index -> reqParameters = ", reqParameters);
       debug writeln("server.index -> pageTitle = ", reqParameters.get("pageTitle", ""));
 
-      DOOPEntity session;
-      DOOPEntity site;
+      DEntity session;
+      DEntity site;
       auto appSession = getAppSession(options);
       if (appSession) {
         session = appSession.session; 

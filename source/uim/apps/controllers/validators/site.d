@@ -8,7 +8,7 @@ class DAPPValidatorSite : DAPPValidator {
   
   bool siteIdValid(string siteId) { return siteId.isUUID && UUID(siteId) != UUID(); }
 
-  override DOOPEntity validate(STRINGAA reqParameters) {
+  override DEntity validate(STRINGAA reqParameters) {
     // Looking for a siteId
     string appSessionId = reqParameters.get("appSessionId", "");
     auto appSession = getAppSession(reqParameters);

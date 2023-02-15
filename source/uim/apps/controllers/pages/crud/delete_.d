@@ -98,7 +98,7 @@ mixin(APPPageControllerCalls!("APPEntityDeleteController"));
 
 auto myJsPath = "";
 
-class DAPPDeletePage(T:DOOPEntity) : DAPPPage {
+class DAPPDeletePage(T:DEntity) : DAPPPage {
   this() { super(); 
       this
       .title("ADMIN!CMS - Pages - Delete")
