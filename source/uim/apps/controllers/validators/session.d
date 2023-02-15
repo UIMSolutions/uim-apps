@@ -4,7 +4,7 @@ module uim.apps.controllers.validators.session;
 import uim.apps;
 
 class DAPPValidatorSession : DAPPValidator {
-  mixin(APPControllerThis!("APPValidatorSession"));
+  mixin(ControllerThis!("APPValidatorSession"));
   
   override DEntity validate(STRINGAA reqParameters) {
     // Looking for a sessionId
@@ -50,6 +50,6 @@ class DAPPValidatorSession : DAPPValidator {
     return result;
   }
 }
-mixin(APPControllerCalls!("APPValidatorSession"));
+mixin(ControllerCalls!("APPValidatorSession"));
 
 

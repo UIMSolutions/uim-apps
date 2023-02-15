@@ -4,7 +4,7 @@ module uim.apps.controllers.validators.entity;
 import uim.apps;
 
 class DAPPValidatorEntity : DAPPValidator {
-  mixin(APPControllerThis!("APPValidatorEntity"));
+  mixin(ControllerThis!("APPValidatorEntity"));
  
   override DEntity validate(STRINGAA reqParameters) {
     string appSessionId = reqParameters.get("appSessionId", "");
@@ -59,4 +59,4 @@ version(test_uim_apps) { unittest {
       /// TODO 
     }}
 }
-mixin(APPControllerCalls!("APPValidatorEntity"));
+mixin(ControllerCalls!("APPValidatorEntity"));

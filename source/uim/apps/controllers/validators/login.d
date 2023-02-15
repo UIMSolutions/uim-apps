@@ -4,7 +4,7 @@ module uim.apps.controllers.validators.login;
 import uim.apps;
 
 class DAPPValidatorLogin : DAPPValidator {
-  mixin(APPControllerThis!("APPValidatorLogin"));
+  mixin(ControllerThis!("APPValidatorLogin"));
 
   override DEntity validate(STRINGAA reqParameters) {
     string appSessionId = reqParameters.get("appSessionId", "");
@@ -64,5 +64,5 @@ version(test_uim_apps) { unittest {
       /// TODO 
     }}
 }
-mixin(APPControllerCalls!("APPValidatorLogin"));
+mixin(ControllerCalls!("APPValidatorLogin"));
 

@@ -4,7 +4,7 @@ module uim.apps.controllers.validators.site;
 import uim.apps;
 
 class DAPPValidatorSite : DAPPValidator {
-  mixin(APPControllerThis!("APPValidatorSite"));
+  mixin(ControllerThis!("APPValidatorSite"));
   
   bool siteIdValid(string siteId) { return siteId.isUUID && UUID(siteId) != UUID(); }
 
@@ -58,5 +58,5 @@ class DAPPValidatorSite : DAPPValidator {
     return result;
   }
 }
-mixin(APPControllerCalls!("APPValidatorSite"));
+mixin(ControllerCalls!("APPValidatorSite"));
 

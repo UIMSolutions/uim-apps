@@ -8,7 +8,7 @@ import uim.apps;
 } */
 
 class DAPPValidatorAccount : DAPPValidator {
-  mixin(APPControllerThis!("APPValidatorAccount"));
+  mixin(ControllerThis!("APPValidatorAccount"));
 
   override DEntity validate(STRINGAA reqParameters) {
     string appSessionId = reqParameters.get("appSessionId", "");
@@ -66,5 +66,5 @@ version(test_uim_apps) { unittest {
       /// TODO 
     }}
 }
-mixin(APPControllerCalls!("APPValidatorAccount"));
+mixin(ControllerCalls!("APPValidatorAccount"));
 

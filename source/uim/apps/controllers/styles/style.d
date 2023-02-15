@@ -3,7 +3,7 @@ module uim.apps.controllers.styles.style;
 @safe:
 import uim.apps;
 
-class DAPPStyle : DAPPController {
+class DAPPStyle : DController {
   this() { initialize; }
   this(DAPPApplication myApp) { this().app(myApp); }
 

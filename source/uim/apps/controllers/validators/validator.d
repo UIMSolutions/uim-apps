@@ -3,8 +3,8 @@ module uim.apps.controllers.validators.validator;
 @safe:
 import uim.apps;
 
-class DAPPValidator : DAPPController {
-  mixin(APPControllerThis!("APPValidator"));
+class DAPPValidator : DController {
+  mixin(ControllerThis!("APPValidator"));
 
   /// Main function of Controller
   DEntity validate(STRINGAA parameters) {
@@ -38,7 +38,7 @@ version(test_uim_apps) { unittest {
       /// TODO 
     }}
     
-mixin(APPControllerCalls!("APPValidator"));
+mixin(ControllerCalls!("APPValidator"));
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);
 
