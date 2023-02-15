@@ -16,7 +16,7 @@ public import uim.apps.views.components.tabpanes.specific;
 
 
 /* 
-auto tabpane(T:DOOPEntity)(T entity, STRINGAA Parameters) {
+auto tabpane(T:DEntity)(T entity, STRINGAA Parameters) {
     return BS5CardBody(
             H5Div(["card-title"], options.get("titile", "")),
             BS5Row( 
@@ -28,7 +28,7 @@ auto tabpane(T:DOOPEntity)(T entity, STRINGAA Parameters) {
 
 class DAPPTabpane : DAPPPane {
     this() {}
-    this(DOOPEntity myEntity) { this(); this.entity(myEntity); }    
+    this(DEntity myEntity) { this(); this.entity(myEntity); }    
 
     mixin(OProperty!("string", "path"));
     mixin(OProperty!("string[]", "actions"));
@@ -43,19 +43,19 @@ class DAPPTabpane : DAPPPane {
     }
 }
 auto APPTabpane() { return new DAPPTabpane; }
-auto APPTabpane(DOOPEntity myEntity) { return new DAPPTabpane(myEntity); }
+auto APPTabpane(DEntity myEntity) { return new DAPPTabpane(myEntity); }
 auto APPTabpane(string myKey, string myTitle) { return APPTabpane.key(myKey).title(myTitle); }
 auto APPTabpane(string myKey, string myTitle, string myPath) { return APPTabpane.key(myKey).title(myTitle).path(myPath); } */
 
 class DAPPPanes {
   this() {}
-  this(DOOPEntity myEntity) { _entity = myEntity; }    
+  this(DEntity myEntity) { _entity = myEntity; }    
 
-  DOOPEntity _entity;
-  DOOPEntity entity() {
+  DEntity _entity;
+  DEntity entity() {
     return _entity;
   }
-  O entity(this O)(DOOPEntity newEntity) {
+  O entity(this O)(DEntity newEntity) {
     foreach(pane; _panes) pane.entity(newEntity);
     return cast(O)this;}
 
@@ -105,4 +105,4 @@ class DAPPPanes {
   }
 }
 auto APPPanes() { return new DAPPPanes; }
-auto APPPanes(DOOPEntity myEntity) { return new DAPPPanes(myEntity); }
+auto APPPanes(DEntity myEntity) { return new DAPPPanes(myEntity); }

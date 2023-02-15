@@ -12,7 +12,7 @@ class DAPPGeneralPaneViewComponent : DAPPEntityTabpane {
 }
 mixin(ViewComponentCalls!("APPGeneralPaneViewComponent"));
 /* 
-auto generalPane(T:DOOPEntity)(T entity, STRINGAA options = null) {
+auto generalPane(T:DEntity)(T entity, STRINGAA options = null) {
     return 
         BS5CardBody(
             H5Div(["card-title"], options.get("title", "General Data")),
@@ -76,7 +76,7 @@ class DAPPPaneGeneral : DAPPPane {
 
         // H5Div(["card-title"], options.get("title", "General Data")),
   }
-  this(DOOPEntity myEntity) { this(); this.entity(myEntity); }    
+  this(DEntity myEntity) { this(); this.entity(myEntity); }    
 
   mixin(OProperty!("string[]", "formgroups"));
 

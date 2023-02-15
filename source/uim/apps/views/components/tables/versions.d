@@ -6,14 +6,14 @@ import uim.apps;
 /* class DAPPTableVersions : DAPPEntitiesTableHeader {
   mixin(ViewComponentThis!("APPTableVersions"));
 
-  mixin(OProperty!("DOOPEntity[]", "versions"));
+  mixin(OProperty!("DEntity[]", "versions"));
   O versions(this O)(Json[] jsons) {
-      foreach(json; jsons) _versions ~= DOOPEntity(json);
+      foreach(json; jsons) _versions ~= DEntity(json);
       return cast(O)this; }
 
   mixin(OProperty!("string[]", "actions"));
 
-  DH5Obj row(DOOPEntity entity, string[] rowActions = ["view", "delete"]) {
+  DH5Obj row(DEntity entity, string[] rowActions = ["view", "delete"]) {
       auto link = "?entity_id="~entity.id.toString~"&number="~to!string(entity.versionNumber);
 
       auto buttons = H5Span(["d-none d-sm-inline"]);

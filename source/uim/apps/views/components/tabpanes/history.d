@@ -16,10 +16,10 @@ class DAPPPaneHistory : DAPPPane {
   this() { super();     
     this.title("History");
   }
-  this(DOOPEntity myEntity) { this(); this.entity(myEntity); }    
-  this(DOOPEntity myEntity, DOOPEntity[] myHistory) { this(); this.entity(myEntity).history(myHistory); }    
+  this(DEntity myEntity) { this(); this.entity(myEntity); }    
+  this(DEntity myEntity, DEntity[] myHistory) { this(); this.entity(myEntity).history(myHistory); }    
 
-  mixin(OProperty!("DOOPEntity[]", "history"));
+  mixin(OProperty!("DEntity[]", "history"));
   O history(this O)(Json[] jsons) {
     _history ~= jsons.map!(a => OOPEntity(a)).array;
     return cast(O)this;

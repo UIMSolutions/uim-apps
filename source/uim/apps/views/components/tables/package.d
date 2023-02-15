@@ -15,7 +15,7 @@ public import uim.apps.views.components.tables.history;
 public import uim.apps.views.components.tables.listheader;
 public import uim.apps.views.components.tables.versions;
 
-auto listEntities(T:DOOPEntity)(string rootPath, string mainTitle, int numberEntities, STRINGAA[] columns, T[] entities, int startPos, int endPos, size_t sumEntities) {
+auto listEntities(T:DEntity)(string rootPath, string mainTitle, int numberEntities, STRINGAA[] columns, T[] entities, int startPos, int endPos, size_t sumEntities) {
   auto header(string rootPath, STRINGAA[] columns) {
     auto tr = H5Tr;
     foreach(col; columns) 

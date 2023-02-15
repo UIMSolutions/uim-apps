@@ -7,13 +7,13 @@ import uim.apps;
   this() { super(); }
   this(DAPPView myView) { this().view(myView); }
 
-  mixin(OProperty!("DOOPEntity[]", "history"));
+  mixin(OProperty!("DEntity[]", "history"));
   O history(this O)(Json[] jsons) {
       _history ~= jsons.map!(a => OOPEntity(a)).array;
       return cast(O)this;
   }
 
-  DH5Obj row(DOOPEntity entity) {
+  DH5Obj row(DEntity entity) {
     auto id = entity ? entity.id.toString : UUID().toString;
     auto link = "?entity_id="~id;
       return

@@ -11,7 +11,7 @@ import uim.apps;
 class DAPPEntityTabpane : DTabPane {
   mixin(ViewComponentThis!("APPEntityTabpane"));
 
-  mixin(OProperty!("DOOPEntity", "entity"));
+  mixin(OProperty!("DEntity", "entity"));
 }
 mixin(ViewComponentCalls!("APPEntityTabpane"));
 
