@@ -7,7 +7,7 @@ import uim.apps;
 class DControllerComponent : DBaseController {
   mixin(ControllerComponentThis!("ControllerComponent"));
   
-  mixin(OProperty!("DAPPController", "controller"));
+  mixin(OProperty!("DController", "controller"));
 
   // A component lookup table used to lazy load component objects.
   mixin(OProperty!("Json", "componentMap"));

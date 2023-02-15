@@ -31,7 +31,7 @@ version(test_uim_apps) { unittest {
 
     assert(new DControllerCheckDatabaseHasAccounts);
     assert(APPCheckDatabaseHasAccounts);
-    assert(new DControllerCheckDatabaseHasAccounts(APPController));
-    assert(APPCheckDatabaseHasAccounts(APPController));
+    assert(new DControllerCheckDatabaseHasAccounts(Controller));
+    assert(APPCheckDatabaseHasAccounts(Controller));
   }
 }

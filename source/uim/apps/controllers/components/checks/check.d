@@ -40,7 +40,7 @@ version(test_uim_apps) { unittest {
 
     assert(new DControllerCheck);
     assert(APPCheck);
-    assert(new DControllerCheck(APPController));
-    assert(APPCheck(APPController));
+    assert(new DControllerCheck(Controller));
+    assert(APPCheck(Controller));
   }
 }

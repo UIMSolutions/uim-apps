@@ -4,7 +4,7 @@ module uim.apps.controllers.actions.system;
 import uim.apps;
 
 class DAPPSystemActionController : DAPPActionController {
-  mixin(APPControllerThis!("APPSystemActionController"));
+  mixin(ControllerThis!("APPSystemActionController"));
 
   mixin(OProperty!("DETBCollection", "logins"));
   mixin(OProperty!("DETBCollection", "sessions"));
@@ -32,7 +32,7 @@ class DAPPSystemActionController : DAPPActionController {
     }  
   }
 }
-mixin(APPControllerCalls!("APPSystemActionController"));
+mixin(ControllerCalls!("APPSystemActionController"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Test in ", __MODULE__, "/", __LINE__);

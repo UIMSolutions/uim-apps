@@ -4,7 +4,7 @@ module uim.apps.controllers.actions.login;
 import uim.apps;
 
 class DAPPLoginActionController : DAPPSystemActionController {
-  mixin(APPControllerThis!("APPLoginActionController"));
+  mixin(ControllerThis!("APPLoginActionController"));
 
   override void initialize() {
     super.initialize; 
@@ -71,4 +71,4 @@ class DAPPLoginActionController : DAPPSystemActionController {
     options["redirect"] = "/login2?loginId="~appSession.login.id.toString; 
     debug writeln(appSession.debugInfo); }
 }
-mixin(APPControllerCalls!("APPLoginActionController"));
+mixin(ControllerCalls!("APPLoginActionController"));
