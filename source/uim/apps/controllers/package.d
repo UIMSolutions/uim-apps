@@ -9,7 +9,6 @@ public import uim.apps.controllers.object_;
 
 // packages
 public import uim.apps.controllers.creators;
-public import uim.apps.controllers.components;
 public import uim.apps.controllers.entities;
 public import uim.apps.controllers.pages;
 public import uim.apps.controllers.scripts;

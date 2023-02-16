@@ -14,9 +14,9 @@ class DAPPPageController : DController {
   mixin(OProperty!("DETBTenant", "tenant"));
 
   // Initialization (= hook method)
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
     debugMethodCall(moduleName!DAPPPageController~"::DAPPPageController("~this.name~"):initialize");   
-    super.initialize;
+    super.initialize(configSettings);
 
     this
       .language("en") 
