@@ -3,7 +3,6 @@ module uim.apps.controllers.components.component;
 @safe:
 import uim.apps;
 
-
 class DControllerComponent : DBaseController {
   mixin(ControllerComponentThis!("ControllerComponent"));
   
@@ -12,18 +11,12 @@ class DControllerComponent : DBaseController {
   // A component lookup table used to lazy load component objects.
   mixin(OProperty!("Json", "componentMap"));
 
-  // Runtime config
-  mixin(OProperty!("Json", "config"));
 
   // Whether the config property has already been configured with defaults
   mixin(OProperty!("bool", "configInitialized"));
 
-  // Default config
-  mixin(OProperty!("Json", "defaultConfig"));
-
   // Component registry class used to lazy load components.
   DControllerComponentRegistry registry() { return null; }
-
 
 /* __debugInfo() public
 Returns an array that can be used to describe the internal state of this object.
