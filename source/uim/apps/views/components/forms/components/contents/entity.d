@@ -6,7 +6,8 @@ import uim.apps;
 class DEntityFormContent : DFormContent {
   mixin(ViewComponentThis!("EntityFormContent", true));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     debugMethodCall(moduleName!DEntityFormContent~"::DEntityFormContent("~this.name~"):initialize");   
     super.initialize;
 

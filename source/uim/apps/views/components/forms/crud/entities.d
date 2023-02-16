@@ -8,7 +8,8 @@ class DEntitiesForm : DForm {
 
   mixin(OProperty!("DEntity[]", "entities"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
   }
 }

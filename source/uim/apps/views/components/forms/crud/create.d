@@ -6,7 +6,8 @@ import uim.apps;
 class DAPPCreateForm : DEntityForm {
   mixin(FormThis!("APPCreateForm"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
 
     this

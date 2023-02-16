@@ -6,7 +6,8 @@ import uim.apps;
 class DTextAreaFormInput : DFormInput {
   mixin(ViewComponentThis!("TextAreaFormInput", true));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
 
     this
