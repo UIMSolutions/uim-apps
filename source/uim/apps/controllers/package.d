@@ -8,7 +8,6 @@ public import uim.apps.controllers.controller;
 public import uim.apps.controllers.object_;
 
 // packages
-public import uim.apps.controllers.actions;
 public import uim.apps.controllers.creators;
 public import uim.apps.controllers.components;
 public import uim.apps.controllers.entities;
@@ -42,9 +41,9 @@ this(DAPPApplication myApplication, string myName, DEntity[] myEntities) { this(
 ` : ``);
 }
 
-template ControllerThis(string name, bool withEntity = false, bool withEntities = false) {
+/* template ControllerThis(string name, bool withEntity = false, bool withEntities = false) {
   const char[] ControllerThis = appControllerThis(name, withEntity, withEntities);
-}
+} */
 
 string appControllerCalls(string name, bool withEntity = false, bool withEntities = false) {
   return `
@@ -66,9 +65,9 @@ auto `~name~`(DAPPApplication myApplication, string myName, DEntity[] myEntities
 ` : ``);
 }
 
-template ControllerCalls(string name, bool withEntity = false, bool withEntities = false) {
+/* template ControllerCalls(string name, bool withEntity = false, bool withEntities = false) {
   const char[] ControllerCalls = appControllerCalls(name, withEntity, withEntities);
-}
+} */
 
 void testController(DController controller) {
 	assert(controller);	
