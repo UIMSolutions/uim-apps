@@ -6,7 +6,8 @@ import uim.apps;
 class DAPPEntitiesTableHeader : DAPPTableHeader {
   mixin(ViewComponentThis!("APPEntitiesTableHeader"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
 
     this.visibleEntities(10);

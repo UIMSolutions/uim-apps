@@ -6,7 +6,8 @@ import uim.apps;
 class DAPPDeletePageHeader : DPageHeader {
   mixin(ViewComponentThis!("APPDeletePageHeader", Yes.WithEntity));
   
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
     this.actions([["list", "create"]]); 
   }

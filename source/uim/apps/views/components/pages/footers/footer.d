@@ -6,7 +6,8 @@ import uim.apps;
 class DPageFooter : DAPPViewComponent {
   mixin(ViewComponentThis!("PageFooter", Yes.WithEntity, Yes.WithEntities));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize; 
     
     this

@@ -6,7 +6,8 @@ import uim.apps;
 class DAPPUpdateForm : DEntityForm {
   mixin(FormThis!("APPUpdateForm"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
 
     this

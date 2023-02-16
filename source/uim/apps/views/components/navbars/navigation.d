@@ -6,7 +6,8 @@ import uim.apps;
 class DAPPNavigation : DAPPViewComponent {
   mixin(ViewComponentThis!("APPNavigation"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     debugMethodCall(moduleName!DAPPNavigation~"::DAPPNavigation("~this.name~"):initialize");   
     super.initialize;
 
