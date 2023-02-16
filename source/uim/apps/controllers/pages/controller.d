@@ -9,7 +9,6 @@ import uim.apps;
 class DAPPPageController : DController {
   mixin(APPPageControllerThis!("APPPageController"));
 
-  mixin(OProperty!("DAPPSession", "appSession"));
   mixin(OProperty!("DETBCollection", "collection"));
   mixin(OProperty!("DEntity", "site"));
   mixin(OProperty!("DETBTenant", "tenant"));
