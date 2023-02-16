@@ -8,7 +8,8 @@ import uim.apps;
 
   mixin(OProperty!("DAPPTableViewComponent", "tableComponent"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
 
     this

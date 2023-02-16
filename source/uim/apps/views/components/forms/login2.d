@@ -6,7 +6,8 @@ import uim.apps;
 class DAPPLogin2Form : DForm {
   mixin(FormThis!("APPLogin2Form"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
   }
   

@@ -8,7 +8,8 @@ class DAPPCardsFormContent : DEntitiesViewComponent {
 
   mixin(OProperty!("DEntityViewComponent", "card"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     debugMethodCall(moduleName!DAPPCardsFormContent~"::DAPPCardsFormContent("~this.name~"):initialize");   
     super.initialize;
   }

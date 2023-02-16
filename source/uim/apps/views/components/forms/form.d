@@ -6,7 +6,8 @@ import uim.apps;
 class DForm : DAPPViewComponent {
   mixin(FormThis!("Form"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     debugMethodCall(moduleName!DForm~"::DForm("~this.name~"):initialize");   
     super.initialize;    
     writeln("In ", __MODULE__, "/", __LINE__);

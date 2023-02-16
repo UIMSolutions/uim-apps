@@ -6,7 +6,8 @@ import uim.apps;
 class DFormContent : DFormComponent {
   mixin(ViewComponentThis!("FormContent"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     debugMethodCall(moduleName!DFormContent~"::DFormContent("~this.name~"):initialize");   
     super.initialize;
 
