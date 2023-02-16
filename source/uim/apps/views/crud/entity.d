@@ -14,7 +14,8 @@ class DAPPEntityCRUDAPPView : DEntityView {
   mixin(OProperty!("DAPPViewComponent", "form"));
   mixin(OProperty!("DUIMTabControl", "entityTab"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     debugMethodCall(moduleName!DAPPEntityCRUDAPPView~"::DAPPEntityCRUDAPPView("~this.name~"):initialize");   
     super.initialize;
 

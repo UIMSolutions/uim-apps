@@ -6,7 +6,8 @@ import uim.apps;
 class DAPPEntityDeleteView : DAPPEntityCRUDAPPView {
   mixin(ViewThis!("APPEntityDeleteView"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
 
     this

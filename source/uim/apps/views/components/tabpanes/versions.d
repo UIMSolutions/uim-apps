@@ -6,7 +6,8 @@ import uim.apps;
 class DAPPVersionsPaneViewComponent : DAPPEntitiesTabpane {
   mixin(ViewComponentThis!("APPVersionsPaneViewComponent"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
   }
 }

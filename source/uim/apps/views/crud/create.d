@@ -6,7 +6,8 @@ import uim.apps;
 class DAPPEntityCreateView : DAPPEntityCRUDAPPView {
   mixin(ViewThis!("APPEntityCreateView"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
 
     debug writeln("In ", __MODULE__, "/", __LINE__); 

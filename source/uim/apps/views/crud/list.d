@@ -10,7 +10,8 @@ class DAPPEntitiesListView : DEntitiesView {
   mixin(OProperty!("bool", "readonly"));
   mixin(OViewComponent!("form", "form"));
   
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     debugMethodCall(moduleName!DAPPEntitiesListView~"::DAPPEntitiesListView("~this.name~"):initialize");    
     super.initialize;
 

@@ -6,7 +6,8 @@ import uim.apps;
 class DAPPGeneralPaneViewComponent : DAPPEntityTabpane {
   mixin(ViewComponentThis!("APPGeneralPaneViewComponent"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
   }
 }

@@ -6,7 +6,8 @@ import uim.apps;
 class DAPPEntityUpdateView : DAPPEntityCRUDAPPView {
   mixin(ViewThis!("APPEntityUpdateView"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
 
     if (auto pgHeader = cast(DPageHeader)this.header) {

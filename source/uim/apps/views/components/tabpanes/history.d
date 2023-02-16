@@ -6,7 +6,8 @@ import uim.apps;
 class DAPPHistoryTabpane : DAPPEntitiesTabpane {
   mixin(ViewComponentThis!("APPHistoryTabpane"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
   }
 }
