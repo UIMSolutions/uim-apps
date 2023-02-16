@@ -11,7 +11,8 @@ import uim.apps;
 class DAPPEntitiesTabpane : DTabPane {
   mixin(ViewComponentThis!("APPEntitiesTabpane"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
 
     this.content(APPEntitiesList.itemTemplate(EntityListItem));

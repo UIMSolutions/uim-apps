@@ -15,8 +15,8 @@ class DAPPPageController : DController {
 
   // Initialization (= hook method)
 override void initialize(DConfigurationValue configSettings = null) {
-    debugMethodCall(moduleName!DAPPPageController~"::DAPPPageController("~this.name~"):initialize");   
     super.initialize(configSettings);
+    debugMethodCall(moduleName!DAPPPageController~"::DAPPPageController("~this.name~"):initialize");   
 
     this
       .language("en") 
