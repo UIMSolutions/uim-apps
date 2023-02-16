@@ -6,7 +6,8 @@ import uim.apps;
 class DFormFooter : DFormComponent {
   mixin(ViewComponentThis!("FormFooter"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     debugMethodCall(moduleName!DFormFooter~"::DFormFooter("~this.name~"):initialize");   
     super.initialize;
 

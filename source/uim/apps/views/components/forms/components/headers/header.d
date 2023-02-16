@@ -6,7 +6,8 @@ import uim.apps;
 class DFormHeader : DFormComponent {
   mixin(ViewComponentThis!("FormHeader"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     debugMethodCall(moduleName!DFormHeader~"::DFormHeader("~this.name~"):initialize");   
     super.initialize;
     debug writeln("In ", __MODULE__, "/", __LINE__);

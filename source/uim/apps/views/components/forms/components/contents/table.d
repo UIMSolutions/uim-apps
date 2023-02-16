@@ -8,7 +8,8 @@ class DAPPTableFormContent : DEntitiesViewComponent {
 
   mixin(OProperty!("DAPPViewComponent", "row"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     debugMethodCall(moduleName!DAPPTableFormContent~"::DAPPTableFormContent("~this.name~"):initialize");   
     super.initialize;
   }

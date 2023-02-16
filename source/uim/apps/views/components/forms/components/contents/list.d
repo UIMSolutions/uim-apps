@@ -8,7 +8,8 @@ class DAPPListFormContent : DEntitiesViewComponent {
 
   mixin(OProperty!("DEntityViewComponent", "templateListItem"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     debugMethodCall(moduleName!DAPPListFormContent~"::DAPPListFormContent("~this.name~"):initialize");   
     super.initialize;
   }

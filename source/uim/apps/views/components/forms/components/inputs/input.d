@@ -23,7 +23,8 @@ class DFormInput : DEntityViewComponent {
   mixin(OProperty!("string", "path"));
   mixin(OProperty!("DAPPPanes", "panes"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize();
 
     this
