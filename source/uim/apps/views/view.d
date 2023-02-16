@@ -12,7 +12,8 @@ class DAPPView : DAPPBaseView, IEventDispatcher {
   mixin(ViewThis!("APPView"));
 
   // Initialization (= hook method)
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     debugMethodCall(moduleName!DAPPView~"::DAPPView("~this.name~"):initialize");   
     super.initialize;
 

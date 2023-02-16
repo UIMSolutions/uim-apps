@@ -22,7 +22,8 @@ class DAPPViewComponent : DAPPBaseView {
   mixin(OProperty!("string[]", "classes"));
   mixin(OProperty!("string[string]", "attributes"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize; 
 
     this

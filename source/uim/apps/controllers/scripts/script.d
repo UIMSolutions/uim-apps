@@ -8,7 +8,8 @@ class DAPPScript : DController {
   this(DAPPApplication myApp) { this().app(myApp); }
 
   // Initialization (= hook method)
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
 
     this.name = "APPScript"; 

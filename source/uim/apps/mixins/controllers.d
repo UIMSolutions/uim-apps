@@ -60,7 +60,8 @@ auto appCreatePageController(string classesName, string rootController, string a
     class D`~classesName~`CreatePageController : D`~rootController~`PageController {
       `~appPageControllerThis(classesName~`CreatePageController`, true)~`
 
-    override void initialize() {
+  override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
       super.initialize;
 
       this

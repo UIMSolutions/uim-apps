@@ -10,7 +10,8 @@ string appActionView(string category, string className, string action, string in
 class D`~viewName~` : DAPPEntity`~action~`View {
   `~appViewThis(viewName, true)~`
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     debugMethodCall(moduleName!D`~viewName~`~"::D`~viewName~`("~this.name~"):initialize");   
     super.initialize;
     `~initialize~`
