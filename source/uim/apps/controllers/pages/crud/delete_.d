@@ -9,7 +9,8 @@ import uim.apps;
 class DAPPEntityDeleteController : DAPPEntityCrudPageController {
   mixin(APPPageControllerThis!("APPEntityDeleteController"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
 
     this

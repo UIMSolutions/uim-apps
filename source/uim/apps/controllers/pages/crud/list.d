@@ -9,7 +9,8 @@ import uim.apps;
 class DAPPListPage : DAPPEntitiesPageController {
   mixin(APPPageControllerThis!("APPListPage"));
 
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize(); 
 
     this

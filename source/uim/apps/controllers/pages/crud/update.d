@@ -9,7 +9,8 @@ import uim.apps;
 class DAPPEntityUpdateController : DAPPEntityCrudPageController {
   mixin(APPPageControllerThis!("APPEntityUpdateController"));
   
-  override void initialize() {
+override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
     super.initialize;
   
     this

@@ -72,7 +72,8 @@ auto appCreatePageController(string category, string className, string rootContr
     class D`~category~className~`CreatePageController : D`~category~`CreatePageController {
       `~appPageControllerThis(category~className~`CreatePageController`, true)~`
 
-    override void initialize() {
+  override void initialize(DConfigurationValue configSettings = null) {
+    super.initialize(configSettings);
       super.initialize;
 
       this.view(
