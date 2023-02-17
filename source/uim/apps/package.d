@@ -59,16 +59,7 @@ public import uim.apps.object_;
 
 public import layouts.tabler;
 
-DAPPApplication thisServer;
 
-
-
-size_t appErrorPrefix = 100000; 
-string[size_t] appErrorCodes; 
-
-DAPPSession[string] appSessions;
-DEntity[size_t] entityPool;
-DEntity[][size_t] entitiesPool;
 
 /* auto setDemoSession(UUID sessionID, string[string][UUID] sessions) {
   if (sessionID !in sessions) sessions[sessionID] = null;
