@@ -9,9 +9,8 @@ import uim.apps;
 class DAPPEntityReadController : DAPPEntityCrudPageController {
   mixin(APPPageControllerThis!("APPEntityReadController"));
 
-override void initialize(DConfigurationValue configSettings = null) {
+  override void initialize(DConfigurationValue configSettings = null) {
     super.initialize(configSettings);
-    super.initialize;
     
     this
     .view(APPEntityReadView)

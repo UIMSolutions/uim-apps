@@ -11,16 +11,15 @@ class DAPPEntityCreateController : DAPPEntityCrudPageController {
 
 override void initialize(DConfigurationValue configSettings = null) {
     super.initialize(configSettings);
-    super.initialize;
 
     this
-    // Checks to run for page request
-    .checks([APPCheckAppSessionExists, APPCheckAppSessionHasSession, APPCheckAppSessionHasSite])
-    .view(APPEntityCreateView)
-    .scripts
-      .addLinks(
-        "/js/apps/entities/entity.js", 
-        "/js/apps/entities/create.js");
+      // Checks to run for page request
+      .checks([AppSessionExistsCheck, AppSessionHasSessionCheck, AppSessionHasSiteCheck])
+      .view(APPEntityCreateView)
+      .scripts
+        .addLinks(
+          "/js/apps/entities/entity.js", 
+          "/js/apps/entities/create.js");
   }
 
   this(string newEntityName) {

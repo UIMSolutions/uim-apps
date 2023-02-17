@@ -11,7 +11,6 @@ class DAPPEntityUpdateController : DAPPEntityCrudPageController {
   
 override void initialize(DConfigurationValue configSettings = null) {
     super.initialize(configSettings);
-    super.initialize;
   
     this
       .view(APPEntityUpdateView)

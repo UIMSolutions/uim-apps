@@ -14,13 +14,10 @@ class DAPPPageController : DController {
   mixin(OProperty!("DETBTenant", "tenant"));
 
   // Initialization (= hook method)
-override void initialize(DConfigurationValue configSettings = null) {
+  override void initialize(DConfigurationValue configSettings = null) {
     super.initialize(configSettings);
-    debugMethodCall(moduleName!DAPPPageController~"::DAPPPageController("~this.name~"):initialize");   
 
-    this
-      .language("en") 
-      .mimetype("text/html");
+
     
     requestReader = APPRequestReader(this);
     sessionReader = APPSessionReader(this);  
@@ -32,25 +29,7 @@ override void initialize(DConfigurationValue configSettings = null) {
       .styles(MVCStyleContainer); 
   }
 
-  mixin(OProperty!("Session", "globalSession"));
-  mixin(OProperty!("string[]", "pageActions"));
-  mixin(OProperty!("bool", "hasGlobalSession"));
-
-  mixin(OProperty!("DAPPView", "view"));
-  mixin(OProperty!("DAPPView", "errorView"));
-
-  // Required checks for the page flow
-  mixin(OProperty!("string[]", "sessionData"));
-
-  mixin(APPParameter!("canonical")); 
-  mixin(APPParameter!("jsPath")); 
-  mixin(APPParameter!("pageTitle"));
-  mixin(APPParameter!("pageBreadcrumbs"));
-  mixin(APPParameter!("pgPath")); 
-  mixin(APPParameter!("title")); 
-
-  DAPPRequestReader requestReader;
-  DAPPSessionReader sessionReader;
+ 
 
   mixin(OProperty!("DForm", "form"));
 

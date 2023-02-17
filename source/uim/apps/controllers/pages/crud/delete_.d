@@ -9,15 +9,14 @@ import uim.apps;
 class DAPPEntityDeleteController : DAPPEntityCrudPageController {
   mixin(APPPageControllerThis!("APPEntityDeleteController"));
 
-override void initialize(DConfigurationValue configSettings = null) {
+  override void initialize(DConfigurationValue configSettings = null) {
     super.initialize(configSettings);
-    super.initialize;
 
     this
-    .view(APPEntityDeleteView)
-    .scripts.addLinks(
-      "/js/apps/entities/entity.js", 
-      "/js/apps/entities/delete.js"); 
+      .view(APPEntityDeleteView)
+      .scripts.addLinks(
+        "/js/apps/entities/entity.js", 
+        "/js/apps/entities/delete.js"); 
   }
 
   this(string newEntityName) {
