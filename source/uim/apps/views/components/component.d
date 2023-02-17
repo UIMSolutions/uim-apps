@@ -6,31 +6,12 @@ import uim.apps;
 class DAPPViewComponent : DAPPBaseView {
   mixin(ViewComponentThis!"APPViewComponent");
   
-  mixin(OProperty!("bool", "dynamic")); 
-  mixin(OProperty!("bool", "isNull")); 
-  mixin(OProperty!("bool", "notNull")); 
-  mixin(OProperty!("STRINGAA", "style")); 
-  mixin(OProperty!("bool", "changed")); 
-  mixin(OProperty!("DAPPView", "view")); // Owner of view component
-  mixin(OProperty!("DAPPLayout", "layout")); 
-  mixin(APPParameter!("jsCode")); 
-  mixin(APPParameter!("debugPrefix")); 
-
-  mixin(OProperty!("bool", "showHeader"));
-  mixin(OProperty!("bool", "showFooter"));
-
-  mixin(OProperty!("string[]", "classes"));
-  mixin(OProperty!("string[string]", "attributes"));
-
+  
 override void initialize(DConfigurationValue configSettings = null) {
     super.initialize(configSettings);
     super.initialize; 
 
-    this
-    .id(this.name)
-    .changed(true)
-    .dynamic(true)
-    .notNull(true);
+
 
 /*     this
     .components.add(
