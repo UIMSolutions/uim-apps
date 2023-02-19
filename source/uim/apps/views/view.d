@@ -183,7 +183,6 @@ override void initialize(DConfigurationValue configSettings = null) {
 mixin(ViewCalls!("APPView"));
 
 version(test_uim_apps) { unittest {
-    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testView(new DAPPView); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
