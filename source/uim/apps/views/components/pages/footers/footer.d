@@ -3,7 +3,7 @@ module uim.apps.views.components.pages.footers.footer;
 @safe:
 import uim.apps;
 
-class DPageFooter : DAPPViewComponent {
+class DPageFooter : DViewComponent {
   mixin(ViewComponentThis!("PageFooter", Yes.WithEntity, Yes.WithEntities));
 
 override void initialize(DConfigurationValue configSettings = null) {

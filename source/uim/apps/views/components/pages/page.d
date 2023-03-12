@@ -3,11 +3,11 @@ module uim.apps.views.components.pages.page;
 @safe:
 import uim.apps;
 
-class DPage : DAPPViewComponent {
+class DPage : DViewComponent {
   mixin(ViewComponentThis!("Page"));
   
-  mixin(OProperty!("DAPPViewComponent", "header"));
-  mixin(OProperty!("DAPPViewComponent", "content"));
-  mixin(OProperty!("DAPPViewComponent", "footer"));
+  mixin(OProperty!("DViewComponent", "header"));
+  mixin(OProperty!("DViewComponent", "content"));
+  mixin(OProperty!("DViewComponent", "footer"));
 }
 mixin(ViewComponentCalls!("Page"));

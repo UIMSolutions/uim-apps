@@ -3,11 +3,11 @@ module uim.apps.views.components.pages.headers.entities.read;
 @safe:
 import uim.apps;
 
-class DAPPViewPageHeader : DPageHeader {
-  mixin(ViewComponentThis!("APPViewPageHeader", Yes.WithEntity));
+class DViewPageHeader : DPageHeader {
+  mixin(ViewComponentThis!("ViewPageHeader", Yes.WithEntity));
   
   override DH5Obj[] toH5(STRINGAA options) {
-    // debug writeln(StyledString("DAPPViewPageHeader/toH5").setForeground(AnsiColor.green).setBackground(AnsiColor.lightBlue));
+    // debug writeln(StyledString("DViewPageHeader/toH5").setForeground(AnsiColor.green).setBackground(AnsiColor.lightBlue));
 
     auto id = entity ? entity.id.toString : UUID().toString;
     return
@@ -30,4 +30,4 @@ class DAPPViewPageHeader : DPageHeader {
       )];
   }
 }
-mixin(ViewComponentCalls!("APPViewPageHeader", Yes.WithEntity));
+mixin(ViewComponentCalls!("ViewPageHeader", Yes.WithEntity));
