@@ -3,8 +3,8 @@ module uim.apps.views.components.component;
 @safe:
 import uim.apps;
 
-class DAPPViewComponent : DAPPBaseView {
-  mixin(ViewComponentThis!"APPViewComponent");
+class DViewComponent : DAPPBaseView {
+  mixin(ViewComponentThis!"ViewComponent");
   
   
 override void initialize(DConfigurationValue configSettings = null) {
@@ -21,7 +21,7 @@ override void initialize(DConfigurationValue configSettings = null) {
     ); */
   }
 /* 
-  DAPPViewComponent copy() {
+  DViewComponent copy() {
     return
       clone
         .debugPrefix(this.debugPrefix) 
@@ -36,14 +36,14 @@ override void initialize(DConfigurationValue configSettings = null) {
 
   // #region h5 content 
     override void beforeH5(STRINGAA options = null) {
-      debugMethodCall(moduleName!DAPPViewComponent~":DAPPViewComponent("~this.name~")::beforeH5");
+      debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::beforeH5");
       this.clearError; // Delete last error
       super.beforeH5(options);
       // init
     }
 
     DH5Obj[] toH5(STRINGAA options = null) {
-      debugMethodCall(moduleName!DAPPViewComponent~":DAPPViewComponent("~this.name~")::toH5");
+      debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::toH5");
       beforeH5(options);
       DH5Obj[] preh5 = null;
       auto h5 = afterH5(preh5, options);
@@ -52,7 +52,7 @@ override void initialize(DConfigurationValue configSettings = null) {
   // #endregion h5
 
   DH5Obj[] afterH5(DH5Obj[] h5, STRINGAA options = null) {
-      debugMethodCall(moduleName!DAPPViewComponent~":DAPPViewComponent("~this.name~")::afterH5");
+      debugMethodCall(moduleName!DViewComponent~":DViewComponent("~this.name~")::afterH5");
       return h5; // No changes 
     }
 
@@ -91,8 +91,8 @@ override void initialize(DConfigurationValue configSettings = null) {
 
     // #endregion render 
 }
-mixin(ViewComponentCalls!("APPViewComponent"));
+mixin(ViewComponentCalls!("ViewComponent"));
 
 version(test_uim_apps) { unittest {
-  assert(APPViewComponent);
+  assert(ViewComponent);
 }}

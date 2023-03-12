@@ -8,7 +8,7 @@ module uim.apps.views.logout;
 @safe:
 import uim.apps;
 
-class DAPPLogoutView : DAPPView {
+class DAPPLogoutView : DView {
   mixin(ViewThis!("APPLogoutView"));
 
   override void beforeH5(STRINGAA options = null) {

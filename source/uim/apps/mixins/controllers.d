@@ -7,21 +7,21 @@ string appPageControllerThis(string controllerName, bool withEntity = false, boo
 	return `
 this() { super(); this.name("`~controllerName~`"); }
 this(DAPPApplication myApplication) { this().app(myApplication); }
-this(DAPPView myView) { this().view(myView); }
-this(DAPPApplication myApplication, DAPPView myView) { this().view(myView); }
+this(DView myView) { this().view(myView); }
+this(DAPPApplication myApplication, DView myView) { this().view(myView); }
 `~
 (withEntity ? `
 this(DEntity myEntity) { this().entity(myEntity); }
 this(DAPPApplication myApplication, DEntity myEntity) { this(myApplication).entity(myEntity); }
-this(DAPPView myView, DEntity myEntity) { this(myView).entity(myEntity); }
-this(DAPPApplication myApplication, DAPPView myView, DEntity myEntity) { this(myApplication, myView).entity(myEntity); }
+this(DView myView, DEntity myEntity) { this(myView).entity(myEntity); }
+this(DAPPApplication myApplication, DView myView, DEntity myEntity) { this(myApplication, myView).entity(myEntity); }
 ` : ``)
 ~
 (withEntities ? `
 this(DEntity[] myEntities) { this().entities(myEntities); }
 this(DAPPApplication myApplication, DEntity[] myEntities) { this(myApplication).entities(myEntities); }
-this(DAPPView myView, DEntity[] myEntities) { this(myView).entities(myEntities); }
-this(DAPPApplication myApplication, DAPPView myView, DEntity[] myEntities) { this(myApplication, myView).entities(myEntities); }
+this(DView myView, DEntity[] myEntities) { this(myView).entities(myEntities); }
+this(DAPPApplication myApplication, DView myView, DEntity[] myEntities) { this(myApplication, myView).entities(myEntities); }
 ` : ``);
 }
 
@@ -33,21 +33,21 @@ string appPageControllerCalls(string controllerName, bool withEntity = false, bo
 	return `
 auto `~controllerName~`() { return new D`~controllerName~`; }
 auto `~controllerName~`(DAPPApplication myApplication) { return new D`~controllerName~`(myApplication); }
-auto `~controllerName~`(DAPPView myView) { return new D`~controllerName~`(myView); }
-auto `~controllerName~`(DAPPApplication myApplication, DAPPView myView) { return new D`~controllerName~`(myApplication, myView); }
+auto `~controllerName~`(DView myView) { return new D`~controllerName~`(myView); }
+auto `~controllerName~`(DAPPApplication myApplication, DView myView) { return new D`~controllerName~`(myApplication, myView); }
 `~
 (withEntity ? `
 auto `~controllerName~`(DEntity myEntity) { return new D`~controllerName~`(myEntity); }
 auto `~controllerName~`(DAPPApplication myApplication, DEntity myEntity) { return new D`~controllerName~`(myApplication, myEntity); }
-auto `~controllerName~`(DAPPView myView, DEntity myEntity) { return new D`~controllerName~`(myView, myEntity); }
-auto `~controllerName~`is(DAPPApplication myApplication, DAPPView myView, DEntity myEntity) { return new D`~controllerName~`(myApplication, myView, myEntity); }
+auto `~controllerName~`(DView myView, DEntity myEntity) { return new D`~controllerName~`(myView, myEntity); }
+auto `~controllerName~`is(DAPPApplication myApplication, DView myView, DEntity myEntity) { return new D`~controllerName~`(myApplication, myView, myEntity); }
 ` : ``)
 ~
 (withEntities ? `
 auto `~controllerName~`(DEntity[] myEntities) { return new D`~controllerName~`(myEntities); }
 auto `~controllerName~`(DAPPApplication myApplication, DEntity[] myEntities) { return new D`~controllerName~`(myApplication, myEntities); }
-auto `~controllerName~`(DAPPView myView, DEntity[] myEntities) { return new D`~controllerName~`(myView, myEntities); }
-auto `~controllerName~`(DAPPApplication myApplication, DAPPView myView, DEntity[] myEntities) { return new D`~controllerName~`(myApplication, myView, myEntities); }
+auto `~controllerName~`(DView myView, DEntity[] myEntities) { return new D`~controllerName~`(myView, myEntities); }
+auto `~controllerName~`(DAPPApplication myApplication, DView myView, DEntity[] myEntities) { return new D`~controllerName~`(myApplication, myView, myEntities); }
 ` : ``);
 }
 

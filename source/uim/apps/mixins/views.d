@@ -45,7 +45,7 @@ template ViewCalls(string classShortName, bool withEntity = false, bool withEnti
   const char[] ViewCalls = appViewCalls(classShortName, withEntity, withEntities);
 }
 
-void testView(DAPPView view) {
+void testView(DView view) {
 	assert(view);	
 
 	view["id"] = "testId1";
