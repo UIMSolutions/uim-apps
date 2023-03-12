@@ -6,51 +6,13 @@ module uim.apps.controllers.pages.controller;
 @safe:
 import uim.apps;
 
-class DAPPPageController : DController {
-  mixin(APPPageControllerThis!("APPPageController"));
-
-  mixin(OProperty!("DETBCollection", "collection"));
-  mixin(OProperty!("DEntity", "site"));
-  mixin(OProperty!("DETBTenant", "tenant"));
-
-  // Initialization (= hook method)
-  override void initialize(DConfigurationValue configSettings = null) {
-    super.initialize(configSettings);
+class DPageController : DController {
+  mixin(PageControllerThis!("PageController"));
 
 
-    
-    requestReader = APPRequestReader(this);
-    sessionReader = APPSessionReader(this);  
 
-    this
-      .links(MVCLinkContainer)
-      .metas(MVCMetaContainer) 
-      .scripts(MVCScriptContainer) 
-      .styles(MVCStyleContainer); 
-  }
 
- 
 
-  mixin(OProperty!("DForm", "form"));
-
-	/// layout for page
-	DAPPLayout _layout;
-	O layout(this O)(DAPPLayout newlayout) { 
-    _layout = newlayout; 
-    return cast(O)this; }
-	auto layout() { 
-    if (_layout) return _layout; 
-    if (auto c = cast(DAPPPageController)this.controller) { return c.layout; } 
-    if (this.app) return this.app.layout; 
-    return null; 
-  }
-
-  O pageActions(this O)(string[] actions...) { this.pageActions(actions); return cast(O)this; }
-  O addPageActions(this O)(string[] actions...) { this.addPageActions(actions); return cast(O)this; }
-  O addPageActions(this O)(string[] actions) { this.pageActions(this.pageActions~actions); return cast(O)this; }
-
-  mixin(OProperty!("ViewModes", "viewMode")); // 0 - HTML , 1 - HTML & Javascript, 2 - PWA
-  mixin(OProperty!("DataModes", "dataMode")); // 0 - HTML , 1 - HTML & Javascript, 2 - PWA
 
 /*   mixin(OProperty!("DController", "securityController")); 
   mixin(OProperty!("DAPPSecurityOptions", "securityOptions"));
@@ -58,22 +20,17 @@ class DAPPPageController : DController {
  */  
 
   // Containers
-  mixin(OProperty!("DMVCLinkContainer", "links"));
-  mixin(OProperty!("DMVCMetaContainer", "metas"));
-  mixin(OProperty!("DMVCScriptContainer", "scripts"));
-  mixin(OProperty!("DMVCStyleContainer", "styles"));
 
   override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController("~this.name~")::beforeResponse");
+    debugMethodCall(moduleName!DPageController~":DPageController("~this.name~")::beforeResponse");
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
         
-    this.appSession = getAppSession(options);
-    if (appSession) { this.site(appSession.site); }
+
   }
 
   override string stringResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController("~this.name~")::stringResponse");
+    debugMethodCall(moduleName!DPageController~":DPageController("~this.name~")::stringResponse");
     this.links.add(["rel":"canonical", "href": this.canonical]);
     super.stringResponse(options);
     if (hasError) { return null; }
@@ -85,7 +42,7 @@ class DAPPPageController : DController {
   }
 
   DH5Obj[] pageContent(STRINGAA reqParameters) { 
-    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController("~this.name~")::pageContent");
+    debugMethodCall(moduleName!DPageController~":DPageController("~this.name~")::pageContent");
     auto result = form ? form.toH5(reqParameters) : null;
 
     // debug writeln("return result pageContent(STRINGAA reqParameters)");
@@ -93,7 +50,7 @@ class DAPPPageController : DController {
   }
 
   void jsCode(STRINGAA options = null) {
-    debugMethodCall(moduleName!DAPPPageController~":DAPPPageController::jsCode");
+    debugMethodCall(moduleName!DPageController~":DPageController::jsCode");
     string appSessionId = _request && _request.session ? _request.session.id : options.get("appSessionId", "");
     auto appSession = getAppSession(options);
 
@@ -216,12 +173,12 @@ class DAPPPageController : DController {
     return result;
   } */
 }
-mixin(APPPageControllerCalls!("APPPageController"));
+mixin(PageControllerCalls!("PageController"));
 
 version(test_uim_apps) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DAPPPageController); 
+		testPageController(new DPageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(APPPageController); 
+		testPageController(PageController); 
 }}

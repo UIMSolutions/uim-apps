@@ -125,8 +125,8 @@ class DAPPLayout {
 		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::beforeRender");
 	}
 
-	string render(DAPPPageController controller, DAPPView view, STRINGAA options = null) { 
-		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::render(DAPPPageController controller, DAPPView view, STRINGAA options = null)");
+	string render(DPageController controller, DAPPView view, STRINGAA options = null) { 
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::render(DPageController controller, DAPPView view, STRINGAA options = null)");
     if (view) {
       debug writeln("view is -> ", view.name);
 		  return render(controller, view.toH5(options), options);
@@ -137,16 +137,16 @@ class DAPPLayout {
     }
 	}
 
-	string render(DAPPPageController controller, DH5Obj[] h5Objs, STRINGAA options = null) { 
-		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::render(DAPPPageController controller, DH5Obj[] h5Objs, STRINGAA options = null)");
+	string render(DPageController controller, DH5Obj[] h5Objs, STRINGAA options = null) { 
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::render(DPageController controller, DH5Obj[] h5Objs, STRINGAA options = null)");
 		if (h5Objs) {
       return render(controller, h5Objs.map!(h5 => h5.toString).join, options);
     }
     return render(controller, "", options);
 	}
 
-	string render(DAPPPageController controller, string content, STRINGAA options = null) { 
-		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::render(DAPPPageController controller, string content, STRINGAA options = null)");
+	string render(DPageController controller, string content, STRINGAA options = null) { 
+		debugMethodCall(moduleName!DAPPLayout~":DAPPLayout("~this.name~")::render(DPageController controller, string content, STRINGAA options = null)");
 		beforeRender(options);
 
 		// 1. page parameters to options
@@ -183,7 +183,7 @@ class DAPPLayout {
     actualStyles ~= this.styles.toH5;
     actualScripts ~= this.scripts.toH5;
 
-		if (auto pageController = cast(DAPPPageController)controller) {
+		if (auto pageController = cast(DPageController)controller) {
       debug writeln("Found pageController");
 
       actualMetas ~= pageController.metas.toH5;
@@ -237,7 +237,7 @@ version(test_uim_apps) { unittest {
   }
   // #endregion render
 }
-/*   override string render(DAPPPageController page, DAPPView view, STRINGAA options = null) {
+/*   override string render(DPageController page, DAPPView view, STRINGAA options = null) {
     super.render(page, view, options);
 
     auto head = ("navigation" in options ? options.get("navigation", "") : navigation.render(options));
@@ -301,7 +301,7 @@ version(test_uim_apps) { unittest {
       return BS5NavbarNav(this.navSlots);
     }
 
-    override string toString(DAPPPageController page, string[string] reqParameters) {
+    override string toString(DPageController page, string[string] reqParameters) {
       foreach(k,v; parameters) if (k !in reqParameters) reqParameters[k] = v;
       foreach(k,v; page.parameters) if (k !in reqParameters) reqParameters[k] = v;
       if (auto app = page.app) {
@@ -472,7 +472,7 @@ auto newNavbar(string[string] Parameters) {
   </nav>`;
 }
 // megamenu2
-auto dropDownItems(string prefix, DAPPPageController[][string] themes) {
+auto dropDownItems(string prefix, DPageController[][string] themes) {
   string result;
   foreach(theme; themes.getKeys(true)) result ~= H5A(["dropdown-item"], ["href":prefix~theme.toLower], theme).toString;
   return result;

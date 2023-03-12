@@ -25,8 +25,8 @@ this(DAPPApplication myApplication, DAPPView myView, DEntity[] myEntities) { thi
 ` : ``);
 }
 
-template APPPageControllerThis(string controllerName, bool withEntity = false, bool withEntities = false) {
-  const char[] APPPageControllerThis = appPageControllerThis(controllerName, withEntity, withEntities);
+template PageControllerThis(string controllerName, bool withEntity = false, bool withEntities = false) {
+  const char[] PageControllerThis = appPageControllerThis(controllerName, withEntity, withEntities);
 }
 
 string appPageControllerCalls(string controllerName, bool withEntity = false, bool withEntities = false) {
@@ -51,8 +51,8 @@ auto `~controllerName~`(DAPPApplication myApplication, DAPPView myView, DEntity[
 ` : ``);
 }
 
-template APPPageControllerCalls(string controllerName, bool withEntity = false, bool withEntities = false) {
-  const char[] APPPageControllerCalls = appPageControllerCalls(controllerName, withEntity, withEntities); 
+template PageControllerCalls(string controllerName, bool withEntity = false, bool withEntities = false) {
+  const char[] PageControllerCalls = appPageControllerCalls(controllerName, withEntity, withEntities); 
 }
 
 auto appCreatePageController(string classesName, string rootController, string addInitialize = "", string addBeforeResponse = "") {

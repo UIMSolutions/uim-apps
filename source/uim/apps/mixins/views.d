@@ -6,17 +6,17 @@ import uim.apps;
 string appViewThis(string name, bool withEntity = false, bool withEntities = false) {
   return `
 this() { super(); this.name("`~name~`"); }
-this(DAPPPageController myController) { this().controller(myController); }
+this(DPageController myController) { this().controller(myController); }
 this(string myName) { this().name(myName); }
-this(DAPPPageController myController, string myName) { this(myController).name(myName); }
+this(DPageController myController, string myName) { this(myController).name(myName); }
 `~
 (withEntity ? `
 this(DEntity myEntity) { this().entity(myEntity); }
-this(DAPPPageController myController, DEntity myEntity) { this(myController).entity(myEntity); }
+this(DPageController myController, DEntity myEntity) { this(myController).entity(myEntity); }
 ` : ``)~
 (withEntities ? `
 this(DEntity[] myEntities) { this().entities(myEntities); }
-this(DAPPPageController myController, DEntity[] myEntities) { this(myController).entities(myEntities); }
+this(DPageController myController, DEntity[] myEntities) { this(myController).entities(myEntities); }
 ` : ``);
 
 }
@@ -28,16 +28,16 @@ template ViewThis(string name, bool withEntity = false, bool withEntities = fals
 string appViewCalls(string classShortName, bool withEntity = false, bool withEntities = false) {
   return `
 auto `~classShortName~`() { return new D`~classShortName~`; }
-auto `~classShortName~`(DAPPPageController myController) { return new D`~classShortName~`(myController); }
+auto `~classShortName~`(DPageController myController) { return new D`~classShortName~`(myController); }
 auto `~classShortName~`(string myName) { return new D`~classShortName~`(myName); }
-auto `~classShortName~`(DAPPPageController myController, string myName) { return new D`~classShortName~`(myController, myName); }`~
+auto `~classShortName~`(DPageController myController, string myName) { return new D`~classShortName~`(myController, myName); }`~
 (withEntity ? `
 auto `~classShortName~`(DEntity myEntity) { return new D`~classShortName~`(myEntity); }
-auto `~classShortName~`(DAPPPageController myController, DEntity myEntity) { return new D`~classShortName~`(myController, myEntity); }
+auto `~classShortName~`(DPageController myController, DEntity myEntity) { return new D`~classShortName~`(myController, myEntity); }
 ` : ``)~
 (withEntities ? `
 auto `~classShortName~`(DEntity[] myEntities) { return new D`~classShortName~`(myEntities); }
-auto `~classShortName~`(DAPPPageController myController, DEntity[] myEntities) { return new D`~classShortName~`(myController, myEntities); }
+auto `~classShortName~`(DPageController myController, DEntity[] myEntities) { return new D`~classShortName~`(myController, myEntities); }
 ` : ``);
 }
 

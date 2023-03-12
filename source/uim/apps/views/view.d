@@ -31,7 +31,7 @@ override void initialize(DConfigurationValue configSettings = null) {
   }
 
   mixin(OProperty!("DAPPViewComponents", "components"));
-  mixin(OProperty!("DAPPPageController", "controller")); 
+  mixin(OProperty!("DPageController", "controller")); 
   mixin(OProperty!("IEventManager", "eventManager")); 
   mixin(OProperty!("string[]", "leftClasses")); 
   mixin(OProperty!("string[]", "middleClasses")); 
