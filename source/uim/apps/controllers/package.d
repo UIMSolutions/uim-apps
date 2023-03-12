@@ -4,7 +4,6 @@ module uim.apps.controllers;
 import uim.apps;
 
 // Main
-public import uim.apps.controllers.controller;
 public import uim.apps.controllers.object_;
 
 // packages
