@@ -15,7 +15,7 @@ override void initialize(DConfigurationValue configSettings = null) {
     this.showLostAccount(true);
   }
   
-/*   override DAPPViewComponent copy() {
+/*   override DViewComponent copy() {
     return
       (cast(DAPPLoginForm)copy)
       .showLostAccount(this.showLostAccount);

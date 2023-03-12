@@ -3,7 +3,7 @@ module uim.apps.views.components.null_;
 @safe:
 import uim.apps;
 
-class DNullComponent : DAPPViewComponent {
+class DNullComponent : DViewComponent {
   mixin(ViewComponentThis!("NullComponent"));
   
 override void initialize(DConfigurationValue configSettings = null) {

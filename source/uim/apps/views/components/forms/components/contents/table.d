@@ -6,7 +6,7 @@ import uim.apps;
 class DAPPTableFormContent : DEntitiesViewComponent {
   mixin(ViewComponentThis!("APPTableFormContent"));
 
-  mixin(OProperty!("DAPPViewComponent", "row"));
+  mixin(OProperty!("DViewComponent", "row"));
 
 override void initialize(DConfigurationValue configSettings = null) {
     super.initialize(configSettings);

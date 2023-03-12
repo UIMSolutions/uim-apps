@@ -3,7 +3,7 @@ module uim.apps.views.components.forms.form;
 @safe:
 import uim.apps;
 
-class DForm : DAPPViewComponent {
+class DForm : DViewComponent {
   mixin(FormThis!("Form"));
 
 override void initialize(DConfigurationValue configSettings = null) {
