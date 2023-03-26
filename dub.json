@@ -1,9 +1,12 @@
 {
+	"name": "uim-apps",
+	"description": "A minimal D application.",
 	"authors": [
-		"UI Manufaktur Team",
-		"sicherheitsschmiede",
+		"Sicherheitsschmiede",
 		"Ozan Nurettin Süel"
 	],
+	"copyright": "Copyright © 2015-2023, Ozan Nurettin Süel",	
+	"license": "Apache-2.0",
 	"configurations": [
 		{
 			"name": "offline",
@@ -17,42 +20,38 @@
 			]
 		}
 	],
-	"copyright": "Copyright © 2017-2022, UI Manufaktur UG",
 	"dependencies": {
 		"colored": "~>0.0.27",
 		"vibe-d": "~>0.9.5"
 	},
-	"description": "A minimal D application.",
 	"importPaths": [
 		"../uim-core",
 		"../uim-oop",
+		"../uim-jsonbase",
+		"../uim-entitybase",
+
 		"../uim-css",
 		"../uim-html",
 		"../uim-javascript",
 		"../uim-json",
 		"../uim-bootstrap",
-		"../uim-jsonbase",
-		"../uim-entitybase",
-		"../uim-servers",
 		"../uim-controls",
 		"../uim-models",
 		"../uim-mvc",
 		"../../LAYOUTS/layout-tabler/source/layouts",
 		"./"
 	],
-	"license": "Apache-2.0",
-	"name": "uim-apps",
 	"sourcePaths": [
 		"../uim-core",
 		"../uim-oop",
+		"../uim-jsonbase",
+		"../uim-entitybase",
+
 		"../uim-css",
 		"../uim-html",
 		"../uim-javascript",
 		"../uim-json",
 		"../uim-bootstrap",
-		"../uim-jsonbase",
-		"../uim-entitybase",
-		"../uim-servers",
 		"../uim-controls",
 		"../uim-models",
 		"../uim-mvc",

@@ -1,44 +1,49 @@
 {
 	"authors": [
-		"UI Manufaktur Team"
+		"Sicherheitsschmiede",
+		"Ozan Nurettin Süel"
 	],
-	"copyright": "Copyright © 2017-2021, UI Manufaktur UG",
+	"copyright": "Copyright © 2015-2023, Ozan Nurettin Süel",
+	"license": "Apache-2.0",
 	"dependencies": {
 		"arsd-official": "~>10.2.2",
 		"colored": "~>0.0.23",
 		"dlib": "~>0.22.0",
 		"dyaml": "~>0.8.3",
 		"jwtd": "~>0.4.6",
-		"vibe-d": "~>0.9.4"
+		"vibe-d": "~>0.9.5"
 	},
-	"description": "UIM Library D application.",
-	"license": "MIT",
+	"description": "D Library for creating web apps.",
 	"name": "uim-apps",
 	"importPaths": [
 		"../uim-core",
 		"../uim-oop",
+		"../uim-models",
+		"../uim-jsonbase",
+		"../uim-entitybase",
+
+		"../uim-mvc",
 		"../uim-css",
 		"../uim-html",
 		"../uim-javascript",
 		"../uim-bootstrap",
 
-		"../uim-jsonbase",
-		"../uim-entities",
-		"../uim-entitybase",
 		"../../LAYOUTS/layout-tabler/source/layouts",
 		"./"
 	],
 	"sourcePaths": [
 		"../uim-core",
 		"../uim-oop",
+		"../uim-models",
+		"../uim-jsonbase",
+		"../uim-entitybase",
+
+		"../uim-mvc",
 		"../uim-css",
 		"../uim-html",
 		"../uim-javascript",
 		"../uim-bootstrap",
-		
-		"../uim-jsonbase",
-		"../uim-entities",
-		"../uim-entitybase",
+
 		"../../LAYOUTS/layout-tabler/source/layouts",
 		"./"
 	],
@@ -49,28 +54,32 @@
 			"importPaths": [
 				"../uim-core",
 				"../uim-oop",
+				"../uim-models",
+				"../uim-jsonbase",
+				"../uim-entitybase",
+
+				"../uim-mvc",
 				"../uim-css",
 				"../uim-html",
 				"../uim-javascript",
 				"../uim-bootstrap",
-		
-				"../uim-jsonbase",
-				"../uim-entities",
-				"../uim-entitybase",
+
 				"../../LAYOUTS/layout-tabler/source/layouts",
 				"./"
 			],
 			"sourcePaths": [
 				"../uim-core",
 				"../uim-oop",
+				"../uim-models",
+				"../uim-jsonbase",
+				"../uim-entitybase",
+
+				"../uim-mvc",
 				"../uim-css",
 				"../uim-html",
 				"../uim-javascript",
 				"../uim-bootstrap",
 				
-				"../uim-jsonbase",
-				"../uim-entities",
-				"../uim-entitybase",
 				"../../LAYOUTS/layout-tabler/source/layouts",
 				"./"
 			]		
@@ -81,28 +90,32 @@
 			"importPaths": [
 				"../uim-core",
 				"../uim-oop",
+				"../uim-models",
+				"../uim-jsonbase",
+				"../uim-entitybase",
+
+				"../uim-mvc",
 				"../uim-css",
 				"../uim-html",
 				"../uim-javascript",
 				"../uim-bootstrap",
-		
-				"../uim-jsonbase",
-				"../uim-entities",
-				"../uim-entitybase",
+
 				"../../LAYOUTS/layout-tabler/source/layouts",
 				"./"
 			],
 			"sourcePaths": [
 				"../uim-core",
 				"../uim-oop",
+				"../uim-models",
+				"../uim-jsonbase",
+				"../uim-entitybase",
+
+				"../uim-mvc",
 				"../uim-css",
 				"../uim-html",
 				"../uim-javascript",
 				"../uim-bootstrap",
 				
-				"../uim-jsonbase",
-				"../uim-entities",
-				"../uim-entitybase",
 				"../../LAYOUTS/layout-tabler/source/layouts",
 				"./"
 			]
