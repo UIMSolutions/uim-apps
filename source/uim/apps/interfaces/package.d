@@ -1,1 +1,1 @@
-
+module uim.apps.interfaces;
