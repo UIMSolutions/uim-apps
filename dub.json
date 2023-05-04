@@ -32,12 +32,12 @@
 
 		"../uim-css",
 		"../uim-html",
-		"../uim-javascript",
 		"../uim-json",
 		"../uim-bootstrap",
 		"../uim-controls",
 		"../uim-models",
 		"../uim-mvc",
+		"../../LANGS/lang-javascript",
 		"../../LAYOUTS/layout-tabler/source/layouts",
 		"./"
 	],
@@ -49,7 +49,7 @@
 
 		"../uim-css",
 		"../uim-html",
-		"../uim-javascript",
+		"../../LANGS/lang-javascript",
 		"../uim-json",
 		"../uim-bootstrap",
 		"../uim-controls",

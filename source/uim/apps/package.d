@@ -14,10 +14,11 @@ public { // uim libraries
 	import uim.models;
 
   import uim.html;
-  import uim.javascript;
   import uim.bootstrap;
   import uim.mvc;
   import uim.controls;
+
+  import langs.javascript;
 }
 
 public { // uim-apps packages
