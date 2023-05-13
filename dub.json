@@ -29,10 +29,8 @@
 		"../uim-oop",
 		"../uim-jsonbase",
 		"../uim-entitybase",
-
 		"../uim-css",
 		"../uim-html",
-		"../uim-json",
 		"../uim-bootstrap",
 		"../uim-controls",
 		"../uim-models",
@@ -46,15 +44,13 @@
 		"../uim-oop",
 		"../uim-jsonbase",
 		"../uim-entitybase",
-
 		"../uim-css",
 		"../uim-html",
-		"../../LANGS/lang-javascript",
-		"../uim-json",
 		"../uim-bootstrap",
 		"../uim-controls",
 		"../uim-models",
 		"../uim-mvc",
+		"../../LANGS/lang-javascript",
 		"../../LAYOUTS/layout-tabler/source/layouts",
 		"./"
 	],
