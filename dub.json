@@ -1,12 +1,13 @@
 {
 	"name": "uim-apps",
-	"description": "A minimal D application.",
+	"description": "Library for builing webapps",
 	"authors": [
 		"Sicherheitsschmiede",
 		"Ozan Nurettin Süel"
 	],
 	"copyright": "Copyright © 2015-2023, Ozan Nurettin Süel",	
 	"license": "Apache-2.0",
+	"targetType": "library",
 	"configurations": [
 		{
 			"name": "offline",
@@ -53,6 +54,5 @@
 		"../../LANGS/lang-javascript",
 		"../../LAYOUTS/layout-tabler/source/layouts",
 		"./"
-	],
-	"targetType": "library"
+	]
 }
