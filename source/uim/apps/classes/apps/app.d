@@ -44,7 +44,7 @@ class DApp : DApplication, IRequestHandler, IApp {
     _layout = newlayout; 
     return cast(O)this; }
   
-  auto layout() {
+  ILayout layout() {
     debugMethodCall(moduleName!DApp~":DApp("~this.name~")::layout()");
     return _layout  ? _layout 
       : (server ? server.layout 
@@ -73,6 +73,10 @@ class DApp : DApplication, IRequestHandler, IApp {
     if (newRoute) {
       DRoute[HTTPMethod] routesAtPath = _routes.get(newRoute.path, null);
       routesAtPath[newRoute.method] = newRoute;
+
+      if (auto myController = cast(DAPPPageController)newRoute.controller) {
+        myController.app(this);
+      }
 
       _routes[newRoute.path] = routesAtPath;
     }
