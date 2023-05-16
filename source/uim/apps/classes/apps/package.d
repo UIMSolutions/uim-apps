@@ -1,3 +1,3 @@
 module uim.apps.classes.apps;
 
-public import module uim.apps.classes.apps.app;
+public import uim.apps.classes.apps.app;
