@@ -36,6 +36,7 @@
 		"../uim-controls",
 		"../uim-models",
 		"../uim-mvc",
+		"../uim-servers",
 		"../../LANGS/lang-javascript",
 		"../../LAYOUTS/layout-tabler/source/layouts",
 		"./"
@@ -51,6 +52,7 @@
 		"../uim-controls",
 		"../uim-models",
 		"../uim-mvc",
+		"../uim-servers",
 		"../../LANGS/lang-javascript",
 		"../../LAYOUTS/layout-tabler/source/layouts",
 		"./"

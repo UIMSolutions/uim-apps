@@ -17,19 +17,18 @@ public { // uim libraries
   import uim.bootstrap;
   import uim.mvc;
   import uim.controls;
+  import uim.servers;
 
   import langs.javascript;
 }
 
 public { // uim-apps packages
   import uim.apps.classes;
-  import uim.apps.controllers;
   import uim.apps.errors;
   import uim.apps.exceptions;
   import uim.apps.interfaces;
   import uim.apps.mixins;
   import uim.apps.tests;
-  import uim.apps.views;
 }
 
 
