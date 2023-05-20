@@ -38,6 +38,10 @@ class DApp : DApplication, IRequestHandler, IApp {
   mixin(OProperty!("DMVCMetaContainer",   "metas"));
   mixin(OProperty!("DScriptContainer", "scripts"));
   mixin(OProperty!("DStyleContainer",  "styles"));
+
+  // View and Controllers
+  mixin(OProperty!("DController[string]",  "controllers"));
+  mixin(OProperty!("DView[string]",  "views"));
   
   protected ILayout _layout;
 	@property O layout(this O)(ILayout newlayout) { 

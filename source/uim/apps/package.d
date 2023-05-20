@@ -8,7 +8,6 @@ public import vibe.d;
 public { // uim libraries
   import uim.core;
   import uim.oop;
-  import uim.models;
   import uim.jsonbase;
 	import uim.entitybase;
 	import uim.models;
