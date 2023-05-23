@@ -1,1 +1,3 @@
-# uim-apps
+# Library 📦 uim-apps
+Library for creating WebApps
+
