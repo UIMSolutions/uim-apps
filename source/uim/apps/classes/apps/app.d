@@ -22,6 +22,12 @@ class DApp : DApplication, IRequestHandler, IApp {
 
 // #region parameters
     mixin(MVCParameter!("rootPath"));
+	
+	Background color of the App. If set, this color will override the default background defined by the theme.*/
+		mixin(MVCParameter!("backgroundColor"));
+		
+		Background image of the App. If set, this image will override the default background defined by the theme.
+			mixin(MVCParameter!("backgroundImage"));
   // #endregion parameters
 
   // Application data 
