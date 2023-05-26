@@ -1,1 +1,2 @@
 
+# Package 📦 uim.apps.exceptions
