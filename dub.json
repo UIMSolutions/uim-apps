@@ -33,12 +33,12 @@
 		"../uim-css",
 		"../uim-html",
 		"../uim-bootstrap",
-		"../uim-controls",
 		"../uim-models",
 		"../uim-mvc",
 		"../uim-servers",
 		"../../LANGS/lang-javascript",
 		"../../LAYOUTS/layout-tabler/source/layouts",
+		"../../WEBS/web-controls",
 		"./"
 	],
 	"sourcePaths": [
@@ -49,12 +49,12 @@
 		"../uim-css",
 		"../uim-html",
 		"../uim-bootstrap",
-		"../uim-controls",
 		"../uim-models",
 		"../uim-mvc",
 		"../uim-servers",
 		"../../LANGS/lang-javascript",
 		"../../LAYOUTS/layout-tabler/source/layouts",
+		"../../WEBS/web-controls",
 		"./"
 	]
 }

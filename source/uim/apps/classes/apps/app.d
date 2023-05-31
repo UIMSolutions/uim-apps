@@ -23,18 +23,17 @@ class DApp : DApplication, IRequestHandler, IApp {
 // #region parameters
     mixin(MVCParameter!("rootPath"));
 	
-	Background color of the App. If set, this color willmixin(MVCParameter!("backgroundImage")) override the default background defined by the theme.*/
+	  // Background color of the App. If set, this color willmixin(MVCParameter!("backgroundImage")) override the default background defined by the theme.*/
 		mixin(MVCParameter!("backgroundColor"));
 		
-		Background image of the App. If set, this image will override the default background defined by the theme.
-			mixin(MVCParameter!("backgroundImage"));
+		// Background image of the App. If set, this image will override the default background defined by the theme.
+		mixin(MVCParameter!("backgroundImage"));
 			
-			Opacity of the background image. The opacity can be set between 0 (fully transparent) and 1 fully opaque).
-			mixin(OProperty!("double", "
-					backgroundImageOpacity"));
+		// Opacity of the background image. The opacity can be set between 0 (fully transparent) and 1 fully opaque).
+		mixin(OProperty!("double", "backgroundImageOpacity"));
 					 
-			Whether the background image (if configured) should be proportionally stretched to cover the whole App (false) or whether it should be tiled (true).
-			mixin(OProperty!("bool", "backgroundImageRepeat"));
+		// Whether the background image (if configured) should be proportionally stretched to cover the whole App (false) or whether it should be tiled (true).
+		mixin(OProperty!("bool", "backgroundImageRepeat"));
   // #endregion parameters
 
   // Application data 
@@ -53,7 +52,10 @@ class DApp : DApplication, IRequestHandler, IApp {
   mixin(OProperty!("DStyleContainer",  "styles"));
 
   // View and Controllers
-  // #region Managing controllers
+  // #region Managing controllers    
+    mixin(OProperty!("DPageController",  "indexController"));
+    mixin(OProperty!("DPageController",  "errorController"));
+
     mixin(OProperty!("DController[string]",  "controllers"));
     bool hasController(string controllerName) {
       return (controllerName in _controllers ? true : false);

@@ -5,4 +5,7 @@ import uim.apps;
 
 interface IApp {
   ILayout layout();
+
+  DView[string] views;
+  DController[string] controllers;
 }
