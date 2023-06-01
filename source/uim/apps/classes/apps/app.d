@@ -16,7 +16,9 @@ class DApp : DApplication, IRequestHandler, IApp {
 
     this
       .className("App")
-      .registerPath(className.toLower);
+      .controllers(ControllerContainer.app(this))
+      .registerPath(className.toLower)
+      .views(ViewContainer.app(this));
   }
 
 
@@ -56,39 +58,11 @@ class DApp : DApplication, IRequestHandler, IApp {
     mixin(OProperty!("DPageController",  "indexController"));
     mixin(OProperty!("DPageController",  "errorController"));
 
-    mixin(OProperty!("DController[string]",  "controllers"));
-    bool hasController(string controllerName) {
-      return (controllerName in _controllers ? true : false);
-    }
-    O addController(this O)(string controllerName, DController newController) {
-      _controllers[controllerName] = newController;
-      return cast(O)this;
-    }
-    DController getController(string controllerName) {
-      return _controllers.get(controllerName, NullController);
-    }
-    O removeController(this O)(string controllerName) {
-      _controllers.remove(controllerName);
-      return cast(O)this;
-    }
+    mixin(OProperty!("DControllerContainer",  "controllers"));
   // #endregion
 
   // #region Managing views
-    mixin(OProperty!("DView[string]",  "views"));
-    bool hasView(string viewName) {
-      return (viewName in _views ? true : false);
-    }
-    O addView(this O)(string viewName, DView newView) {
-      _views[viewName] = newView;
-      return cast(O)this;
-    }
-    DView getView(string viewName) {
-      return _views.get(viewName, NullView);
-    }
-    O removeView(this O)(string viewName) {
-      _views.remove(viewName);
-      return cast(O)this;
-    }
+    mixin(OProperty!("DViewContainer",  "views"));
   // #endregion
 
   protected ILayout _layout;
