@@ -16,9 +16,9 @@ class DApp : DApplication, IRequestHandler, IApp {
 
     this
       .className("App")
-      .controllers(ControllerContainer.app(this))
+      .controllers(ControllerContainer)
       .registerPath(className.toLower)
-      .views(ViewContainer.app(this));
+      .views(ViewContainer);
   }
 
 
@@ -101,6 +101,9 @@ class DApp : DApplication, IRequestHandler, IApp {
       routesAtPath[newRoute.method] = newRoute;
 
       if (auto myController = cast(DAPPPageController)newRoute.controller) {
+        myController.app(this);
+      }
+      else if (auto myController = cast(DAPPPageController)app.controllers.byName(controllername)) {
         myController.app(this);
       }
 
