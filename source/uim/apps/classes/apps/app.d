@@ -103,7 +103,7 @@ class DApp : DApplication, IRequestHandler, IApp {
       if (auto myController = cast(DAPPPageController)newRoute.controller) {
         myController.app(this);
       }
-      else if (auto myController = cast(DAPPPageController)app.controllers.byName(controllername)) {
+      else if (auto myController = cast(DAPPPageController)controllers.byName(controllerName)) {
         myController.app(this);
       }
 
