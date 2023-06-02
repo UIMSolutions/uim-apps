@@ -16,6 +16,7 @@ class DApp : DApplication, IRequestHandler, IApp {
 
     this
       .className("App")
+      .actions(ControllerContainer)
       .controllers(ControllerContainer)
       .registerPath(className.toLower)
       .views(ViewContainer);
@@ -65,6 +66,10 @@ class DApp : DApplication, IRequestHandler, IApp {
     mixin(OProperty!("DViewContainer",  "views"));
   // #endregion
 
+  // #region Managing actions
+    mixin(OProperty!("DControllerContainer",  "actions"));
+  // #endregion
+
   protected ILayout _layout;
 	@property O layout(this O)(ILayout newlayout) { 
     _layout = newlayout; 
@@ -103,7 +108,7 @@ class DApp : DApplication, IRequestHandler, IApp {
       if (auto myController = cast(DAPPPageController)newRoute.controller) {
         myController.app(this);
       }
-      else if (auto myController = cast(DAPPPageController)controllers.byName(controllerName)) {
+      else if (auto myController = cast(DAPPPageController)controllers.byName(newRoute.controllerName)) {
         myController.app(this);
       }
 
