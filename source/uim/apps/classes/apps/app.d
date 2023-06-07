@@ -8,7 +8,7 @@ module uim.apps.classes.apps.app;
 import uim.apps;
 @safe:
 
-class DApp : DApplication, IRequestHandler, IApp { 
+class DApp : DApplication, IRequestHandler, IApp, IControllerManager { 
   this() { super(); }
 
   override void initialize(Json configSettings = Json(null)) {
