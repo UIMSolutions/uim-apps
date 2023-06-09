@@ -8,7 +8,7 @@ module uim.apps.classes.controllers.pages.page;
 import uim.apps;
 @safe:
 
-class DAPPPageController : DPageController {
+/* class DAPPPageController : DPageController {
   mixin(ControllerThis!("APPPageController"));
 
   mixin(OProperty!("IApp", "app"));
@@ -29,4 +29,4 @@ mixin(ControllerCalls!("APPPageController"));
 
 version(test_uim_mvc) { unittest {
   assert(APPPageController);
-}}
+}} */

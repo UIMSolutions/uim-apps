@@ -105,11 +105,11 @@ class DApp : DApplication, IRequestHandler, IApp, IControllerManager {
       DRoute[HTTPMethod] routesAtPath = _routes.get(newRoute.path, null);
       routesAtPath[newRoute.method] = newRoute;
 
-      if (auto myController = cast(DAPPPageController)newRoute.controller) {
-        myController.app(this);
+      if (auto myController = cast(DPageController)newRoute.controller) {
+        myController.manager(this);
       }
-      else if (auto myController = cast(DAPPPageController)controllers.byName(newRoute.controllerName)) {
-        myController.app(this);
+      else if (auto myController = cast(DPageController)controllers.byName(newRoute.controllerName)) {
+        myController.manager(this);
       }
 
       _routes[newRoute.path] = routesAtPath;
