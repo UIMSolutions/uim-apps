@@ -8,7 +8,7 @@ module uim.apps.classes.apps.app;
 import uim.apps;
 @safe:
 
-class DApp : DApplication, IRequestHandler, IApp, IControllerManager { 
+class DApp : DApplication, IRequestHandler, IApp, IControllerManager, IViewManager { 
   this() { super(); }
 
   override void initialize(Json configSettings = Json(null)) {
@@ -22,6 +22,20 @@ class DApp : DApplication, IRequestHandler, IApp, IControllerManager {
       .views(ViewContainer);
   }
 
+  // #region Managers 
+    mixin(OProperty!("IAppManager", "manager"));
+
+    // Link to the sessionManager. 
+    protected ISessionManager _sessionManager; 
+    O sessionManager(this O)(ISessionManager aSessionManager) {
+      _sessionManager = aSessionManager;
+    }
+    ISessionManager sessionManager() {
+      if (_sessionManager) return _sessionManager;
+
+      return manager.sessionManager;
+    }
+    // #endregion Managers    
 
 // #region parameters
     mixin(MVCParameter!("rootPath"));
