@@ -58,6 +58,10 @@ class DApp : DApplication, IRequestHandler, IApp, IControllerManager, IViewManag
   mixin(OProperty!("UUID", "id"));
   mixin(OProperty!("size_t", "versionNumber"));
 
+  O importTranslations(this O)() {
+    return cast(O)this;
+  } // TODO
+
   // Interfaces
   mixin(OProperty!("DETBBase", "database"));
   mixin(OProperty!("DRoute[HTTPMethod][string]", "routes"));
