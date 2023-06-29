@@ -84,7 +84,7 @@ class DApp : DApplication, IRequestHandler, IApp, IControllerManager {
   ILayout layout() {
     debugMethodCall(moduleName!DApp~":DApp("~this.name~")::layout()");
     return _layout  ? _layout 
-      : (server ? server.layout 
+      : (manager ? manager.layout 
         : null);
   }
   
