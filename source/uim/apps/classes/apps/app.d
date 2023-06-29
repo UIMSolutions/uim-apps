@@ -8,8 +8,16 @@ module uim.apps.classes.apps.app;
 import uim.apps;
 @safe:
 
-class DApp : DApplication, IRequestHandler, IApp, IControllerManager, IViewManager { 
+class DApp : DApplication, IRequestHandler, IApp, IControllerManager { 
   this() { super(); }
+
+  mixin EntityBaseTemplate;
+
+  mixin ControllerContainerTemplate;
+  mixin ControllerManagerTemplate;
+
+  mixin SessionContainerTemplate;
+  mixin SessionManagerTemplate; 
 
   override void initialize(Json configSettings = Json(null)) {
     super.initialize(configSettings);
@@ -17,27 +25,14 @@ class DApp : DApplication, IRequestHandler, IApp, IControllerManager, IViewManag
     this
       .className("App")
       .actions(ControllerContainer)
-      .controllers(ControllerContainer)
-      .registerPath(className.toLower)
-      .views(ViewContainer);
+      .registerPath(className.toLower); 
+
   }
 
   // #region Managers 
     mixin(OProperty!("IAppManager", "manager"));
 
-    // Link to the sessionManager. 
-    protected ISessionManager _sessionManager; 
-    O sessionManager(this O)(ISessionManager aSessionManager) {
-      _sessionManager = aSessionManager;
-    }
-    ISessionManager sessionManager() {
-      if (_sessionManager) return _sessionManager;
-
-      return manager.sessionManager;
-    }
-    // #endregion Managers    
-
-// #region parameters
+  // #region parameters
     mixin(MVCParameter!("rootPath"));
 	
 	  // Background color of the App. If set, this color willmixin(MVCParameter!("backgroundImage")) override the default background defined by the theme.*/
@@ -54,7 +49,6 @@ class DApp : DApplication, IRequestHandler, IApp, IControllerManager, IViewManag
   // #endregion parameters
 
   // Application data 
-  mixin(OProperty!("IServer", "server"));
   mixin(OProperty!("UUID", "id"));
   mixin(OProperty!("size_t", "versionNumber"));
 
@@ -63,7 +57,6 @@ class DApp : DApplication, IRequestHandler, IApp, IControllerManager, IViewManag
   } // TODO
 
   // Interfaces
-  mixin(OProperty!("DETBBase", "database"));
   mixin(OProperty!("DRoute[HTTPMethod][string]", "routes"));
 
   // Main Containers - Allways first
@@ -77,11 +70,6 @@ class DApp : DApplication, IRequestHandler, IApp, IControllerManager, IViewManag
     mixin(OProperty!("DPageController",  "indexController"));
     mixin(OProperty!("DPageController",  "errorController"));
 
-    mixin(OProperty!("DControllerContainer",  "controllers"));
-  // #endregion
-
-  // #region Managing views
-    mixin(OProperty!("DViewContainer",  "views"));
   // #endregion
 
   // #region Managing actions

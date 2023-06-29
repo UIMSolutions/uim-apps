@@ -3,6 +3,7 @@ module uim.apps.interfaces.appmanager;
 import uim.apps;
 @safe:
 
-interface IAppManager {
-  ISessionManager sessionManager();
+interface IAppManager : IControllerManager {
+  ILayout layout();
+  IEntityBase entityBase(); 
 }

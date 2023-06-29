@@ -3,10 +3,7 @@ module uim.apps.interfaces.app;
 import uim.apps;
 @safe:
 
-interface IApp {
+interface IApp : IControllerManager {
   ILayout layout();
-
-  DViewContainer views();
-  DControllerContainer controllers();
-  
+  IEntityBase entityBase();
 }
