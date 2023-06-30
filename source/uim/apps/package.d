@@ -29,6 +29,7 @@ public { // uim-apps packages
   import uim.apps.errors;
   import uim.apps.exceptions;
   import uim.apps.interfaces;
+  import uim.apps.helpers;
   import uim.apps.mixins;
   import uim.apps.tests;
 }

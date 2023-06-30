@@ -6,4 +6,6 @@ import uim.apps;
 interface IAppManager : IControllerManager {
   ILayout layout();
   IEntityBase entityBase(); 
+
+  DControllerContainer controllerContainer();
 }
