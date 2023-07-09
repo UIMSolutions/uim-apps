@@ -8,8 +8,10 @@ module uim.apps.classes.apps.app;
 import uim.apps;
 @safe:
 
-class DApp : DApplication, IRequestHandler, IApp, IControllerManager { 
+class DApp : DApplication, IRouteManager, IRequestHandler, IApp, IControllerManager, IViewManager { 
   this() { super(); }
+  this(string appName) { this().name(appName); }
+  this(string appName, string appRootPath) { this(appName).rootPath(appRootPath); }
 
   mixin EntityBaseTemplate;
 
@@ -18,6 +20,11 @@ class DApp : DApplication, IRequestHandler, IApp, IControllerManager {
 
   mixin SessionContainerTemplate;
   mixin SessionManagerTemplate; 
+
+  mixin ViewManagerContainerTemplate;
+  mixin ViewManagerTemplate;
+
+  mixin RouteManagerTemplate;
 
   override void initialize(Json configSettings = Json(null)) {
     super.initialize(configSettings);
@@ -88,39 +95,6 @@ class DApp : DApplication, IRequestHandler, IApp, IControllerManager {
         : null);
   }
   
-  auto routesPaths() {
-    return _routes.keys; 
-  }
-
-  auto routesAtPath(string path) {
-    debug writeln("Get routes at '%s'".format(path));
-    return _routes.get(path, null); 
-  }
-
-  auto route(string path, HTTPMethod method) {
-    debug writeln("Get route at '%s' and '%s'".format(path, method));
-    if (auto routesAtPath = _routes.get(path, null)) {
-      return routesAtPath.get(method, null);
-    } 
-    return null;
-  }
-
-  O addRoute(this O)(DRoute newRoute) {
-    debug writeln("Adding route at '%s'".format(newRoute.path));
-    if (newRoute) {
-      DRoute[HTTPMethod] routesAtPath = _routes.get(newRoute.path, null);
-      routesAtPath[newRoute.method] = newRoute;
-
-      if (auto myController = cast(DPageController)newRoute.controller) {
-        myController.manager(this);
-      }
-      else if (auto myController = cast(DPageController)controllers.byName(newRoute.controllerName)) {
-        myController.manager(this);
-      }
-
-      _routes[newRoute.path] = routesAtPath;
-    }
-    return cast(O)this; }
     
   // #region Request Handling
     void request(HTTPServerRequest newRequest, HTTPServerResponse newResponse) {
@@ -140,7 +114,7 @@ class DApp : DApplication, IRequestHandler, IApp, IControllerManager {
         writeln("New path = '%s'".format(options["path"]));
       } else  writeln("No path");
 
-      writeln(routesPaths);
+      writeln(routePaths);
       auto myPath = rootPath.length > 0 ? newRequest.path[rootPath.length..$] : newRequest.path;
       writeln("myPath = '%s'".format(myPath));
       if (auto myRoute = route(myPath, newRequest.method)) {
@@ -152,3 +126,5 @@ class DApp : DApplication, IRequestHandler, IApp, IControllerManager {
   // #endregion 
 }
 auto App() { return new DApp; }
+auto App(string appName) { return new DApp(appName); }
+auto App(string appName, string appRootPath) { return new DApp(appName, appRootPath); }
