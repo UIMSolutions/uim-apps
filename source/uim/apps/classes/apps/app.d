@@ -13,6 +13,10 @@ class DApp : DApplication, IRouteManager, IRequestHandler, IApp, IControllerMana
   this(string appName) { this().name(appName); }
   this(string appName, string appRootPath) { this(appName).rootPath(appRootPath); }
 
+/*   this(IRoute[] routes...) { this().addRoutesappRootPath); }
+  this(string appName, IRoute[] routes...) { this(appName).rootPath(appRootPath); }
+  this(string appName, string appRootPath, IRoute[] routes...) { this(appName).rootPath(appRootPath); }
+ */
   mixin EntityBaseTemplate;
 
   mixin ControllerContainerTemplate;

@@ -3,11 +3,13 @@ module uim.apps.interfaces.appmanager;
 import uim.apps;
 @safe:
 
-interface IAppManager : IControllerManager, IViewManager {
+interface IAppManager {
   ILayout layout();
   IEntityBase entityBase(); 
-
   DAppContainer appContainer();
+  DControllerContainer controllerContainer();
+  DSessionContainer sessionContainer();
+  DViewContainer viewContainer();
 
   void apps(IApp[string] someApps);
   void apps(IApp[] someApps...);
@@ -17,12 +19,6 @@ interface IAppManager : IControllerManager, IViewManager {
 
   IApp app(string aName);
   void app(string aName, IApp aApp);
-
-  void defaultApp(IApp aApp);
-  IApp defaultApp();
-
-  void errorApp(IApp aApp);
-  IApp errorApp();
 
   bool hasApp(IApp aApp);
   bool hasApp(string aName);

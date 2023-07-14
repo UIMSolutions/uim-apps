@@ -8,11 +8,11 @@ module uim.apps.classes.apps.registry;
 import uim.apps;
 @safe:
 
-class DAppRegistry : DRegistry!DApp {
+class DAppRegistry : DRegistry!IApp {
   this() {}  
 
   static DAppRegistry registry; 
-  DApp[] apps() {
+  IApp[] apps() {
     return this.all;
   };
 }
