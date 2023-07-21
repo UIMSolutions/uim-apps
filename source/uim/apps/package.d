@@ -19,7 +19,6 @@ public { // uim libraries
   import uim.bootstrap;
   import uim.mvc;
   import web.controls;
-  import uim.servers;
 
   import langs.javascript;
 }

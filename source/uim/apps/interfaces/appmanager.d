@@ -3,7 +3,7 @@ module uim.apps.interfaces.appmanager;
 import uim.apps;
 @safe:
 
-interface IAppManager {
+interface IAppManager : IViewManager, IControllerManager {
   ILayout layout();
   IEntityBase entityBase(); 
   DAppContainer appContainer();
@@ -28,10 +28,10 @@ interface IAppManager {
   void addApp(string aName, IApp aApp);
 
   // Update existing app
-  void updateApp(IApp aApp);
-  void updateApp(string aName, IApp aApp);
+  bool updateApp(IApp aApp);
+  bool updateApp(string aName, IApp aApp);
 
   // Remove existing app
-  void removeApp(IApp aApp);
-  void removeApp(string aName);
+  bool removeApp(IApp aApp);
+  bool removeApp(string aName);
 }

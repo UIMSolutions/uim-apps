@@ -8,7 +8,7 @@ module uim.apps.classes.apps.app;
 import uim.apps;
 @safe:
 
-class DApp : DApplication, IRouteManager, IRequestHandler, IApp, IControllerManager, IViewManager { 
+class DApp : DApplication, IRouteManager, IRequestHandler, IApp, IControllerManager, IViewManager, ILayoutManager { 
   this() { super(); }
   this(string appName) { this().name(appName); }
   this(string appName, string appRootPath) { this(appName).rootPath(appRootPath); }
@@ -25,8 +25,11 @@ class DApp : DApplication, IRouteManager, IRequestHandler, IApp, IControllerMana
   mixin SessionContainerTemplate;
   mixin SessionManagerTemplate; 
 
-  mixin ViewManagerContainerTemplate;
+  mixin ViewContainerTemplate;
   mixin ViewManagerTemplate;
+
+  mixin LayoutContainerTemplate;
+  mixin LayoutManagerTemplate;
 
   mixin RouteManagerTemplate;
 
@@ -38,6 +41,8 @@ class DApp : DApplication, IRouteManager, IRequestHandler, IApp, IControllerMana
       .actions(ControllerContainer)
       .registerPath(className.toLower); 
 
+    controllerContainer(ControllerContainer);
+    viewContainer(ViewContainer);
   }
 
   // #region Managers 
@@ -108,24 +113,27 @@ class DApp : DApplication, IRouteManager, IRequestHandler, IApp, IControllerMana
     void request(HTTPServerRequest newRequest, HTTPServerResponse newResponse, string[string] options) {
       debugMethodCall(moduleName!DApp~":DApp("~this.name~")::request(req, res, requestParameters)");
 
-      writeln("rootPath = '%s'".format(this.rootPath));
-      writeln("newRequest.fullURL = '%s'".format(newRequest.fullURL));
-      writeln("newRequest.rootDir = '%s'".format(newRequest.rootDir));
-      writeln("newRequest.path    = '%s'".format(newRequest.path));
-      writeln("newRequest.path.length = '%s'".format(newRequest.path.length));
+      writeln("rootPath = \t'%s'".format(this.rootPath));
+      writeln("newRequest.fullURL = \t'%s'".format(newRequest.fullURL));
+      writeln("newRequest.rootDir = \t'%s'".format(newRequest.rootDir));
+      writeln("newRequest.path    = \t'%s'".format(newRequest.path));
+      writeln("newRequest.path.length = \t'%s'".format(newRequest.path.length));
 
-      if ("path" in options) {
-        writeln("New path = '%s'".format(options["path"]));
-      } else  writeln("No path");
+      auto myPath = options.get("path", newRequest.path);
+      writeln("myPath = \t'%s'".format(myPath));
 
-      writeln(routePaths);
-      auto myPath = rootPath.length > 0 ? newRequest.path[rootPath.length..$] : newRequest.path;
-      writeln("myPath = '%s'".format(myPath));
-      if (auto myRoute = route(myPath, newRequest.method)) {
-        debug writeln("Found route");
+      auto myRoutePath = myPath;
+      if (myPath.indexOf(rootPath) == 0) {
+        myRoutePath = myPath[rootPath.length..$];
+        foreach(myRoute; this.routesWithMethod(newRequest.method)) {
+          if (myRoute.path == myRoutePath) {
+            debug writeln("Found app route");
 
-        myRoute.controller.request(newRequest, newResponse, options);
-      }      
+            myRoute.controller.request(newRequest, newResponse, options);
+            return;
+          }
+        }
+      }
     }
   // #endregion 
 }

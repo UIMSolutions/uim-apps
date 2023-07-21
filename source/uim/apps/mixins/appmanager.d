@@ -5,15 +5,15 @@ import uim.apps;
 
 mixin template AppContainerTemplate() {
   // #region appContainer
-  protected DAppContainer _appContainer;  
-  DAppContainer appContainer() {
-    if (_appContainer) return _appContainer;
-    return (_manager ? manager.appContainer : null); 
-  }  
-  O appContainer(this O)(DAppContainer aAppContainer) {    
-    _appContainer = aAppContainer;
-    return cast(O)this;
-  }  
+    protected DAppContainer _appContainer;  
+    DAppContainer appContainer() {
+      if (_appContainer) return _appContainer;
+      return (_manager ? manager.appContainer : null); 
+    }  
+    O appContainer(this O)(DAppContainer aAppContainer) {    
+      _appContainer = aAppContainer;
+      return cast(O)this;
+    }  
   // #endregion appContainer
 }
 
@@ -28,13 +28,17 @@ mixin template AppManagerTemplate() {
     }
 
     void apps(IApp[] someApps) {
-      someApps.each!(col => app(col));
+      someApps.each!(myApp => this.app(myApp));
     }
 
     IApp[] apps() { 
+      debug writeln ("APpContainer %s".format(appContainer ? "exists" : "missing"));
+      auto myApps = appContainer.values;
+      debug writeln ("Found %s apps".format(myApps.length));
       return (appContainer ? appContainer.values : null); 
     }
     string[] appNames() {
+      debug writeln ("APpContainer %s".format(appContainer ? "exists" : "missing"));
       return (appContainer ? appContainer.keys : null);
     }
   // #endregion apps
@@ -66,6 +70,7 @@ mixin template AppManagerTemplate() {
     return cast(O)this;
   }
   O addApps(this O)(IApp[] someApps) {
+    debug writeln ("Adding Apps %s".format(someApps.length));
     someApps.each!(app => addApp(app));
     return cast(O)this;
   }
@@ -75,22 +80,33 @@ mixin template AppManagerTemplate() {
     if (aApp) addApp(aApp.name, aApp);
   }
   void addApp(string aName, IApp aApp) {
-    if (appContainer && aApp && !hasApp(aName)) appContainer.add(aName, aApp);
+    debug writeln ("Adding App ", aName);
+    if (appContainer) appContainer.add(aName, aApp);
+    else debug writeln("Missing AppContainer");
   }
 
   // Update existing app
-  void updateApp(IApp aApp) {
-     if (aApp) updateApp(aApp.name, aApp);
+  bool updateApp(IApp aApp) {
+    if (aApp) return updateApp(aApp.name, aApp);
+    return false;
   }
-  void updateApp(string aName, IApp aApp) {
-    if (aApp && hasApp(aName)) appContainer.update(aName, aApp);
+  bool updateApp(string aName, IApp aApp) {
+    if (appContainer) {
+      appContainer.update(aName, aApp);
+      return true;
+    }
+    return false;
   }
 
   // Remove existing app
-  void removeApp(IApp aApp) {
-    if (aApp) removeApp(aApp.name);
+  bool removeApp(IApp aApp) {
+    return (aApp ? removeApp(aApp.name) : false);
   }
-  void removeApp(string aName) {
-    if (appContainer && hasApp(aName)) appContainer.remove(aName);
+  bool removeApp(string aName) {
+    if (appContainer) {
+      appContainer.remove(aName);
+      return true;
+    }
+    return false;
   }
 }
