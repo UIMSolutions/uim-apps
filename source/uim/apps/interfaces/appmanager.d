@@ -4,7 +4,6 @@ import uim.apps;
 @safe:
 
 interface IAppManager : IViewManager, IControllerManager {
-  ILayout layout();
   IEntityBase entityBase(); 
   DAppContainer appContainer();
   DControllerContainer controllerContainer();
@@ -18,7 +17,6 @@ interface IAppManager : IViewManager, IControllerManager {
   string[] appNames();
 
   IApp app(string aName);
-  void app(string aName, IApp aApp);
 
   bool hasApp(IApp aApp);
   bool hasApp(string aName);

@@ -8,25 +8,4 @@ module uim.apps.classes.controllers.pages.page;
 import uim.apps;
 @safe:
 
-/* class DAPPPageController : DPageController {
-  mixin(ControllerThis!("APPPageController"));
 
-  mixin(OProperty!("IApp", "app"));
-
-	// #region Layout
-    @property override ILayout layout() { 
-      debugMethodCall(moduleName!DAPPPageController~":DAPPPageController("~this.name~")::layout()");
-      return _layout 
-        ? _layout
-        : (this.app 
-          ? this.app.layout 
-          : null)
-        ; 
-    }
-	// #endregion Layout
-}
-mixin(ControllerCalls!("APPPageController"));
-
-version(test_uim_mvc) { unittest {
-  assert(APPPageController);
-}} */

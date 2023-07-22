@@ -53,7 +53,9 @@ mixin template AppManagerTemplate() {
       if (aApp) app(aApp.name, aApp);
     }
     void app(string aName, IApp aApp) {
-      if (appContainer) appContainer[aName] = aApp;
+      if (appContainer) {
+        appContainer[aName] = aApp;
+      }
     }
   // #endregion app
 

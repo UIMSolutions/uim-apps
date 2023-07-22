@@ -9,5 +9,14 @@ import uim.apps;
 
 @safe:
 class DAppContainer  : DNamedContainer!IApp {
+	mixin(OProperty!("IAppManager", "appManager"));
+
+	override void opIndexAssign(IApp anItem, string aName) { 
+		if (auto myApp = cast(DApp)anItem) {
+			myApp.manager = appManager;
+		}
+
+    super[aName] = anItem;
+  }
 }
 auto AppContainer() { return new DAppContainer; }

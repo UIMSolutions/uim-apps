@@ -91,19 +91,6 @@ class DApp : DApplication, IRouteManager, IRequestHandler, IApp, IControllerMana
   // #region Managing actions
     mixin(OProperty!("DControllerContainer",  "actions"));
   // #endregion
-
-  protected ILayout _layout;
-	@property O layout(this O)(ILayout newlayout) { 
-    _layout = newlayout; 
-    return cast(O)this; }
-  
-  ILayout layout() {
-    debugMethodCall(moduleName!DApp~":DApp("~this.name~")::layout()");
-    return _layout  ? _layout 
-      : (manager ? manager.layout 
-        : null);
-  }
-  
     
   // #region Request Handling
     void request(HTTPServerRequest newRequest, HTTPServerResponse newResponse) {
