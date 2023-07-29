@@ -46,7 +46,13 @@ class DApp : DApplication, IRouteManager, IRequestHandler, IApp, IControllerMana
   }
 
   // #region Managers 
-    mixin(OProperty!("IAppManager", "manager"));
+    protected IAppManager _manager;
+    IAppManager manager() { 
+      return _manager; 
+    }
+    void manager(IAppManager aManager) {
+      _manager = aManager;
+    }
 
   // #region parameters
     mixin(MVCParameter!("rootPath"));
@@ -106,19 +112,23 @@ class DApp : DApplication, IRouteManager, IRequestHandler, IApp, IControllerMana
       writeln("newRequest.path    = \t'%s'".format(newRequest.path));
       writeln("newRequest.path.length = \t'%s'".format(newRequest.path.length));
 
-      auto myPath = options.get("path", newRequest.path);
+      auto myPath = strip(options.get("path", newRequest.path));
+      if (myPath[0] != '/') myPath = "/" ~ myPath; 
       writeln("myPath = \t'%s'".format(myPath));
 
-      auto myRoutePath = myPath;
-      if (myPath.indexOf(rootPath) == 0) {
-        myRoutePath = myPath[rootPath.length..$];
+      auto myRootPath  = rootPath;
+      if (myRootPath[0] != '/') myRootPath = "/" ~ myRootPath; 
+
+      // Ist rootPath starting in path?
+      if (myPath.indexOf(myRootPath) == 0) {
         foreach(myRoute; this.routesWithMethod(newRequest.method)) {
-          if (myRoute.path == myRoutePath) {
+          debug writeln (myRootPath~myRoute.path, "- ? - ", myPath);
+          if (myRootPath~myRoute.path == myPath) {
             debug writeln("Found app route");
 
             myRoute.controller.request(newRequest, newResponse, options);
             return;
-          }
+          } 
         }
       }
     }

@@ -4,26 +4,31 @@ import uim.apps;
 @safe:
 
 interface IAppManager : IViewManager, IControllerManager {
-  IEntityBase entityBase(); 
+  IEntityBase entityBase();
+   
   DAppContainer appContainer();
   DControllerContainer controllerContainer();
   DSessionContainer sessionContainer();
   DViewContainer viewContainer();
 
-  void apps(IApp[string] someApps);
-  void apps(IApp[] someApps...);
-  void apps(IApp[] someApps);
   IApp[] apps();
   string[] appNames();
 
+  // get app
   IApp app(string aName);
 
+  // check if app exists
   bool hasApp(IApp aApp);
   bool hasApp(string aName);
 
-  // Add app if not exitst
-  void addApp(IApp aApp);
-  void addApp(string aName, IApp aApp);
+  // Add apps
+  void addApps(IApp[string] someApps);
+  void addApps(IApp[] someApps...);
+  void addApps(IApp[] someApps);
+
+  // Add app
+  bool addApp(IApp aApp);
+  bool addApp(string aName, IApp aApp);
 
   // Update existing app
   bool updateApp(IApp aApp);
