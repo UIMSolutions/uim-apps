@@ -103,7 +103,7 @@ class DApp : DApplication, IRouteManager, IRequestHandler, IApp, IControllerMana
       request(newRequest, newResponse, null); 
     }
 
-    void request(HTTPServerRequest newRequest, HTTPServerResponse newResponse, string[string] options) {
+    void request(HTTPServerRequest newRequest, HTTPServerResponse newResponse, STRINGAA options) {
       debugMethodCall(moduleName!DApp~":DApp("~this.name~")::request(req, res, requestParameters)");
 
       writeln("rootPath = \t'%s'".format(this.rootPath));
