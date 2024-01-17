@@ -22,9 +22,10 @@
 		}
 	],
 	"dependencies": {
-		"colored": "~>0.0.27",
-		"vibe-d": "~>0.9.5"
-	},
+		"colored": "~>0.0.31",
+		"vibe-d": "~>0.9.7",
+		"uim": "~>24.1.1"
+},
 	"importPaths": [
 		"../uim-core",
 		"../uim-oop",
