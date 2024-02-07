@@ -27,8 +27,6 @@
 		"uim": "~>24.1.1"
 },
 	"importPaths": [
-		"../uim-core",
-		"../uim-oop",
 		"../uim-jsonbase",
 		"../uim-entitybase",
 		"../uim-css",
@@ -43,8 +41,6 @@
 		"./"
 	],
 	"sourcePaths": [
-		"../uim-core",
-		"../uim-oop",
 		"../uim-jsonbase",
 		"../uim-entitybase",
 		"../uim-css",
